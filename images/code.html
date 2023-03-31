@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Personal Blog</title>
+  <title>Personal Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="joshua">
+  <meta name="description" content="public class GrasshopperJump {    public static int findStartingStair(int[] jumps) {        int currentStair &#x3D; 0;        int minStair &#x3D; 0;        for (int i &#x3D; 0; i &lt; jumps.length; i+">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Personal Blog">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/images/code.html">
 <meta property="og:site_name" content="Personal Blog">
-<meta property="og:description" content="joshua">
+<meta property="og:description" content="public class GrasshopperJump {    public static int findStartingStair(int[] jumps) {        int currentStair &#x3D; 0;        int minStair &#x3D; 0;        for (int i &#x3D; 0; i &lt; jumps.length; i+">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-03T10:27:34.017Z">
+<meta property="article:modified_time" content="2023-03-03T10:27:33.983Z">
 <meta property="article:author" content="Mingwei Li">
 <meta name="twitter:card" content="summary">
   
@@ -152,113 +154,173 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>public class GrasshopperJump {<br>    public static int findStartingStair(int[] jumps) {<br>        int currentStair &#x3D; 0;<br>        int minStair &#x3D; 0;<br>        for (int i &#x3D; 0; i &lt; jumps.length; i++) {<br>            currentStair +&#x3D; jumps[i];<br>            if (currentStair &lt; 1 &amp;&amp; currentStair &lt; minStair) {<br>                &#x2F;&#x2F; If the currentStair is less than 1 and the currentStair is less than minStair, update minStair.<br>                minStair &#x3D; currentStair;<br>            }<br>        }<br>        return Math.abs(minStair) + 1;<br>    }<br>}</p>
+<p>Process scheduling algorithms are used by a CPU to optimally schedule the running processes. A core can execute one process at a time, but a CPU may have multiple cores.<br>There are n processes where the ith pi List of Questions i execution at start[i] and ends at end[i], both inclusive. Find the minimum number of cores required to execute the processes. Please give me a solution in Java.</p>
+<p>n &#x3D;3 start &#x3D; [1, 3, 4] end &#x3D; [3, 5, 6]. If the CPU has only one core, the first process starts at 1 and ends at 3. The second process starts at 3. Since both processes need a processor at 3, they overlap. There must be more than 1 core. If the CPU has two cores, the first process runs on the first core from 1 to 3, the second runs on the second core from 3 to 5, and the third process runs on the first core from 4 to 6. Return 2, the minimum number of cores required.</p>
+<p>public static int minNumberOfCores(int[] start, int[] end) {<br>    int n &#x3D; start.length;<br>    int cores &#x3D; 1;<br>    int[] endTime &#x3D; new int[n]; &#x2F;&#x2F; array to store the current end time of each core<br>    endTime[0] &#x3D; end[0]; &#x2F;&#x2F; the first process runs on the first core</p>
+<pre><code>for (int i = 1; i &lt; n; i++) &#123;
+    boolean assigned = false; // flag to indicate if the current process has been assigned to a core
+    for (int j = 0; j &lt; cores; j++) &#123;
+        if (endTime[j] &lt;= start[i]) &#123; // check if the j-th core is available at the start time of the i-th process
+            endTime[j] = end[i]; // assign the i-th process to the j-th core
+            assigned = true;
+            break;
+        &#125;
+    &#125;
+    if (!assigned) &#123; // if the current process has not been assigned to any core, add a new core
+        endTime[cores] = end[i];
+        cores++;
+    &#125;
+&#125;
+
+return cores;
+</code></pre>
+<p>}</p>
+<p>public static int minNumberOfCores(List<Integer> start, List<Integer> end) {<br>    int n &#x3D; start.size();<br>    int cores &#x3D; 1;<br>    int[] endTime &#x3D; new int[n]; &#x2F;&#x2F; array to store the current end time of each core<br>    endTime[0] &#x3D; end.get(0); &#x2F;&#x2F; the first process runs on the first core</Integer></Integer></p>
+<pre><code>for (int i = 1; i &lt; n; i++) &#123;
+    boolean assigned = false; // flag to indicate if the current process has been assigned to a core
+    for (int j = 0; j &lt; cores; j++) &#123;
+        if (endTime[j] &lt;= start.get(i)) &#123; // check if the j-th core is available at the start time of the i-th process
+            endTime[j] = end.get(i); // assign the i-th process to the j-th core
+            assigned = true;
+            break;
+        &#125;
+    &#125;
+    if (!assigned) &#123; // if the current process has not been assigned to any core, add a new core
+        endTime[cores] = end.get(i);
+        cores++;
+    &#125;
+&#125;
+
+return cores;
+</code></pre>
+<p>}</p>
+<p>public static int minNumberOfCores(List<Integer> start, List<Integer> end) {<br>    int n &#x3D; start.size();<br>    int[] startArray &#x3D; new int[n];<br>    int[] endArray &#x3D; new int[n];<br>    for (int i &#x3D; 0; i &lt; n; i++) {<br>        startArray[i] &#x3D; start.get(i);<br>        endArray[i] &#x3D; end.get(i);<br>    }<br>    Arrays.sort(startArray);<br>    Arrays.sort(endArray);<br>    int i &#x3D; 0;<br>    int j &#x3D; 0;<br>    int cores &#x3D; 0;<br>    int maxCores &#x3D; 0;<br>    while (i &lt; n &amp;&amp; j &lt; n) {<br>        if (startArray[i] &lt; endArray[j]) {<br>            cores++;<br>            maxCores &#x3D; Math.max(maxCores, cores);<br>            i++;<br>        } else {<br>            cores–;<br>            j++;<br>        }<br>    }<br>    return maxCores;<br>}</Integer></Integer></p>
+<p>public static int minNumberOfCores(List<Integer> start, List<Integer> end) {<br>    int n &#x3D; start.size();<br>    int[] startArray &#x3D; new int[n];<br>    int[] endArray &#x3D; new int[n];<br>    for (int i &#x3D; 0; i &lt; n; i++) {<br>        startArray[i] &#x3D; start.get(i);<br>        endArray[i] &#x3D; end.get(i);<br>    }<br>    Arrays.sort(startArray);<br>    Arrays.sort(endArray);<br>    int i &#x3D; 0;<br>    int j &#x3D; 0;<br>    int cores &#x3D; 0;<br>    int maxCores &#x3D; 0;<br>    while (i &lt; n &amp;&amp; j &lt; n) {<br>        if (startArray[i] &lt; endArray[j]) {<br>            cores++;<br>            maxCores &#x3D; Math.max(maxCores, cores);<br>            i++;<br>        } else {<br>            cores–;<br>            j++;<br>        }<br>    }<br>    return maxCores;<br>}</Integer></Integer></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/02/12/First-blog/" class="archive-article-date">
-  	<time datetime="2023-02-12T21:43:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/02/12/First-blog/">First blog</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/images/code.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/02/12/mall_project/" class="archive-article-date">
-  	<time datetime="2023-02-12T21:43:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/02/12/mall_project/">First blog</a>
-    </h1>
+
   
 
-        <div class="article-info info-on-right">
-          
-          
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/09/22/hello-world/" class="archive-article-date">
-  	<time datetime="2022-09-22T17:01:51.923Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-22</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/09/22/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -282,7 +344,7 @@
 		mathjax: false,
 		isHome: false,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
