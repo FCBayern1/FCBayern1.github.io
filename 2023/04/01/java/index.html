@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> Personal Blog</title>
+      <title>java studying |  Personal Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -55,60 +55,99 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-java"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
+    
+    <header class="article-header">
        
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  java studying
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/01/java/" class="article-date">
+  <time datetime="2023-04-01T22:53:13.000Z" itemprop="datePublished">2023-04-01</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">4 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-  <p>public class GrasshopperJump {<br>    public static int findStartingStair(int[] jumps) {<br>        int currentStair &#x3D; 0;<br>        int minStair &#x3D; 0;<br>        for (int i &#x3D; 0; i &lt; jumps.length; i++) {<br>            currentStair +&#x3D; jumps[i];<br>            if (currentStair &lt; 1 &amp;&amp; currentStair &lt; minStair) {<br>                &#x2F;&#x2F; If the currentStair is less than 1 and the currentStair is less than minStair, update minStair.<br>                minStair &#x3D; currentStair;<br>            }<br>        }<br>        return Math.abs(minStair) + 1;<br>    }<br>}</p>
-<p>Process scheduling algorithms are used by a CPU to optimally schedule the running processes. A core can execute one process at a time, but a CPU may have multiple cores.<br>There are n processes where the ith pi List of Questions i execution at start[i] and ends at end[i], both inclusive. Find the minimum number of cores required to execute the processes. Please give me a solution in Java.</p>
-<p>n &#x3D;3 start &#x3D; [1, 3, 4] end &#x3D; [3, 5, 6]. If the CPU has only one core, the first process starts at 1 and ends at 3. The second process starts at 3. Since both processes need a processor at 3, they overlap. There must be more than 1 core. If the CPU has two cores, the first process runs on the first core from 1 to 3, the second runs on the second core from 3 to 5, and the third process runs on the first core from 4 to 6. Return 2, the minimum number of cores required.</p>
-<p>public static int minNumberOfCores(int[] start, int[] end) {<br>    int n &#x3D; start.length;<br>    int cores &#x3D; 1;<br>    int[] endTime &#x3D; new int[n]; &#x2F;&#x2F; array to store the current end time of each core<br>    endTime[0] &#x3D; end[0]; &#x2F;&#x2F; the first process runs on the first core</p>
-<pre><code>for (int i = 1; i &lt; n; i++) &#123;
-    boolean assigned = false; // flag to indicate if the current process has been assigned to a core
-    for (int j = 0; j &lt; cores; j++) &#123;
-        if (endTime[j] &lt;= start[i]) &#123; // check if the j-th core is available at the start time of the i-th process
-            endTime[j] = end[i]; // assign the i-th process to the j-th core
-            assigned = true;
-            break;
-        &#125;
-    &#125;
-    if (!assigned) &#123; // if the current process has not been assigned to any core, add a new core
-        endTime[cores] = end[i];
-        cores++;
-    &#125;
-&#125;
-
-return cores;
-</code></pre>
-<p>}</p>
-<p>public static int minNumberOfCores(List<Integer> start, List<Integer> end) {<br>    int n &#x3D; start.size();<br>    int cores &#x3D; 1;<br>    int[] endTime &#x3D; new int[n]; &#x2F;&#x2F; array to store the current end time of each core<br>    endTime[0] &#x3D; end.get(0); &#x2F;&#x2F; the first process runs on the first core</Integer></Integer></p>
-<pre><code>for (int i = 1; i &lt; n; i++) &#123;
-    boolean assigned = false; // flag to indicate if the current process has been assigned to a core
-    for (int j = 0; j &lt; cores; j++) &#123;
-        if (endTime[j] &lt;= start.get(i)) &#123; // check if the j-th core is available at the start time of the i-th process
-            endTime[j] = end.get(i); // assign the i-th process to the j-th core
-            assigned = true;
-            break;
-        &#125;
-    &#125;
-    if (!assigned) &#123; // if the current process has not been assigned to any core, add a new core
-        endTime[cores] = end.get(i);
-        cores++;
-    &#125;
-&#125;
-
-return cores;
-</code></pre>
-<p>}</p>
-<p>public static int minNumberOfCores(List<Integer> start, List<Integer> end) {<br>    int n &#x3D; start.size();<br>    int[] startArray &#x3D; new int[n];<br>    int[] endArray &#x3D; new int[n];<br>    for (int i &#x3D; 0; i &lt; n; i++) {<br>        startArray[i] &#x3D; start.get(i);<br>        endArray[i] &#x3D; end.get(i);<br>    }<br>    Arrays.sort(startArray);<br>    Arrays.sort(endArray);<br>    int i &#x3D; 0;<br>    int j &#x3D; 0;<br>    int cores &#x3D; 0;<br>    int maxCores &#x3D; 0;<br>    while (i &lt; n &amp;&amp; j &lt; n) {<br>        if (startArray[i] &lt; endArray[j]) {<br>            cores++;<br>            maxCores &#x3D; Math.max(maxCores, cores);<br>            i++;<br>        } else {<br>            cores–;<br>            j++;<br>        }<br>    }<br>    return maxCores;<br>}</Integer></Integer></p>
-<p>public static int minNumberOfCores(List<Integer> start, List<Integer> end) {<br>    int n &#x3D; start.size();<br>    int[] startArray &#x3D; new int[n];<br>    int[] endArray &#x3D; new int[n];<br>    for (int i &#x3D; 0; i &lt; n; i++) {<br>        startArray[i] &#x3D; start.get(i);<br>        endArray[i] &#x3D; end.get(i);<br>    }<br>    Arrays.sort(startArray);<br>    Arrays.sort(endArray);<br>    int i &#x3D; 0;<br>    int j &#x3D; 0;<br>    int cores &#x3D; 0;<br>    int maxCores &#x3D; 0;<br>    while (i &lt; n &amp;&amp; j &lt; n) {<br>        if (startArray[i] &lt; endArray[j]) {<br>            cores++;<br>            maxCores &#x3D; Math.max(maxCores, cores);<br>            i++;<br>        } else {<br>            cores–;<br>            j++;<br>        }<br>    }<br>    return maxCores;<br>}</Integer></Integer></p>
- 
+  <h1 id="1-language"><a href="#1-language" class="headerlink" title="1. language"></a>1. language</h1><h3 id="1-Comparable-vs-comparator"><a href="#1-Comparable-vs-comparator" class="headerlink" title="(1).Comparable vs comparator"></a>(1).Comparable vs comparator</h3><ul>
+<li><h4 id="第一，字面含义不同"><a href="#第一，字面含义不同" class="headerlink" title="第一，字面含义不同"></a>第一，字面含义不同</h4></li>
+</ul>
+<p>我们先从二者的字面含义来理解它，Comparable翻译为中文是“比较”的意思，而Comparator是“比较器”的意思。Comparable是以-able结尾的，表示它自身具备着某种能力，而Comparator是以-or结尾，表示自身是比较的参与者，这是从字面含义先来理解二者的不同。</p>
+<ul>
+<li><h4 id="第二，用法不同"><a href="#第二，用法不同" class="headerlink" title="第二，用法不同"></a>第二，用法不同</h4></li>
+</ul>
+<p>二者都是顶级的接口，但拥有的方法和用法是不同的，下面我们分别来看。</p>
+<h3 id="Comparable用法"><a href="#Comparable用法" class="headerlink" title="Comparable用法"></a>Comparable用法</h3><p>Comparable接口只有一个方法compareTo，实现Comparable接口并重写compareTo方法就可以实现某个类的排序了，它支持Collections.sort和Arrays.sort的排序。 </p>
+<p>在我们没有使用Comparable时，程序的执行是这样的</p>
+<p><img src="/Users/joshua/myblog/source/images/v2-227ef5bbf20b532f1bb342573b7ebef5_1440w.png" alt="v2-227ef5bbf20b532f1bb342573b7ebef5_1440w"></p>
+<p><img src="/Users/joshua/myblog/source/images/v2-6c8292dea0e393ceffffabc72cdae6e3_1440w.png" alt="v2-6c8292dea0e393ceffffabc72cdae6e3_1440w"></p>
+<p>从上图可以看出，当自定义类Person没有实现Comparable时，List集合是没有排序的，只能以元素的插入顺序作为输出的顺序。 </p>
+<p>然而这个时候，老板有一个需求：需要根据Person对象的年龄age属性进行倒序，也就是根据age属性从大到小进行排序，这个时候就可以请出，我们本文的主角：Comparable出场了。 </p>
+<p>Comparable的使用是在自定义对象的类中实现Comparable接口，并重写compareTo方法来实现自定义排序规则的，具体实现代码如下：</p>
+<p><img src="/Users/joshua/myblog/source/images/v2-1cbf6d14a01aa2489f5a8a5a3e80b4d2_1440w.png" alt="v2-1cbf6d14a01aa2489f5a8a5a3e80b4d2_1440w"></p>
+<p>程序的执行结果如下图所示：</p>
+<p><img src="/Users/joshua/myblog/source/images/v2-724747d21c4f51c7b37ab98df34f5db7_1440w.png" alt="v2-724747d21c4f51c7b37ab98df34f5db7_1440w"></p>
+<h4 id="compareTo排序方法说明"><a href="#compareTo排序方法说明" class="headerlink" title="compareTo排序方法说明"></a>compareTo排序方法说明</h4><p>compareTo方法接收的参数p是要对比的对象，排序规则是用当前对象和要对比的对象进行比较，然后返回一个int类型的值。正序从小到大的排序规则是：使用当前的对象值减去要对比对象的值；而倒序从大到小的排序规则刚好相反：是用对比对象的值减去当前对象的值。 </p>
+<p>注意事项：如果自定义对象没有实现Comparable接口，那么它是不能使用Collections.sort方法进行排序的</p>
+<h3 id="Comparator用法"><a href="#Comparator用法" class="headerlink" title="Comparator用法"></a>Comparator用法</h3><p>Comparator和Comparable的排序方法是不同的，Comparable排序的方法是compareTo，而Comparator排序的方法是compare，具体实现代码如下：</p>
+<p><img src="/Users/joshua/myblog/source/images/v2-f742089317861a254770a57c2a41f0ee_1440w.png" alt="v2-f742089317861a254770a57c2a41f0ee_1440w"></p>
+<p>程序的执行结果如下图所示：</p>
+<p><img src="/Users/joshua/myblog/source/images/v2-dd7e3161f5eb2d2055f73a9796cf81ff_1440w.png" alt="v2-dd7e3161f5eb2d2055f73a9796cf81ff_1440w"></p>
+<p>匿名类:</p>
+<p><img src="/Users/joshua/myblog/source/images/v2-53099add8da4513a445681f7f835d05a_1440w.png" alt="v2-53099add8da4513a445681f7f835d05a_1440w"></p>
+<h2 id="第三，使用场景不同"><a href="#第三，使用场景不同" class="headerlink" title="第三，使用场景不同"></a>第三，使用场景不同</h2><p>通过上面示例的实现代码我们可以看出，使用Comparable必须要修改原有的类，也就是你要排序那个类，就要在那个中实现Comparable接口并重写compareTo方法，所以Comparable更像是“对内”进行排序的接口。 </p>
+<p>而Comparator的使用则不相同，Comparator无需修改原有类。也就是在最极端情况下，即使Person类是第三方提供的，我们依然可以通过创建新的自定义比较器Comparator，来实现对第三方类Person的排序功能。也就是说通过Comparator接口可以实现和原有类的解耦，在不修改原有类的情况下实现排序功能，所以Comparator可以看作是“对外”提供排序的接口。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Comparable和Comparator都是用来实现元素排序的，它们二者的区别如下：</p>
+<ul>
+<li>Comparable是“比较”的意思，而Comparator是“比较器”的意思；</li>
+<li>Comparable是通过重写compareTo方法实现排序的，而Comparator是通过重写compare方法实现排序的；</li>
+<li>Comparable必须由自定义类内部实现排序方法，而Comparator是外部定义并实现排序的。</li>
+</ul>
+<p>所以用一句话总结二者的区别：Comparable可以看作是“对内”进行排序接口，而Comparator是“对外”进行排序的接口。</p>
+<h3 id="2-List-list-x3D-new-ArrayList-lt-gt"><a href="#2-List-list-x3D-new-ArrayList-lt-gt" class="headerlink" title="(2).List list &#x3D; new ArrayList&lt;&gt;();"></a>(2).List<Integer> list &#x3D; new ArrayList&lt;&gt;();</Integer></h3><p>在Java中，List是一种接口类型，它定义了一组用于操作列表（List）数据结构的方法。ArrayList是List接口的一个实现类，它使用数组来实现List接口中定义的方法。在这里，使用List<Integer> list &#x3D; new ArrayList&lt;&gt;();这样的语法是因为：</Integer></p>
+<ol>
+<li>泛型：List<Integer>中的Integer表示这个List只能存储Integer类型的元素。这是Java泛型的一种应用，它可以在编译时检查类型错误，避免在运行时出现类型不匹配的错误。</Integer></li>
+<li>多态性：使用List接口作为类型声明，而不是具体的ArrayList类，可以让代码更具有可扩展性。这样，如果需要更改实现方式，只需要更改赋值右侧的实现类，而不需要更改其余代码。</li>
+<li>简洁性：使用diamond运算符（&lt;&gt;）可以让代码更简洁。在Java 7之前，需要写成List<Integer> list &#x3D; new ArrayList<Integer>();这样的形式。</Integer></Integer></li>
+</ol>
+<h1 id="2-DSA"><a href="#2-DSA" class="headerlink" title="2. DSA"></a>2. DSA</h1> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -178,17 +217,38 @@ return cores;
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/images/code.html" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/04/01/java/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Josh/" rel="tag">Josh</a></li></ul>
+
     </footer>
   </div>
 
    
-  
+  <nav class="article-nav">
     
+    
+      <a href="/2023/03/31/mall-developing/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">mall developing</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
 </article>
 
 </section>
@@ -339,6 +399,22 @@ return cores;
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
