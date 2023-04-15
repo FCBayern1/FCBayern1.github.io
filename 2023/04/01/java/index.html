@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="joshua" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>java studying |  Personal Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-java"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  java studying
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/01/java/" class="article-date">
+  <time datetime="2023-04-01T22:53:13.000Z" itemprop="datePublished">2023-04-01</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">4 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="1-language"><a href="#1-language" class="headerlink" title="1. language"></a>1. language</h1><h3 id="1-Comparable-vs-comparator"><a href="#1-Comparable-vs-comparator" class="headerlink" title="(1).Comparable vs comparator"></a>(1).Comparable vs comparator</h3><ul>
+<li><h4 id="第一，字面含义不同"><a href="#第一，字面含义不同" class="headerlink" title="第一，字面含义不同"></a>第一，字面含义不同</h4></li>
+</ul>
+<p>我们先从二者的字面含义来理解它，Comparable翻译为中文是“比较”的意思，而Comparator是“比较器”的意思。Comparable是以-able结尾的，表示它自身具备着某种能力，而Comparator是以-or结尾，表示自身是比较的参与者，这是从字面含义先来理解二者的不同。</p>
+<ul>
+<li><h4 id="第二，用法不同"><a href="#第二，用法不同" class="headerlink" title="第二，用法不同"></a>第二，用法不同</h4></li>
+</ul>
+<p>二者都是顶级的接口，但拥有的方法和用法是不同的，下面我们分别来看。</p>
+<h3 id="Comparable用法"><a href="#Comparable用法" class="headerlink" title="Comparable用法"></a>Comparable用法</h3><p>Comparable接口只有一个方法compareTo，实现Comparable接口并重写compareTo方法就可以实现某个类的排序了，它支持Collections.sort和Arrays.sort的排序。 </p>
+<p>在我们没有使用Comparable时，程序的执行是这样的</p>
+<p><img src="/../images/v2-227ef5bbf20b532f1bb342573b7ebef5_1440w.png" alt="v2-227ef5bbf20b532f1bb342573b7ebef5_1440w"></p>
+<p><img src="/../images/v2-6c8292dea0e393ceffffabc72cdae6e3_1440w.png" alt="v2-6c8292dea0e393ceffffabc72cdae6e3_1440w"></p>
+<p>从上图可以看出，当自定义类Person没有实现Comparable时，List集合是没有排序的，只能以元素的插入顺序作为输出的顺序。 </p>
+<p>然而这个时候，老板有一个需求：需要根据Person对象的年龄age属性进行倒序，也就是根据age属性从大到小进行排序，这个时候就可以请出，我们本文的主角：Comparable出场了。 </p>
+<p>Comparable的使用是在自定义对象的类中实现Comparable接口，并重写compareTo方法来实现自定义排序规则的，具体实现代码如下：</p>
+<p><img src="/../images/v2-1cbf6d14a01aa2489f5a8a5a3e80b4d2_1440w.png" alt="v2-1cbf6d14a01aa2489f5a8a5a3e80b4d2_1440w"></p>
+<p>程序的执行结果如下图所示：</p>
+<p><img src="/../images/v2-724747d21c4f51c7b37ab98df34f5db7_1440w.png" alt="v2-724747d21c4f51c7b37ab98df34f5db7_1440w"></p>
+<h4 id="compareTo排序方法说明"><a href="#compareTo排序方法说明" class="headerlink" title="compareTo排序方法说明"></a>compareTo排序方法说明</h4><p>compareTo方法接收的参数p是要对比的对象，排序规则是用当前对象和要对比的对象进行比较，然后返回一个int类型的值。正序从小到大的排序规则是：使用当前的对象值减去要对比对象的值；而倒序从大到小的排序规则刚好相反：是用对比对象的值减去当前对象的值。 </p>
+<p>注意事项：如果自定义对象没有实现Comparable接口，那么它是不能使用Collections.sort方法进行排序的</p>
+<h3 id="Comparator用法"><a href="#Comparator用法" class="headerlink" title="Comparator用法"></a>Comparator用法</h3><p>Comparator和Comparable的排序方法是不同的，Comparable排序的方法是compareTo，而Comparator排序的方法是compare，具体实现代码如下：</p>
+<p><img src="/../images/v2-f742089317861a254770a57c2a41f0ee_1440w.png" alt="v2-f742089317861a254770a57c2a41f0ee_1440w"></p>
+<p>程序的执行结果如下图所示：</p>
+<p><img src="/../images/v2-dd7e3161f5eb2d2055f73a9796cf81ff_1440w.png" alt="v2-dd7e3161f5eb2d2055f73a9796cf81ff_1440w"></p>
+<p>匿名类:</p>
+<p><img src="/../images/v2-53099add8da4513a445681f7f835d05a_1440w.png" alt="v2-53099add8da4513a445681f7f835d05a_1440w"></p>
+<h2 id="第三，使用场景不同"><a href="#第三，使用场景不同" class="headerlink" title="第三，使用场景不同"></a>第三，使用场景不同</h2><p>通过上面示例的实现代码我们可以看出，使用Comparable必须要修改原有的类，也就是你要排序那个类，就要在那个中实现Comparable接口并重写compareTo方法，所以Comparable更像是“对内”进行排序的接口。 </p>
+<p>而Comparator的使用则不相同，Comparator无需修改原有类。也就是在最极端情况下，即使Person类是第三方提供的，我们依然可以通过创建新的自定义比较器Comparator，来实现对第三方类Person的排序功能。也就是说通过Comparator接口可以实现和原有类的解耦，在不修改原有类的情况下实现排序功能，所以Comparator可以看作是“对外”提供排序的接口。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Comparable和Comparator都是用来实现元素排序的，它们二者的区别如下：</p>
+<ul>
+<li>Comparable是“比较”的意思，而Comparator是“比较器”的意思；</li>
+<li>Comparable是通过重写compareTo方法实现排序的，而Comparator是通过重写compare方法实现排序的；</li>
+<li>Comparable必须由自定义类内部实现排序方法，而Comparator是外部定义并实现排序的。</li>
+</ul>
+<p>所以用一句话总结二者的区别：Comparable可以看作是“对内”进行排序接口，而Comparator是“对外”进行排序的接口。</p>
+<h3 id="2-List-list-x3D-new-ArrayList-lt-gt"><a href="#2-List-list-x3D-new-ArrayList-lt-gt" class="headerlink" title="(2).List list &#x3D; new ArrayList&lt;&gt;();"></a>(2).List<Integer> list &#x3D; new ArrayList&lt;&gt;();</Integer></h3><p>在Java中，List是一种接口类型，它定义了一组用于操作列表（List）数据结构的方法。ArrayList是List接口的一个实现类，它使用数组来实现List接口中定义的方法。在这里，使用List<Integer> list &#x3D; new ArrayList&lt;&gt;();这样的语法是因为：</Integer></p>
+<ol>
+<li>泛型：List<Integer>中的Integer表示这个List只能存储Integer类型的元素。这是Java泛型的一种应用，它可以在编译时检查类型错误，避免在运行时出现类型不匹配的错误。</Integer></li>
+<li>多态性：使用List接口作为类型声明，而不是具体的ArrayList类，可以让代码更具有可扩展性。这样，如果需要更改实现方式，只需要更改赋值右侧的实现类，而不需要更改其余代码。</li>
+<li>简洁性：使用diamond运算符（&lt;&gt;）可以让代码更简洁。在Java 7之前，需要写成List<Integer> list &#x3D; new ArrayList<Integer>();这样的形式。</Integer></Integer></li>
+</ol>
+<h1 id="2-DSA"><a href="#2-DSA" class="headerlink" title="2. DSA"></a>2. DSA</h1> 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/04/01/java/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Josh/" rel="tag">Josh</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/04/15/C/" class="article-nav-link">
+        <strong class="article-nav-caption">Previous Post</strong>
+        <div class="article-nav-title">
+          
+            C#
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/03/31/mall-developing/" class="article-nav-link">
+        <strong class="article-nav-caption">Next Post</strong>
+        <div class="article-nav-title">mall developing</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021-2023
+        <i class="ri-heart-fill heart_icon"></i> Mingwei Li
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Personal Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">Travel</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
