@@ -82,7 +82,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">130</span>
+            <span class="post-count">258</span>
         </span>
     </span>
 
@@ -111,12 +111,18 @@
 <h1 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h1><h2 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h2><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
 <h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
 <p>![image-20230403164227851](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164227851.png)</p>
-<p><strong>jdbc</strong></p>
+<p><strong>JDBC</strong></p>
 <p>Info:</p>
 <p>Url:jdbc:mysql:&#x2F;&#x2F;47.98.63.250:3306&#x2F;mall_pms</p>
 <p><em>use the server’s public ip addr</em></p>
 <p>DBMS: MySQL (ver. 5.7.41)<br>Case sensitivity: plain&#x3D;exact, delimited&#x3D;exact<br>Driver: MySQL Connector&#x2F;J (ver. mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0), JDBC4.2)</p>
 <p>Ping: 1 sec, 25 ms<br>SSL: yes</p>
+<p><strong>nacos</strong></p>
+<p><strong>容器重启数据丢失问题:</strong></p>
+<p>解决方法<br>了解上面的介绍后，解决它就很简单了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a 找到我们上次运行的容器<span class="built_in">id</span></span><br><span class="line">docker restart <span class="built_in">id</span> 即可</span><br></pre></td></tr></table></figure>
+
+<p>你没看错就这样就完了。<br>网上有很多说用docker volume实现数据持久化，我觉得是小题大做了。<br>Docker Volume本质上是容器与主机之间共享的目录或者文件，这样Docker Volume中的数据可以在主机和容器中实时同步。</p>
  
       <!-- reward -->
       
