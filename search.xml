@@ -7,6 +7,20 @@
 ]]></content>
   </entry>
   <entry>
+    <title>data analyst</title>
+    <url>/2023/04/18/data-analyst/</url>
+    <content><![CDATA[<ul>
+<li>Have completed an undergraduate degree to a (2.1 minimum) with a Mathematical or Scientific background</li>
+<li>Knowledge in SQL or Power BI</li>
+<li>Strong analytical and numerical skills</li>
+<li>Experience preparing, consolidating and normalising data :ETL processes</li>
+<li>Experience &#x2F; knowledge of data visualisation and dashboard tools e.g. Qlikview, Tableau or Power BI</li>
+<li>Strong communication skills to work comfortable with all levels of users</li>
+<li>Be within commuting distance to Croydon</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Secured Software Engineering</title>
     <url>/2023/04/21/Secured-Software-Engineering/</url>
     <content><![CDATA[<p>The below case studies are given here in advance, they will be part of the final exam. </p>
@@ -31,20 +45,6 @@
 <p>own words, no coding is required). [6]</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">authenticateUser</span>(<span class="params">username, password</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> userCredentials = &#123;</span><br><span class="line"></span><br><span class="line"> <span class="attr">username</span>: username, </span><br><span class="line"></span><br><span class="line"> <span class="attr">password</span>: password </span><br><span class="line"></span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> input = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;input&quot;</span>).<span class="property">value</span>; </span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (<span class="title function_">isValidEmail</span>(input)) &#123;</span><br><span class="line"></span><br><span class="line"> userCredentials.<span class="property">email</span> = input; </span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> $.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>, userCredentials, <span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (response.<span class="property">success</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="title function_">alert</span>(<span class="string">&quot;You are logged in!&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(<span class="string">&quot;Authentication failed.&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isValidEmail</span>(<span class="params">email</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> emailRegex = <span class="regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> emailRegex.<span class="title function_">test</span>(email); </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-]]></content>
-  </entry>
-  <entry>
-    <title>data analyst</title>
-    <url>/2023/04/18/data-analyst/</url>
-    <content><![CDATA[<ul>
-<li>Have completed an undergraduate degree to a (2.1 minimum) with a Mathematical or Scientific background</li>
-<li>Knowledge in SQL or Power BI</li>
-<li>Strong analytical and numerical skills</li>
-<li>Experience preparing, consolidating and normalising data :ETL processes</li>
-<li>Experience &#x2F; knowledge of data visualisation and dashboard tools e.g. Qlikview, Tableau or Power BI</li>
-<li>Strong communication skills to work comfortable with all levels of users</li>
-<li>Be within commuting distance to Croydon</li>
-</ul>
 ]]></content>
   </entry>
   <entry>
@@ -848,9 +848,24 @@
 <h1 id="Sample-exam-paper-2020"><a href="#Sample-exam-paper-2020" class="headerlink" title="Sample exam paper 2020"></a>Sample exam paper 2020</h1><ol>
 <li><h2 id="Lime-Legal-Case"><a href="#Lime-Legal-Case" class="headerlink" title="Lime Legal Case"></a>Lime Legal Case</h2></li>
 </ol>
-<p>The management team for Lime Legal, a large legal firm that conducts numerous digital investigations, has decided to develop its own hash function for use in digital investigations. The management team has commissioned a specialised software developer to design and implement the hash function. The specialised software developer states that compression is an important  requirement for a hash function. </p>
+<p>The management team for Lime Legal, a large legal firm that conducts numerous digital investigations, has decided to develop its own hash function for use in digital investigations. The management team has commissioned a specialised software developer to design and implement the hash function. The specialised software developer states that compression is an important requirement for a hash function.</p>
 <p><strong>a). Argue for another TWO important requirements for a hash function in the given  context. (approximately 200 words)</strong></p>
+<p>要想要设计一个哈希算法，需要满足以下几点要求：</p>
+<ol>
+<li>从哈希值不能反向推导出原始数据（哈希算法更多算是一种单向加密算法）。</li>
+<li>对输入数据敏感，输入数据只要改变 1 bit，那么最终得到的哈希值也要不同。</li>
+<li>冲突的概率要小，即对于不同的原始数据，哈希值相同的概率非常小。</li>
+<li>哈希算法的执行效率要高，针对较长的文本，也能快速计算出哈希值。</li>
+</ol>
+<p>While compression is indeed an important requirement for a hash function, there are two other crucial requirements that must be considered for Lime Legal’s digital investigations: security and performance.</p>
+<p>Firstly, security is paramount for a hash function in the context of digital investigations. A secure hash function needs to exhibit several properties, including collision resistance, preimage resistance, and second preimage resistance. Collision resistance ensures that it is computationally infeasible to find two distinct inputs that map to the same hash output, which is crucial to maintain the integrity of the evidence. Preimage resistance makes it difficult to find an input for a given hash output, while second preimage resistance ensures that it is hard to find a different input with the same hash output as an existing input. These security properties are essential for Lime Legal’s work as they ensure the reliability and trustworthiness of the digital evidence in legal proceedings.</p>
+<p>Secondly, performance is another key requirement for a hash function in digital investigations. Lime Legal’s work likely involves processing large volumes of data in a timely manner. As such, the hash function must be efficient in terms of computational and memory requirements. A fast and resource-efficient hash function will not only minimize the time spent on processing the data but also reduce the likelihood of bottlenecks in the investigation process. This enables Lime Legal to provide more effective and timely services to their clients.</p>
+<p>In conclusion, besides compression, security and performance are two essential requirements for a hash function in the context of Lime Legal’s digital investigations. Ensuring a secure and efficient hash function will not only maintain the integrity of digital evidence but also enhance the effectiveness of the firm’s investigative processes.</p>
 <p><strong>b). The specialised software developer states that elements of the bespoke hash  function will rely upon some internal initial values and constants. The  specialised software developer states that these values and constants will be generated using a sophisticated and secret algorithm. The specialised software  developer informs the management team that the initial values and constants  will be made public along with the design and implementation details, but the  algorithm to generate them will be kept secret and managed by the company.  Argue whether the approach favoured by the specialised software developer is  appropriate in the given context.(approximately 400 words)</strong></p>
+<p>One of the primary concerns is the lack of transparency in the process. In the field of cryptography, it is widely accepted that security should rely on the <strong>strength of the algorithm</strong> rather than the secrecy of its design. This principle is known as <strong>Kerckhoffs’s principle</strong>. By keeping the algorithm for generating initial values and constants secret, Lime Legal risks undermining the trust and credibility of their hash function. Digital evidence generated using a hash function with undisclosed components may face challenges in legal proceedings, as opposing parties could question its integrity.</p>
+<p>Additionally, the secrecy of the algorithm prevents independent verification and analysis by the broader cryptographic community. Peer review and open scrutiny are essential to establishing the security and reliability of cryptographic algorithms. Closed-source designs may contain unintentional flaws or vulnerabilities that would otherwise be identified and resolved through a transparent review process.</p>
+<p>Furthermore, the reliance on a secret algorithm for generating initial values and constants introduces the possibility of a single point of failure. If the secret algorithm is compromised, the entire hash function could be rendered insecure, potentially jeopardizing ongoing and past investigations.</p>
+<p>In conclusion, the approach favored by the specialized software developer is not appropriate in the given context. Lime Legal should consider adhering to established cryptographic principles and industry best practices, which emphasize transparency, open scrutiny, and independent verification to ensure the credibility and robustness of their bespoke hash function.</p>
 <p><strong>c). The specialised software developer is not entirely sure how to design the bespoke hash function. Devise a potential hash function that exhibits a Merkle-Damgård construction, highlight and argue the importance of any core components. (approximately 400 words)</strong></p>
 <p><strong>d). The management team want to employ the use of the bespoke hash function to identify unauthorised files on employee smartphones and laptops. The specialised software developer states they can develop a system that can be used to rapidly inspect employee smartphones and laptops as part of random security searches as employees leave campus. A member of the management team is concerned that such a process may violate the privacy of the employee and some employees may feel targeted. Argue whether the approach favoured by the management team is appropriate  in the given context.(approximately 250 words)</strong></p>
 <ol start="2">
@@ -878,7 +893,48 @@
 <p><strong>Unallocated area:</strong> Unallocated space refers to the area of the drive which no longer holds any file information as indicated by the file system structures like the file table. </p>
 <p><strong>Ip:</strong>  investigative process.</p>
 <p><strong>DFI</strong>(Digital forensics investigation): investigate the tool of crime and subject of crime.</p>
-<p><strong>Hash</strong>:</p>
+<p><strong>Hash</strong>:哈希算法是指将任意长度的二进制值串映射为固定长度的二进制值串。原始数据经过映射之后得到的二进制值串就是哈希值。</p>
+<h1 id="Extension"><a href="#Extension" class="headerlink" title="Extension:"></a>Extension:</h1><p><strong>MD5加密原理步骤</strong></p>
+<p><strong>a). 填充，将其长度填充为512的整数倍:</strong></p>
+<p>填充的方法如下：</p>
+<p><strong>1)</strong> 在信息的后面填充一个1和无数个0，直到满足上面的条件时才停止用0对信息的填充。</p>
+<p><strong>2)</strong> 在这个结果后面附加一个以64位二进制表示的填充前信息长度（单位为Bit），如果二</p>
+<p>进制表示的填充前信息长度超过64位，则取低64位。</p>
+<p>经过这两步的处理，信息的位长&#x3D;N<em>512+448+64&#x3D;(N+1）</em>512，即长度恰好是512的整数倍。这样做的原因是为满足后面处理中对信息长度的要求。</p>
+<p><strong>b). 初始化变量</strong></p>
+<p>初始的128位值为初试链接变量，这些参数用于第一轮的运算，以大端<a href="https://link.zhihu.com/?target=https://baike.baidu.com/item/%E5%AD%97%E8%8A%82%E5%BA%8F">字节序</a>来表示，他们分别为： A&#x3D;0x01234567，B&#x3D;0x89ABCDEF，C&#x3D;0xFEDCBA98，D&#x3D;0x76543210。</p>
+<p>（每一个变量给出的数值是高字节存于内存低地址，低字节存于内存高地址，即大端字节序。在程序中变量A、B、C、D的值分别为0x67452301，0xEFCDAB89，0x98BADCFE，0x10325476）</p>
+<p><strong>c).处理分组数据</strong></p>
+<p>每一分组的算法流程如下：</p>
+<p>第一分组需要将上面四个链接变量复制到另外四个变量中：A到a，B到b，C到c，D到d。从第二分组开始的变量为上一分组的运算结果，即A &#x3D; a， B &#x3D; b， C &#x3D; c， D &#x3D; d。</p>
+<p>主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行16次操作。每次操作对a、b、c和d中的其中三个作一次非线性函数运算，然后将所得结果加上第四个变量，文本的一个子分组和一个常数。再将所得结果向左<strong>环移</strong>一个不定的数，并加上a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。</p>
+<p>以下是每次操作中用到的四个非线性函数（每轮一个）。</p>
+<p>F( X ,Y ,Z ) &#x3D; ( X &amp; Y ) | ( (~X) &amp; Z )</p>
+<p>G( X ,Y ,Z ) &#x3D; ( X &amp; Z ) | ( Y &amp; (~Z) )</p>
+<p>H( X ,Y ,Z ) &#x3D;X ^ Y ^ Z</p>
+<p>I( X ,Y ,Z ) &#x3D;Y ^ ( X | (~Z) )</p>
+<p>（&amp;是与（And），|是或（Or），~是非（Not），^是异或（Xor））</p>
+<hr>
+<p><strong>Merkle–Damgård</strong></p>
+<p>Merkle–Damgård结构简称为MD结构，主要用在hash算法中抵御碰撞攻击。这个结构是一些优秀的hash算法，比如MD5,SHA-1和SHA-2的基础。今天给大家讲解一下这个MD结构和对他进行的长度延展攻击。</p>
+<p><strong>Steps</strong>:</p>
+<p><strong>Padding</strong></p>
+<p>MD结构首先对输入消息进行填充，让消息变成固定长度的整数倍（比如512或者1024）。这是因为压缩算法是不能对任意长度的消息进行处理的，所以在处理之前必须进行填充。在原始数据的尾部添上1000…然后加上原始消息长度的2进制值使其长度变为512或1024的整数倍;<strong>使用额外的block</strong>，额外的使用一个block往往有点浪费，一个更加节约空间的做法就是，如果填充到最后一个block的0中有住够的空间的话，那么可以消息的长度放在那里。</p>
+<p><strong>Compress</strong></p>
+<p>完成padding之后就可以进行compress了。消息被分成了很多个block，最开始的初始化向量和第一个block进行f操作，得到了的结果再和第二个block进行操作，如此循环进行，最终得到了最后的结果。</p>
+<p><img src="/../images/v2-43958e721f4c71625fde28962a327e3b_720w.webp" alt="img"></p>
+<p><strong>长度延展攻击</strong></p>
+<p>MD结构，是将消息分成一个一个的block，前一个block 运算出来的值会跟下一个block再次进行运算，这种结构可以很方便的进行长度延展攻击。前提是我们需要知道原消息的长度。在密码学中长度延展攻击就是指攻击者通过已知的hash(message1)和message1的长度，从而能够知道hash（message1‖message2）的值。其中‖ 表示的是连接符。并且攻击性并需要知道message1到底是什么。</p>
+<p><strong>Wide pipe</strong></p>
+<p>为了避免长度延展攻击，我们可以对MD结构进行一些变形。</p>
+<p><img src="/../images/v2-7bcc1f1e64f49a021592e673c80f205a_720w.webp" alt="img"></p>
+<p>wide pipe和MD的流程基本上是一致的，不同的是生成的中间临时的加密后的消息长度是最终生成消息长度的两倍。</p>
+<p>这也就是为什么上图中会有两个初始向量IV1 和 IV2。假如最终的结果长度是n的话，那么在中间生成的结果的长度就是2n。我们需要在最后的final 这一步中，将2n长度的数据缩减为n长度的数据。</p>
+<p><strong>Fast wide pipe</strong></p>
+<p>SHA-512&#x2F;224 和 SHA-512&#x2F;256 只是简单的丢弃掉一半数据。</p>
+<p>还有一种比wide pipe更快的算法叫做fast wide pipe：</p>
+<p><img src="/../images/v2-38067688fe25a216016a8819756dd105_r.jpg" alt="img"></p>
+<p>和wide pipe不同的是，它的主要思想是将前一个链接值的一半转发给XOR，然后将其与压缩函数的输出进行XOR。</p>
 ]]></content>
       <tags>
         <tag>Courses</tag>
