@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="joshua" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>forensics |  Mingwei’s Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-forensics"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  forensics
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/20/forensics/" class="article-date">
+  <time datetime="2023-04-20T13:49:35.000Z" itemprop="datePublished">2023-04-20</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">7.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">45 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>5080 UofG</p>
+<h1 id="Revision-and-Reflection"><a href="#Revision-and-Reflection" class="headerlink" title="Revision and Reflection:"></a>Revision and Reflection:</h1><ol>
+<li><h2 id="Raphael-Aerospace"><a href="#Raphael-Aerospace" class="headerlink" title="Raphael Aerospace"></a>Raphael Aerospace</h2></li>
+</ol>
+<p>The fictional Raphael Aerospace is a leading multinational, specialising in software engineering for defense systems. The organisation has seized a laptop from one of its employees during a routine search that occurs at the entry and exit point to its North America campus. The company is concerned that the laptop contains sensitive source code. The employee has refused to speak or cooperate with the organisation since the laptop was seized. The digital investigation team believes the laptop is password protected, employs software-based full-disk encryption and has been seized in sleep mode. The laptop has highly integrated components to achieve a ‘slim-line’ profile and potentially has a Trusted Platform Module (TPM). The investigation team needs to acquire the keys associated with decryption and encryption of hard disk contents.</p>
+<p><strong>a).  Outline the SIX states of the Advanced Configuration and Power Interface (ACPI) and argue the relevancy to software-based full-disk encryption for each state.</strong></p>
+<p>The Advanced Configuration and Power Interface (ACPI) is a specification that defines power management and system configuration for computers. It establishes different power states, which play a significant role in the energy consumption and performance of a device. These power states are relevant to software-based full-disk encryption, as they can impact the security and accessibility of encrypted data. The six ACPI power states are:</p>
+<ol>
+<li>G0 (S0) - Working State: In this state, the system is fully powered on and operational. The CPU is executing instructions, and all peripherals are active. In the context of full-disk encryption, this state is when the system is most vulnerable to attacks. However, it’s also the state in which encryption and decryption processes can be performed.</li>
+<li>G1 (S1-S4) - Sleeping States: There are four different sleep states, S1 to S4, with S1 being the lightest sleep and S4 the deepest sleep state. As the sleep state deepens, more components are powered down, and the system consumes less power. Full-disk encryption keys are typically stored in RAM or the TPM. In sleep states, the encryption keys remain in memory, making it possible to access encrypted data without re-entering the password. However, these states also increase the risk of cold boot attacks, where attackers can extract the keys from RAM or TPM if they can gain physical access to the machine.</li>
+<li>G2 (S5) - Soft Off State: In this state, the system is powered off, but some components may still receive power to support features like Wake-on-LAN. The encryption keys are not present in memory, so an attacker cannot extract them. However, encrypted data on the disk remains secure, and a password is required to access the system upon startup.</li>
+<li>G3 - Mechanical Off State: The system is completely powered off, and no components receive power. In this state, the encryption keys are not present in memory, and the encrypted data is secure. To access the data, the user must power on the system and enter the password.</li>
+<li>S4 - Hibernate State: In this state, the system’s state is saved to the hard drive before powering down. The encryption keys are not present in memory, making the data secure. However, the system will require the password upon waking from hibernation to access the encrypted data.</li>
+<li>C0-C3 - Processor Power States: These are the power states of the CPU itself, with C0 being the fully operational state and C3 being the deepest sleep state. These states are less relevant to full-disk encryption, as they primarily affect the CPU’s power consumption and performance. However, the encryption and decryption processes may be slower in deeper sleep states due to reduced CPU performance.</li>
+</ol>
+<p>In summary, ACPI power states have varying degrees of relevancy to software-based full-disk encryption. The Working State (G0) and Sleeping States (G1) are the most relevant, as they impact the security and accessibility of encrypted data. The Soft Off State (G2), Mechanical Off State (G3), Hibernate State (S4), and Processor Power States (C0-C3) are less directly relevant but may still influence the security of encrypted data in certain situations.</p>
+<p><strong>b). Evaluate and describe THREE potential approaches to recover the keys associated with software-based full-disk encryption and argue for the optimal approach in the given context.</strong></p>
+<p>There are several potential approaches to recover the keys associated with software-based full-disk encryption (FDE). Here are three possible methods:</p>
+<ol>
+<li>Brute-force attack: This approach involves systematically trying every possible combination of characters to find the correct encryption key or password. Given enough time and computational resources, a brute-force attack will eventually succeed.</li>
+</ol>
+<p>Pros:</p>
+<ul>
+<li>Guaranteed to find the correct key or password eventually.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Requires a significant amount of time and computational power, making it inefficient.</li>
+<li>May be ineffective against long, complex passwords or strong encryption algorithms.</li>
+</ul>
+<ol>
+<li>Dictionary attack: This method involves using a pre-compiled list of words or phrases (a “dictionary”) to attempt to recover the encryption key or password. Dictionary attacks are faster than brute-force attacks since they rely on a smaller set of possibilities, usually based on known common passwords or phrases.</li>
+</ol>
+<p>Pros:</p>
+<ul>
+<li>Faster than brute-force attacks.</li>
+<li>Effective against weak passwords or phrases.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Less effective against strong, unique passwords or phrases.</li>
+<li>Relies on the quality of the dictionary used.</li>
+</ul>
+<ol>
+<li>Cryptanalysis attack: This approach involves analyzing the encrypted data or the encryption algorithm itself to discover weaknesses or flaws that can be exploited to recover the encryption key. This method often requires deep knowledge of cryptography and a thorough understanding of the specific encryption algorithm used.</li>
+</ol>
+<p>Pros:</p>
+<ul>
+<li>Can be more efficient than brute-force or dictionary attacks.</li>
+<li>Exploits weaknesses or flaws in the encryption algorithm itself, potentially making it more successful.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Requires extensive knowledge and expertise in cryptography.</li>
+<li>May not be successful if the encryption algorithm is well-designed and without significant weaknesses.</li>
+</ul>
+<p>In the given context, the optimal approach to recover the keys associated with software-based full-disk encryption would depend on several factors, such as the strength of the encryption algorithm, the complexity of the password, and the available resources (time and computational power).</p>
+<p>If the encryption algorithm is known to have weaknesses or flaws, a cryptanalysis attack could be the most efficient method to recover the keys. However, this approach requires a high level of expertise in cryptography.</p>
+<p>In cases where the password is known to be weak or likely to be found in a dictionary, a dictionary attack would be the preferred approach, as it is faster and more efficient than brute-force attacks.</p>
+<p>If no information about the password or encryption algorithm’s weaknesses is available, a brute-force attack could be the only viable option. However, this method may be time-consuming and resource-intensive.</p>
+<p>Ultimately, the choice of the optimal approach will depend on the specific circumstances and the available resources. In many cases, a combination of these approaches may be required to successfully recover the keys associated with software-based full-disk encryption.</p>
+<p><strong>c). Raphael Aerospace is a British company, but the laptop was seized at the North American campus. The employee is a United Kingdom (UK) citizen and is concerned about the laws regarding software-based full-disk encryption in the United States (US). The employee believes that the UK will be a more favorable jurisdiction from the perspective of being forced to reveal any keys or passwords associated with encryption. Contrast the UK and US legal perspectives regards compelled decryption, speculate on the optimal jurisdiction in the given context.</strong></p>
+<p>The legal perspectives on compelled decryption differ between the United States (US) and the United Kingdom (UK). Here is a brief overview of the legal stances in both jurisdictions:</p>
+<p>United States (US): In the US, the Fifth Amendment to the Constitution protects individuals from self-incrimination. This has been interpreted by some courts as providing protection against being forced to reveal encryption keys or passwords, as doing so could be seen as self-incrimination. However, the interpretation of the Fifth Amendment in the context of compelled decryption is not uniform across all courts, and some have ruled that individuals can be compelled to provide decryption keys or passwords under certain circumstances.</p>
+<p>United Kingdom (UK): In the UK, the Regulation of Investigatory Powers Act 2000 (RIPA) governs the legal framework surrounding encryption and compelled decryption. Under RIPA, individuals can be legally compelled to provide encryption keys or passwords to law enforcement authorities when ordered to do so by a court. Failure to comply with such an order can result in severe penalties, including imprisonment.</p>
+<p>In the given context, the employee’s belief that the UK might be a more favorable jurisdiction from the perspective of being forced to reveal encryption keys or passwords might be misguided. The UK’s legal framework, as established by RIPA, clearly allows for compelled decryption under certain circumstances, whereas the US legal system provides some degree of protection against self-incrimination through the Fifth Amendment.</p>
+<p>However, it is important to note that the specific circumstances of the case and the legal interpretations of the relevant laws may vary, leading to different outcomes in each jurisdiction. The optimal jurisdiction would depend on various factors, including the details of the case and the stance of the courts involved.</p>
+<p>In conclusion, while the US legal system may offer more protection against compelled decryption than the UK, there are no guarantees, and the optimal jurisdiction would depend on the specific circumstances and the courts involved. The employee should seek legal counsel to better understand their rights and potential risks in both jurisdictions.</p>
+<ol start="2">
+<li><h2 id="BCO-Case"><a href="#BCO-Case" class="headerlink" title="BCO Case"></a>BCO Case</h2></li>
+</ol>
+<p>The fictional United States (US) Borders and Customs Office (BCO) wants to strengthen border controls. The BCO wants to ensure rigorous checks are possible at the border to ensure illegal digital content does not come across the border on physical devices. The BCO is particularly concerned that such files are hidden in unallocated space on drives. The BCO want a rapid process that can confirm a target file or traces of a target file are present on a suspected system. The suspected system can then be kept for further, deeper analysis. Argue an appropriate file carving technique and outline an implementation for the given context.</p>
+<p><strong>a). In the given context, the BCO aims to quickly identify whether a target file or traces of it are present on a suspected system, particularly in unallocated space on drives. An appropriate technique for this purpose is file carving.</strong></p>
+<p>File carving is a process used in [computer forensics](<a target="_blank" rel="noopener" href="https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec">https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec</a> network&amp;utm_campaign&#x3D;course pricing&amp;utm_content&#x3D;hyperlink) to extract data from a disk drive or other storage device without the assistance of the file system that originality created the file</p>
+<p>File carving is a process of extracting files from raw data without relying on filesystem structures, making it particularly suitable for recovering data from unallocated space, where file metadata may be absent or corrupted. File carving works by looking for specific file signatures or patterns in the raw data that indicate the beginning and end of a file.</p>
+<p>One popular file carving technique is header-footer carving, which is well-suited for the BCO’s requirements due to its speed and simplicity. Here’s an outline of how header-footer carving could be implemented in the given context:</p>
+<ol>
+<li>Preparation: Create a database of file signatures, including headers and footers, for the file types the BCO is particularly concerned about (e.g., image, video, document, or other formats commonly associated with illegal digital content).</li>
+<li>Initial scan: Rapidly scan the raw data (unallocated space) on a suspected system for the presence of known file headers. When a header is detected, record its position.</li>
+<li>Footer search: For each detected header, search for the corresponding footer within a reasonable distance from the header position, taking into account the expected file size for the target file type.</li>
+<li>File extraction: If both the header and footer are detected, extract the data between them as a separate file for further analysis.</li>
+<li>Validation: Perform a quick validation check on the extracted files to ensure they are not corrupted or false positives. This can be done by checking the file’s internal structure, metadata, or content.</li>
+<li>Flagging and retaining: If a target file or traces of it are found during the file carving process, flag the suspected system for deeper analysis and further investigation.</li>
+</ol>
+<p>This header-footer carving technique can be implemented using existing file carving tools, such as PhotoRec, Scalpel, or Foremost, which can be customized to search for specific file types based on their signatures.</p>
+<p>The advantages of using header-footer carving in this context include its simplicity, speed, and effectiveness in recovering files from unallocated space. However, it is essential to keep the database of file signatures up-to-date and comprehensive to ensure the highest possible accuracy and effectiveness of the file carving process.</p>
+<p><strong>b). The BCO want to reduce the number of false positives as this can result in unnecessary workload and delays at the border. Evaluate your proposed approach in (a), indicate potential causes of false positives and argue how they can be addressed.</strong></p>
+<p>Potential causes of false positives:</p>
+<ol>
+<li>Incomplete or fragmented files: The header-footer carving technique might identify and extract files that are incomplete or fragmented due to file system corruption or intentional deletion. In such cases, the extracted files may not be valid representations of the original content, leading to false positives.</li>
+<li>Random data patterns: The carving process might accidentally detect random data patterns in the raw data that resemble known file headers and footers. This could result in the extraction of non-existent files or unrelated data, creating false positives.</li>
+<li>Overlapping or embedded files: Some file formats may contain embedded data that resembles the header and footer of other file types. In such cases, the carving process might mistakenly extract the embedded data as separate files, causing false positives.</li>
+</ol>
+<p>Ways to address false positives:</p>
+<ol>
+<li>Improve validation checks: Enhance the validation step in the carving process by checking additional properties of the extracted files, such as their internal structure, metadata, or content. This can help filter out incomplete, fragmented, or otherwise invalid files, reducing false positives.</li>
+<li>Implement a more sophisticated carving algorithm: Instead of relying solely on header-footer carving, consider using a more advanced file carving technique like content-aware carving, which takes into account the file’s internal structure and content. This approach can help minimize false positives by reducing the likelihood of extracting unrelated data or non-existent files.</li>
+<li>Post-processing and filtering: After the initial carving process, perform additional analysis on the extracted files to filter out potential false positives. This could include comparing the extracted files to known hash values of illegal content, performing pattern matching or machine learning-based classification, or using other advanced data analysis techniques to identify and eliminate false positives.</li>
+<li>Regularly update the signature database: Maintain an up-to-date and comprehensive database of file signatures to improve the accuracy of the carving process. This can help reduce the chances of detecting random data patterns as false positives.</li>
+<li>Combine file carving with other digital forensic techniques: To increase the overall accuracy of the detection process and reduce false positives, consider using a combination of file carving and other digital forensic techniques, such as keyword searching, timeline analysis, or filesystem-based recovery methods.</li>
+</ol>
+<p>By addressing these potential causes of false positives and implementing the suggested improvements, the BCO can enhance the effectiveness of the file carving approach and minimize unnecessary workload and delays at the border.</p>
+<p><strong>c). The BCO also want to ensure the legality of the approach. The BCO want to ensure the approach does not require a specific search warrant, as this would impact on the speed and efficiency of the approach in terms of border control. Argue the potential legal concerns and outline how they may be addressed in any implementation for the given context.</strong></p>
+<p>Potential legal concerns:</p>
+<ol>
+<li>Privacy rights: Conducting a file carving process on a suspected system may raise concerns about an individual’s right to privacy, as it involves searching and potentially extracting personal and private information without their consent.</li>
+<li>Search and seizure laws: Depending on the jurisdiction, searching an individual’s digital device without a specific search warrant could potentially violate search and seizure laws, which generally require law enforcement to obtain a warrant before conducting a search that infringes on an individual’s privacy.</li>
+<li>Chain of custody: Ensuring the integrity and admissibility of any digital evidence obtained through file carving in a court of law requires maintaining a proper chain of custody. This involves documenting every step of the evidence handling process, from the initial search to the final analysis.</li>
+</ol>
+<p>Ways to address legal concerns:</p>
+<ol>
+<li>Establish clear policies and guidelines: Develop and implement clear policies and guidelines for border agents to follow when conducting file carving or other digital forensic searches. These guidelines should outline the circumstances under which such searches are permissible, the extent of the search, and the steps to be followed to ensure legal compliance.</li>
+<li>Train border agents: Provide regular training for border agents on the legal aspects of digital forensics and the proper procedures for conducting file carving and other digital searches. This can help minimize the risk of violating privacy rights and search and seizure laws.</li>
+<li>Obtain appropriate authorization: While the BCO aims to avoid the need for specific search warrants, it is essential to obtain the necessary legal authorization to conduct file carving searches. This could involve establishing a reasonable suspicion or probable cause before conducting a search, depending on the jurisdiction’s requirements.</li>
+<li>Implement a tiered search approach: To minimize potential privacy intrusions, consider implementing a tiered search approach that starts with less invasive techniques (such as basic keyword searches) and only escalates to more intrusive methods like file carving when there’s a reasonable basis for suspicion.</li>
+<li>Maintain proper documentation: Ensure that a proper chain of custody is maintained throughout the entire digital forensics process. This includes documenting every step of the evidence handling process, from the initial search to the final analysis, to ensure the admissibility of any evidence obtained in a court of law.</li>
+</ol>
+<p>Ultimately, it is crucial for the BCO to consult with legal experts to develop a compliant and legally defensible approach to file carving and other digital forensic techniques at the border. This can help ensure that the method is both effective in identifying illegal digital content and respecting individual privacy rights and due process requirements.</p>
+<ol start="3">
+<li><h2 id="Conway-Energy-Case"><a href="#Conway-Energy-Case" class="headerlink" title="Conway Energy Case"></a><strong>Conway Energy Case</strong></h2></li>
+</ol>
+<p>Conway Energy is a large enterprise with many customers. The company recently discovered that an employee generated letters demanding missed payments from hundreds of customers. The employee used a variant of a standard company letter and altered it to instruct recipients to make payment into their bank account. The employee then lodged the letters with the corporate file store for automatic dispatch. The technical team state the letters can be retrieved, but have concerns as the corporate file store contains millions of documents and letters. The company legal and management team have approved an investigation by the technical team to extract the hundreds of generated letters. The technical team have uncovered a template for the fraudulent standard letter on a corporate workstation. The technical team have altered the letter to include a known affected customer name and address. The technical team then generated a hash of the file, but were unable to identify a match in the file store.</p>
+<p><strong>a). The management team are concerned that evidence discovered during the internal investigation may eventually be presented in court. The management team are confident the fraudulent standard letter has been seized legally with appropriate authority. However, the management team want to ensure the discovered standard letter is admissible evidence in court. Evaluate and argue if the uncovered fraudulent letter is admissible evidence to a court of law in the given context.</strong> </p>
+<p>The use of scientifically derived and proven methods towards the preservation, collection, validation, identification, analysis, interpretation and presentation of digital evidence derived from digital sources for the purposes of facilitating or furthering the reconstruction of events found to be criminal or helping to  anticipate the unauthorised actions shown to be disruptive to planned operations</p>
+<p>Admissibility depends upon several factors: (1) authenticity, (2) relevancy, and (3) competency. </p>
+<p>In the context of the discovered fraudulent standard letter, the following factors can be considered:</p>
+<ol>
+<li>Relevance: <em>The term relevancy</em> means that the information must reasonably tend to prove or disprove any matter in issue. The question or test involved is, “Does the evidence aid the court in answering the question before it?”. The fraudulent letter is directly related to the case at hand, as it demonstrates the employee’s actions to create and distribute the letters demanding missed payments. It is likely to be considered relevant evidence.</li>
+<li>Reliability: The technical team must be able to demonstrate that the letter was discovered through a reliable and consistent process, and that the investigation methods were accurate and thorough. Proper documentation of the investigation process, such as the steps taken to identify the fraudulent letter, can help establish its reliability.</li>
+<li>Authenticity: The term <em>authenticity</em> refers to the genuine character of the evidence. The court will want to ensure that the discovered letter is indeed the fraudulent standard letter created by the employee. The technical team should be prepared to provide evidence that confirms the letter’s authenticity, such as metadata, timestamps, and any other identifying information. A proper chain of custody should also be maintained to document the handling, storage, and transfer of the letter.</li>
+<li>Competency: <em>Competent</em> as used to describe evidence means that the evidence is relevant and not barred by any exclusionary rule. The competency of the evidence in Conway Energy’s case will depend on the technical team’s qualifications and expertise, the methods and techniques used in the investigation, proper documentation and record-keeping, and compliance with legal and procedural requirements. Ensuring these factors are addressed will increase the likelihood of the evidence being considered competent and admissible in court.</li>
+</ol>
+<p><strong>b). The technical team have uncovered more fraudulent letters, but hashes of each do not match any in the corporate file store. Upon closer inspection the technical team have determined that the employee has inserted words with the font colour set to white. The words are effectively ‘hidden to visual inspection as they are not easily observable. The technical team have generated a definitive list of the hidden words present in the fraudulent letters. The technical team are unconvinced that generating a hash of each fraudulent letter is an effective route. The technical team need to utilise a hashing approach that is able to identify homologous patterns between the known fraudulent letters and those in the file store. Devise and explain an effective hashing approach in the given context.</strong></p>
+<p>Since the traditional hashing approach does not seem to be effective in identifying the fraudulent letters, the technical team can explore alternative hashing techniques that focus on content-based similarity rather than exact file matches. One such approach is known as <strong>locality-sensitive hashing (LSH)</strong>.</p>
+<p>Locality-sensitive hashing is a technique used to identify similar documents by generating hashes that have a higher probability of colliding when the documents are similar. This approach is more effective in identifying homologous patterns between the known fraudulent letters and those in the file store.</p>
+<p>Here’s a possible approach to implementing LSH in this context:</p>
+<ol>
+<li>Preprocess the documents: Convert all the documents in the corporate file store and the known fraudulent letters to plain text, including the hidden white text, to ensure a consistent format for comparison.</li>
+<li>Tokenize and create document vectors: Break the text of each document into tokens (e.g., words or phrases) and represent each document as a high-dimensional vector using techniques like term frequency-inverse document frequency (TF-IDF) or word embeddings. This process converts the documents into a suitable format for LSH.</li>
+<li>Implement locality-sensitive hashing: Apply an LSH algorithm to the document vectors. The algorithm will generate similar hashes for documents with similar content, making it easier to identify the fraudulent letters with homologous patterns in the file store.</li>
+<li>Set a similarity threshold: Determine an appropriate similarity threshold to identify potential matches. This threshold will depend on the specific LSH algorithm used and the desired balance between precision and recall.</li>
+<li>Compare and flag potential matches: Compare the LSH hashes of the known fraudulent letters with those in the corporate file store. Flag any documents with hashes that exceed the set similarity threshold for further investigation.</li>
+<li>Verify flagged documents: Manually review the flagged documents to ensure they are indeed fraudulent letters and not false positives. Make note of any discrepancies or issues to further refine the LSH algorithm or similarity threshold, if necessary.</li>
+<li>Preserve evidence and implement preventive measures: Once the fraudulent letters have been identified and extracted, preserve the evidence and consider implementing additional security measures to prevent similar incidents in the future.</li>
+</ol>
+<p>By employing locality-sensitive hashing, the technical team can identify fraudulent letters with similar content patterns, even when the exact file hashes do not match. This approach should be more effective in detecting the hidden white text and other subtle alterations made by the employee.</p>
+<p><strong>CTPH:</strong></p>
+<ol>
+<li>Preprocess the documents: Convert all the documents in the corporate file store and the known fraudulent letters to plain text, including the hidden white text, to ensure a consistent format for comparison.</li>
+<li>Apply CTPH algorithm: Implement a CTPH algorithm, such as ssdeep, to generate fuzzy hash values for each document. The algorithm will create hashes that are similar for documents with similar content.</li>
+<li>Set a similarity threshold: Determine an appropriate similarity threshold for comparing the generated fuzzy hashes. This threshold will depend on the desired balance between precision and recall in identifying similar documents.</li>
+<li>Compare and flag potential matches: Compare the fuzzy hashes of the known fraudulent letters with those in the corporate file store. Flag any documents with hashes that exceed the set similarity threshold for further investigation.</li>
+<li>Verify flagged documents: Manually review the flagged documents to ensure they are indeed fraudulent letters and not false positives. Make note of any discrepancies or issues to further refine the CTPH algorithm or similarity threshold, if necessary.</li>
+<li>Preserve evidence and implement preventive measures: Once the fraudulent letters have been identified and extracted, preserve the evidence and consider implementing additional security measures to prevent similar incidents in the future.</li>
+</ol>
+<p>By employing CTPH, the technical team can identify fraudulent letters with similar content patterns, even when there are subtle differences such as the hidden white text. This approach should be more effective in detecting the homologous patterns between the known fraudulent letters and those in the file store compared to traditional hashing methods.</p>
+<p><strong>c). The technical team are concerned that the hashing approach devised in (b) may not be appropriate in the given context. Identify potential concerns with the hashing approach devised in (b) for the given context.</strong></p>
+<ol>
+<li>Sensitivity to small changes: Although CTPH is designed to detect similar files, it may not always be sensitive enough to detect subtle differences, such as the hidden white text used in the fraudulent letters. This could lead to false negatives, where the technical team fails to identify some fraudulent letters.</li>
+<li>False positives: CTPH can sometimes produce false positives, where non-fraudulent documents are flagged as potentially fraudulent due to similarity in content or structure. This could result in the technical team spending time and resources on manually reviewing non-fraudulent documents.</li>
+<li>Scalability: Given that the corporate file store contains millions of documents, comparing the fuzzy hashes of the known fraudulent letters with those in the file store could be computationally expensive and time-consuming.</li>
+<li>Accuracy: The accuracy of CTPH in identifying fraudulent letters depends on the chosen similarity threshold. Setting an appropriate threshold can be challenging, as a high threshold might result in false negatives, while a low threshold could lead to false positives.</li>
+<li>Legal admissibility: There may be concerns about the legal admissibility of the evidence gathered using CTPH, as it relies on similarity rather than exact matches. The court may require additional validation or proof that the flagged documents are indeed fraudulent.</li>
+</ol>
+<p>Given these concerns, the technical team should carefully consider whether the CTPH approach is appropriate for their specific context. They may need to explore alternative methods, such as advanced text analytics or machine learning techniques, to more accurately and efficiently identify the fraudulent letters in the file store. Additionally, the technical team should consult with legal professionals to ensure the chosen approach meets the requirements for evidence admissibility in court.</p>
+<p><strong>However, if we use LSH,</strong></p>
+<p>Using locality-sensitive hashing (LSH) as your hash algorithm could be a suitable alternative for Conway Energy’s case, as LSH is designed to identify similar documents by generating hashes that have a higher probability of colliding when the documents are similar. This approach can be more effective in identifying homologous patterns between the known fraudulent letters and those in the file store.</p>
+<p>Still we need to consider the potential problems of LSH:</p>
+<p>Locality-sensitive hashing (LSH) is a powerful technique for identifying similar documents, but it comes with some potential concerns that should be considered in the context of the Conway Energy case:</p>
+<ol>
+<li>False positives: LSH can produce false positives, where non-fraudulent documents are flagged as potentially fraudulent due to similarity in content or structure. This can lead to spending additional time and resources on manual review of non-fraudulent documents.</li>
+<li>False negatives: Depending on the chosen similarity threshold and LSH algorithm, LSH can also produce false negatives, where fraudulent documents are not flagged due to insufficient similarity in their LSH hashes. This can result in missing important evidence.</li>
+<li>Scalability: LSH requires a considerable amount of computation and storage, especially when dealing with large datasets like Conway Energy’s corporate file store. This can lead to increased processing time and resource requirements.</li>
+<li>Parameter selection: LSH algorithms often have several parameters that need to be fine-tuned, such as the similarity threshold, the number of hash functions, and the number of hash tables. Selecting appropriate parameters can be challenging and may require empirical testing and validation.</li>
+<li>Preprocessing and feature extraction: LSH relies on converting documents into high-dimensional vectors, which may require considerable preprocessing and feature extraction, such as tokenization, stemming, and text vectorization using techniques like TF-IDF or word embeddings. This can be computationally expensive and may introduce additional complexity.</li>
+<li>Legal admissibility: Similar to CTPH, there may be concerns about the legal admissibility of the evidence gathered using LSH, as it relies on similarity rather than exact matches. The court may require additional validation or proof that the flagged documents are indeed fraudulent.</li>
+</ol>
+<p>Given these potential concerns, the technical team should carefully consider whether the LSH approach is appropriate for their specific context. They may need to explore alternative methods or combine LSH with other techniques to improve accuracy, efficiency, and legal admissibility. Additionally, the technical team should consult with legal professionals to ensure the chosen approach meets the requirements for evidence admissibility in court.</p>
+<ol start="4">
+<li><h2 id="Laputa-University-Case"><a href="#Laputa-University-Case" class="headerlink" title="Laputa University Case"></a>Laputa University Case</h2></li>
+</ol>
+<p>The University of Laputa replaces computer systems for staff every five years. The management team have been informed by research staff that some systems have been replaced without sufficient notice and as a result important files have been lost. The management team have also been informed that some systems are being sold through various online auction websites, rather than being recycled.</p>
+<p>The management team suspects a member of the systems support team has been selling the systems via online auction websites. The management team have authorised the digital investigations team to purchase several systems from online auction websites that they suspect have come from the institution. The management team have also authorised the digital investigation team to utilise appropriate data recovery techniques to recover files.</p>
+<p><strong>a). The digital investigations team want to recover any previous Personal Storage Table (PST) files from many of the systems they have purchased from online auction websites. The digital investigations team believe such a file, in general, will not be heavily fragmented due to the numerous approaches adopted by modern file systems. Argue whether the position of the digital investigations team is accurate.</strong></p>
+<p>The digital investigations team’s position that Personal Storage Table (PST) files, in general, will not be heavily fragmented due to the numerous approaches adopted by modern file systems is mostly accurate. However, some factors can still contribute to the fragmentation of PST files, even on modern file systems.</p>
+<p>Modern file systems, such as NTFS, HFS+, and ext4, are designed to minimize fragmentation by using various allocation strategies and techniques. These file systems attempt to keep related data blocks close together and allocate new blocks in a way that minimizes fragmentation. As a result, the overall fragmentation of files on these file systems tends to be less severe compared to older file systems like FAT.</p>
+<p>However, PST files, which are used by Microsoft Outlook to store email messages, contacts, and other data, can still become fragmented under certain conditions:</p>
+<p>Large file sizes: PST files can grow quite large over time, especially if users have many emails and attachments. Large files can be more susceptible to fragmentation as they are more likely to be allocated in non-contiguous blocks.</p>
+<p>Frequent updates: PST files are updated frequently as new emails are received, sent, or deleted. These updates can lead to fragmentation as the file system may need to allocate new blocks to accommodate the changes in file size and content.</p>
+<p>Insufficient free space: If there is insufficient free space available on the storage device, it may be challenging for the file system to allocate contiguous blocks for new or updated data, resulting in fragmentation.</p>
+<p>Multiple concurrent users: In a shared environment, multiple users might be accessing and modifying different files simultaneously. This can create a higher likelihood of fragmentation as the file system attempts to allocate blocks for various files concurrently.</p>
+<p>While modern file systems are better at managing fragmentation, it is still essential for the digital investigations team to consider the factors mentioned above when attempting to recover PST files from the purchased systems. Fragmentation can affect the ease and success of the data recovery process, and the team may need to employ specialized data recovery tools or techniques to recover fragmented PST files effectively.</p>
+<p><strong>b). The digital investigations team eventually assume the PST files they want to extract from the purchased systems are likely to comprise of more than two fragments and the relevant clusters are not necessarily in sequence. Devise and justify a carving approach to recover a single file in the given context. Highlight any limitations or constraints in the proposed solution.</strong></p>
+<p>In the given context, the digital investigations team can employ a carving approach that combines signature-based carving and file system metadata analysis to recover the fragmented PST files. This approach involves the following steps:</p>
+<ol>
+<li>Signature-based carving: Scan the storage device for known file signatures or magic numbers associated with PST files. This process can help identify the starting point of each PST file fragment. Common magic numbers for PST files include <code>!BDN</code> for Outlook 97-2002 and <code>!BD0</code> for Outlook 2003 and later.</li>
+<li>File system metadata analysis: Analyze the file system metadata to gather information about the allocation and location of clusters associated with PST files. This can help identify the correct sequence of fragmented clusters and uncover additional fragments that may not have been detected through signature-based carving.</li>
+<li>Cluster chaining: Once the starting points of the file fragments and their metadata are identified, attempt to reconstruct the file by chaining the clusters in the correct order based on their allocation in the file system. This can be done using specialized data recovery tools or custom-built scripts.</li>
+<li>File validation: After the PST file has been reconstructed, validate its integrity by checking its internal structure and attempting to open it using a compatible email client or PST viewer. This step helps ensure that the recovered file is complete and functional.</li>
+<li>Iterative refinement: If the initial reconstruction is unsuccessful, refine the carving approach by adjusting parameters, such as the search window for signature-based carving or the cluster allocation strategy. Repeat the process until a successful recovery is achieved or it becomes clear that the file cannot be recovered.</li>
+</ol>
+<p>Limitations and constraints of the proposed solution:</p>
+<ol>
+<li>Incomplete recovery: The carving approach may not always be successful in recovering the entire PST file, particularly if some fragments are missing or corrupted.</li>
+<li>Time-consuming: This process can be time-consuming, especially when dealing with large PST files or complex fragmentation patterns.</li>
+<li>False positives: Signature-based carving can sometimes produce false positives, where unrelated data is mistakenly identified as part of the PST file.</li>
+<li>Expertise required: The proposed carving approach requires a certain level of expertise in data recovery and file system analysis, as well as access to specialized tools or custom scripts.</li>
+</ol>
+<p>Despite these limitations, the proposed carving approach should provide the digital investigations team with a robust method for recovering fragmented PST files from the purchased systems. The team may need to iterate and refine the approach as necessary to maximize the chances of successful file recovery.</p>
+<p><strong>c). The digital investigations team have since learned that they need to recover several PST files from each system, not just a single PST file. The digital investigations team have decided that the speed of recovery of the multiple files is more important than the accuracy of recovery. Devise a carving approach to recover multiple files in the given context. Highlight any limitations or constraints in the proposed solution.</strong></p>
+<p>In the given context, where the speed of recovery is more important than accuracy, the digital investigations team can employ a streamlined carving approach to recover multiple PST files from each system. This approach involves the following steps:</p>
+<ol>
+<li>Signature-based carving: Perform a bulk scan of the storage device for known file signatures or magic numbers associated with PST files (e.g., <code>!BDN</code> for Outlook 97-2002 and <code>!BD0</code> for Outlook 2003 and later). This process helps identify the starting point of each PST file fragment.</li>
+<li>File size estimation: Estimate the size of each PST file based on the distance between consecutive file signatures. This can help in the quick recovery of files without needing extensive file system metadata analysis.</li>
+<li>File extraction: Extract the identified file fragments based on the estimated size and signature locations. This step may involve some level of over-extraction or under-extraction to ensure that complete files are recovered, at the expense of potential inaccuracies.</li>
+<li>File validation (optional): If time permits, validate the integrity of the recovered PST files by checking their internal structure and attempting to open them using a compatible email client or PST viewer. This step can help identify any major issues with the recovered files.</li>
+</ol>
+<p>Limitations and constraints of the proposed solution:</p>
+<ol>
+<li>Inaccurate recovery: By prioritizing speed over accuracy, the carving approach may result in inaccurately recovered PST files, with potentially missing or corrupted data.</li>
+<li>False positives: Signature-based carving can produce false positives, where unrelated data is mistakenly identified as part of the PST file. This may lead to the recovery of irrelevant or incomplete files.</li>
+<li>File fragmentation: This approach does not account for fragmented files, which may result in incomplete recovery of some PST files.</li>
+<li>File validation: Skipping or minimizing the file validation step can increase the risk of recovering unusable or corrupted files.</li>
+<li>Expertise required: The proposed carving approach requires a certain level of expertise in data recovery and the ability to quickly analyze and adapt to the specific storage device’s conditions.</li>
+</ol>
+<p>Despite these limitations, the proposed carving approach should provide the digital investigations team with a faster method for recovering multiple PST files from the purchased systems. The team may need to accept the trade-off between speed and accuracy, understanding that some of the recovered files may be incomplete or corrupted.</p>
+<p><strong>d). The digital investigations team have recovered the PST file from one of the systems purchased online with the revelation that the PST does not belong to any researcher or member of the staff at the University of Laputa. The digital investigations team actually suspect the file might belong to another university. The digital investigations team have decided to investigate the system further to identify the specific individual. Argue whether the actions of the digital investigation team are appropriate in the given context.</strong></p>
+<p>In the given context, the actions of the digital investigations team can be seen as both appropriate and inappropriate, depending on the objectives and the ethical considerations involved.</p>
+<p>Arguments for the appropriateness of the digital investigations team’s actions:</p>
+<ol>
+<li>Prevent potential misuse of data: The recovery of a PST file that does not belong to any researcher or staff member at the University of Laputa raises concerns about the potential misuse of the data contained within it. Investigating the system further could help the team understand how this file ended up on the system and prevent any potential misuse of the information.</li>
+<li>Uphold data privacy and security: Universities are responsible for protecting the privacy and security of personal and sensitive information. Investigating the origin of the unknown PST file and identifying the individual it belongs to could help the team ensure that the university is upholding its data protection obligations.</li>
+</ol>
+<p>Arguments against the appropriateness of the digital investigations team’s actions:</p>
+<ol>
+<li>Privacy concerns: Investigating the contents of a PST file that does not belong to a member of the University of Laputa could be seen as an invasion of privacy. The team should consider the ethical implications of accessing someone else’s personal data without their consent.</li>
+<li>Legal considerations: The digital investigations team should be aware of any legal implications associated with accessing and analyzing data that does not belong to their institution. There might be laws and regulations that govern the handling of such data, and the team should ensure they are acting within the legal framework.</li>
+<li>Scope of investigation: The primary objective of the investigation was to determine whether a member of the systems support team was selling university-owned systems online. The discovery of a PST file that does not belong to any researcher or staff member may not be directly relevant to this objective. The team should consider whether further investigation of the file falls within the scope of their initial mandate.</li>
+</ol>
+<p>In conclusion, the actions of the digital investigations team can be considered appropriate if they are conducted within legal and ethical boundaries and if they serve a legitimate purpose, such as protecting data privacy and security. However, the team should carefully weigh the potential risks and implications of their actions, ensuring they do not infringe upon the privacy rights of individuals or act outside the scope of their initial investigation.</p>
+<h1 id="Terminology-amp-Jargons"><a href="#Terminology-amp-Jargons" class="headerlink" title="Terminology&amp;Jargons:"></a>Terminology&amp;Jargons:</h1><p><strong>FDE:</strong> Full Disk Encryption (FDE) is an encryption technology implemented on hard disk drives or solid state drives. It protects all data stored on the disk, including operating system, program files, user data, etc. Its main purpose is to ensure that sensitive data on the disk cannot be deciphered in case of unauthorized access.</p>
+<p><strong>File Carving:</strong> File carving is a process used in [computer forensics](<a target="_blank" rel="noopener" href="https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec">https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec</a> network&amp;utm_campaign&#x3D;course pricing&amp;utm_content&#x3D;hyperlink) to extract data from a disk drive or other storage device without the assistance of the file system that originality created the file. </p>
+<p><strong>Unallocated area:</strong> Unallocated space refers to the area of the drive which no longer holds any file information as indicated by the file system structures like the file table. </p>
+<p>**Ip: ** investigative process.</p>
+<p><strong>DFI</strong>(Digital forensics investigation): investigate the tool of crime and subject of crime.</p>
+<p><strong>Hash</strong>:</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/04/20/forensics/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Courses/" rel="tag">Courses</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2023/04/18/data-analyst/" class="article-nav-link">
+        <strong class="article-nav-caption">Next Post</strong>
+        <div class="article-nav-title">data analyst</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021-2023
+        <i class="ri-heart-fill heart_icon"></i> Mingwei Li
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Mingwei’s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">Travel</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
