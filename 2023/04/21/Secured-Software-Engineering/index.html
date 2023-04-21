@@ -82,7 +82,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">570</span>
         </span>
     </span>
 
@@ -91,7 +91,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -104,7 +104,29 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <p>The below case studies are given here in advance, they will be part of the final exam. </p>
+<p><strong>Case Study 1:</strong> You are part of a team that has been tasked with developing a web-based application for a healthcare organisation. The application will allow doctors to view patient information, including medical history, test results and treatment plans. Patients will also be able to access the application to view their own medical information and communicate with their doctors. The application will be used by a large number of healthcare providers and patients, and therefore security is a top priority. (Provided ahead of the exam) </p>
+<p><strong>Case Study 2:</strong> ABC airlines operates a large number of flights globally. In 2021, the airline suffered a significant data breach that affected the personal information of thousands of customers. In response to this breach, ABC airlines invested in a new approach to secure software engineering, including implementing secure coding practices, testing and validating software, and conducting regular security audits. The company has a complex network infrastructure that includes several web servers, database servers, and application servers. (Provided ahead of the exam)</p>
+<p><strong>1.</strong> <strong>Case Study:</strong> You are part of a team that has been tasked with developing a web-based application for a healthcare organization. The application will allow doctors to view patient information, including medical history, test results and treatment plans. Patients will also be able to access the application to view their own medical information and communicate with their doctors. The application will be used by a large number of healthcare providers and patients, so security is a top priority. (This case study is part of the final exam, provided ahead of the exam here)</p>
+<p><strong>(a)</strong> Identify and list down five use cases and five misuse cases of the system. [5]</p>
+<p><strong>(b)</strong> List down five actors and five attackers of the system. [5]</p>
+<p><strong>(c)</strong> List down five high-level threats to the system. [5]</p>
+<p><strong>(d)</strong> Against each threat what would be your countermeasure? [5]</p>
+<p><strong>2.</strong> <strong>(a)</strong> If requirements are introduced at a later stage in the project, what would be its impact on security?</p>
+<p>Support your answer with an example. [3]</p>
+<p><strong>(b)</strong> An organisation is performing risk analysis during the development stage for their asset having an </p>
+<p>estimated value of £100,000. The exposure factor of the asset is estimated to be 0.25 and annual </p>
+<p>rate of occurrence is expected to be 0.5. Mitigating the risk will cost the organization £5,000, is it </p>
+<p>feasible to fix the vulnerability in the code or not? [5]</p>
+<p><strong>(c)</strong> A company wants to do the audit of their software for GDPR compliance. Which three <em>Secure</em> </p>
+<p><em>Software Engineering</em> methods you would recommend for this purpose? Give a brief explanation </p>
+<p>for each method. [6]</p>
+<p><strong>(d)</strong> In the code given on the next page, identify which variables are considered tainted and identify </p>
+<p>any two potential security vulnerabilities in the code and suggest how to fix them (write in your </p>
+<p>own words, no coding is required). [6]</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">authenticateUser</span>(<span class="params">username, password</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> userCredentials = &#123;</span><br><span class="line"></span><br><span class="line"> <span class="attr">username</span>: username, </span><br><span class="line"></span><br><span class="line"> <span class="attr">password</span>: password </span><br><span class="line"></span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> input = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;input&quot;</span>).<span class="property">value</span>; </span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (<span class="title function_">isValidEmail</span>(input)) &#123;</span><br><span class="line"></span><br><span class="line"> userCredentials.<span class="property">email</span> = input; </span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> $.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>, userCredentials, <span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (response.<span class="property">success</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="title function_">alert</span>(<span class="string">&quot;You are logged in!&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(<span class="string">&quot;Authentication failed.&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isValidEmail</span>(<span class="params">email</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> emailRegex = <span class="regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> emailRegex.<span class="title function_">test</span>(email); </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ 
       <!-- reward -->
       
       <div id="reword-out">
