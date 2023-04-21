@@ -82,7 +82,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">7.3k</span>
+            <span class="post-count">8.6k</span>
         </span>
     </span>
 
@@ -91,7 +91,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">45 min</span>
+            <span class="post-count">53 min</span>
         </span>
     </span>
 </div>
@@ -346,6 +346,34 @@
 <li>Scope of investigation: The primary objective of the investigation was to determine whether a member of the systems support team was selling university-owned systems online. The discovery of a PST file that does not belong to any researcher or staff member may not be directly relevant to this objective. The team should consider whether further investigation of the file falls within the scope of their initial mandate.</li>
 </ol>
 <p>In conclusion, the actions of the digital investigations team can be considered appropriate if they are conducted within legal and ethical boundaries and if they serve a legitimate purpose, such as protecting data privacy and security. However, the team should carefully weigh the potential risks and implications of their actions, ensuring they do not infringe upon the privacy rights of individuals or act outside the scope of their initial investigation.</p>
+<h1 id="Sample-exam-paper-2020"><a href="#Sample-exam-paper-2020" class="headerlink" title="Sample exam paper 2020"></a>Sample exam paper 2020</h1><ol>
+<li><h2 id="Lime-Legal-Case"><a href="#Lime-Legal-Case" class="headerlink" title="Lime Legal Case"></a>Lime Legal Case</h2></li>
+</ol>
+<p>The management team for Lime Legal, a large legal firm that conducts numerous digital investigations, has decided to develop its own hash function for use in digital investigations. The management team has commissioned a specialised software developer to design and implement the hash function. The specialised software developer states that compression is an important  requirement for a hash function. </p>
+<p><strong>a). Argue for another TWO important requirements for a hash function in the given  context. (approximately 200 words)</strong></p>
+<p><strong>b). The specialised software developer states that elements of the bespoke hash  function will rely upon some internal initial values and constants. The  specialised software developer states that these values and constants will be generated using a sophisticated and secret algorithm. The specialised software  developer informs the management team that the initial values and constants  will be made public along with the design and implementation details, but the  algorithm to generate them will be kept secret and managed by the company.  Argue whether the approach favoured by the specialised software developer is  appropriate in the given context.(approximately 400 words)</strong></p>
+<p><strong>c). The specialised software developer is not entirely sure how to design the bespoke hash function. Devise a potential hash function that exhibits a Merkle-Damgård construction, highlight and argue the importance of any core components. (approximately 400 words)</strong></p>
+<p><strong>d). The management team want to employ the use of the bespoke hash function to identify unauthorised files on employee smartphones and laptops. The specialised software developer states they can develop a system that can be used to rapidly inspect employee smartphones and laptops as part of random security searches as employees leave campus. A member of the management team is concerned that such a process may violate the privacy of the employee and some employees may feel targeted. Argue whether the approach favoured by the management team is appropriate  in the given context.(approximately 250 words)</strong></p>
+<ol start="2">
+<li><h2 id="Orange-Entertainment"><a href="#Orange-Entertainment" class="headerlink" title="Orange Entertainment"></a>Orange Entertainment</h2></li>
+</ol>
+<p>The management team for Orange Entertainment want to recover files from a Microsoft Windows 10 workstation that have been destroyed by a disgruntled employee. The management team believe the employee destroyed the files as they had been manipulating them for their own gain over several months. The management team have authorised the systems support team to recover the files as part of their investigation. The systems support team have allocated trainees Bill and Ben to lead the investigation and recover the files.</p>
+<p><strong>a). Ben has identified ShadowExplorer as a useful tool to recover files from the Microsoft Windows 10 workstation.Discuss TWO relevant features of the ShadowExplorer tool and argue the relevance in the given context. (approximately 200 words)</strong></p>
+<p>The approach favored by the specialized software developer of keeping the algorithm for generating initial values and constants secret while making the hash function and constants public raises some concerns in the given context of digital investigations.</p>
+<p>One of the primary concerns is the lack of transparency in the process. In the field of cryptography, it is widely accepted that security should rely on the strength of the algorithm rather than the secrecy of its design. This principle is known as Kerckhoffs’s principle. By keeping the algorithm for generating initial values and constants secret, Lime Legal risks undermining the trust and credibility of their hash function. Digital evidence generated using a hash function with undisclosed components may face challenges in legal proceedings, as opposing parties could question its integrity.</p>
+<p>Additionally, the secrecy of the algorithm prevents independent verification and analysis by the broader cryptographic community. Peer review and open scrutiny are essential to establishing the security and reliability of cryptographic algorithms. Closed-source designs may contain unintentional flaws or vulnerabilities that would otherwise be identified and resolved through a transparent review process.</p>
+<p>Furthermore, the reliance on a secret algorithm for generating initial values and constants introduces the possibility of a single point of failure. If the secret algorithm is compromised, the entire hash function could be rendered insecure, potentially jeopardizing ongoing and past investigations.</p>
+<p>In conclusion, the approach favored by the specialized software developer is not appropriate in the given context. Lime Legal should consider adhering to established cryptographic principles and industry best practices, which emphasize transparency, open scrutiny, and independent verification to ensure the credibility and robustness of their bespoke hash function.</p>
+<p><strong>b. Bill has decided to use ShadowExplorer on the employee workstation in-situ, but Ben is concerned if such an approach is appropriate. Ben also suggests the pair should at least take some simple notes of their actions, Bill argues it is not necessary. Critique the differing positions of Bill and Ben in the given context.(approximately 300 words)</strong></p>
+<p>A potential hash function that exhibits a Merkle-Damgård construction can be designed by following the general structure, while incorporating several core components to ensure its security and efficiency. The Merkle-Damgård construction consists of an iterative structure that processes input data in blocks and a compression function that updates the internal state. The core components of such a hash function include:</p>
+<ol>
+<li>Padding scheme: A padding scheme is essential for processing input messages of arbitrary lengths. The padding should be designed in a way that ensures the uniqueness of padded messages to avoid potential security vulnerabilities. A common padding technique is to append a ‘1’ bit to the input message, followed by a sequence of ‘0’ bits, and then a fixed-size binary representation of the original message length. This ensures that the padded message has a length that is a multiple of the block size and that no two different messages have the same padded representation.</li>
+<li>Compression function: The compression function is the heart of the Merkle-Damgård construction, responsible for updating the internal state with each message block. It takes as input the current internal state and a message block, and outputs an updated internal state. The compression function should be designed to achieve diffusion, ensuring that the input data’s influence propagates evenly throughout the output. One way to achieve this is to use a combination of bitwise operations, such as AND, OR, XOR, rotations, and modular addition, that mix and diffuse the input data effectively.</li>
+<li>Initialization vector (IV): The initial internal state, often referred to as the Initialization Vector (IV), is a crucial component of the hash function. It must be chosen carefully to avoid potential attacks and biases in the output. The IV is usually a set of constants predefined in the hash function specification. These constants should be generated using a transparent and cryptographically secure method, such as basing them on the fractional parts of mathematical constants (e.g., square roots or logarithms of prime numbers), ensuring their independence from the hash function design.</li>
+<li>Iterative processing: The Merkle-Damgård construction processes the input data in blocks using an iterative approach. Each iteration applies the compression function to the current internal state and a message block, producing an updated internal state. The iterative structure contributes to the security and efficiency of the hash function by breaking down the input data into manageable pieces, enabling parallel processing and allowing for incremental updates.</li>
+<li>Finalization: After processing all message blocks, a finalization step may be added to further enhance the security of the hash function. This can involve applying an additional transformation to the internal state or using a different compression function to produce the final hash output. The finalization step helps ensure that the internal state is not directly revealed, preventing potential attacks based on the knowledge of the final internal state.</li>
+</ol>
+<p>In summary, a potential hash function exhibiting a Merkle-Damgård construction should incorporate a secure padding scheme, a well-designed compression function, a transparently chosen initialization vector, an iterative processing structure, and a robust finalization step. These core components are vital to ensuring the security, efficiency, and reliability of the bespoke hash function in the context of Lime Legal’s digital investigations.</p>
 <h1 id="Terminology-amp-Jargons"><a href="#Terminology-amp-Jargons" class="headerlink" title="Terminology&amp;Jargons:"></a>Terminology&amp;Jargons:</h1><p><strong>FDE:</strong> Full Disk Encryption (FDE) is an encryption technology implemented on hard disk drives or solid state drives. It protects all data stored on the disk, including operating system, program files, user data, etc. Its main purpose is to ensure that sensitive data on the disk cannot be deciphered in case of unauthorized access.</p>
 <p><strong>File Carving:</strong> File carving is a process used in [computer forensics](<a target="_blank" rel="noopener" href="https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec">https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec</a> network&amp;utm_campaign&#x3D;course pricing&amp;utm_content&#x3D;hyperlink) to extract data from a disk drive or other storage device without the assistance of the file system that originality created the file. </p>
 <p><strong>Unallocated area:</strong> Unallocated space refers to the area of the drive which no longer holds any file information as indicated by the file system structures like the file table. </p>
@@ -434,6 +462,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2023/04/21/Secured-Software-Engineering/" class="article-nav-link">
+        <strong class="article-nav-caption">Previous Post</strong>
+        <div class="article-nav-title">
+          
+            Secured Software Engineering
+          
+        </div>
+      </a>
     
     
       <a href="/2023/04/18/data-analyst/" class="article-nav-link">
