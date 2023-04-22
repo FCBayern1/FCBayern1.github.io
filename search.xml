@@ -7,20 +7,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>data analyst</title>
-    <url>/2023/04/18/data-analyst/</url>
-    <content><![CDATA[<ul>
-<li>Have completed an undergraduate degree to a (2.1 minimum) with a Mathematical or Scientific background</li>
-<li>Knowledge in SQL or Power BI</li>
-<li>Strong analytical and numerical skills</li>
-<li>Experience preparing, consolidating and normalising data :ETL processes</li>
-<li>Experience &#x2F; knowledge of data visualisation and dashboard tools e.g. Qlikview, Tableau or Power BI</li>
-<li>Strong communication skills to work comfortable with all levels of users</li>
-<li>Be within commuting distance to Croydon</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>Secured Software Engineering</title>
     <url>/2023/04/21/Secured-Software-Engineering/</url>
     <content><![CDATA[<p>The below case studies are given here in advance, they will be part of the final exam. </p>
@@ -45,6 +31,20 @@
 <p>own words, no coding is required). [6]</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">authenticateUser</span>(<span class="params">username, password</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> userCredentials = &#123;</span><br><span class="line"></span><br><span class="line"> <span class="attr">username</span>: username, </span><br><span class="line"></span><br><span class="line"> <span class="attr">password</span>: password </span><br><span class="line"></span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> input = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;input&quot;</span>).<span class="property">value</span>; </span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (<span class="title function_">isValidEmail</span>(input)) &#123;</span><br><span class="line"></span><br><span class="line"> userCredentials.<span class="property">email</span> = input; </span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> $.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>, userCredentials, <span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (response.<span class="property">success</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="title function_">alert</span>(<span class="string">&quot;You are logged in!&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(<span class="string">&quot;Authentication failed.&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isValidEmail</span>(<span class="params">email</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> emailRegex = <span class="regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> emailRegex.<span class="title function_">test</span>(email); </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+]]></content>
+  </entry>
+  <entry>
+    <title>data analyst</title>
+    <url>/2023/04/18/data-analyst/</url>
+    <content><![CDATA[<ul>
+<li>Have completed an undergraduate degree to a (2.1 minimum) with a Mathematical or Scientific background</li>
+<li>Knowledge in SQL or Power BI</li>
+<li>Strong analytical and numerical skills</li>
+<li>Experience preparing, consolidating and normalising data :ETL processes</li>
+<li>Experience &#x2F; knowledge of data visualisation and dashboard tools e.g. Qlikview, Tableau or Power BI</li>
+<li>Strong communication skills to work comfortable with all levels of users</li>
+<li>Be within commuting distance to Croydon</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
@@ -606,6 +606,7 @@
     <title>forensics</title>
     <url>/2023/04/20/forensics/</url>
     <content><![CDATA[<p>5080 UofG</p>
+<p>[TOC]</p>
 <h1 id="Revision-and-Reflection"><a href="#Revision-and-Reflection" class="headerlink" title="Revision and Reflection:"></a>Revision and Reflection:</h1><ol>
 <li><h2 id="Raphael-Aerospace"><a href="#Raphael-Aerospace" class="headerlink" title="Raphael Aerospace"></a>Raphael Aerospace</h2></li>
 </ol>
@@ -873,21 +874,23 @@
 </ol>
 <p>The management team for Orange Entertainment want to recover files from a Microsoft Windows 10 workstation that have been destroyed by a disgruntled employee. The management team believe the employee destroyed the files as they had been manipulating them for their own gain over several months. The management team have authorised the systems support team to recover the files as part of their investigation. The systems support team have allocated trainees Bill and Ben to lead the investigation and recover the files.</p>
 <p><strong>a). Ben has identified ShadowExplorer as a useful tool to recover files from the Microsoft Windows 10 workstation.Discuss TWO relevant features of the ShadowExplorer tool and argue the relevance in the given context. (approximately 200 words)</strong></p>
-<p>The approach favored by the specialized software developer of keeping the algorithm for generating initial values and constants secret while making the hash function and constants public raises some concerns in the given context of digital investigations.</p>
-<p>One of the primary concerns is the lack of transparency in the process. In the field of cryptography, it is widely accepted that security should rely on the strength of the algorithm rather than the secrecy of its design. This principle is known as Kerckhoffs’s principle. By keeping the algorithm for generating initial values and constants secret, Lime Legal risks undermining the trust and credibility of their hash function. Digital evidence generated using a hash function with undisclosed components may face challenges in legal proceedings, as opposing parties could question its integrity.</p>
-<p>Additionally, the secrecy of the algorithm prevents independent verification and analysis by the broader cryptographic community. Peer review and open scrutiny are essential to establishing the security and reliability of cryptographic algorithms. Closed-source designs may contain unintentional flaws or vulnerabilities that would otherwise be identified and resolved through a transparent review process.</p>
-<p>Furthermore, the reliance on a secret algorithm for generating initial values and constants introduces the possibility of a single point of failure. If the secret algorithm is compromised, the entire hash function could be rendered insecure, potentially jeopardizing ongoing and past investigations.</p>
-<p>In conclusion, the approach favored by the specialized software developer is not appropriate in the given context. Lime Legal should consider adhering to established cryptographic principles and industry best practices, which emphasize transparency, open scrutiny, and independent verification to ensure the credibility and robustness of their bespoke hash function.</p>
-<p><strong>b. Bill has decided to use ShadowExplorer on the employee workstation in-situ, but Ben is concerned if such an approach is appropriate. Ben also suggests the pair should at least take some simple notes of their actions, Bill argues it is not necessary. Critique the differing positions of Bill and Ben in the given context.(approximately 300 words)</strong></p>
-<p>A potential hash function that exhibits a Merkle-Damgård construction can be designed by following the general structure, while incorporating several core components to ensure its security and efficiency. The Merkle-Damgård construction consists of an iterative structure that processes input data in blocks and a compression function that updates the internal state. The core components of such a hash function include:</p>
+<p>ShadowExplorer is a valuable tool for recovering lost or damaged files, offering two key features that make it particularly relevant for the Orange Entertainment management team’s investigation.</p>
 <ol>
-<li>Padding scheme: A padding scheme is essential for processing input messages of arbitrary lengths. The padding should be designed in a way that ensures the uniqueness of padded messages to avoid potential security vulnerabilities. A common padding technique is to append a ‘1’ bit to the input message, followed by a sequence of ‘0’ bits, and then a fixed-size binary representation of the original message length. This ensures that the padded message has a length that is a multiple of the block size and that no two different messages have the same padded representation.</li>
-<li>Compression function: The compression function is the heart of the Merkle-Damgård construction, responsible for updating the internal state with each message block. It takes as input the current internal state and a message block, and outputs an updated internal state. The compression function should be designed to achieve diffusion, ensuring that the input data’s influence propagates evenly throughout the output. One way to achieve this is to use a combination of bitwise operations, such as AND, OR, XOR, rotations, and modular addition, that mix and diffuse the input data effectively.</li>
-<li>Initialization vector (IV): The initial internal state, often referred to as the Initialization Vector (IV), is a crucial component of the hash function. It must be chosen carefully to avoid potential attacks and biases in the output. The IV is usually a set of constants predefined in the hash function specification. These constants should be generated using a transparent and cryptographically secure method, such as basing them on the fractional parts of mathematical constants (e.g., square roots or logarithms of prime numbers), ensuring their independence from the hash function design.</li>
-<li>Iterative processing: The Merkle-Damgård construction processes the input data in blocks using an iterative approach. Each iteration applies the compression function to the current internal state and a message block, producing an updated internal state. The iterative structure contributes to the security and efficiency of the hash function by breaking down the input data into manageable pieces, enabling parallel processing and allowing for incremental updates.</li>
-<li>Finalization: After processing all message blocks, a finalization step may be added to further enhance the security of the hash function. This can involve applying an additional transformation to the internal state or using a different compression function to produce the final hash output. The finalization step helps ensure that the internal state is not directly revealed, preventing potential attacks based on the knowledge of the final internal state.</li>
+<li>Access to Shadow Copies: Since it is a Windows OS, One of the primary features of ShadowExplorer is its ability to access and browse through the shadow copies of files created by the Windows Volume Shadow Copy Service (VSS) on Windows. These shadow copies act as snapshots of the files and their respective states at different points in time. In the context of Orange Entertainment’s investigation, this feature is crucial as it allows Bill and Ben to potentially recover earlier versions of the manipulated files. By restoring these earlier versions, the management team can gain insight into the disgruntled employee’s actions and better understand the extent of the manipulation.</li>
+<li>User-friendly interface: ShadowExplorer’s intuitive and user-friendly interface is another important feature that makes it suitable for the investigation. The tool presents a familiar Explorer-like interface, enabling Bill and Ben to easily navigate through the shadow copies and locate the relevant files. This ease of use will help streamline the recovery process, allowing the trainees to efficiently identify and restore the destroyed files. Furthermore, since both Bill and Ben are trainees, the simplicity of the tool will make it easier for them to learn and utilize in their investigation, reducing the chances of making mistakes during the recovery process.</li>
 </ol>
-<p>In summary, a potential hash function exhibiting a Merkle-Damgård construction should incorporate a secure padding scheme, a well-designed compression function, a transparently chosen initialization vector, an iterative processing structure, and a robust finalization step. These core components are vital to ensuring the security, efficiency, and reliability of the bespoke hash function in the context of Lime Legal’s digital investigations.</p>
+<p>In summary, ShadowExplorer’s ability to access shadow copies and its user-friendly interface make it an ideal tool for Bill and Ben to recover the destroyed files, providing Orange Entertainment’s management team with the information they need to assess the situation and address the employee’s misconduct.</p>
+<p><strong>b. Bill has decided to use ShadowExplorer on the employee workstation in-situ, but Ben is concerned if such an approach is appropriate. Ben also suggests the pair should at least take some simple notes of their actions, Bill argues it is not necessary. Critique the differing positions of Bill and Ben in the given context.(approximately 300 words)</strong></p>
+<p>Bill’s decision to use ShadowExplorer directly on the employee workstation in-situ might seem efficient and time-saving; however, Ben’s concerns are valid, particularly in the context of an investigation where preserving evidence and maintaining a clear chain of custody is crucial.</p>
+<p>Using ShadowExplorer in-situ poses <strong>several risks</strong>. First, the process might inadvertently alter the state of the workstation, potentially corrupting or overwriting evidence. Such modifications can jeopardize the <strong>integrity of the investigation</strong> and might also <strong>impact the legal admissibility of the evidence</strong>, should the management team decide to pursue legal action against the disgruntled employee. Instead, it is more appropriate to <strong>create a forensic image</strong> of the hard drive and work on a copy of that image to ensure the original data remains unaltered.</p>
+<p>Second, working directly on the employee workstation increases the risk of <strong>accidental data loss or damage</strong>, especially given that both Bill and Ben are trainees. Utilizing a forensic copy provides a <strong>safety net</strong>, allowing them to <strong>revert</strong> to the original state if any mistakes are made during the recovery process <strong>(investigation revertiable)</strong>.</p>
+<p>Regarding the documentation of their actions, Ben’s suggestion to take simple notes is actually a necessary step in a proper investigation. Maintaining detailed records of their actions, tools used, and findings is essential for several reasons:</p>
+<ol>
+<li>Accountability: Documenting the investigation process ensures that all actions taken can be justified and reviewed, which helps maintain the credibility and integrity of the investigation.</li>
+<li>Reproducibility: Detailed notes allow others, including senior team members or external experts, to review and reproduce the steps taken in the investigation if needed, helping to validate the findings.</li>
+<li>Legal purposes: Should the case go to court, proper documentation is vital for establishing the chain of custody and proving the legitimacy of the evidence obtained.</li>
+</ol>
+<p>In conclusion, Ben’s concerns about using ShadowExplorer in-situ and the need for documentation are valid. Adopting a more cautious approach that preserves the integrity of the evidence and maintains a clear record of their actions will not only improve the quality of the investigation but also ensure that the recovered data can be used effectively in any potential legal proceedings.</p>
 <h1 id="Terminology-amp-Jargons"><a href="#Terminology-amp-Jargons" class="headerlink" title="Terminology&amp;Jargons:"></a>Terminology&amp;Jargons:</h1><p><strong>FDE:</strong> Full Disk Encryption (FDE) is an encryption technology implemented on hard disk drives or solid state drives. It protects all data stored on the disk, including operating system, program files, user data, etc. Its main purpose is to ensure that sensitive data on the disk cannot be deciphered in case of unauthorized access.</p>
 <p><strong>File Carving:</strong> File carving is a process used in [computer forensics](<a href="https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec">https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec</a> network&amp;utm_campaign&#x3D;course pricing&amp;utm_content&#x3D;hyperlink) to extract data from a disk drive or other storage device without the assistance of the file system that originality created the file. </p>
 <p><strong>Unallocated area:</strong> Unallocated space refers to the area of the drive which no longer holds any file information as indicated by the file system structures like the file table. </p>
@@ -922,18 +925,18 @@
 <p>MD结构首先对输入消息进行填充，让消息变成固定长度的整数倍（比如512或者1024）。这是因为压缩算法是不能对任意长度的消息进行处理的，所以在处理之前必须进行填充。在原始数据的尾部添上1000…然后加上原始消息长度的2进制值使其长度变为512或1024的整数倍;<strong>使用额外的block</strong>，额外的使用一个block往往有点浪费，一个更加节约空间的做法就是，如果填充到最后一个block的0中有住够的空间的话，那么可以消息的长度放在那里。</p>
 <p><strong>Compress</strong></p>
 <p>完成padding之后就可以进行compress了。消息被分成了很多个block，最开始的初始化向量和第一个block进行f操作，得到了的结果再和第二个block进行操作，如此循环进行，最终得到了最后的结果。</p>
-<p><img src="/../images/v2-43958e721f4c71625fde28962a327e3b_720w.webp" alt="img"></p>
+<p><img src="/../images/v2-43958e721f4c71625fde28962a327e3b_720w.webp" alt="MD Structure"></p>
 <p><strong>长度延展攻击</strong></p>
 <p>MD结构，是将消息分成一个一个的block，前一个block 运算出来的值会跟下一个block再次进行运算，这种结构可以很方便的进行长度延展攻击。前提是我们需要知道原消息的长度。在密码学中长度延展攻击就是指攻击者通过已知的hash(message1)和message1的长度，从而能够知道hash（message1‖message2）的值。其中‖ 表示的是连接符。并且攻击性并需要知道message1到底是什么。</p>
 <p><strong>Wide pipe</strong></p>
 <p>为了避免长度延展攻击，我们可以对MD结构进行一些变形。</p>
-<p><img src="/../images/v2-7bcc1f1e64f49a021592e673c80f205a_720w.webp" alt="img"></p>
+<p><img src="/../images/v2-7bcc1f1e64f49a021592e673c80f205a_720w.webp" alt="Wide pipe"></p>
 <p>wide pipe和MD的流程基本上是一致的，不同的是生成的中间临时的加密后的消息长度是最终生成消息长度的两倍。</p>
 <p>这也就是为什么上图中会有两个初始向量IV1 和 IV2。假如最终的结果长度是n的话，那么在中间生成的结果的长度就是2n。我们需要在最后的final 这一步中，将2n长度的数据缩减为n长度的数据。</p>
 <p><strong>Fast wide pipe</strong></p>
 <p>SHA-512&#x2F;224 和 SHA-512&#x2F;256 只是简单的丢弃掉一半数据。</p>
 <p>还有一种比wide pipe更快的算法叫做fast wide pipe：</p>
-<p><img src="/../images/v2-38067688fe25a216016a8819756dd105_r.jpg" alt="img"></p>
+<p><img src="/../images/v2-38067688fe25a216016a8819756dd105_r.jpg" alt="Fast wide pipe"></p>
 <p>和wide pipe不同的是，它的主要思想是将前一个链接值的一半转发给XOR，然后将其与压缩函数的输出进行XOR。</p>
 ]]></content>
       <tags>
