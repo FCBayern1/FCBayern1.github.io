@@ -204,6 +204,22 @@
 <p><strong>Case Study 2:</strong> ABC airlines operates a large number of flights globally. In 2021, the airline suffered a significant data breach that affected the personal information of thousands of customers. In response to this breach, ABC airlines invested in a new approach to secure software engineering, including implementing secure coding practices, testing and validating software, and conducting regular security audits. The company has a complex network infrastructure that includes several web servers, database servers, and application servers. (Provided ahead of the exam)</p>
 <p><strong>1.</strong> <strong>Case Study:</strong> You are part of a team that has been tasked with developing a web-based application for a healthcare organization. The application will allow doctors to view patient information, including medical history, test results and treatment plans. Patients will also be able to access the application to view their own medical information and communicate with their doctors. The application will be used by a large number of healthcare providers and patients, so security is a top priority. (This case study is part of the final exam, provided ahead of the exam here)</p>
 <p><strong>(a)</strong> Identify and list down five use cases and five misuse cases of the system. [5]</p>
+<p>Use Cases:</p>
+<ol>
+<li>Registration: A new patient can securely register on the platform, providing their personal and contact information, and setting up a strong, unique password.</li>
+<li>Medical Record Access: A doctor can access a patient’s medical history, including previous diagnoses, treatment plans, medications, and test results, to make informed decisions regarding the patient’s care.</li>
+<li>Appointment Scheduling: Patients can use the application to schedule appointments with their healthcare providers, selecting available dates and times and receiving confirmation notifications.</li>
+<li>Secure Messaging: Doctors and patients can communicate via a secure messaging platform within the application, discussing treatment plans, symptoms, and other healthcare-related topics.</li>
+<li>Prescription Management: Healthcare providers can securely prescribe medications through the application, enabling patients to access their prescriptions and facilitating communication with pharmacies.</li>
+</ol>
+<p>Misuse Cases:</p>
+<ol>
+<li>Unauthorized Access: An attacker gains unauthorized access to a patient’s account, potentially viewing, altering, or deleting sensitive medical information, or even impersonating the patient.</li>
+<li>Man-in-the-Middle Attack: An attacker intercepts the communication between the patient and the healthcare provider, potentially modifying the messages sent or received or eavesdropping on sensitive information.</li>
+<li>Phishing Attacks: An attacker sends phishing emails or messages to patients, posing as a healthcare provider or the application itself, in an attempt to steal login credentials or other sensitive information.</li>
+<li>Distributed Denial-of-Service (DDoS) Attack: An attacker overwhelms the application with a large volume of traffic, causing it to become unresponsive or slow, preventing healthcare providers and patients from accessing necessary information and services.</li>
+<li>Security Misconfiguration: The application’s security settings are not properly configured, leaving it vulnerable to attacks and exposing sensitive patient data.</li>
+</ol>
 <p><strong>(b)</strong> List down five actors and five attackers of the system. [5]</p>
 <p><strong>(c)</strong> List down five high-level threats to the system. [5]</p>
 <p><strong>(d)</strong> Against each threat what would be your countermeasure? [5]</p>
@@ -555,38 +571,102 @@
 <p>In conclusion, Ben’s concerns about using ShadowExplorer in-situ and the need for documentation are valid. Adopting a more cautious approach that preserves the integrity of the evidence and maintains a clear record of their actions will not only improve the quality of the investigation but also ensure that the recovered data can be used effectively in any potential legal proceedings.</p>
 <h1 id="2019-Sample-Paper"><a href="#2019-Sample-Paper" class="headerlink" title="2019 Sample Paper"></a>2019 Sample Paper</h1><h2 id="1-Janus-in-BBFS"><a href="#1-Janus-in-BBFS" class="headerlink" title="1. Janus in BBFS"></a>1. Janus in BBFS</h2><p>Janus is a software engineer for Bill and Ben Financial Services (BBFS). Janus has concerns about algorithms that unfairly disadvantage business customers. Janus has raised it with his line manager, but she was disinterested in his concerns. Janus decides to effectively smuggle elements of source code and associated documents outside the organisation using an external disk.</p>
 <p><strong>(a) Janus is aware that the company utilises forensic techniques to identify encrypted files on external disks taken outside the organisation. Janus decides to smuggle the data via an external disk using steganography.Contrast steganography with cryptography and argue for steganography in the given context.[4]</strong></p>
+<p>Steganography and cryptography are two distinct techniques used for protecting and concealing data. While both methods have their applications, steganography might be more suitable for Janus’s situation due to its ability to hide information within other data.</p>
+<p>Steganography involves concealing information within another file or data stream, such as an image, audio, or video file, in such a way that it is virtually undetectable to an observer. The information is embedded in the carrier file without changing its perceptible characteristics, making it difficult to identify the presence of hidden data. This technique allows for the secret transfer of information, as the carrier file appears innocuous and attracts little suspicion.</p>
+<p>Cryptography, on the other hand, focuses on encrypting data to make it unreadable and incomprehensible to unauthorized parties. While cryptography protects the contents of a message, it does not hide the fact that encrypted data exists. Encrypted files can draw attention and raise suspicion, potentially leading to further investigation.</p>
+<p>In the given context, steganography might be more suitable for Janus’s needs. Since BBFS uses forensic techniques to identify encrypted files, using cryptography to protect the data on an external disk could raise red flags and make it more likely for Janus’s actions to be discovered. Steganography, however, would allow Janus to hide the source code and documents within seemingly harmless files, avoiding detection by BBFS’s security measures. By employing steganography, Janus can minimize the risk of his actions being discovered while still smuggling the data out of the organization.</p>
 <p><strong>(b) Janus has decided to use the Bit Plane Complexity Segmentation (BPCS) algorithm to ensure high-capacity use of vessel images. Janus wants to ensure that insertion of the payload will not result in images that are vulnerable to human visualinspection. Janus plans to use several holiday images in Pure Binary Coding (PBC) with many ‘noisy’ qualities, e.g. sand and rain. Explain THREE operations of the BPCS algorithm to ensure the payload is effectively hidden in the given context.[9]</strong></p>
+<p><strong>BPCS-隐写术（Bit-Plane Complexity Segmentation steganography）是</strong><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/File_camouflage">数字隐写术</a>的一种。</p>
+<p>数字隐写术可以通过将机密数据（即秘密文件）嵌入到一些称为“容器数据”的媒体数据中来非常安全地隐藏它们。容器数据也称为“承运人、封面或虚拟数据”。在 BPCS 隐写术中，<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/24-bit_color">真彩色</a>图像（即<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/24-bit_color">24 位彩色</a>图像）主要用于血管数据。实际中的嵌入操作是用机密数据替换血管图像<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bit_plane">位平面</a>上的“复杂区域” 。BPCS-隐写术最重要的方面是嵌入容量非常大。与仅使用最不重要的数据位的简单图像隐写术相比，因此（对于<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/24-bit_color">24 位颜色</a>图像）只能嵌入相当于总大小 1&#x2F;8 的数据，而 BPCS 隐写术使用多个位平面，因此可以嵌入更多的数据，尽管这取决于单个图像。对于“正常”图像，在图像退化变得明显之前，大约 50% 的数据可能可以用秘密数据替换。</p>
+<p>比特平面复杂度分割（BPCS）算法是一种有效的隐写术方法，用于在图像中隐藏数据，特别是那些具有 “噪音 “性质的图像。在Janus的案例中，使用带有沙子和雨水的假日图像对BPCS隐写术是有利的。以下是BPCS算法的三个关键操作，有助于确保有效地隐藏有效载荷：</p>
+<p>分解为位平面： BPCS算法首先将容器图像分解为一系列的位平面。每个比特平面代表了图像二进制表示法中的不同重要性水平。例如，最重要的位（MSB）平面包含最高的对比度信息，而最不重要的位（LSB）平面包含最低的对比度信息。通过以这种方式分解图像，BPCS可以操作对比度较低、”噪音较大 “的位平面来嵌入有效载荷，而不会对图像造成明显的变化。</p>
+<p>复杂度计算和分割： BPCS通过计算不同值（0或1）的接壤像素对的比例来评估每个位面段的复杂性。如果一个片段的复杂性超过了预定的阈值，它就被认为是 “有噪声 “的，适合嵌入有效载荷。在Janus的案例中，使用带有沙子和雨水的图像增加了可用于数据隐藏的复杂片段的数量。这有助于确保有效载荷被很好地隐藏起来，难以被人类的视觉检查所发现。</p>
+<p>自适应的数据嵌入： BPCS将有效载荷嵌入到上一步确定的复杂片段中。通过根据其复杂性自适应地选择合适的片段，BPCS确保嵌入的数据不会对图像造成明显的变化。该算法以保持图像的整体复杂性的方式，用有效载荷数据替换原始的复杂片段。这种自适应的嵌入过程对于在给定的环境中有效地隐藏有效载荷至关重要，因为它减少了通过视觉检查发现的风险。</p>
+<p>通过使用BPCS算法，Janus可以利用假日图像的噪声特性来有效地隐藏有效载荷。分解为位平面，复杂度计算和分割，以及自适应数据嵌入操作共同作用，确保隐藏的数据难以被发现，同时对图像的视觉质量影响最小。</p>
 <p><strong>(c) Janus is planning on implementing the BPCS algorithm on his workstation as to ensure he can embed payload data in the vessel images.Devise a simple BPCS algorithm to embed payload data in vessel images.[6]</strong></p>
+<p>A simple BPCS algorithm for embedding payload data in vessel images can be broken down into the following steps:</p>
+<ol>
+<li>Image Preparation: Convert the vessel image to a suitable format, such as a lossless format like PNG or BMP, to prevent compression artifacts from affecting the steganography process. Resize the image if necessary to accommodate the payload data.</li>
+<li>Bit Plane Decomposition: Decompose the vessel image into a series of bit planes. Separate the image into its color channels (e.g., red, green, and blue) and represent each channel using binary values. Then, create bit planes for each level of significance, from the most significant bit (MSB) to the least significant bit (LSB).</li>
+<li>Payload Preparation: Convert the payload data into binary format. You may consider compressing and encrypting the data beforehand to further protect and optimize the payload.</li>
+<li>Complexity Calculation and Segmentation: Evaluate the complexity of each bit plane segment by calculating the proportion of bordering pixel pairs with different values (0 or 1). If a segment’s complexity surpasses a predefined threshold, it is considered ‘noisy’ and suitable for embedding the payload.</li>
+<li>Adaptive Data Embedding: Iterate through the noisy segments identified in the previous step, and embed the payload data by replacing the original complex segments. Ensure that the embedding process maintains the overall complexity of the image to avoid arousing suspicion.</li>
+<li>Image Reconstruction: Reassemble the modified bit planes into their respective color channels, and then combine the channels to create the final stego-image. Save the stego-image in a lossless format to preserve the embedded data.</li>
+<li>Payload Extraction: To extract the payload data from the stego-image, reverse the process by decomposing the stego-image into bit planes, identifying the noisy segments where the payload data was embedded, and reconstructing the original payload data from the binary values stored in those segments.</li>
+</ol>
+<p>By following these steps, Janus can implement a simple BPCS algorithm to effectively embed payload data in vessel images. The use of noisy segments for data embedding makes the hidden information difficult to detect through visual inspection, providing a level of security for the concealed data.</p>
 <p><strong>(d) Janus is concerned that inspection techniques will reveal use of the steganography approach. Janus is concerned he will be legally required to reveal the devised algorithm in (c) to relevant authorities under the (UK) Regulation of Investigatory Powers Act 2000 (RIPA).Argue whether Janus would be required to reveal the devised algorithm in (c) under the (UK) Regulation of Investigatory Powers Act 2000 (RIPA).[4]</strong></p>
-<h2 id="2-Pagli-and-Antonellis"><a href="#2-Pagli-and-Antonellis" class="headerlink" title="2. Pagli and Antonellis"></a>2. Pagli and Antonellis</h2><p>Pagli and Antonellis are novice cyber system forensic investigators and have started a small start-up business. The pair have invested in two, basic laptop computers. The pair have been contracted by a large company to investigate an employee workstation. Thecompany has multiple workstations, comprising of basic components, e.g. limited processing capabilities. The company management are particularly interested in specific Microsoft Word documents. The company state the workstations do not make use of any anti-forensics techniques, e.g. full-disk encryption.</p>
+<p>While I am not a legal expert, I can provide some general information on the matter. The Regulation of Investigatory Powers Act 2000 (RIPA) in the UK provides a legal framework for the use of investigatory powers by authorities, including the interception of communications, acquisition of communications data, and the use of covert human intelligence sources, among others.</p>
+<p>Under Part III of RIPA, authorities may legally demand the disclosure of protected information, which includes encrypted data or keys necessary to decrypt the information. If served with a notice under RIPA, individuals or organizations are required to provide the requested information or assistance, or face penalties for non-compliance.</p>
+<p>In the case of Janus, if the relevant authorities become aware of his use of steganography and suspect that he has hidden sensitive or illegal information within the images, they may issue a notice under RIPA, requiring Janus to disclose the hidden data or provide the necessary means to access it. This could potentially include revealing the BPCS algorithm devised in (c).</p>
+<p>However, RIPA notices are typically issued when there is a justified need for access to the protected information, such as in cases of national security, crime prevention, or public safety concerns. Whether Janus would be required to reveal the devised algorithm under RIPA would depend on the specific circumstances of his case and whether the authorities deem it necessary to obtain the hidden data for a lawful purpose.</p>
+<p>It is essential for Janus to consider the legal implications of his actions and consult with a legal professional if he has concerns regarding the use of steganography and potential requirements under RIPA.</p>
+<h2 id="2-Pagli-and-Antonellis"><a href="#2-Pagli-and-Antonellis" class="headerlink" title="2. Pagli and Antonellis"></a>2. Pagli and Antonellis</h2><p>Pagli and Antonellis are novice cyber system forensic investigators and have started a small start-up business. The pair have invested in two, basic laptop computers. The pair have been contracted by a large company to investigate an employee workstation. The company has multiple workstations, comprising of basic components, e.g. limited processing capabilities. The company management are particularly interested in specific Microsoft Word documents. The company state the workstations do not make use of any anti-forensics techniques, e.g. full-disk encryption.</p>
 <p><strong>(a) Pagli and Antonellis have recovered the files of particular interest to company management but have discovered the files are encrypted and protected by unknown passwords. The pair are concerned that the passwords are sophisticated and cannot be easily determined. Pagli argues that the Distributed Network Attack (DNA) software tool from AccessData could be valuable.Describe TWO technical approaches employed by Distributed Network Attack(DNA) tool and argue the relevance in the given context[6]</strong></p>
+<p>The Distributed Network Attack (DNA) tool from AccessData is designed to assist in recovering passwords for encrypted files by leveraging the power of distributed computing. In the given context, where Pagli and Antonellis have recovered encrypted Microsoft Word documents with unknown passwords, DNA could be a valuable tool to help them gain access to the files. Here are two technical approaches employed by the DNA tool and their relevance in this context:</p>
+<ol>
+<li>Brute-force attack: DNA can perform a brute-force attack, which involves systematically attempting every possible password combination until the correct one is found. Brute-force attacks can be time-consuming, especially if the password is long and complex. However, DNA’s distributed computing capabilities allow it to harness the processing power of multiple computers, including the company’s workstations, to expedite the password recovery process. This distributed approach makes it more feasible to crack sophisticated passwords within a reasonable time frame, increasing the likelihood of success for Pagli and Antonellis.</li>
+<li>Dictionary attack: Another approach employed by DNA is the dictionary attack. This method involves using a precompiled list of words, phrases, or known passwords (a dictionary) to attempt to guess the password. DNA can also utilize rules-based variations, such as common substitutions or character additions, to further expand the list of potential passwords. Dictionary attacks are generally faster than brute-force attacks, as they focus on more likely password candidates. In the given context, this approach could be relevant if the employee used a password based on a dictionary word, a common phrase, or a known pattern.</li>
+</ol>
+<p>In conclusion, the Distributed Network Attack tool could be valuable for Pagli and Antonellis in their efforts to recover the passwords for the encrypted Microsoft Word documents. By employing both brute-force and dictionary attacks, while utilizing distributed computing resources, DNA increases the chances of successfully cracking the passwords, even if they are sophisticated. This would ultimately help Pagli and Antonellis fulfill their contract and provide the company management with access to the files of interest.</p>
 <p><strong>(b) Antonellis argues that the pair cannot afford to invest in Distributed Network Attack (DNA) software as resources are limited. Pagli argues that tool would be invaluable to the current case. Antonellis argues the pair should use a combination of command line tools and tailored scripts.Compare and contrast the tools suggested by Pagli and Antonellis and argue for the optimal approach in the given context.[8]</strong></p>
-<h1 id="Terminology-amp-Jargons"><a href="#Terminology-amp-Jargons" class="headerlink" title="Terminology&amp;Jargons:"></a>Terminology&amp;Jargons:</h1><p><strong>FDE:</strong> Full Disk Encryption (FDE) is an encryption technology implemented on hard disk drives or solid state drives. It protects all data stored on the disk, including operating system, program files, user data, etc. Its main purpose is to ensure that sensitive data on the disk cannot be deciphered in case of unauthorized access.</p>
-<p><strong>File Carving:</strong> File carving is a process used in [computer forensics](<a target="_blank" rel="noopener" href="https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec">https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec</a> network&amp;utm_campaign&#x3D;course pricing&amp;utm_content&#x3D;hyperlink) to extract data from a disk drive or other storage device without the assistance of the file system that originality created the file. </p>
-<p><strong>Unallocated area:</strong> Unallocated space refers to the area of the drive which no longer holds any file information as indicated by the file system structures like the file table. </p>
-<p><strong>Ip:</strong>  investigative process.</p>
-<p><strong>DFI</strong>(Digital forensics investigation): investigate the tool of crime and subject of crime.</p>
-<p><strong>Hash</strong>:哈希算法是指将任意长度的二进制值串映射为固定长度的二进制值串。原始数据经过映射之后得到的二进制值串就是哈希值。</p>
-<h1 id="Bullet-Points"><a href="#Bullet-Points" class="headerlink" title="Bullet Points:"></a>Bullet Points:</h1><p><strong>MD5加密原理步骤</strong></p>
-<p><strong>a). 填充，将其长度填充为512的整数倍:</strong></p>
-<p>填充的方法如下：</p>
-<p><strong>1)</strong> 在信息的后面填充一个1和无数个0，直到满足上面的条件时才停止用0对信息的填充。</p>
-<p><strong>2)</strong> 在这个结果后面附加一个以64位二进制表示的填充前信息长度（单位为Bit），如果二</p>
-<p>进制表示的填充前信息长度超过64位，则取低64位。</p>
-<p>经过这两步的处理，信息的位长&#x3D;N<em>512+448+64&#x3D;(N+1）</em>512，即长度恰好是512的整数倍。这样做的原因是为满足后面处理中对信息长度的要求。</p>
-<p><strong>b). 初始化变量</strong></p>
-<p>初始的128位值为初试链接变量，这些参数用于第一轮的运算，以大端<a href="https://link.zhihu.com/?target=https://baike.baidu.com/item/%E5%AD%97%E8%8A%82%E5%BA%8F">字节序</a>来表示，他们分别为： A&#x3D;0x01234567，B&#x3D;0x89ABCDEF，C&#x3D;0xFEDCBA98，D&#x3D;0x76543210。</p>
-<p>（每一个变量给出的数值是高字节存于内存低地址，低字节存于内存高地址，即大端字节序。在程序中变量A、B、C、D的值分别为0x67452301，0xEFCDAB89，0x98BADCFE，0x10325476）</p>
-<p><strong>c).处理分组数据</strong></p>
-<p>每一分组的算法流程如下：</p>
-<p>第一分组需要将上面四个链接变量复制到另外四个变量中：A到a，B到b，C到c，D到d。从第二分组开始的变量为上一分组的运算结果，即A &#x3D; a， B &#x3D; b， C &#x3D; c， D &#x3D; d。</p>
-<p>主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行16次操作。每次操作对a、b、c和d中的其中三个作一次非线性函数运算，然后将所得结果加上第四个变量，文本的一个子分组和一个常数。再将所得结果向左<strong>环移</strong>一个不定的数，并加上a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。</p>
-<p>以下是每次操作中用到的四个非线性函数（每轮一个）。</p>
-<p>F( X ,Y ,Z ) &#x3D; ( X &amp; Y ) | ( (~X) &amp; Z )</p>
-<p>G( X ,Y ,Z ) &#x3D; ( X &amp; Z ) | ( Y &amp; (~Z) )</p>
-<p>H( X ,Y ,Z ) &#x3D;X ^ Y ^ Z</p>
-<p>I( X ,Y ,Z ) &#x3D;Y ^ ( X | (~Z) )</p>
-<p>（&amp;是与（And），|是或（Or），~是非（Not），^是异或（Xor））</p>
+<p>Both the Distributed Network Attack (DNA) software and a combination of command line tools and tailored scripts have their merits and drawbacks in the given context. Here, we will compare and contrast these approaches and argue for the optimal solution for Pagli and Antonellis.</p>
+<p>Distributed Network Attack (DNA) software: Pros:</p>
+<ol>
+<li>Comprehensive and user-friendly: DNA is a dedicated tool designed for password recovery, with built-in features and functionality that simplify the process for users.</li>
+<li>Distributed computing: DNA leverages the power of multiple computers to speed up the password recovery process, making it more efficient for cracking complex passwords.</li>
+<li>Multiple attack strategies: DNA supports both brute-force and dictionary attacks, offering a versatile approach to password recovery.</li>
+</ol>
+<p>Cons:</p>
+<ol>
+<li>Cost: DNA may be expensive, particularly for a small start-up with limited resources.</li>
+<li>Overkill for simple cases: DNA’s advanced capabilities may not be necessary if the target password is weak or follows a predictable pattern.</li>
+</ol>
+<p>Command line tools and tailored scripts: Pros:</p>
+<ol>
+<li>Cost-effective: Using open-source command line tools and custom scripts can be more budget-friendly, as there is no need to invest in expensive software.</li>
+<li>Flexibility: Tailored scripts can be customized to the specific needs of the case, allowing Pagli and Antonellis to adapt their approach as required.</li>
+</ol>
+<p>Cons:</p>
+<ol>
+<li>Time-consuming setup: Developing and configuring custom scripts and tools may require a significant investment of time and expertise.</li>
+<li>Limited scalability: The performance of command line tools and scripts may be constrained by the available hardware resources, making it less suitable for cracking complex passwords in a timely manner.</li>
+</ol>
+<p>In the given context, the optimal approach depends on several factors, including the available budget, time constraints, and the complexity of the passwords. If Pagli and Antonellis believe that the encrypted files are of high importance and the passwords are likely to be sophisticated, investing in the DNA software could prove invaluable for its speed, efficiency, and user-friendly features. The distributed computing capabilities and the support for multiple attack strategies can significantly increase the chances of success.</p>
+<p>However, if the pair’s budget is truly limited and they possess the technical expertise to develop custom scripts, using command line tools and tailored scripts may be a more cost-effective alternative. This approach would allow them to retain control over the process and adapt their strategy to the specific case.</p>
+<p>Ultimately, the optimal approach will depend on the pair’s assessment of the case’s importance, the potential value of the encrypted files, and their available resources. It is crucial for Pagli and Antonellis to weigh the pros and cons of each option carefully before deciding on the best course of action.</p>
+<h1 id="Terminology-amp-Jargons"><a href="#Terminology-amp-Jargons" class="headerlink" title="Terminology&amp;Jargons:"></a>Terminology&amp;Jargons:</h1><p><strong>FDE:</strong> </p>
+<p>Full Disk Encryption (FDE) is an encryption technology implemented on hard disk drives or solid state drives. It protects all data stored on the disk, including operating system, program files, user data, etc. Its main purpose is to ensure that sensitive data on the disk cannot be deciphered in case of unauthorized access.</p>
+<p><strong>File Carving:</strong> </p>
+<p>File carving is a process used in [computer forensics](<a target="_blank" rel="noopener" href="https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec">https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec</a> network&amp;utm_campaign&#x3D;course pricing&amp;utm_content&#x3D;hyperlink) to extract data from a disk drive or other storage device without the assistance of the file system that originality created the file. </p>
+<p><strong>Unallocated area:</strong> </p>
+<p>Unallocated space refers to the area of the drive which no longer holds any file information as indicated by the file system structures like the file table. </p>
+<p><strong>Ip:</strong>  </p>
+<p>investigative process.</p>
+<p><strong>DFI</strong>(Digital forensics investigation): </p>
+<p>investigate the tool of crime and subject of crime.</p>
+<p><strong>Hash</strong>:</p>
+<p>哈希算法是指将任意长度的二进制值串映射为固定长度的二进制值串。原始数据经过映射之后得到的二进制值串就是哈希值。</p>
+<p><strong>MD5加密原理步骤</strong>:</p>
+<p>​	<strong>a). 填充，将其长度填充为512的整数倍:</strong></p>
+<p>​	填充的方法如下：</p>
+<p>​	<strong>1)</strong> 在信息的后面填充一个1和无数个0，直到满足上面的条件时才停止用0对信息的填充。</p>
+<p>​	<strong>2)</strong> 在这个结果后面附加一个以64位二进制表示的填充前信息长度（单位为Bit），如果二</p>
+<p>​	进制表示的填充前信息长度超过64位，则取低64位。</p>
+<p>​	经过这两步的处理，信息的位长&#x3D;N<em>512+448+64&#x3D;(N+1）</em>512，即长度恰好是512的整数倍。这样做的原因是为满足后面处理中对信息长度的要求。</p>
+<p>​	<strong>b). 初始化变量</strong></p>
+<p>​	初始的128位值为初试链接变量，这些参数用于第一轮的运算，以大端<a href="https://link.zhihu.com/?target=https://baike.baidu.com/item/%E5%AD%97%E8%8A%82%E5%BA%8F">字节序</a>来表示，他们分别为： 				  A&#x3D;0x01234567，B&#x3D;0x89ABCDEF，C&#x3D;0xFEDCBA98，D&#x3D;0x76543210。</p>
+<p>​	（每一个变量给出的数值是高字节存于内存低地址，低字节存于内存高地址，即大端字节序。在程序中变量A、	B、C、D的值分别为0x67452301，0xEFCDAB89，0x98BADCFE，0x10325476）</p>
+<p>​	<strong>c).处理分组数据</strong></p>
+<p>​	每一分组的算法流程如下：</p>
+<p>​	第一分组需要将上面四个链接变量复制到另外四个变量中：A到a，B到b，C到c，D到d。从第二分组开始的变量	为上一分组的运算结果，即A &#x3D; a， B &#x3D; b， C &#x3D; c， D &#x3D; d。</p>
+<p>​	主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行16次操作。每次操作对a、b、c和d中的其中	三个作一次非线性函数运算，然后将所得结果加上第四个变量，文本的一个子分组和一个常数。再将所得结果	向左<strong>环移</strong>一个不定的数，并加上a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。</p>
+<p>​	以下是每次操作中用到的四个非线性函数（每轮一个）。</p>
+<p>​	F( X ,Y ,Z ) &#x3D; ( X &amp; Y ) | ( (~X) &amp; Z )</p>
+<p>​	G( X ,Y ,Z ) &#x3D; ( X &amp; Z ) | ( Y &amp; (~Z) )</p>
+<p>​	H( X ,Y ,Z ) &#x3D;X ^ Y ^ Z</p>
+<p>​	I( X ,Y ,Z ) &#x3D;Y ^ ( X | (~Z) )</p>
+<p>​	（&amp;是与（And），|是或（Or），~是非（Not），^是异或（Xor））</p>
 <hr>
 <p><strong>Merkle–Damgård</strong></p>
 <p>Merkle–Damgård结构简称为MD结构，主要用在hash算法中抵御碰撞攻击。这个结构是一些优秀的hash算法，比如MD5,SHA-1和SHA-2的基础。今天给大家讲解一下这个MD结构和对他进行的长度延展攻击。</p>
