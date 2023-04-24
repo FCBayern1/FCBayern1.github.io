@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>First blog</title>
+    <url>/2023/02/12/First-blog/</url>
+    <content><![CDATA[<h1 id="Git-study"><a href="#Git-study" class="headerlink" title="Git study"></a>Git study</h1><p><img src="/../images/WeChatb22903d041669c31bc759fe2fce96683.png"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Secured Software Engineering</title>
     <url>/2023/04/21/Secured-Software-Engineering/</url>
     <content><![CDATA[<p>The below case studies are given here in advance, they will be part of the final exam. </p>
@@ -41,12 +47,6 @@
 <p>own words, no coding is required). [6]</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">authenticateUser</span>(<span class="params">username, password</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> userCredentials = &#123;</span><br><span class="line"></span><br><span class="line"> <span class="attr">username</span>: username, </span><br><span class="line"></span><br><span class="line"> <span class="attr">password</span>: password </span><br><span class="line"></span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> input = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;input&quot;</span>).<span class="property">value</span>; </span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (<span class="title function_">isValidEmail</span>(input)) &#123;</span><br><span class="line"></span><br><span class="line"> userCredentials.<span class="property">email</span> = input; </span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> $.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>, userCredentials, <span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (response.<span class="property">success</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="title function_">alert</span>(<span class="string">&quot;You are logged in!&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(<span class="string">&quot;Authentication failed.&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isValidEmail</span>(<span class="params">email</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> emailRegex = <span class="regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> emailRegex.<span class="title function_">test</span>(email); </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-]]></content>
-  </entry>
-  <entry>
-    <title>First blog</title>
-    <url>/2023/02/12/First-blog/</url>
-    <content><![CDATA[<h1 id="Git-study"><a href="#Git-study" class="headerlink" title="Git study"></a>Git study</h1><p><img src="/../images/WeChatb22903d041669c31bc759fe2fce96683.png"></p>
 ]]></content>
   </entry>
   <entry>
@@ -705,21 +705,15 @@
 <p>Identification: If a match is found between the hash values, it indicates that the target file or traces of it are present on the suspected system. In such cases, the system can be retained for further, deeper analysis.</p>
 <p>Hash Based Carving allows the BCO to rapidly check devices at the border for illegal digital content, enabling them to focus on suspicious systems for more in-depth investigation. This technique not only minimizes false positives but also helps streamline the process of detecting and preventing the transportation of illegal digital content across the border.</p>
 <p><strong>b). The BCO want to reduce the number of false positives as this can result in unnecessary workload and delays at the border. Evaluate your proposed approach in (a), indicate potential causes of false positives and argue how they can be addressed.</strong></p>
+<p>The proposed approach in (a) is Hash Based Carving. While it is a fast and efficient method to identify target files or their traces, it is not without potential causes of false positives. Here, we’ll evaluate the approach, highlight the possible reasons for false positives, and suggest ways to address them.</p>
 <p>Potential causes of false positives:</p>
-<ol>
-<li>Incomplete or fragmented files: The header-footer carving technique might identify and extract files that are incomplete or fragmented due to file system corruption or intentional deletion. In such cases, the extracted files may not be valid representations of the original content, leading to false positives.</li>
-<li>Random data patterns: The carving process might accidentally detect random data patterns in the raw data that resemble known file headers and footers. This could result in the extraction of non-existent files or unrelated data, creating false positives.</li>
-<li>Overlapping or embedded files: Some file formats may contain embedded data that resembles the header and footer of other file types. In such cases, the carving process might mistakenly extract the embedded data as separate files, causing false positives.</li>
-</ol>
-<p>Ways to address false positives:</p>
-<ol>
-<li>Improve validation checks: Enhance the validation step in the carving process by checking additional properties of the extracted files, such as their internal structure, metadata, or content. This can help filter out incomplete, fragmented, or otherwise invalid files, reducing false positives.</li>
-<li>Implement a more sophisticated carving algorithm: Instead of relying solely on header-footer carving, consider using a more advanced file carving technique like content-aware carving, which takes into account the file’s internal structure and content. This approach can help minimize false positives by reducing the likelihood of extracting unrelated data or non-existent files.</li>
-<li>Post-processing and filtering: After the initial carving process, perform additional analysis on the extracted files to filter out potential false positives. This could include comparing the extracted files to known hash values of illegal content, performing pattern matching or machine learning-based classification, or using other advanced data analysis techniques to identify and eliminate false positives.</li>
-<li>Regularly update the signature database: Maintain an up-to-date and comprehensive database of file signatures to improve the accuracy of the carving process. This can help reduce the chances of detecting random data patterns as false positives.</li>
-<li>Combine file carving with other digital forensic techniques: To increase the overall accuracy of the detection process and reduce false positives, consider using a combination of file carving and other digital forensic techniques, such as keyword searching, timeline analysis, or filesystem-based recovery methods.</li>
-</ol>
-<p>By addressing these potential causes of false positives and implementing the suggested improvements, the BCO can enhance the effectiveness of the file carving approach and minimize unnecessary workload and delays at the border.</p>
+<p>Hash collisions: Although rare, hash collisions can occur when two different data blocks result in the same hash value. In such cases, the carving tool might falsely identify a non-target file as a target file, leading to false positives.</p>
+<p>Partial matches: Hash Based Carving can detect partial matches of target files. However, there might be instances where the partial matches are unrelated to the target files, thus causing false positives.</p>
+<p>Addressing false positives:</p>
+<p>Utilize multiple hash algorithms: To minimize the chances of hash collisions, the BCO can use multiple hash algorithms (such as SHA-256, SHA-3, or others) and perform a comparison based on a combination of hash values. This approach significantly reduces the likelihood of false positives due to hash collisions.</p>
+<p>Verify file headers and footers: In addition to hash comparison, the BCO can implement a secondary check for file headers and footers to ensure that the identified files are indeed the target files. By verifying the unique file signatures of known target files, the BCO can further minimize false positives.</p>
+<p>Threshold-based matching: To address false positives due to partial matches, the BCO can set a threshold value for the level of similarity required for a match. By refining the matching criteria, the BCO can filter out unrelated partial matches, thereby reducing false positives.</p>
+<p>By addressing these potential causes of false positives, the BCO can enhance the efficiency of the Hash Based Carving approach, ensuring a more accurate and streamlined process at the border. This will minimize unnecessary workload and delays, allowing the BCO to focus on genuine cases that require deeper analysis.</p>
 <p><strong>c). The BCO also want to ensure the legality of the approach. The BCO want to ensure the approach does not require a specific search warrant, as this would impact on the speed and efficiency of the approach in terms of border control. Argue the potential legal concerns and outline how they may be addressed in any implementation for the given context.</strong></p>
 <p>Potential legal concerns:</p>
 <ol>
