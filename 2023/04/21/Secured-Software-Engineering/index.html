@@ -82,7 +82,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2.5k</span>
+            <span class="post-count">6.5k</span>
         </span>
     </span>
 
@@ -91,13 +91,15 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">13 min</span>
+            <span class="post-count">37 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
@@ -245,6 +247,647 @@
 <p>The ranking is important to satisfy the competing needs,Contradiction of needs e.g., privacy in one case can conflict with requirement to send name and email in other case.</p>
 <p>Candidate stakeholders are: end users, project manager, CEO, CIO, team lead, network admin, db manager, marketing department, legal department and sales team.</p>
 <p>Number of external stakeholders is limited</p>
+<h1 id="revision"><a href="#revision" class="headerlink" title="revision"></a>revision</h1><h2 id="Risk"><a href="#Risk" class="headerlink" title="Risk"></a>Risk</h2><p><strong>Risk and Risk management</strong></p>
+<ul>
+<li>﻿﻿Risk is the potential that a given threat will exploit vulnerabilities of an asset or group of assets and thereby cause harm to the organization</li>
+<li>﻿﻿Risk management— “Process of identifying, controlling and minimizing or eliminating security risks that may affect information systems, for an acceptable cost.”</li>
+<li>﻿﻿Risk assessment—“assessment of threats to, impact on and vulnerabilities of information and information processing facilities and the likelihood of their occurrence.”</li>
+</ul>
+<p><strong>Who is the enemy? Why do they do it?</strong><br>• Offenders</p>
+<ul>
+<li>Crackers—mostly teenagers doing as intellectual challenge</li>
+<li>Information system’s criminals—Espionage and&#x2F;or<br>Fraud&#x2F;abuse—for a nation&#x2F;company to gain a competitive advantage over its rivals</li>
+<li>Vandals—authorized users and strangers (cracker or a criminal)—motivated by anger directed at an individual&#x2F;organization&#x2F;life in general</li>
+</ul>
+<p><strong>Risk &#x3D; Threats × Vulnerabilities</strong></p>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Threats</th>
+<th>Vulnerabilities</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>business disruption</td>
+<td>angry employees</td>
+<td>software bugs</td>
+</tr>
+<tr>
+<td>financial losses</td>
+<td>dishonest employees</td>
+<td>broken processes</td>
+</tr>
+<tr>
+<td>loss of privacy</td>
+<td>criminals</td>
+<td>ineffective controls</td>
+</tr>
+<tr>
+<td>damage to reputation</td>
+<td>governments</td>
+<td>hardware flaws</td>
+</tr>
+<tr>
+<td>loss of confidence</td>
+<td>terrorists</td>
+<td>business change</td>
+</tr>
+<tr>
+<td>legal penalties</td>
+<td>the press</td>
+<td>legacy systems</td>
+</tr>
+<tr>
+<td>impaired growth</td>
+<td>competitors</td>
+<td>Inadequate BCP</td>
+</tr>
+<tr>
+<td>loss of life</td>
+<td>hackers</td>
+<td>human error</td>
+</tr>
+<tr>
+<td></td>
+<td>nature</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Types of Damage</strong></p>
+<ul>
+<li>﻿﻿Interruption—destroyed&#x2F;unavailable services&#x2F;resources</li>
+<li>﻿﻿Interception—unauthorized party snooping or getting access to a resource</li>
+<li>﻿﻿Modification— unauthorized party modifying<br> a resource</li>
+<li>﻿﻿Fabrication—unauthorized party inserts a fake asset&#x2F;resource</li>
+</ul>
+<p><strong>The purpose of risk management</strong></p>
+<ul>
+<li>﻿﻿Ensure overall business and business assets are safe</li>
+<li>﻿Protect against competitive disadvantage</li>
+<li>﻿Compliance with laws and best business practices</li>
+<li>﻿Maintain a good public reputation</li>
+</ul>
+<p><strong>Accountability for Risk Management</strong></p>
+<ul>
+<li><p>﻿﻿It is the responsibility of each community of interest to manage risks; each community has a role to play:</p>
+</li>
+<li><p>﻿﻿Information Security - best understands the threats and attacks that introduce risk into the organization</p>
+</li>
+<li><p>﻿﻿Management and Users - play a part in the early detection and response process - they also insure sufficient resources are allocated</p>
+</li>
+<li><p>﻿﻿Information Technology - must assist in building secure systems and operating them safely</p>
+</li>
+</ul>
+<p><img src="/../images/image-20230426143138064.png" alt="image-20230426143138064"></p>
+<p><strong>Steps of a risk management plan</strong></p>
+<ul>
+<li>﻿﻿Step 1: Identify Risk</li>
+<li>﻿﻿Step 2: Assess Risk</li>
+<li>﻿﻿Step 3: Control Risk</li>
+<li>﻿﻿Steps are similar regardless of context (InfoSec, Physical Security, Financial, etc.)</li>
+<li>﻿﻿This presentation will focus on controlling risk within an InfoSec context</li>
+</ul>
+<p><strong>Risk Identification</strong></p>
+<ul>
+<li><p>﻿﻿The steps to risk identification are:</p>
+</li>
+<li><p>﻿﻿Identify your organization’s information assets</p>
+</li>
+<li><p>﻿﻿Classify and categorize said assets into useful groups</p>
+</li>
+<li><p>﻿﻿Rank assets necessity to the organization</p>
+</li>
+</ul>
+<p>To the right is a simplified example of how a company may identify risks</p>
+<p><strong>Risk Assessment</strong></p>
+<ul>
+<li><p>﻿﻿The steps to risk assessment are:</p>
+</li>
+<li><p>﻿﻿Identify threats and threat agents</p>
+</li>
+<li><p>﻿﻿Prioritize threats and threat agents</p>
+</li>
+<li><p>﻿﻿Assess vulnerabilities in current InfoSec plan</p>
+</li>
+<li><p>﻿﻿Determine risk of each threat</p>
+</li>
+</ul>
+<p>R&#x3D;P*V-M+ U</p>
+<p>​	R&#x3D; Risk</p>
+<p>​	P&#x3D; Probability of threat attack</p>
+<p>​	V &#x3D; Value of Information Asset</p>
+<p>​	M &#x3D; Mitigation by current controls</p>
+<p>​	U &#x3D; Uncertainty of vulnerability</p>
+<p><strong>Risk control</strong></p>
+<ul>
+<li>﻿﻿The steps to risk control are:</li>
+<li>﻿﻿Cost-Benefit Analysis (CBA)<ul>
+<li>﻿﻿Single Loss Expectancy (SLE)</li>
+<li>﻿﻿Annualized Rate of Occurrence (ARO)</li>
+<li>﻿﻿Annual Loss Expectancy (ALE)</li>
+<li>﻿﻿Annual Cost of the Safeguard (ASG)</li>
+</ul>
+</li>
+<li>﻿Feasibility Analysis<ul>
+<li>﻿﻿Organizational Feasibility</li>
+<li>﻿﻿Operational Feasibility</li>
+<li>﻿﻿Technical Feasibility</li>
+<li>﻿﻿Political Feasibility</li>
+</ul>
+</li>
+<li>﻿Risk Control Strategy Implementation</li>
+</ul>
+<p><strong>Cost-Benefit analysis</strong></p>
+<ul>
+<li><p>﻿Determine what risk control strategies are cost effective</p>
+</li>
+<li><p>﻿﻿Below are some common formulas used to calculate cost-benefit analysis</p>
+</li>
+<li><p>﻿﻿SLE &#x3D; AV * EF</p>
+<ul>
+<li>﻿﻿AV &#x3D; Asset Value, EF &#x3D;<br> Exposure factor (% of asset affected)</li>
+</ul>
+</li>
+<li><p>﻿﻿ALE &#x3D; SLE * ARO</p>
+</li>
+<li><p>﻿﻿CBA &#x3D; ALE (pre-control) -</p>
+<p>ALE (post-control) - ACE(Annually Countermeasure Expectancy)</p>
+</li>
+</ul>
+<p>SLE - single loss expectancy, ALE - Annual loss expectancy, CBA – Cost benefit analysis</p>
+<p><strong>Feasibility analysis</strong></p>
+<p>Organizational: Does the plan correspond to the organization’s objectives? What is in it for the organization? Does it limit the organization’s capabilities in any way?</p>
+<p>Operational: Will shareholders (users, managers, etc.) be able&#x2F;willing to accept the plan? Is the system compatible with the new changes? Have the possible changes been communicated to the employees?</p>
+<p>Technical: Is the necessary technology owned or obtainable? Are our employees trained and if not can we afford to train them? Should we hire new employees?</p>
+<p>Political: Can InfoSec acquire the necessary budget and approval to implement the plan? Is the budget required justifiable? Does InfoSec have to compete with other departments to acquire the desired budget?</p>
+<p><strong>Risk control Strategies</strong></p>
+<ul>
+<li>﻿﻿Defense</li>
+<li>﻿﻿Transferal</li>
+<li>﻿﻿Mitigation</li>
+<li>﻿﻿Acceptance (Abandonment)</li>
+<li>﻿﻿Termination</li>
+</ul>
+<p><strong>Risk control Strategy: defense</strong></p>
+<p>• Defense: Prevent the exploitation of the system via application of policy, training&#x2F;education, and technology. Preferably layered security (defense in depth)</p>
+<p>% Counter threats</p>
+<p>% Remove vulnerabilities from assess</p>
+<p>% Limit access to assets</p>
+<p>§ Add protective safeguards</p>
+<p>Figure 1-Application Security Layered Approach</p>
+<p>![image-20230426144850808](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230426144850808.png)</p>
+<p><strong>Risk control Strategy: transferal</strong></p>
+<ul>
+<li>﻿﻿Transferal: Shift risks to other areas or outside entities to handle</li>
+<li>﻿﻿Can include:</li>
+</ul>
+<p>% Purchasing insurance</p>
+<p>• Outsourcing to other organizations</p>
+<p>* Implementing service contracts with providers<br> § Revising deployment models</p>
+<p>![image-20230426145019527](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230426145019527.png)</p>
+<p><strong>Risk control Strategy: Mitigation</strong></p>
+<p>![image-20230426145147173](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230426145147173.png)</p>
+<p><strong>Risk control Strategy: Acceptance</strong></p>
+<p>Appropriate when:</p>
+<p>% The cost to protect an asset or assets exceeds the cost to replace it&#x2F;them</p>
+<ul>
+<li>﻿When the probability of risk is very low and the asset is of low priority</li>
+<li>﻿﻿Otherwise acceptance &#x3D; negligence</li>
+</ul>
+<p><strong>Risk control Strategy: Termination</strong></p>
+<ul>
+<li>﻿﻿Termination: Removing or discontinuing the information asset from the organization</li>
+<li>﻿﻿Examples include:</li>
+</ul>
+<p>Equipment disposal</p>
+<p>Discontinuing a provided service</p>
+<p>Firing an employee</p>
+<p><strong>Pros and cons of each strategy</strong></p>
+<p>![image-20230426145601149](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230426145601149.png)</p>
+<p><strong>Standard approaches to risk management</strong></p>
+<ul>
+<li>﻿﻿U.S CERT’s Operationally Critical Threat Assessment<br> Vulnerability Evaluation (OCTAVE) Methods (Original, OCTAVE-S, OCTAVE-Allegro)</li>
+<li>﻿﻿ISO 27005 Standard for InfoSec Risk Management</li>
+<li>﻿﻿NIST Risk Management Model</li>
+<li>﻿﻿Microsoft Risk Management Approach</li>
+<li>﻿﻿Jack A. Jones’ Factor Analysis of Information Risk<br> (FAIR)</li>
+<li>﻿﻿Delphi Technique</li>
+</ul>
+<p><strong>Risk Determination</strong></p>
+<p>For the purpose of relative risk assessment:</p>
+<p>RISK &#x3D;</p>
+<p>​	likelihood of vulnerability occurrence times value (or impact)</p>
+<p>MINUS</p>
+<p>​	percentage risk already controlled	</p>
+<p>PLUS</p>
+<p>​	an element of uncertainty</p>
+<p><strong>Access Controls</strong></p>
+<ul>
+<li><p>﻿﻿One particular application of controls is in the area of access controls</p>
+</li>
+<li><p>﻿﻿Access controls are those controls that specifically address admission of a user into a trusted area of the organization</p>
+</li>
+<li><p>﻿﻿There are a number of approaches to controlling access</p>
+</li>
+<li><p>﻿﻿Access controls can be</p>
+</li>
+<li><p>﻿﻿discretionary</p>
+</li>
+<li><p>﻿﻿mandatory</p>
+</li>
+<li><p>﻿﻿nondiscretionary</p>
+</li>
+</ul>
+<p><strong>Types of Access Controls</strong></p>
+<ul>
+<li>﻿﻿Discretionary Access Controls (DAC) are implemented at the discretion or option of the data user</li>
+<li>﻿﻿Mandatory Access Controls (MACs) are structured and coordinated with a data classification scheme, and are required</li>
+<li>﻿﻿Nondiscretionary Controls are those determined by a central authority in the organization and can be based on that individual’s role</li>
+</ul>
+<p><strong>Lattice-based Control</strong></p>
+<ul>
+<li>﻿﻿Another type of nondiscretionary access is lattice-based control, where a lattice structure (or matrix) is created containing subjects and objects, and the boundaries associated with each pair is contained</li>
+<li>﻿﻿This specifies the level of access each subiect has to each object</li>
+<li>﻿﻿In a lattice-based control the column of attributes associated with a particular object are referred to as an access control list or ACL</li>
+<li>﻿﻿The row of attributes associated with a particular subiect (such as a user) is referred to as a capabilities table</li>
+<li>This is part of Principles of Information SecurityPrinciples of Information Security</li>
+</ul>
+<p><strong>Documenting Results of Risk Assessment</strong></p>
+<ul>
+<li>﻿﻿The goal of this process has been to identify the information assets of the organization that have specific vulnerabilities and create a list of them, ranked for focus on those most needing protection first</li>
+<li>﻿﻿In preparing this list we have collected and preserved factual information about the assets, the threats they fac and the vulnerabilities they experience</li>
+<li>﻿﻿We should also have collected some information about the controls that are already in place</li>
+</ul>
+<p><strong>Asset Identification and Valuation</strong></p>
+<ul>
+<li>﻿﻿This iterative process begins with the identification of assets, including all of the elements of an organization’s system</li>
+<li>﻿﻿Then, we classify and categorize the assets adding details as we dig deeper into the analysis</li>
+</ul>
+<p><strong>Components of an Information System</strong></p>
+<p>![image-20230426150102652](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230426150102652.png)</p>
+<p><strong>Hardware, Software, and Network Asset Identification</strong></p>
+<p>• Automated tools can sometimes uncover the system elements that make up the hardware, software, and network components</p>
+<p>Once created, the inventory listing must be kept current, often through a tool that periodically refreshes the data</p>
+<ul>
+<li>﻿﻿What attributes of each of these information assets should be tracked?</li>
+<li>﻿﻿When deciding which information assets to track, consider including these asset attributes:</li>
+</ul>
+<p>​		Name</p>
+<p>​		﻿﻿IP address</p>
+<p>​		MAC address</p>
+<p>​		Element type</p>
+<p>​		﻿﻿Serial number</p>
+<p>​	﻿﻿	Manufacturer name</p>
+<p><strong>People, Procedures, and Data Asset Identification</strong></p>
+<ul>
+<li>﻿﻿Unlike the tangible hardware and software elements already described, the human resources, documentation, and data information assets are not as readily discovered and documented</li>
+<li>﻿﻿These assets should be identified, described, and evaluated by people using knowledge, experience, and judgment</li>
+<li>﻿﻿As these elements are identified, they should also be recorded into some reliable data handling process</li>
+</ul>
+<p><strong>Asset Information for People</strong></p>
+<ul>
+<li><p>﻿﻿For People:</p>
+<ul>
+<li><p>﻿﻿Position name&#x2F;number&#x2F;ID - try to avoid names and stick to identifying positions, roles, or functions</p>
+</li>
+<li><p>﻿﻿Supervisor</p>
+</li>
+<li><p>﻿﻿Security clearance level</p>
+</li>
+<li><p>﻿﻿Special skills</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Asset Information for Procedures</strong></p>
+<ul>
+<li><p>﻿﻿For Procedures:</p>
+<ul>
+<li><p>﻿﻿Description</p>
+</li>
+<li><p>﻿﻿Intended purpose</p>
+</li>
+<li><p>﻿﻿What elements is it tied to</p>
+</li>
+<li><p>﻿﻿Where is it stored for reference</p>
+</li>
+<li><p>﻿﻿Where is it stored for update purposes</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Asset Information for Data</strong></p>
+<ul>
+<li><p>﻿﻿For Data:</p>
+<ul>
+<li><p>﻿﻿Classification</p>
+</li>
+<li><p>﻿﻿Owner&#x2F;creator&#x2F;manager</p>
+</li>
+<li><p>﻿﻿Size of data structure</p>
+</li>
+<li><p>﻿﻿Data structure used - sequential, relational</p>
+</li>
+<li><p>﻿﻿Online or offline</p>
+</li>
+<li><p>﻿﻿Where located</p>
+</li>
+<li><p>﻿﻿Backup procedures employed</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Information Asset Classification</strong></p>
+<ul>
+<li><p>﻿﻿Many organizations already have a classification scheme</p>
+</li>
+<li><p>﻿﻿Examples of these kinds of classifications are:</p>
+<ul>
+<li><p>﻿﻿confidential data</p>
+</li>
+<li><p>﻿﻿internal data</p>
+</li>
+<li><p>﻿﻿public data</p>
+</li>
+</ul>
+</li>
+<li><p>﻿﻿Informal organizations may have to organize themselves to create a useable data classification model</p>
+</li>
+<li><p>﻿﻿The other side of the data classification scheme is the personnel security clearance structure</p>
+</li>
+</ul>
+<p><strong>Information Asset Valuation</strong></p>
+<ul>
+<li><p>﻿﻿Each asset is categorized</p>
+</li>
+<li><p>﻿﻿Questions to assist in developing the criteria to be used for asset valuation:</p>
+<ul>
+<li><p>﻿﻿Which information asset is the most critical to the success of the organization?</p>
+</li>
+<li><p>﻿﻿Which information asset generates the most revenue?</p>
+</li>
+<li><p>﻿﻿Which information asset generates the most profitability?</p>
+</li>
+<li><p>﻿﻿Which information asset would be the most expensive to replace?</p>
+</li>
+<li><p>﻿﻿Which information asset would be the most expensive to protect?</p>
+</li>
+<li><p>﻿﻿Which information asset would be the most embarrassing or cause the greatest liability if revealed?</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Examples of Information Security Vulnerabilities</strong></p>
+<ul>
+<li>﻿﻿Information security vulnerabilities are weaknesses that expose an organization to risk.</li>
+<li>﻿﻿Through employees: Social interaction, Customer interaction,<br> Discussing work in public locations,</li>
+<li>﻿﻿Through former employees—Former employees working for competitors, Former employees retaining company data,<br> Former employees discussing company matters</li>
+<li>﻿﻿Though Technology—Social networking, File sharing, Rapid technological changes, Legacy systems, Storing data on mobile devices such as mobile phones, Internet browsers</li>
+<li>﻿﻿Through hardware—. Susceptibility to dust, heat and humidity,<br> Hardware design flaws, Out of date hardware,</li>
+<li>Misconfiguration of hardware</li>
+</ul>
+<p><strong>Examples of Information Security Vulnerabilities (Cont.)</strong></p>
+<ul>
+<li>﻿﻿Through software—Insufficient testing, Lack of audit trail, Software bugs and design faults, Unchecked user input, Software that fails to consider human factors, Software complexity (bloatware), Software as a service (relinquishing control of data), Software vendors that go out of business or change ownership</li>
+<li>﻿Through Network—Unprotected network communications, Open physical connections, IPs and ports, Insecure network architecture, Unused user ids, Excessive privileges, Unnecessary jobs and scripts executing, Wifi networks</li>
+<li>﻿﻿Through IT Management—Insufficient IT capacity, Missed security patches, Insufficient incident and problem management, Configuration errors and missed security notices, System operation errors</li>
+<li>﻿Partners and suppliers—Disruption of telecom services, Disruption of utility services such as electric, gas, water, Hardware failure, Software failure, Lost mail and courier packages, Supply disruptions, Sharing confidential data with partners and suppliers</li>
+</ul>
+<p>![image-20230426150722235](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230426150722235.png)</p>
+<p><strong>Programme Criticality</strong></p>
+<ul>
+<li><p>﻿﻿The programme criticality framework is a common<br> United Nations system framework for decision-making that puts in place a systematic structured approach that uses programme criticality as a way to ensure that programme activities can be balanced against security risks.</p>
+</li>
+<li><p>﻿﻿The concept of criticality means the critical impact of an activity on the population, not necessarily on the organisation.</p>
+</li>
+<li><p>﻿﻿Programme criticality assessment is mandatory in areas with residual risk levels of ‘high’ and very high,’ as determined in the Security Risk Assessments (SRAs).</p>
+</li>
+<li><p>﻿﻿Primary accountability for programme criticality is with United Nations senior management at the country level.</p>
+</li>
+</ul>
+<p>A programme criticality assessment has steps as follows:</p>
+<ul>
+<li><p>﻿﻿1. Establish geographical scope and timeframe</p>
+</li>
+<li><p>﻿﻿2. List strategic results (SRs)</p>
+</li>
+<li><p>﻿﻿3. List UN activities&#x2F;outputs (involving UN personnel)</p>
+</li>
+<li><p>﻿﻿4. Assess contribution to strategic results</p>
+</li>
+<li><p>﻿﻿5. Assess likelihood of implementation</p>
+</li>
+<li><p>﻿﻿6. Evaluate activities&#x2F;outputs with PCI criteria</p>
+</li>
+<li><p>﻿﻿7. View PC level results, form consensus within the UN system and approve final results</p>
+</li>
+<li><p>﻿﻿8. Agree on a process to address and manage the results of the PC<br> assessment</p>
+</li>
+<li><p>﻿﻿9. Follow-up and review.</p>
+</li>
+<li><p>﻿﻿There are two possible criteria for an activity to be considered a PCI activity:</p>
+<ul>
+<li><p>﻿﻿Either the activity is assessed as lifesaving (humanitarian or non-humanitarian) at scale (defined as any activity to support processes or services, including needs assessments), that would have an immediate and significant impact on mortality; or</p>
+</li>
+<li><p>﻿﻿The activity is a directed activity that receives the endorsement of the Office of the Secretary-General for this particular situation.</p>
+</li>
+</ul>
+</li>
+<li><p>﻿﻿Risk level has no impact on programme criticality.<br> There must be no consideration of risk level when determining PC.</p>
+</li>
+<li><p>﻿﻿Programme criticality has no impact on risk level.<br> There must be no consideration of PC when determining risk level.</p>
+</li>
+</ul>
+<p>![image-20230426152530740](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230426152530740.png)</p>
+<p><strong>Other Processes with Security Implications</strong></p>
+<ul>
+<li>﻿﻿Intelligence and Information Cycle.</li>
+<li>﻿﻿Strategic-level Integrated Mission Planning Process.</li>
+<li>﻿﻿Mission-level Integrated Planning, Coordination and implementation.</li>
+<li>﻿﻿Mission Component Planning and Implementation<br> Processes.</li>
+<li>﻿﻿UN Budget Processes.</li>
+<li>﻿﻿Staff Selection and Managed Mobility System.</li>
+<li>﻿﻿Any other process that impacts the substance of UN security.</li>
+</ul>
+<h2 id="Security-Patterns"><a href="#Security-Patterns" class="headerlink" title="Security Patterns"></a><strong>Security Patterns</strong></h2><p><strong>Values of security pattern:</strong></p>
+<p>Security patterns can apply <strong>security principles</strong>, <strong>guide the design and implementation</strong>, <strong>guide the use of security mechanisms</strong>,<strong>help understanding and use of complex</strong> **standards (**XACML, WiMax) and <strong>Convenient for teaching</strong> security principles and mechanisms.</p>
+<p><strong>An Abstract Security Pattern (ASP)</strong>, describes a conceptual security mechanism that realizes one or more security policies able to control (stop or mitigate) a threat or comply with a security-related regulation or institutional policy (no implementation aspects).</p>
+<p><strong>Conceptual security</strong></p>
+<ul>
+<li>﻿﻿Security is a <strong>quality</strong> aspect that constrains the semantic behavior of applications (by imposing access restrictions), so the requirements stage is the right development stage to start addressing security</li>
+<li>﻿﻿However, we only want to indicate at this stage which specific security controls are needed, not their convenient or optimal implementation.</li>
+<li>﻿﻿For example, in bank applications we only want to specify the semantic aspects of accounts, customers, and transactions with their corresponding restrictions.</li>
+</ul>
+<p><strong>An ASP example: Authenticator:</strong></p>
+<ul>
+<li>﻿﻿This is the Intent section of an Authenticator pattern: “When a user or system (subject) identifies itself to the system, how do we verify that the subject intending to access the system is who it says it is? Present some information that is recognized by the system as identifying this subject.<br> After being recognized, the requestor is given some proof that it has been authenticated.”</li>
+<li>﻿﻿Authentication restricts access to a system to only registered users; it handles the threat where an intruder enters a system and may try to perform unauthorized access to information</li>
+<li>﻿﻿It is clear that there are many ways to perform this authentication, that go from manual ways, as done in voting places, to purely automatic ways, as when accessing a web site, but all of them must include the requirements of the abstract Authenticator</li>
+</ul>
+<p><strong>Authentication</strong> as an <strong>abstract</strong> function requires a basic sequence of activities.  Concrete realizations of this sequence implement these steps in different ways but all must perform these two steps: • The subject requests to enter a system indicating its identity and presenting some proof of identity. • If the system recognizes the subject using its identity information, it grants her entrance to the system and provides her with a proof of authentication for further use.  If not, the request is denied. • We can define a hierarchy of authentication patterns starting from the abstract Authenticator</p>
+<p><strong>Force os abstract authenticator</strong></p>
+<ul>
+<li><p><strong>Closed system</strong>. If the authentication information presented by the user is not recognized, there is no access. In an open system all subjects would have access except some who are blacklisted for some reason.</p>
+</li>
+<li><p><strong>Registration</strong>. Users must register their identity information so that the system can recognize them later.</p>
+</li>
+<li><p><strong>Flexibility</strong>. There may be a variety of individuals (users) who require access to the system and a variety of system units with different access restrictions. We need to be able to handle all this variety appropriately or we risk security exposures.</p>
+</li>
+<li><p><strong>Dependability</strong>. We need to authenticate users in a reliable and secure way.</p>
+<p>This means a robust protocol and a high degree of availability. Otherwise, users may fool the authentication process or enter when the system authentication is down.</p>
+</li>
+<li><p><strong>Protection of authentication information</strong>. Users should not be able to read or modify the authentication information. Otherwise, they can give themselves access to the system.</p>
+</li>
+<li><p>﻿﻿<strong>Simplicity</strong>. The authentication process must be relatively simple or the users or administrators may be confused. User errors are annoying to them but administrator errors may lead to security exposures.</p>
+</li>
+<li><p>﻿﻿<strong>Reach</strong>. Successful authentication only gives access to the system, not to any specific resource in the system. Access to these resources must be controlled using other mechanisms, typically authorization.</p>
+</li>
+<li><p><strong>Tamper freedom</strong>. It should be very difficult to falsify the proof of identity presented by the user.</p>
+</li>
+<li><p>﻿﻿<strong>Cost</strong>. There should be tradeoffs between security and cost, more security can be obtained at a higher cost.</p>
+</li>
+<li><p>﻿﻿<strong>Performance</strong>. Authentication should not take a long time or users will be annoyed.</p>
+</li>
+<li><p>﻿﻿<strong>Frequency</strong>. We should not make users authenticate frequently. Frequent authentications waste time and annoy the users.<br> All these properties must be present in the lower-level ways of performing authentication, e.g. in a Password Authenticator (see next slide). A Password Authenticator needs tomake concrete its Authentication Information (list of passwords) and its proof of authentication (a session)</p>
+</li>
+</ul>
+<p><strong>Reference Monitor</strong></p>
+<ul>
+<li>Authorization rules define who has access to what and how. They must be enforced when a process request a resource</li>
+<li>Each request for resources must be intercepted and evaluated for authorized access; this is the concept of Reference Monitor</li>
+<li>An abstract concept, implemented as memory access manager, file permission checks, CORBA adapters, etc.</li>
+</ul>
+<p><strong>Role-Based Access Control</strong></p>
+<ul>
+<li>﻿﻿Users are assigned roles according to their functions and given the needed rights (access types for specific objects)</li>
+<li>﻿﻿When users are assigned by administrators, this is a mandatory model</li>
+<li>﻿﻿Can implement least privilege and separation of duty policies</li>
+</ul>
+<p><strong>XML firewall</strong></p>
+<p>• <strong>Controls input&#x2F;output of XML applications</strong></p>
+<p>• <strong>Well-formed documents (schema as</strong> <strong>reference)</strong></p>
+<p>• <strong>Harmful data (wrong type or length)</strong></p>
+<p>• <strong>Encryption&#x2F;decryption</strong></p>
+<p>• <strong>Sign and verify signatures in documents</strong></p>
+<hr>
+<p><strong>Building secure systems</strong></p>
+<ul>
+<li>﻿﻿Secure systems need to be built in a systematic way where security is an integral part of the lifecycle, and the same applies to safety.</li>
+<li>﻿﻿The platform should match the type of application, and all compliance, safety and security constraints should be defined at the application level, where their semantics are understood and propagated to the lower levels.</li>
+<li>﻿﻿The lower levels must provide the assurance that the constraints are being followed, i.e., they implement these constraints and enforce that there are no ways to bypass them.</li>
+<li>﻿﻿Following these ideas, the Authors of the book in reference developed a secure systems development methodology, which considers all lifecycle stages and all architectural levels. It is expanded with architectural aspects, and recently with process aspects.</li>
+</ul>
+<p><strong><em>Security methodology</em>:</strong></p>
+<p><strong>systematic way of introducing security into a software system</strong> <strong>during the development life-cycle</strong></p>
+<p>Consists of two aspects&#x2F;facets:<strong>security process</strong>(SP) and <strong>conceptualsecurity framework</strong> (CF)</p>
+<p><strong>ASE:</strong> <strong>a comprehensive security methodology for distributed systems</strong></p>
+<ul>
+<li>Many methodologies exist with different paradigms</li>
+<li>Very important class is methodologies that use security patterns</li>
+<li>ASE: a security methodology using patterns and related constructs designed specifically for general distributed systems</li>
+</ul>
+<p><strong>Basic security principles for system design</strong></p>
+<ul>
+<li>﻿﻿Security constraints must be defined at the highest layer, where their semantics are clear, and propagated to the lower levels, which enforce them.</li>
+<li>﻿﻿All the layers of the architecture must be secure.</li>
+<li>﻿﻿We can define patterns at all levels. This allows a designer to make sure that all levels are secured, and also makes easier propagating down the high-level constraints.</li>
+<li>﻿﻿We must apply security in all development stages</li>
+<li>﻿﻿A two-dimensional approach: time and space</li>
+</ul>
+<p><strong>Reference Architecture (RA)</strong></p>
+<p>• A Reference Architecture (RA) is a generic software architecture, based on one or more domains, with no implementation aspects<br>• An RA is reusable, extendable, and configurable.<br>• It specifies the components of the system, their individual functionalities and their mutual interaction.<br>• An RA can be considered as a compound pattern and its components described as patterns.<br>• In addition to domain models, an RA may include a set of use cases (UC), and a set of Roles (R) corresponding to its stakeholders actors).</p>
+<p>We can measure security by <strong>counting the threats that have been</strong> <strong>neutralized by using patterns</strong></p>
+<p><strong>Incident Response Plan</strong></p>
+<p>• Before system is released, an incident response plan should be created (compromise or failure)</p>
+<p>• Contact personnel, availability and procedures for multiple levels of failure</p>
+<p>• A minor glitch does not require CEO to be informed but should be documented</p>
+<p>• Network admin or security admin to determine an appropriate response when incident occurs</p>
+<p><strong>Key elements</strong> of incident response plan:</p>
+<ul>
+<li><p>﻿﻿Monitoring duties for the software in live operation</p>
+</li>
+<li><p>﻿﻿A definition for incidents</p>
+</li>
+<li><p>﻿﻿A contact for incidents</p>
+</li>
+<li><p>﻿﻿An emergency contact for priority incidents</p>
+</li>
+<li><p>﻿﻿A clear chain of escalation</p>
+</li>
+<li><p>﻿﻿Procedures for shutting down the software or components of the software</p>
+</li>
+<li><p>﻿﻿Procedures for specified exploits or attacks</p>
+</li>
+<li><p>﻿﻿Security documentation or the references for external ode or hardware used</p>
+</li>
+</ul>
+<p>*It depends on the organization that the person responsible is from development team or outside</p>
+<p><strong>evolving attacks &#x2F; periodic review and archiving</strong></p>
+<h2 id="Web-Application-Threats"><a href="#Web-Application-Threats" class="headerlink" title="Web Application Threats"></a>Web Application Threats</h2><ul>
+<li>﻿﻿Never trust the client at the server side</li>
+<li>﻿﻿Never trust the browser on the client side</li>
+<li>﻿﻿Never execute client input as code</li>
+<li>﻿﻿Never allow client input to pass into the system without validation internally</li>
+<li>﻿﻿Scrub client for any known exploits and suspect characters</li>
+</ul>
+<p><strong>XSS</strong></p>
+<p><strong>CSRF</strong></p>
+<p><strong>File Upload</strong></p>
+<p><strong>Buffer Overflow</strong></p>
+<p><strong>SQL Injection</strong></p>
+<h1 id="Threat-Modelling"><a href="#Threat-Modelling" class="headerlink" title="Threat Modelling"></a>Threat Modelling</h1><p>• In a nutshell, threat modelling is the use of abstractions to help you consider risks.<br>• Involves developing a shared understanding of a product or service architecture and the problems that could happen.<br>•When you model threats, you typically use one of two types of model.</p>
+<ol>
+<li>The model for what you are building.</li>
+<li>The model for the threats of what you are building.</li>
+</ol>
+<p>The Four-Step Framework</p>
+<ol>
+<li><strong>Model System</strong>, Model the system you’re building, deploying or changing.</li>
+<li><strong>Find Threats</strong>, Find threats using the model.</li>
+<li><strong>Addrasc Inrears</strong>,  Address the threats.</li>
+<li><strong>Validate,Validate</strong>, the result for completeness and effectiveness</li>
+</ol>
+<p>(1) What are you Building?</p>
+<ul>
+<li>﻿﻿Diagrams are a good way to communicate what you are building.</li>
+<li>﻿﻿There are lots of ways to diagram software and you can start with a whiteboard diagram of how data flows through the system.</li>
+</ul>
+<p>(2) What can go wrong?</p>
+<ul>
+<li><p>﻿﻿Given a simple diagram, we can start thinking about what can go wrong. Example:</p>
+</li>
+<li><p>﻿﻿How do you know that the web browser is being used by the person you expect?</p>
+</li>
+<li><p>﻿﻿What happens if someone modifies data in the database?</p>
+</li>
+<li><p>﻿﻿Is it okay for information to move from one box to the next without encryption?</p>
+</li>
+<li><p>﻿﻿You can identify threats like these using the STRIDE approach.</p>
+</li>
+<li><p>﻿﻿Use STRIDE to walk through each part of the diagram:</p>
+</li>
+<li><p>﻿﻿Spoofing.</p>
+</li>
+<li><p>﻿﻿Tampering.</p>
+</li>
+<li><p>﻿﻿Repudiation.</p>
+</li>
+<li><p>﻿﻿Information Disclosure.</p>
+</li>
+<li><p>﻿﻿Denial of Service.</p>
+</li>
+<li><p>﻿﻿Elevation of Privilege.</p>
+</li>
+</ul>
+<p><strong>(3) What Are We Going To Do</strong> <strong>About It</strong></p>
+<p>• There are four types of action you can take against a threat:</p>
+<ol>
+<li>Mitigate it.</li>
+<li>Eliminate it.</li>
+<li>Transfer it.</li>
+<li>Accept it</li>
+</ol>
  
       <!-- reward -->
       
