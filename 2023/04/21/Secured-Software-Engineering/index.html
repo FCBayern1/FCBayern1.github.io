@@ -82,7 +82,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">837</span>
+            <span class="post-count">2.5k</span>
         </span>
     </span>
 
@@ -91,7 +91,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">5 min</span>
+            <span class="post-count">13 min</span>
         </span>
     </span>
 </div>
@@ -107,6 +107,8 @@
   <p>The below case studies are given here in advance, they will be part of the final exam. </p>
 <p><strong>Case Study 1:</strong> You are part of a team that has been tasked with developing a web-based application for a healthcare organisation. The application will allow doctors to view patient information, including medical history, test results and treatment plans. Patients will also be able to access the application to view their own medical information and communicate with their doctors. The application will be used by a large number of healthcare providers and patients, and therefore security is a top priority. (Provided ahead of the exam) </p>
 <p><strong>Case Study 2:</strong> ABC airlines operates a large number of flights globally. In 2021, the airline suffered a significant data breach that affected the personal information of thousands of customers. In response to this breach, ABC airlines invested in a new approach to secure software engineering, including implementing secure coding practices, testing and validating software, and conducting regular security audits. The company has a complex network infrastructure that includes several web servers, database servers, and application servers. (Provided ahead of the exam)</p>
+<p><strong>案例研究1</strong>： 你是一个团队的成员，他们的任务是为一个医疗机构开发一个基于网络的应用程序。该应用程序将允许医生查看病人信息，包括病史、测试结果和治疗计划。病人也可以访问该应用程序，查看他们自己的医疗信息，并与他们的医生沟通。该应用程序将被大量的医疗服务提供者和病人使用，因此安全性是重中之重。(该案例研究是期末考试的一部分，在考试前提供给大家)</p>
+<p><strong>案例研究2：</strong>ABC航空公司在全球范围内运营着大量的航班。2021年，该航空公司遭受了一次重大的数据泄露事件，影响了成千上万的客户的个人信息。为了应对这一漏洞，ABC航空公司投资了一种新的安全软件工程方法，包括实施安全编码实践，测试和验证软件，并定期进行安全审计。该公司有一个复杂的网络基础设施，包括几个网络服务器、数据库服务器和应用服务器。(在考试前提供)</p>
 <p><strong>1.</strong> <strong>Case Study:</strong> You are part of a team that has been tasked with developing a web-based application for a healthcare organization. The application will allow doctors to view patient information, including medical history, test results and treatment plans. Patients will also be able to access the application to view their own medical information and communicate with their doctors. The application will be used by a large number of healthcare providers and patients, so security is a top priority. (This case study is part of the final exam, provided ahead of the exam here)</p>
 <p><strong>(a)</strong> Identify and list down five use cases and five misuse cases of the system. [5]</p>
 <p>Use Cases:</p>
@@ -126,22 +128,123 @@
 <li>Security Misconfiguration: The application’s security settings are not properly configured, leaving it vulnerable to attacks and exposing sensitive patient data.</li>
 </ol>
 <p><strong>(b)</strong> List down five actors and five attackers of the system. [5]</p>
+<p><strong>Actors:</strong></p>
+<p>Patients, Doctors, Admin, Nurses, Patient Family.</p>
+<p><strong>Attackers:</strong> </p>
+<p>General attackers, Payment gateway attackers, Nurses, Doctors, Patient Family.</p>
 <p><strong>(c)</strong> List down five high-level threats to the system. [5]</p>
+<ol>
+<li>Insecure authentication</li>
+<li>DDoS Attacks</li>
+<li>Leakage of patients medical information. Implement a chain of custody to monitor on this system.</li>
+<li>Attacker modify the information of patients and drug perscription for patients.</li>
+<li>Large size file uploads&#x2F;buffer overflow:</li>
+</ol>
 <p><strong>(d)</strong> Against each threat what would be your countermeasure? [5]</p>
+<ol>
+<li><p>Introduce multi-factor authentication.</p>
+</li>
+<li><p>Add defence against DoS&#x2F;DDoS attacks.</p>
+</li>
+<li><p>Implement a chain of custody to monitor on this system.</p>
+</li>
+<li><p>implement logging on website against all actions and audit to be performed by doctors.</p>
+</li>
+<li><p>implement max size limit for file submission and implement defence against buffer overflow.</p>
+</li>
+</ol>
 <p><strong>2.</strong> <strong>(a)</strong> If requirements are introduced at a later stage in the project, what would be its impact on security?</p>
 <p>Support your answer with an example. [3]</p>
+<p>it often leads to incomplete or insufficient security measures, making the system vulnerable to threats and attacks. </p>
+<ol>
+<li>Increased complexity: Adding new requirements can make the system more complex, which in turn makes it harder to analyze and secure. Complex systems are more prone to vulnerabilities, as they have more potential points of failure and attack.</li>
+</ol>
+<p>Example: Imagine a web application that initially only required user authentication via username and password. If the project scope is changed to include multi-factor authentication, this introduces additional components such as SMS or email verification. The complexity of the system increases, making it more difficult to ensure that all security aspects are correctly implemented and that no vulnerabilities are introduced.</p>
+<ol start="2">
+<li>Insufficient time for security analysis and testing: Introducing new requirements late in the project often means that there is less time available for security analysis and testing, increasing the likelihood of vulnerabilities remaining undetected.</li>
+</ol>
+<p>Example: If a new payment feature is added to an e-commerce website just before the project’s deadline, there may not be enough time to perform a thorough security analysis and test all potential attack vectors, such as SQL injection or cross-site scripting vulnerabilities.</p>
+<ol start="3">
+<li>Cost and resource constraints: Late requirement changes can lead to increased costs and put additional strain on resources. This can result in cutting corners on security measures or failing to allocate enough time for thorough security testing.</li>
+</ol>
+<p>Example: If a new payment feature is added to an e-commerce website just before the project’s deadline, there may not be enough time to perform a thorough security analysis and test all potential attack vectors, such as SQL injection or cross-site scripting vulnerabilities.</p>
+<ol start="4">
+<li>Incomplete integration of security measures: New requirements might not be fully compatible with existing security measures, requiring rework or additional implementation to ensure that the overall security posture remains strong.</li>
+</ol>
+<p>Example: An organization decides to migrate its on-premises infrastructure to the cloud during the project’s later stages. This change requires a reassessment of the security measures in place, as cloud environments have different security considerations compared to on-premises infrastructure. If not addressed properly, this can lead to vulnerabilities in the cloud environment.</p>
 <p><strong>(b)</strong> An organisation is performing risk analysis during the development stage for their asset having an </p>
 <p>estimated value of £100,000. The exposure factor of the asset is estimated to be 0.25 and annual </p>
 <p>rate of occurrence is expected to be 0.5. Mitigating the risk will cost the organization £5,000, is it </p>
 <p>feasible to fix the vulnerability in the code or not? [5]</p>
+<p>If do not fix the vulnerablity, the annual lost will be £12500</p>
+<p>So, it is very worthy to spend £5000 to fix this vulnerability.</p>
 <p><strong>(c)</strong> A company wants to do the audit of their software for GDPR compliance. Which three <em>Secure</em> </p>
 <p><em>Software Engineering</em> methods you would recommend for this purpose? Give a brief explanation </p>
 <p>for each method. [6]</p>
+<p><strong>Biometric Recognition Multi-factor Authentication</strong></p>
 <p><strong>(d)</strong> In the code given on the next page, identify which variables are considered tainted and identify </p>
 <p>any two potential security vulnerabilities in the code and suggest how to fix them (write in your </p>
 <p>own words, no coding is required). [6]</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">authenticateUser</span>(<span class="params">username, password</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> userCredentials = &#123;</span><br><span class="line"></span><br><span class="line"> <span class="attr">username</span>: username, </span><br><span class="line"></span><br><span class="line"> <span class="attr">password</span>: password </span><br><span class="line"></span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> input = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;input&quot;</span>).<span class="property">value</span>; </span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (<span class="title function_">isValidEmail</span>(input)) &#123;</span><br><span class="line"></span><br><span class="line"> userCredentials.<span class="property">email</span> = input; </span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> $.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>, userCredentials, <span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (response.<span class="property">success</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="title function_">alert</span>(<span class="string">&quot;You are logged in!&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(<span class="string">&quot;Authentication failed.&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isValidEmail</span>(<span class="params">email</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> emailRegex = <span class="regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> emailRegex.<span class="title function_">test</span>(email); </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+
+<ol>
+<li>tainted varaibles:</li>
+</ol>
+<p>userCredentials中的username和userpassword可能受污染，因为他是直接从传入的参数中获得的，</p>
+<p>input变量同样是直接从页面中获取的，可能收到污染</p>
+<ol start="2">
+<li>solution</li>
+</ol>
+<p>对于用户名和密码，进行表单提交，并且进行表单认证，并且对于用户名和密码进行安全编码，同时对用户的输入进行输入检查，如dompurify的库可以帮助做到这一点</p>
+<p>对于发送的 POST 请求，应该使用 HTTPS 协议进行通信，并对用户输入的敏感信息进行加密或者哈希处理，避免被劫持或者窃取。可以使用加密算法、哈希算法或者 SSL&#x2F;TLS 协议来保证通信安全。</p>
+<p>代码中有两个潜在的安全漏洞:</p>
+<p>跨站脚本漏洞:</p>
+<p>代码接受用户输入(用户名和密码)，并直接将其发送到服务器，而没有进行适当的验证或处理。如果攻击者将恶意脚本注入到输入字段中，服务器可能会执行这些脚本，从而可能危及应用程序。</p>
+<p>要修复此漏洞，您应该在将用户输入发送到服务器之前对其进行清理和验证。您可以使用像DOMPurify这样的库来净化输入，并创建一个验证函数来检查输入字段中的任何无效字符。</p>
+<p>敏感数据的不安全传输:</p>
+<p>该代码将用户的凭据(用户名和密码)以明文形式发送到服务器，而不进行任何加密。这可能会将敏感信息暴露给潜在的窃听者或攻击者，特别是在连接没有使用HTTPS保护的情况下。</p>
+<p>为了解决这个问题，你应该确保你的网站使用HTTPS，它加密客户端和服务器之间传输的数据。此外，考虑实现更安全的身份验证机制(如OAuth2)或使用密码散列技术(如bcrypt)来安全地存储和传输密码。</p>
+<p>(e).</p>
+<p>(a). You are being asked to consult with a start-up who are looking to put together a security policy for integrity. You are told that there are three security levels for the objects: o1 &lt; o2 &lt;o3 where o3 is the highest and o1 is the lowest security level. The following table present the associated security levels and categories for the objects (o). The subjects S1 lies on Level 1, S2 lies on Level 2 and S3 lies on Level 3. Fill out the following table to indicate all applicable permissions when the Simple Security Property is applied. Write -p’ for read and ‘-w’ for write and ‘-rw’ for both read and write operations. If a Subject is not authorized to perform any action, leave the cell blank. [8] </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>O1</th>
+<th>O2</th>
+<th>O3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S1</td>
+<td>-r</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>S2</td>
+<td>-r</td>
+<td>-r</td>
+<td></td>
+</tr>
+<tr>
+<td>S3</td>
+<td>-r</td>
+<td>-r</td>
+<td>-r</td>
+</tr>
+</tbody></table>
+<p>Table 1: A security model indicating subject and object integrity levels</p>
+<p>(b). How an organization can effectively apply confidentiality and integrity in their software products?</p>
+<p>Provide a brief explanation of the consequences.</p>
+<p>(c). ABC airlines operates a large number of flights globally. In 2021, the airline suffered a significant data breach that affected the personal information of thousands of customers. In response to this breach, ABC airlines invested in a new approach to secure software engineering, including implementing secure coding practices, testing and validating software, and conducting regular security audits. The company has a complex network infrastructure that includes several web servers, database servers, and application servers. Now, the airline company wants to implement confidentiality and integrity in their system, how it will be done? List any three suggestions.</p>
+<p>(d). Why it is important to rank stakeholders in the system? Provide an example scenario and rank 3 different stakeholders in it.</p>
+<p>Reason: </p>
+<p>The ranking is important to satisfy the competing needs,Contradiction of needs e.g., privacy in one case can conflict with requirement to send name and email in other case.</p>
+<p>Candidate stakeholders are: end users, project manager, CEO, CIO, team lead, network admin, db manager, marketing department, legal department and sales team.</p>
+<p>Number of external stakeholders is limited</p>
  
       <!-- reward -->
       
@@ -222,6 +325,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2023/04/25/DSA/" class="article-nav-link">
+        <strong class="article-nav-caption">Previous Post</strong>
+        <div class="article-nav-title">
+          
+            DSA
+          
+        </div>
+      </a>
     
     
       <a href="/2023/04/20/forensics/" class="article-nav-link">
