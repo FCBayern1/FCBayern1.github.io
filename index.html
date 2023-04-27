@@ -1146,7 +1146,7 @@
 <p><strong>File Upload</strong></p>
 <p><strong>Buffer Overflow</strong></p>
 <p><strong>SQL Injection</strong></p>
-<h1 id="Threat-Modelling"><a href="#Threat-Modelling" class="headerlink" title="Threat Modelling"></a>Threat Modelling</h1><p>• In a nutshell, threat modelling is the use of abstractions to help you consider risks.<br>• Involves developing a shared understanding of a product or service architecture and the problems that could happen.<br>•When you model threats, you typically use one of two types of model.</p>
+<h2 id="Threat-Modelling"><a href="#Threat-Modelling" class="headerlink" title="Threat Modelling"></a>Threat Modelling</h2><p>• In a nutshell, threat modelling is the use of abstractions to help you consider risks.<br>• Involves developing a shared understanding of a product or service architecture and the problems that could happen.<br>•When you model threats, you typically use one of two types of model.</p>
 <ol>
 <li>The model for what you are building.</li>
 <li>The model for the threats of what you are building.</li>
@@ -1194,10 +1194,149 @@
 <p>• There are four types of action you can take against a threat:</p>
 <ol>
 <li>Mitigate it.</li>
-<li>Eliminate it.</li>
-<li>Transfer it.</li>
-<li>Accept it</li>
 </ol>
+<p>![image-20230427001002917](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427001002917.png)</p>
+<p>![image-20230427001035008](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427001035008.png)</p>
+<p>![image-20230427001116901](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427001116901.png)</p>
+<p>![image-20230427001224625](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427001224625.png)</p>
+<p>![image-20230427001300080](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427001300080.png)</p>
+<p>![image-20230427001333023](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427001333023.png)</p>
+<ol start="2">
+<li><p>Eliminate it. Vpn（Geo-restrictions: A VPN can be used to bypass geo-restrictions and access content that may be blocked in certain regions, reducing the risk of inadvertently visiting malicious websites or downloading malicious content.）</p>
+</li>
+<li><p>Transfer it.</p>
+</li>
+<li><p>Accept it</p>
+</li>
+</ol>
+<p><strong>(4) Did We Do A Good Job</strong></p>
+<ol>
+<li>﻿﻿﻿Look at the diagram, does it represent the system well?</li>
+<li>﻿﻿﻿Look at the list of threats, did you find at least 5 threats per node in the diagram?</li>
+<li>﻿﻿﻿Did you file a bug per threat?</li>
+</ol>
+<ul>
+<li>﻿﻿When you find threats that violate your requirements and cannot be mitigated, it generally makes sense to adjust your requirements.<br> Sometimes it’s possible to either mitigate the threat operationally, or defer a decision to the person using the system.</li>
+<li>﻿﻿There are many other threat modelling techniques, we have only touched most popular approaches.</li>
+<li>﻿﻿Some other threat modelling approaches include:</li>
+<li>﻿﻿PASTA (Process for Attack Simulation and Threat Analysis)</li>
+<li>﻿﻿CSVSS Common Vulnerability Scoring System)</li>
+<li>﻿﻿HMM (Hybrid Threat Modelling Method)</li>
+</ul>
+<h2 id="Attack-Trees"><a href="#Attack-Trees" class="headerlink" title="Attack Trees"></a><strong>Attack Trees</strong></h2><p>![image-20230427001820867](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427001820867.png)</p>
+<ul>
+<li>﻿﻿Top level node (or root) represents the ultimate goal of an attacker.</li>
+<li>﻿﻿The nodes (or leaves) represent sub goals that need to be achieved (together or independently) to arrive at the top level goal.</li>
+</ul>
+<p>• An alternative to STRIDE(Spoofing, tampering, repudiation, Information disclosure,Denial of service,Denial of service).</p>
+<p>• You can use attack trees as a way to find threats, or as a way to organize threats.</p>
+<p>​	• Attack trees work well as a building block for threat enumeration in the fourstep framework.</p>
+<p><strong>We can use attack trees to find the threats</strong></p>
+<p><strong>Attack-Defence Scenarios</strong></p>
+<p>• Attack trees are used to model attack-defence scenarios.</p>
+<p>• The attack-defence scenario is a game between two players:</p>
+<p>• The proponent (denoted as p)</p>
+<p>• The opponent (denoted as o)</p>
+<ul>
+<li><p>The root of an attack tree represents the main goal of the proponent. </p>
+<ul>
+<li>When the root is an attack node, the proponent is an attacker and the opponent is a defender.</li>
+<li>﻿﻿Conversely, when the root is a defence node, the proponent is a defender and the opponent is an attacker.</li>
+</ul>
+</li>
+<li><p>Notations:</p>
+</li>
+<li><p>﻿﻿Attack nodes are represented with circles.</p>
+</li>
+<li><p>﻿﻿Defence nodes are represented with rectangles.</p>
+</li>
+<li><p>﻿﻿Refinements:</p>
+<ul>
+<li>﻿﻿Refinements can be conjunctive (AND aggregation) or disjunctive (OR choice)</li>
+<li>﻿﻿Refinement relations are indicated by solid edges between nodes.</li>
+<li>﻿﻿Countermeasures are indicated by dotted edges.</li>
+<li>﻿﻿A conjunctive refinement of a node is represented by an arc over all edges connecting the node and its children of equal type.</li>
+</ul>
+</li>
+</ul>
+<p><strong>The basic steps to create an attack tree are as follows</strong>:</p>
+<p>\1. Decide on a representation.</p>
+<p>Two types of trees:</p>
+<p><strong>AND trees</strong> (aggregation): The state of a node depends on all of the nodes below it being true. 有夹脚</p>
+<p><strong>Or trees</strong> (choice): A node is true if any of its subnodes are true. 没夹脚</p>
+<p>\2. Create a root node.</p>
+<p><strong>If the root node is a countermeasure mitigation action…</strong></p>
+<p><strong>Then the subnodes are used to identify what can go wrong.</strong></p>
+<p><strong>Decompose the mitigation action and identify how the results can be threatened.</strong></p>
+<p><strong>If the root node is a goal of the attacker</strong>:</p>
+<p><strong>Then we consider ways to achieve that goal.</strong></p>
+<p><strong>Each alternative way to achieve the goal should be drawn as a subnode.</strong></p>
+<p>\3. Create subnodes.</p>
+<p>• You typically create subnodes by brainstorming in some structured manner.</p>
+<p>• The relation between subnodes and parent node can be AND or OR.</p>
+<p>• Some possible structures for first-level subnodes include:</p>
+<p>Attacking a system:</p>
+<ul>
+<li>﻿﻿Physical access.</li>
+<li>﻿﻿Subvert software.</li>
+<li>﻿﻿Subvert a person.</li>
+</ul>
+<p>Attacking a system via:</p>
+<ul>
+<li>﻿﻿People.<br> Process.</li>
+<li>﻿﻿Technology.</li>
+</ul>
+<p>Attacking a product during:</p>
+<ul>
+<li>Design.</li>
+<li>Production.</li>
+<li>Distribution.</li>
+<li>Usage.</li>
+</ul>
+<p>\4. Consider completeness.</p>
+<p><strong>• An attack tree can be checked for quality by iterating over the node, looking for additional ways to reach the goal. It may be helpful to use STRIDE or attack libraries.</strong></p>
+<p>\5. Prune the tree.</p>
+<p><strong>• In this step, go through each node in the tree and consider whether the action in each subnode is prevented or duplicative.</strong></p>
+<p>\6. Check the presentation.</p>
+<p><strong>• Trees can be represented in two ways:</strong></p>
+<p><strong>• As a free form (human viewable) model without any technical structure.</strong></p>
+<p><strong>• As a structured representation with variable types and&#x2F;or metadata to facilitate programmatic analysis.</strong></p>
+<p><strong>Human Viewable Representations</strong></p>
+<p>• Attack trees can be drawn graphically or shown in outline form.</p>
+<p>• Care should be taken to ensure that the graphics are actually information rich and useful.</p>
+<p>• Outline representations are easier to create than graphical representations, but they tend to be less attention-grabbing.</p>
+<p>• <strong>If you are using someone else’s tree, be sure to understand their intent. If you are creating once, be sure you are clear on your intent and communicate your intent clearly.</strong></p>
+<p><strong>Risk Analysis</strong></p>
+<p>• <strong>Risk</strong> &#x3D; (<strong>Probability</strong> of <strong>Incident</strong>) x (Incident Impact)</p>
+<p>• When dealing with hostile risk, consider the following:</p>
+<p>​	• Vulnerabilities in systems are NOT constants.</p>
+<p>​	• Capabilities of the adversary are NOT constant.</p>
+<p>​	• Motivators for adversary changes instantaneously.</p>
+<p>​	• Adversaries can attack your system anytime.</p>
+<p><strong>Probability of Incident</strong> &#x3D; Vulnerability x Threat x Motivation</p>
+<p><strong>Security Functional Requirements</strong></p>
+<ul>
+<li>﻿﻿FAU: Security auditing.</li>
+<li>﻿﻿FCP: Communications.</li>
+<li>﻿﻿FCS: Cryptographic support.</li>
+<li>﻿﻿FDP: User data protection.</li>
+<li>﻿﻿FIA: Identification and authentication.</li>
+<li>﻿﻿FMT: Security management.</li>
+<li>﻿﻿FPR: Privacy.</li>
+<li>﻿﻿FPT: Protection of security function.</li>
+<li>﻿﻿FRU: Resource utilization.</li>
+<li>﻿﻿FTA: Access.</li>
+<li>﻿﻿FTP: Trusted path.</li>
+</ul>
+<p><strong>Security Mechanisms</strong>s</p>
+<ul>
+<li>There are several ways in which the security policy can be enforced.</li>
+<li>Assurance requirements detail the ways in which security is demonstrated.</li>
+<li>There are also different ways of evaluating these requirements.</li>
+<li>Here are the FIPS standards.</li>
+</ul>
+<p>![image-20230427124928638](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427124928638.png)</p>
+<p>![image-20230427125103365](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427125103365.png)</p>
  
       <!-- reward -->
       
