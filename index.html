@@ -172,6 +172,361 @@
     
     
     <article
+  id="post-webscience"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/04/28/webscience/"
+    >webscience</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/28/webscience/" class="article-date">
+  <time datetime="2023-04-28T12:34:43.000Z" itemprop="datePublished">2023-04-28</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Revision"><a href="#Revision" class="headerlink" title="Revision"></a>Revision</h1><h2 id="L1-TwitterData"><a href="#L1-TwitterData" class="headerlink" title="L1 TwitterData"></a>L1 TwitterData</h2><h3 id="Exploitation-of-the-twitter-data"><a href="#Exploitation-of-the-twitter-data" class="headerlink" title="Exploitation of the twitter data:"></a>Exploitation of the twitter data:</h3><p>With the amount of content posted to social media websites every day, such as Twitter, there is huge potential for its exploitation in many scenarios, such as:</p>
+<p><strong>Sports and Finance:</strong> Stock market prediction &amp; Sports betting</p>
+<p>predict stock market changes based on the sentiment of tweets</p>
+<ul>
+<li>Sentiment expressed in tweets had been used to predict stock market reactions</li>
+<li>Opinions of investors’ posts on social media</li>
+<li>combine with the stock prize movements</li>
+</ul>
+<p>Sports betting</p>
+<h3 id="Web-Science-Concepts"><a href="#Web-Science-Concepts" class="headerlink" title="Web Science Concepts"></a>Web Science Concepts</h3><ul>
+<li><p>﻿﻿Explore the science underlying the web</p>
+<ul>
+<li>﻿﻿From a socio-technical perspective</li>
+<li>﻿﻿Mathematical properties, engineering principles, social impacts</li>
+</ul>
+</li>
+<li><p>﻿﻿Understanding users and developing Web applications for them!</p>
+<ul>
+<li>﻿﻿Sociology &amp; Web Engineering</li>
+</ul>
+</li>
+<li><p>﻿﻿Consulting corporations about social media activities</p>
+<ul>
+<li>﻿﻿Economics &amp; Web analvtics</li>
+<li>﻿﻿For example, role of micro influencers on local economy</li>
+<li>﻿﻿How much hate a brand page generates due to some comments, ….</li>
+</ul>
+</li>
+<li><p>﻿﻿Data analvtics</p>
+<ul>
+<li>﻿﻿Growth of information; structured and unstructured</li>
+<li>﻿﻿Intersection of networks &amp; data</li>
+</ul>
+</li>
+<li><p>Broble mew technologies to scientists and engineers working together on large scale</p>
+</li>
+</ul>
+<h2 id="L2-DataClustering"><a href="#L2-DataClustering" class="headerlink" title="L2 DataClustering"></a>L2 DataClustering</h2><h3 id="Content-processing"><a href="#Content-processing" class="headerlink" title="Content processing"></a>Content processing</h3><h4 id="1-Removing-stuff"><a href="#1-Removing-stuff" class="headerlink" title="1. Removing stuff"></a>1. Removing stuff</h4><ul>
+<li>Non-ascii removal</li>
+</ul>
+<p>remove the emoji…</p>
+<p>![image-20230429103013009](..&#x2F;images&#x2F;webs&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230429103013009.png)</p>
+<h3 id="2-Grouping-tweets"><a href="#2-Grouping-tweets" class="headerlink" title="2. Grouping tweets"></a>2. Grouping tweets</h3><ul>
+<li>﻿﻿Based on content analysis like<ul>
+<li>﻿﻿Clustering, locality sensitive hashing</li>
+<li>﻿﻿Or through content indexes</li>
+</ul>
+</li>
+<li>﻿﻿Once we know the groups<ul>
+<li>﻿﻿We could analyse the words, user mentions, hashtags in these groups</li>
+<li>﻿﻿We can add these terms to a list with a priority</li>
+<li>﻿﻿This is possibly for identifying more tweets of this type<ul>
+<li>﻿﻿Aim is data gathering</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>﻿﻿We can also look at proficient tweeters<ul>
+<li>﻿﻿What are their total tweets</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-Tokenization"><a href="#3-Tokenization" class="headerlink" title="3. Tokenization"></a>3. Tokenization</h3><p>Separate each token</p>
+<p>Remove stopwords</p>
+<h3 id="4-Vector-Representation"><a href="#4-Vector-Representation" class="headerlink" title="4. Vector Representation"></a>4. Vector Representation</h3><p>Documents are represented by a term vector</p>
+<p><em>Di</em> &#x3D; (ti1,ti2 ,….,tin )</p>
+<p>Queries are represented by a similar vector</p>
+<p>• In binary scheme, tik is set to 1 when term k is present in Document i otherwise they are set to zero</p>
+<ul>
+<li>The most relevant documents for a query are expected to be those represented by the vectors closest to the query, that is documents that use similar words to the query.</li>
+<li>﻿﻿Closeness is often calculated by just looking at angles between document vector and query vector</li>
+<li>﻿﻿We need a similarity measure!<ul>
+<li>Cosine similarity measure</li>
+<li>Jaccard coefficient</li>
+<li>Dice coefficient</li>
+</ul>
+</li>
+</ul>
+<h2 id="Finding-similar-tweets-Single-pass-clustering"><a href="#Finding-similar-tweets-Single-pass-clustering" class="headerlink" title="Finding similar tweets Single-pass clustering"></a>Finding similar tweets Single-pass clustering</h2><h3 id="Single-pass-clustering"><a href="#Single-pass-clustering" class="headerlink" title="Single-pass clustering"></a>Single-pass clustering</h3><ul>
+<li><p>requires a single, sequential pass over the set of documents it attempts to cluster.</p>
+</li>
+<li><h4 id="The-algorithm-classifies-the-next-document-in-the-sequence-according-to-a-condition-on-the-similarity-function-employed"><a href="#The-algorithm-classifies-the-next-document-in-the-sequence-according-to-a-condition-on-the-similarity-function-employed" class="headerlink" title="The algorithm classifies the next document in the sequence according to a condition on the similarity function employed."></a>The algorithm classifies the next document in the sequence according to a condition on the similarity function employed.</h4></li>
+<li><p>At every stage, <strong>the algorithm decides on whether a newly seen document should become a member of an already defined cluster or the centre of a new one.</strong></p>
+<ul>
+<li>In its most simple form, the similarity function gets defined on the basis of just some similarity (or alternatively, dissimilarity) measure between document-feature vectors.</li>
+</ul>
+</li>
+</ul>
+<p>![image-20230429121645868](..&#x2F;images&#x2F;webs&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230429121645868.png)</p>
+<p>Comments on Single Pass Method</p>
+<ul>
+<li>﻿﻿The single pass method is particularly simple<ul>
+<li>﻿﻿since it requires that the data set be processed only once.</li>
+</ul>
+</li>
+<li>﻿﻿Obviously, the results for this method are highly dependent on the similarity threshold that is used.</li>
+<li>﻿﻿It tends to produce large clusters early in the clustering pass,<ul>
+<li>﻿﻿and because the clusters formed are not independent of the order in which the data set is processed.</li>
+<li>﻿﻿You should use your judgment in setting this threshold so that you are left with a reasonable number of clusters.</li>
+</ul>
+</li>
+<li>﻿﻿It is sometimes used to form the groups that are used to initiate reallocation clustering.<ul>
+<li>﻿﻿If we get a large noisy clusters of tweets, we could re-cluster them!!!</li>
+</ul>
+</li>
+</ul>
+<h2 id="L3-Credibility-amp-Newsworthiness"><a href="#L3-Credibility-amp-Newsworthiness" class="headerlink" title="L3 Credibility &amp; Newsworthiness"></a>L3 Credibility &amp; Newsworthiness</h2><h3 id="Newsworthy"><a href="#Newsworthy" class="headerlink" title="Newsworthy"></a><strong>Newsworthy</strong></h3><p>Key characteristics of newsworthy score</p>
+<ul>
+<li>﻿﻿Real-time<ul>
+<li>﻿﻿Tweets should be scored as soon as it arrives!</li>
+</ul>
+</li>
+<li>﻿﻿Generalizability<ul>
+<li>﻿﻿Should be able to handle any types of events - not those just seen before</li>
+</ul>
+</li>
+<li>﻿﻿Adaptive<ul>
+<li>﻿﻿New information to be incorporated, as and when they arrive</li>
+<li>﻿﻿Incorporate new information to the scoring model</li>
+</ul>
+</li>
+</ul>
+<p>These characteristics should be realized with the help of <strong>classification approach</strong> and <strong>distant supervision</strong>.</p>
+<h3 id="HeurisIc-Labelling"><a href="#HeurisIc-Labelling" class="headerlink" title="HeurisIc Labelling"></a><strong>HeurisIc Labelling</strong></h3><ul>
+<li>﻿﻿Semi-automatic labelling approach<ul>
+<li>﻿﻿Using a set of heuristics to label<ul>
+<li>﻿﻿High quality (newsworthy) and low quality (noisy) content</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>﻿﻿This will not label majority of the content</li>
+<li>﻿﻿Advantages<ul>
+<li>﻿﻿Minimal effort in creating a data set</li>
+<li>﻿﻿Real-life data set - incremental and generalizable</li>
+<li>﻿﻿Easily built as part of an algorithm for example event detection</li>
+</ul>
+</li>
+</ul>
+<p><strong>Overall approach</strong></p>
+<ul>
+<li><p>Collect a set of high-quality sets and low-quality sets of data</p>
+</li>
+<li><p>Use this dataset to potentially score a newsworthy tweet</p>
+</li>
+</ul>
+<h3 id="Quality-Score"><a href="#Quality-Score" class="headerlink" title="Quality Score"></a>Quality Score</h3><p>Quality Score &#x3D; (profileWeight + verifiedWeight + followers Weight + accountAgeWeight + descriptionWeight)&#x2F;5</p>
+<p>Range is [0 to 1]</p>
+<p>if q score is higher than 0.65 -&gt; high quality </p>
+<p>if q score is lower than 0.45 -&gt; low quality</p>
+<h3 id="Scoring-model"><a href="#Scoring-model" class="headerlink" title="Scoring model"></a>Scoring model</h3><p>Likelihood ratio for each term</p>
+<ul>
+<li>﻿﻿R(t) &#x3D; relative importance of term in the particular quality model when compared to random background model</li>
+<li>﻿﻿&gt;1<ul>
+<li>﻿Term is more common in the model than random</li>
+</ul>
+</li>
+<li>﻿﻿&lt;1<ul>
+<li>﻿﻿Term is less common in the model than random</li>
+</ul>
+</li>
+</ul>
+<p>![image-20230429134512747](..&#x2F;images&#x2F;webs&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230429134512747.png)</p>
+<p><strong>cntd</strong></p>
+<p>if RHQ(t)&lt;2 or RLQ(t)&lt;2 then the Score will be set 0 as to remove the terms which have no clear association with either high quality content or low-quality content.</p>
+<p>![image-20230429134931099](..&#x2F;images&#x2F;webs&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230429134931099.png)</p>
+<h2 id="L4-Geo-localisation"><a href="#L4-Geo-localisation" class="headerlink" title="L4-Geo-localisation"></a>L4-Geo-localisation</h2><h3 id="Fine-grained-localization"><a href="#Fine-grained-localization" class="headerlink" title="Fine-grained localization"></a>Fine-grained localization</h3><p>Fine-grained localization refers to the task of accurately localizing objects or entities within an image or a video with high precision, usually at a sub-pixel or sub-object level. This involves identifying the precise location of the object, as well as any associated attributes such as shape, texture, and color.</p>
+<p>The goal of fine-grained localization is to provide more detailed and accurate information about the location and properties of objects in an image, which can be useful for a range of applications such as object tracking, object recognition, and scene understanding.</p>
+<p>Fine-grained localization can be challenging due to the variability in object appearance, pose, and scale. To overcome these challenges, various techniques such as deep learning and computer vision algorithms have been developed.</p>
+<p>Examples of fine-grained localization tasks include localizing individual bird species in a bird-watching image, identifying specific car models in a crowded parking lot, or detecting the presence of a particular species of fish in an underwater video.</p>
+<p><strong>Problem statement</strong></p>
+<ul>
+<li>﻿﻿Geo-localization<ul>
+<li>﻿﻿Provide location estimates for individual tweets</li>
+</ul>
+</li>
+<li>﻿﻿coarse-grained Geo-localization<ul>
+<li>﻿﻿Provide location estimates for individual tweets at regional or country level</li>
+</ul>
+</li>
+<li>﻿﻿fine-grained Geo-localization<ul>
+<li>﻿﻿Provide location estimates for individual tweets at city or neighbourhood level</li>
+</ul>
+</li>
+<li>﻿﻿Approach<ul>
+<li>﻿﻿Train a model on a geo-tagged data set<ul>
+<li>﻿﻿Validate and test on geo-tagged data</li>
+<li>﻿﻿Test on non-geo tagged data as well</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="L5-Topic-modelling"><a href="#L5-Topic-modelling" class="headerlink" title="L5 Topic modelling"></a>L5 Topic modelling</h2><p><strong>Discuss why searching is limited when exploring a collection</strong></p>
+<p>When exploring a collection, searching can be limited by various factors such as the completeness and accuracy of the metadata, the complexity of the query, and the quality of the search algorithm.</p>
+<p>Firstly, the completeness and accuracy of the metadata associated with each item in the collection can limit the effectiveness of searching. If the metadata is incomplete or inconsistent, important information about an item may not be captured, making it difficult or impossible to find through search queries.</p>
+<p>Secondly, the complexity of the search query can also limit the effectiveness of searching. For example, if a user is looking for items that have multiple attributes or characteristics, such as a specific color and shape, the search query may become too complex and difficult to execute accurately.</p>
+<p>Finally, the quality of the search algorithm used to explore the collection can also limit the effectiveness of searching. If the algorithm is not designed to handle the specific characteristics of the collection or the query, it may return irrelevant or incomplete results.</p>
+<p>To overcome these limitations, various techniques can be employed such as using natural language processing to simplify complex search queries, improving the quality and completeness of metadata through manual curation or machine learning techniques, and using advanced search algorithms that take into account the specific characteristics of the collection and query.</p>
+<p>Topic modelling is the process of using a topic model to discover the <strong>hidden topics</strong> that are represented by a large collection of documents</p>
+<ul>
+<li><p>Observed</p>
+<ul>
+<li><p>﻿﻿collection</p>
+</li>
+<li><p>﻿﻿Document &amp; words</p>
+</li>
+</ul>
+</li>
+<li><p>﻿﻿Aim</p>
+<ul>
+<li>﻿﻿Use the observed information to infer<ul>
+<li>﻿﻿Hidden structure</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>﻿﻿Topic structure - hidden</p>
+<ul>
+<li>﻿﻿per document topic distributions</li>
+<li>﻿﻿Per document per-word topic assignments<ul>
+<li>﻿﻿Annotation…</li>
+<li>﻿﻿Can be used for retrieval, classification, browsing?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>﻿﻿Utility</p>
+<ul>
+<li>﻿﻿Inferred hidden structure resembles the thematic structure of the collection</li>
+</ul>
+</li>
+</ul>
+<p><strong>latent</strong></p>
+<p>(of a quality or state) existing but not yet developed or manifest hidden or concealed.;</p>
+<p>Topic modelling </p>
+<ul>
+<li>A machine learning approach for Mining latent topics</li>
+</ul>
+<p>Identify hidden, gigantic structures</p>
+<p>Probabilistic topic models</p>
+<ul>
+<li>a suite of algorithms that aim to discover and annotate large archives of documents of thematic information</li>
+</ul>
+<h3 id="Our-goal-in-topic-modelling"><a href="#Our-goal-in-topic-modelling" class="headerlink" title="Our goal in topic modelling"></a>Our goal in topic modelling</h3><ul>
+<li>﻿﻿The goal of topic modeling is to automatically discover the topics in a collection of documents</li>
+<li>﻿﻿Documents are observed<ul>
+<li>﻿﻿Topics, per-document and per-word topic assignments - hidden</li>
+<li>﻿﻿Hence latent!</li>
+</ul>
+</li>
+<li>﻿﻿The central computation problem for topic modelling is to use the observed documents to infer hidden topic structure</li>
+<li>﻿﻿Think it as reversing the generative process<ul>
+<li>﻿﻿What is the hidden structure that likely generated the observed collection?</li>
+</ul>
+</li>
+</ul>
+<h3 id="LDA-Latent-Dirichlet-Allocation"><a href="#LDA-Latent-Dirichlet-Allocation" class="headerlink" title="LDA (Latent Dirichlet Allocation)"></a>LDA (Latent Dirichlet Allocation)</h3><ul>
+<li><p>﻿﻿Is a statistical model of document collections that tries to capture the intuition<br> Each document can be described by a distribution of topics and each topic can be described by a distribution of words</p>
+</li>
+<li><p>﻿﻿Topic</p>
+<ul>
+<li><p>﻿﻿Defined as a distribution over the words&#x2F; fixed vocabulary</p>
+<ul>
+<li><p>E.g., genetic topic has words about genetics (sequenced, genes) with high probability</p>
+</li>
+<li><p>﻿﻿Evolutionary biology has words like life, organism with high probability</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Topic-Modelling-Approaches"><a href="#Topic-Modelling-Approaches" class="headerlink" title="Topic Modelling Approaches"></a>Topic Modelling Approaches</h3><ul>
+<li>Number of possible topic structures is exponentially large</li>
+<li>Approximate the posterior distribution</li>
+<li>Topic modelling algorithms form an approximation of equation, <ul>
+<li>by adapting an alternative distribution over latent topic structure to be close to the true posterior</li>
+</ul>
+</li>
+</ul>
+<p>Two approaches:</p>
+<p><strong>1. Sampling based!</strong></p>
+<p>Attempt to collect samples from the posterior to approximate it with an empirical distribution <strong>– Gibbs sampling!</strong></p>
+<p><strong>2. Variational methods!</strong></p>
+<p>Deterministic alternative to sampling based methods</p>
+<p>Posit a parametrised family of distributions over the hidden structure and then find the member of that family that is closest to the posterior</p>
+<p><strong>Summary</strong></p>
+<p>The user specifies that there are K distinct topics</p>
+<p>​	Each of the K topics is drawn from a aDirchlet distribution</p>
+<p>​		Uniform base distribution (u) and concentration parameter B</p>
+<p>​		theta_k ~ Dir(Bu)</p>
+<p>Distributions over topics of each document 	theta_d ~ Dir (au)</p>
+<ul>
+<li>﻿﻿Topic assignment Z_d,n ~ Discrete(theta_d)</li>
+<li>﻿Wd,n~theta_Z(d,n)</li>
+</ul>
+<p><strong>Sampling based!</strong></p>
+<p>Attempt to collect samples from the posterior to approximate it with an empirical distribution - <strong>Gibbs sampling!</strong></p>
+<h1 id="Mock-Paper"><a href="#Mock-Paper" class="headerlink" title="Mock Paper"></a>Mock Paper</h1><h2 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h2><ol>
+<li></li>
+</ol>
+<p>(a) Assume that the BBC recruited you to develop a social media application. The BBC is interested in knowing their readers’ feelings on the news and other events covered by the broadcaster. Your job is to develop a classifier. In this context, answer the following questions:</p>
+<p>(i)</p>
+<p>Your first task is to create Twitter datasets with positive and negative statements so that they can be used for estimating the probabilities for words in the respective classes. [Hint: Assuming that you have a social media crawler, discuss how you will automatically label positive and negative tweets; how will you avoid spurious data]</p>
+<p>(ii)</p>
+<p>Your second task is to develop a lexicon-based automatic sentiment analysis method, which assigns sentiment intensity between [-100,100].Describe an algorithm that also uses the dataset you created in (i). [Hint: identify a suitable lexicon; identify linguistic cases you may handle; specify a scoring method] </p>
+<p>(iii)</p>
+<p>Now that you created a sentiment analysis method, you want to verify the method’s validity from a user’s perspective. Design a scalable user-based study to ensure your sentiment scoring method is appropriate.</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-DSA"
   class="article article-type-post"
   itemscope
@@ -2444,8 +2799,15 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h1><h2 id="Bug1-captcha-disappearance"><a href="#Bug1-captcha-disappearance" class="headerlink" title="Bug1: captcha disappearance"></a>Bug1: captcha disappearance</h2><p><a target="_blank" rel="noopener" href="https://www.javazxz.com/thread-7116-1-1.html">https://www.javazxz.com/thread-7116-1-1.html</a></p>
-<h2 id="Bug2-com-mysql-cj-jdbc-exceptions-CommunicationsException-Communications-link-failure"><a href="#Bug2-com-mysql-cj-jdbc-exceptions-CommunicationsException-Communications-link-failure" class="headerlink" title="Bug2:com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure"></a>Bug2:com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</h2><p><strong>network problem. The student.gla.ac.uk network filed cannot access to tencent server.</strong></p>
+  <h1 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h1><h2 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h2><p><strong>captcha disappearance</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.javazxz.com/thread-7116-1-1.html">https://www.javazxz.com/thread-7116-1-1.html</a></p>
+<h2 id="Bug2"><a href="#Bug2" class="headerlink" title="Bug2."></a>Bug2.</h2><p><strong>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</strong></p>
+<p>network problem. The student.gla.ac.uk network filed cannot access to tencent server.</p>
+<h2 id="Bug3"><a href="#Bug3" class="headerlink" title="Bug3."></a>Bug3.</h2><p><strong>No spring.config.import property has been defined</strong></p>
+<p>产生问题的原因是bootstrap.properties比application.properties的优先级要高<br>由于bootstrap.properties是系统级的资源配置文件，是用在程序引导执行时更加早期配置信息读取；<br>而application.properties是用户级的资源配置文件，是用来后续的一些配置所需要的公共参数。<br>但是在SpringCloud 2020.* 版本把bootstrap禁用了，导致在读取文件的时候读取不到而报错，所以我们只要把bootstrap从新导入进来就会生效了。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.clouds<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在全部使用nacos配置后，就不用引用这个了</p>
 <h1 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h1><h2 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h2><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
 <h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
 <p>![image-20230403164227851](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164227851.png)</p>
@@ -2468,7 +2830,8 @@
 <p>解决方法<br>了解上面的介绍后，解决它就很简单了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a 找到我们上次运行的容器<span class="built_in">id</span></span><br><span class="line">docker restart <span class="built_in">id</span> 即可</span><br></pre></td></tr></table></figure>
 
-<p>你没看错就这样就完了。<br>网上有很多说用docker volume实现数据持久化，我觉得是小题大做了。<br>Docker Volume本质上是容器与主机之间共享的目录或者文件，这样Docker Volume中的数据可以在主机和容器中实时同步。</p>
+<p>你没看错就这样就完了。</p>
+<p>我这里创建了volume容器来对其进行持久化，位置在&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;mysql-data&#x2F;_data，从mysql容器中mount在我的cloud server上的路径为my&#x2F;own</p>
  
       <!-- reward -->
       
