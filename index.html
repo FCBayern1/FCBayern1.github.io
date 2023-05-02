@@ -1665,10 +1665,258 @@
 <p>(a) Assume that the BBC recruited you to develop a social media application. The BBC is interested in knowing their readers’ feelings on the news and other events covered by the broadcaster. Your job is to develop a classifier. In this context, answer the following questions:</p>
 <p>(i)</p>
 <p>Your first task is to create Twitter datasets with positive and negative statements so that they can be used for estimating the probabilities for words in the respective classes. [Hint: Assuming that you have a social media crawler, discuss how you will automatically label positive and negative tweets; how will you avoid spurious data]</p>
+<p><strong>use hashtag based data collection</strong></p>
+<p>1.Data collection: Use a social media crawler to collect tweets that mention the BBC or are in response to BBC’s tweets. This could be done using Twitter’s API to search for tweets containing specific keywords, hashtags, or mentions related to BBC’s news and events.</p>
+<p>2.Pre-process: Clean the collected tweets by removing irrelevant information such as URLs, mentions, and special characters. Convert all text to lowercase and tokenize the words for easier analysis. <strong>Ignore this step</strong>.</p>
+<p>3.Automatic labeling: Loop the tweets, using lexicon approach to compute the overall score of a tweet. if a tweet has been annotated with a hashtag, then use NRC hashtag lexicon approach to label the tweet, if it has a emoji at the end then use emoticons based approach to label the tweet. Then calculate the score for each feature (word&#x2F;hashtag&#x2F;emoticon), select the label correspondingly based on overall score.</p>
+<p>![image-20230501223242594](..&#x2F;images&#x2F;webs&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230501223242594.png)</p>
+<p>4.Avoid spurious data. Pre-defined relevant hashtags: Compile a list of relevant and meaningful hashtags associated with the BBC or specific news and events covered by the broadcaster. Only collect and analyze tweets containing these pre-defined hashtags to ensure high-quality data. Noise filtering: Filter out tweets that are ambiguous, contain sarcasm, or are irrelevant to the BBC’s content. This can be done using advanced NLP techniques or by setting a minimum sentiment score threshold to exclude borderline cases.</p>
 <p>(ii)</p>
 <p>Your second task is to develop a lexicon-based automatic sentiment analysis method, which assigns sentiment intensity between [-100,100].Describe an algorithm that also uses the dataset you created in (i). [Hint: identify a suitable lexicon; identify linguistic cases you may handle; specify a scoring method] </p>
+<p>To develop a lexicon-based automatic sentiment analysis method that assigns sentiment intensity between [-100, 100], follow these steps:</p>
+<ol>
+<li><p>Choose a suitable lexicon: Select a pre-built sentiment lexicon that provides sentiment scores for words. Examples of such lexicons include SentiWordNet, AFINN, or VADER. These lexicons typically assign sentiment scores to words on a scale of -1 to 1 or -5 to 5.</p>
+</li>
+<li><p>Preprocessing: Clean the dataset created in step (i) by removing irrelevant information like URLs, mentions, and special characters. Convert all text to lowercase and tokenize the words for easier analysis.</p>
+</li>
+<li><p>Handling linguistic cases: Address various linguistic cases to improve sentiment analysis:</p>
+<p>a. Negations: Identify negation words (e.g., not, never, isn’t) and modify the sentiment score of the words that follow. For example, you can reverse or reduce the sentiment score of the word following the negation.</p>
+<p>b. Intensifiers: Identify intensifier words (e.g., very, extremely, really) and adjust the sentiment score of the following word accordingly. For example, you can multiply the sentiment score by a factor (e.g., 1.5 or 2) based on the intensity of the intensifier.</p>
+<p>c. Diminishers: Identify diminisher words (e.g., slightly, barely, hardly) and adjust the sentiment score of the following word accordingly. For example, you can multiply the sentiment score by a factor (e.g., 0.5) based on the diminishing effect.</p>
+</li>
+<li><p>Scoring method: Implement a scoring method to calculate the sentiment intensity of each tweet using the lexicon and linguistic cases:</p>
+<p>a. Initialize a sentiment score variable to 0 for each tweet.</p>
+<p>b. Iterate through the words in the tweet, and for each word, check if it has a sentiment score in the lexicon.</p>
+<p>c. If the word has a sentiment score, adjust the score based on the linguistic cases (negations, intensifiers, diminishers) if applicable.</p>
+<p>d. Add the sentiment score of the word to the tweet’s sentiment score.</p>
+<p>e. After processing all words, normalize the tweet’s sentiment score to fit the range of [-100, 100]. For example, if the lexicon’s sentiment scores range from -5 to 5, multiply the tweet’s sentiment score by 20.</p>
+<p>f. Assign the normalized sentiment score to the tweet as its sentiment intensity.</p>
+</li>
+<li><p>Evaluation: Compare the sentiment intensity assigned by the lexicon-based method with the labels in the dataset created in step (i). Calculate performance metrics such as accuracy, precision, recall, and F1-score to evaluate the effectiveness of the lexicon-based sentiment analysis method.</p>
+</li>
+</ol>
+<p>By following these steps, you can develop a lexicon-based automatic sentiment analysis method that assigns sentiment intensity between [-100, 100] and uses the dataset created in the previous task.</p>
 <p>(iii)</p>
 <p>Now that you created a sentiment analysis method, you want to verify the method’s validity from a user’s perspective. Design a scalable user-based study to ensure your sentiment scoring method is appropriate.</p>
+<p>To design a scalable user-based study to ensure the sentiment scoring method’s appropriateness, follow these steps:</p>
+<ol>
+<li>Select a representative sample: Randomly sample a subset of tweets from the dataset created in the first task. Make sure the sample includes a balanced number of positive and negative tweets, as well as a diverse range of topics covered by the BBC.</li>
+<li>Prepare the evaluation interface: Develop a user-friendly interface for the study participants. The interface should display a tweet and its corresponding sentiment score, calculated using the lexicon-based sentiment analysis method. Participants should be able to rate the sentiment score’s appropriateness on a scale (e.g., 1 to 5, with 1 being “strongly disagree” and 5 being “strongly agree”).</li>
+<li>Recruit participants: Recruit a diverse group of participants to ensure a broad range of perspectives. You can use platforms like Amazon Mechanical Turk, Prolific, or other crowdsourcing services to recruit participants on a large scale.</li>
+<li>Training and instructions: Provide clear instructions and examples to participants on how to evaluate the sentiment scores. Briefly explain the concept of sentiment analysis, the scoring range of [-100, 100], and the evaluation scale. You may also provide examples of tweets with appropriate and inappropriate sentiment scores to help participants understand the task better.</li>
+<li>Evaluation process: Ask participants to evaluate the sentiment scores of the sampled tweets using the provided interface. Encourage them to consider the context of the tweet and the sentiment score’s appropriateness based on the tweet’s content.</li>
+<li>Collect user feedback: Allow participants to provide qualitative feedback on the sentiment scoring method, highlighting any issues or suggestions for improvement. This feedback can help identify potential areas of refinement for the sentiment analysis method.</li>
+<li>Analyze results: After collecting the evaluations, calculate the average appropriateness score for each tweet’s sentiment score. High average scores indicate that the sentiment scoring method is appropriate from the user’s perspective. Analyze the qualitative feedback to identify common themes and potential areas for improvement.</li>
+<li>Iterate and improve: Based on the study results, refine the sentiment analysis method to address identified issues and incorporate user feedback. Repeat the user-based study with the updated method to evaluate its effectiveness iteratively.</li>
+</ol>
+<p>By designing and conducting a scalable user-based study, you can ensure that the sentiment scoring method is appropriate from the user’s perspective and make data-driven improvements to enhance its accuracy and effectiveness.</p>
+<ol start="2">
+<li></li>
+</ol>
+<p>(a)Create a vector representation for the following short text. Identify and remove potential stop words. “@AlanStainer @takeitev It’s mad isn’t it. In the UK there are 8k petrol stations with multiple pumps and 25k chargers (increasing by 300 pm). They do know the climate emergency is now right? Not in 30 years’ time, Just asking”</p>
+<p>Stopwords: “the”, “in”, “and”</p>
+<p>[“it’s”, “mad”, “isn’t”, “uk”, “8k”, “petrol”, “stations”, “multiple”, “pumps”, “25k”, “chargers”, “increasing”, “300”, “pm”, “know”, “climate”, “emergency”, “right”, “30”, “years’”, “time”, “asking”]</p>
+<p>(b)Create all biterms from the following text, “in the UK there are 8k petrol stations with multiple pumps and 25k chargers</p>
+<p>(“in”, “the”) (“in”, “UK”) (“in”, “there”) … (“pumps”, “and”) (“pumps”, “25k”) (“pumps”, “chargers”) … (“and”, “25k”) (“and”, “chargers”) … (“25k”, “chargers”)</p>
+<p>(c) Assume you have developed a topic model on a collection with your university communications for the last academic year. Design a user-centred experiment to evaluate the interpretability of the model. [Hint: design tasks and justify, selection of subjects, number of users, what will you measure, how do you prove the results]</p>
+<p>Designing a user-centered experiment to evaluate the interpretability of a topic model involves several components, including selecting subjects, designing tasks, determining the number of users, and measuring performance. Here’s an outline for such an experiment:</p>
+<ol>
+<li><p>Define the goal: The primary goal of the experiment is to evaluate the interpretability of the topic model in terms of the coherence and relevance of the identified topics within the context of university communications.</p>
+</li>
+<li><p>Selection of subjects: Choose participants who have some familiarity with the university environment, such as students, faculty, and administrative staff. This will ensure that they can understand and assess the relevance of the topics generated by the model.</p>
+</li>
+<li><p>Number of users: To ensure the results are reliable and generalizable, aim for a diverse sample of participants. A sample size of 30-50 participants is typically considered sufficient for user-centered experiments, but the optimal number may vary depending on factors such as the complexity of the tasks and the desired statistical power.</p>
+</li>
+<li><p>Design tasks: Create tasks that help assess the interpretability of the topics generated by the model. Example tasks include:</p>
+<p>a. Topic labeling: Ask participants to assign meaningful labels to a given set of topics. This assesses whether users can understand and make sense of the topics generated by the model.</p>
+<p>b. Topic ranking: Ask participants to rank a list of topics based on their relevance or importance to the university’s communications. This helps evaluate the model’s ability to identify meaningful and relevant topics.</p>
+<p>c. Document-topic assignment: Provide participants with a set of documents and ask them to assign the most relevant topic from the model to each document. This task assesses whether users can effectively map the generated topics to real-world documents.</p>
+</li>
+<li><p>Measurement: Collect quantitative and qualitative data to evaluate the interpretability of the model.</p>
+<p>a. Quantitative measures: Calculate agreement scores (e.g., Fleiss’ Kappa or Cohen’s Kappa) to measure the consistency among participants in terms of topic labeling, ranking, and document-topic assignments.</p>
+<p>b. Qualitative measures: Collect subjective feedback from participants about the coherence, relevance, and overall interpretability of the topics. This can be done through open-ended questions, interviews, or questionnaires.</p>
+</li>
+<li><p>Analyze results: Analyze the quantitative and qualitative data to assess the interpretability of the model. High agreement scores and positive feedback from participants would indicate that the model generates interpretable topics.</p>
+</li>
+<li><p>Prove the results: To prove the results, compare the performance of the topic model with alternative models or baseline approaches (e.g., LDA, NMF). Conduct a similar user-centered experiment for the alternative models and compare the agreement scores and subjective feedback. A higher performance of the developed topic model compared to the alternatives would provide evidence for its interpretability.</p>
+</li>
+</ol>
+<p>By carefully designing and executing a user-centered experiment, you can evaluate the interpretability of a topic model in the context of university communications, ensuring that the model generates meaningful and relevant topics for the users.</p>
+<p>(d)You have collected tweets and newspaper articles from Scotland for the last month.</p>
+<p>Describe a method to develop topic models from these datasets. [Hint identify issues in dealing with such heterogenous datasets; how would you handle such issues]</p>
+<p>l Prepare the tweets data, Pre-process of the data. </p>
+<p>l Create a bigram model and trigram model. Then use the data with bigrams and trigrams to create the dictionary which will be used in model training.</p>
+<p>l Use dictionary to create the corpus.</p>
+<p>l Use LDA model to run topic modelling by the previous data which has been processed.</p>
+<p>l Use different measures which including KL divergence, perplexity, and coherence to evaluate the model. This step will also help us to determine the number of topics.</p>
+<p>l Update the model parameter by the result of evaluation.</p>
+<p>l Visualize the model. The topic keywords will be displayed by a chart or a word cloud.</p>
+<p><strong>Handling heterogeneity:</strong> Tweets and newspaper articles have different lengths, styles, and contexts. To address these issues:</p>
+<p>a. Length normalization: To mitigate the differences in length between tweets and newspaper articles, consider using techniques like document sampling or text chunking. For instance, divide newspaper articles into smaller chunks of approximately the same size as tweets.</p>
+<p>b. Text representation: Use a suitable text representation method that can capture the context and semantics of both short and long texts. Techniques like TF-IDF, word embeddings (e.g., Word2Vec, GloVe), or even more advanced methods like BERT embeddings can be used.</p>
+<p>c. Combining datasets: Combine the preprocessed tweets and newspaper article chunks into a single dataset to build a unified topic model.</p>
+<p>3.Applying clustering (e.g., Single-pass clustering) on Twitter data stream will create groups of similar tweets of varying sizes. Design an algorithm to detect events from such groups. Specifically, answer the following questions.</p>
+<p><strong>（i）What role do entities play in detecting events? How would you reduce the cost of detecting entities?</strong></p>
+<p>Entities can include named entities like people, organizations, locations, or other relevant terms specific to an event. By identifying and tracking entities within the tweet clusters, we can recognize emerging events and monitor their development. Entities can help:</p>
+<ol>
+<li>Identify the key components of an event: Entities can represent the primary subjects or objects related to an event, enabling us to understand the event’s main focus.</li>
+<li>Differentiate between events: Entities can help distinguish between different events by providing context-specific information, which allows us to separate events with similar keywords but different contexts.</li>
+<li>Track the progression of events: Monitoring the frequency and co-occurrence of entities over time can provide insights into how an event is evolving and help identify new developments or trends.</li>
+</ol>
+<p>Reducing the cost of detecting entities:</p>
+<p>Detecting entities in real-time can be computationally expensive, especially for large-scale Twitter data streams. To reduce the cost of detecting entities, consider the following strategies:</p>
+<ol>
+<li>Entity extraction optimization: Use efficient named entity recognition (NER) tools or libraries that can handle streaming data, like spaCy or the Stanford NER. These libraries are optimized for performance and can handle large-scale text data efficiently.</li>
+<li>Filter irrelevant data: Preprocess the Twitter data stream to remove irrelevant information, such as URLs, hashtags, user mentions, and stop words. This reduces the volume of data to process and allows the entity extraction to focus on relevant content.</li>
+<li>Keyword-based entity detection: Instead of using full-fledged NER models, you can create a list of relevant keywords or entities specific to the domain of interest. This can help in detecting events of interest with lower computational cost.</li>
+<li>Incremental entity extraction: Instead of processing the entire data stream at once, perform entity extraction incrementally as new tweets arrive. This can help distribute the computational load over time, making it more manageable.</li>
+<li>Parallelization: Utilize parallel processing techniques to distribute the entity extraction task across multiple cores or machines, which can significantly speed up the process and reduce the overall computational cost.</li>
+</ol>
+<p>By incorporating these strategies, you can reduce the cost of detecting entities in Twitter data streams while still effectively identifying and tracking events.</p>
+<p><strong>(ii)If you were to use tf-idf concepts for representation, how would you capture them?</strong></p>
+<p>To capture TF-IDF concepts for representation in the context of detecting events from Twitter data, follow these steps:</p>
+<ol>
+<li><p>Data preprocessing: Preprocess the tweets by removing irrelevant information (e.g., URLs, hashtags, user mentions), tokenizing the text, removing stop words, converting all text to lowercase, and performing lemmatization or stemming.</p>
+</li>
+<li><p>Term Frequency (TF): Calculate the term frequency for each term in each tweet. The term frequency is the number of times a term appears in a tweet divided by the total number of terms in that tweet. This step normalizes the frequency of terms in each tweet, accounting for varying tweet lengths.</p>
+</li>
+<li><p>Inverse Document Frequency (IDF): Calculate the inverse document frequency for each term across the entire Twitter data stream. The IDF measures the importance of a term by considering its rarity in the entire dataset. To calculate IDF, first compute the document frequency (DF) – the number of tweets containing a particular term. Then, compute the IDF as the logarithm of the total number of tweets divided by the DF.</p>
+</li>
+<li><p>TF-IDF representation: Compute the TF-IDF score for each term in each tweet by multiplying the TF and IDF values. This score represents the importance of a term in a tweet while considering its rarity in the entire dataset.</p>
+</li>
+<li><p>Feature vectors: For each tweet, create a feature vector with the TF-IDF scores of its terms. This can be represented as a sparse vector where each dimension corresponds to a unique term from the entire vocabulary across all tweets, and its value is the TF-IDF score for that term in the specific tweet. If a term is not present in a tweet, its value in the vector will be zero.</p>
+</li>
+<li><p>计算TF（Term Frequency，词频）：对于给定的文档d和词语t，它的TF值可以通过如下公式计算：</p>
+<p>TF(t, d) &#x3D; (词语t在文档d中出现的次数) &#x2F; (文档d中词语总数)</p>
+<p>其中，分子表示词语t在文档d中出现的次数，分母表示文档d中所有词语的总数。TF值反映了词语在当前文档中的重要程度，即出现次数越多，TF值越大。</p>
+</li>
+<li><p>计算IDF（Inverse Document Frequency，逆文档频率）：对于语料库中的所有文档和词语t，它的IDF值可以通过如下公式计算：</p>
+<p>IDF(t) &#x3D; log((语料库中文档的总数) &#x2F; (包含词语t的文档数+1))</p>
+<p>其中，分子表示语料库中所有文档的总数，分母表示包含词语t的文档数（加1是为了避免分母为0）。IDF值反映了词语在整个语料库中的重要程度，即出现文档数越少，IDF值越大。</p>
+</li>
+<li><p>计算TF-IDF：将TF和IDF相乘，得到词语t在文档d中的TF-IDF值。</p>
+<p>TF-IDF(t, d) &#x3D; TF(t, d) * IDF(t)</p>
+<p>TF-IDF值反映了词语t在文档d中的重要程度，同时也考虑了词语在整个语料库中的出现情况。在计算TF-IDF时，还可以对TF值进行平滑处理，例如使用下面的公式：</p>
+<p>TF(t, d) &#x3D; 0.5 + 0.5 * (词语t在文档d中出现的次数) &#x2F; (文档d中词语总数)</p>
+<p>这种平滑处理可以避免长文档中某个词语的TF值过高的问题。</p>
+</li>
+</ol>
+<p><strong>(iii) How do you remove noisy or spam groups?</strong></p>
+<p>Removing noisy or spam groups from a dataset involves filtering out irrelevant or low-quality content. Here are some strategies to identify and remove such groups:</p>
+<ol>
+<li>Text-based filtering: Analyze the content of the groups and apply filters to eliminate groups containing certain keywords or patterns that are commonly associated with spam or noise. For example, you can create a list of common spam keywords, phrases, or patterns, and remove groups that contain a high frequency of these terms.</li>
+<li>Frequency-based filtering: Analyze the posting frequency of the groups. Spam or noisy groups often exhibit unusual posting patterns, such as posting the same content repeatedly, or posting at extremely high frequencies. Set a threshold for acceptable posting frequency and filter out groups that exceed this limit.</li>
+<li>User-based filtering: Analyze the users contributing to the groups. If a group consists mostly of users with suspicious behavior or characteristics (e.g., newly created accounts, accounts with very few followers or following a large number of users), it might be a spam or noisy group. You can create a scoring system to rate the credibility of users and filter out groups with a high proportion of low-credibility users.</li>
+<li>Group size: Small groups or groups with very few members might be more likely to be noisy or spammy. You can set a minimum group size threshold and remove groups that fall below this limit.</li>
+<li>Language-based filtering: Analyze the language used in the groups. Spam or noisy groups may contain a high proportion of irrelevant    r nonsensical text, or text in a language that is not of interest for your analysis. Use natural language processing techniques, such as language detection, to filter out groups with content in unwanted languages or with a high proportion of unintelligible text.</li>
+<li>Machine learning techniques: Train a machine learning model to classify groups as spam, noisy, or relevant based on features like text content, posting frequency, user characteristics, group size, and language. This approach can be more adaptive and effective in identifying spam and noisy groups, especially if the model is regularly updated with new data.</li>
+</ol>
+<p>By applying these strategies, you can identify and remove noisy or spam groups from your dataset, allowing for more accurate and meaningful analysis of the remaining content.</p>
+<p><strong>(iv) How would you identify categories of events?</strong></p>
+<p>1.Visualization, use diagram to demonstrate the top 20 most frequent words in a group, this can help us understand the topic of a group and help us to categorize the groups. Or use the PCA to reduce the dimensionality of the data and project it to a lower space, find the overlaps.</p>
+<p>2.Cluster labeling, Assign descriptive labels to the groups based on the representative information extracted in the previous step. You can manually analyze the most frequent terms, key phrases, or named entities in each group and assign a suitable category label. Alternatively, you can use an automated approach like extracting the most frequent terms or key phrases as labels.</p>
+<p><strong>(v) Provide an algorithm for combining similar groups of tweets (e.g., tweets containing same entities).</strong></p>
+<ol>
+<li>Extract entities from each group:<ul>
+<li>For each group, extract the named entities (e.g., people, organizations, locations) from the text of the tweets and articles.</li>
+<li>You can use a Named Entity Recognition (NER) library like spaCy or Stanford NER to perform this task.</li>
+</ul>
+</li>
+<li>Calculate entity similarity between groups:<ul>
+<li>Create a function to compute the similarity between two groups based on the shared entities.</li>
+<li>You can use the Jaccard similarity coefficient, which is the size of the intersection of entities divided by the size of the union of entities for each pair of groups.</li>
+</ul>
+</li>
+<li>Combine similar groups based on a similarity threshold:<ul>
+<li>Set a similarity threshold (e.g., 0.5) to decide whether two groups should be combined.</li>
+<li>For each pair of groups:<ul>
+<li>Compute the entity similarity using the function created in step 2.</li>
+<li>If the similarity score is greater than or equal to the threshold:<ul>
+<li>Combine the two groups into one.</li>
+<li>Update the entity set of the combined group.</li>
+<li>Remove the original groups from the list of groups.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Repeat this process until no more groups can be combined based on the similarity threshold.</li>
+</ul>
+</li>
+</ol>
+<p> <strong>here are some other features than entities you can use to combine similar groups:</strong></p>
+<ol>
+<li>Term Frequency (TF):<ul>
+<li>Use the frequency of terms within each group as a feature. Calculate the similarity between groups based on the overlap of their most frequent terms.</li>
+</ul>
+</li>
+<li>Key phrases:<ul>
+<li>Extract key phrases from the text in each group using techniques like RAKE (Rapid Automatic Keyword Extraction) or TextRank. Compare the groups based on the overlap of their key phrases.</li>
+</ul>
+</li>
+<li>Sentiment analysis:<ul>
+<li>Calculate the average sentiment score of each group using a sentiment analysis library or pre-trained model. Combine groups with similar sentiment scores.</li>
+</ul>
+</li>
+<li>Topic modeling:<ul>
+<li>Apply topic modeling techniques like Latent Dirichlet Allocation (LDA) to the dataset. Compare groups based on the distribution of topics within each group.</li>
+</ul>
+</li>
+<li>Word embeddings:<ul>
+<li>Use pre-trained word embeddings like Word2Vec, GloVe, or BERT to represent the text within each group. Calculate the average embedding for each group and compare groups using cosine similarity or other distance metrics.</li>
+</ul>
+</li>
+<li>N-grams:<ul>
+<li>Extract N-grams (sequences of N consecutive words) from the text within each group. Compare groups based on the overlap of their most frequent N-grams.</li>
+</ul>
+</li>
+<li>Text similarity:<ul>
+<li>Calculate the average pairwise text similarity within each group using a text similarity measure like cosine similarity, Jaccard similarity, or edit distance. Combine groups with similar average text similarity scores.</li>
+</ul>
+</li>
+<li>Hashtags and user mentions:<ul>
+<li>For Twitter data, extract hashtags and user mentions from the tweets within each group. Compare groups based on the overlap of their most frequent hashtags and user mentions.</li>
+</ul>
+</li>
+</ol>
+<p>(vi) how do we find the brusting clusters?</p>
+<p>To find bursting clusters, you can use a sliding window algorithm combined with a clustering method. The idea is to divide the data into time windows and apply clustering within each window to identify groups of similar items. By comparing the clusters across different time windows, you can detect bursts of activity. Here’s an outline of the algorithm:</p>
+<ol>
+<li>Divide the data into time windows:<ul>
+<li>Choose an appropriate window size and step size based on the dataset and the expected duration of bursts.</li>
+<li>Divide the data into non-overlapping or overlapping time windows accordingly.</li>
+</ul>
+</li>
+<li>Apply clustering within each time window:<ul>
+<li>For each time window, preprocess the data (e.g., tokenize, remove stop words, stemming&#x2F;lemmatization) and create feature vectors using methods like TF-IDF or word embeddings.</li>
+<li>Apply a clustering algorithm (e.g., K-means, DBSCAN) to the feature vectors within the window to group similar items.</li>
+</ul>
+</li>
+<li>Detect bursts by comparing clusters across adjacent time windows:<ul>
+<li>Define a burst detection criterion, such as a significant increase in the number of items within a cluster or the emergence of a new cluster with a large number of items.</li>
+<li>For each pair of adjacent time windows, compare the clusters and identify those that meet the burst detection criterion.</li>
+</ul>
+</li>
+</ol>
+<p>Here’s a pseudo-code for the algorithm:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">phpCopy code</span><br><span class="line">function preprocess_and_vectorize(data):</span><br><span class="line">    preprocessed_data = preprocess_text(data)</span><br><span class="line">    feature_vectors = create_feature_vectors(preprocessed_data)</span><br><span class="line">    return feature_vectors</span><br><span class="line"></span><br><span class="line">function cluster_data(feature_vectors):</span><br><span class="line">    clusters = apply_clustering_algorithm(feature_vectors)</span><br><span class="line">    return clusters</span><br><span class="line"></span><br><span class="line">function detect_bursts(window_clusters, burst_threshold):</span><br><span class="line">    bursts = []</span><br><span class="line">    for i in range(len(window_clusters) - 1):</span><br><span class="line">        for cluster in window_clusters[i]:</span><br><span class="line">            next_window_cluster = find_corresponding_cluster(cluster, window_clusters[i + 1])</span><br><span class="line">            if not next_window_cluster:</span><br><span class="line">                continue</span><br><span class="line">            growth = len(next_window_cluster) - len(cluster)</span><br><span class="line">            if growth &gt;= burst_threshold:</span><br><span class="line">                bursts.append((cluster, next_window_cluster))</span><br><span class="line">    return bursts</span><br><span class="line"></span><br><span class="line">data = load_data()</span><br><span class="line">window_size = ...</span><br><span class="line">step_size = ...</span><br><span class="line">burst_threshold = ...</span><br><span class="line"></span><br><span class="line">time_windows = create_time_windows(data, window_size, step_size)</span><br><span class="line">window_clusters = []</span><br><span class="line"></span><br><span class="line">for window in time_windows:</span><br><span class="line">    feature_vectors = preprocess_and_vectorize(window)</span><br><span class="line">    clusters = cluster_data(feature_vectors)</span><br><span class="line">    window_clusters.append(clusters)</span><br><span class="line"></span><br><span class="line">bursts = detect_bursts(window_clusters, burst_threshold)</span><br></pre></td></tr></table></figure>
+
+<p>This algorithm divides the data into time windows, applies clustering within each window, and detects bursts based on changes in cluster sizes across adjacent windows. You can customize the window size, step size, clustering algorithm, and burst detection criterion based on your specific dataset and use case.</p>
+<p>(b) Describe a methodology to predict stock trend prediction from social media data</p>
+<p>StockNet (Deep Learning method)</p>
+<p>StockNet is a hypothetical term that could refer to a network or system that aims to predict stock trends. While I’m not aware of a specific tool called “StockNet,” there are many approaches to predicting stock trends using machine learning and artificial intelligence techniques. One such approach is using deep learning models like recurrent neural networks (RNNs), long short-term memory (LSTM) networks, or convolutional neural networks (CNNs).</p>
+<p>To use a deep learning model like “StockNet” to predict stock trends, follow these general steps:</p>
+<ol>
+<li>Data collection: Gather historical stock data, such as stock prices, trading volumes, and other relevant financial indicators. You may obtain this data from financial data providers, public financial statements, or web scraping.</li>
+<li>Data preprocessing: Clean and preprocess the data to eliminate noise, handle missing values, and convert categorical data into numerical formats. This step may also involve feature engineering to create new features that may be relevant for prediction.</li>
+<li>Feature scaling: Scale or normalize the features to ensure that they have similar ranges and are suitable for input into a deep learning model.</li>
+<li>Train-test split: Split the dataset into training and testing sets. The training set will be used to train the model, while the testing set will be used to evaluate its performance.</li>
+<li>Model selection: Choose an appropriate deep learning model based on your data and problem. Common choices include RNNs, LSTMs, and CNNs.</li>
+<li>Model training: Train the selected model on the training data. This involves adjusting the model’s parameters to minimize the prediction error. You may need to experiment with different hyperparameters, such as learning rate, batch size, and the number of hidden layers.</li>
+<li>Model evaluation: Evaluate the model’s performance on the testing data. Common evaluation metrics include mean squared error (MSE), mean absolute error (MAE), and R-squared.</li>
+<li>Fine-tuning: If the model’s performance is unsatisfactory, fine-tune it by adjusting the hyperparameters, modifying the model architecture, or changing the features used.</li>
+<li>Prediction: Once the model has been fine-tuned and performs well on the testing data, use it to predict future stock trends based on the input features.</li>
+</ol>
+<p>Keep in mind that predicting stock trends is inherently difficult due to the complex and dynamic nature of financial markets. No model can guarantee accurate predictions, and it is essential to manage risks and avoid relying solely on model predictions for making investment decisions.</p>
  
       <!-- reward -->
       
@@ -3511,6 +3759,16 @@
     <div class="article-entry" itemprop="articleBody">
        
   <h1 id="C-Get-started"><a href="#C-Get-started" class="headerlink" title="C# Get started"></a>C# Get started</h1><p>hello guys, follow me and let’s studying the C#.</p>
+<ul>
+<li>Commercial experience of software development in C#</li>
+<li>Experience with source code version control such as Git</li>
+<li>Experience with software development tools such as Visual Studio, JIRA, MSBuild, Jenkins</li>
+<li>Experience with unit test frameworks such as NUnit or MSTest</li>
+<li>Experience designing user interfaces. (Exposure to DevExpress an advantage).</li>
+<li>Exposure to Iterative or Agile development methodologies (Scrum &#x2F; Kanban)</li>
+<li>Understanding of OOP</li>
+<li>Understanding of SOLID</li>
+</ul>
 <h2 id="Chapter1-Basic"><a href="#Chapter1-Basic" class="headerlink" title="Chapter1: Basic"></a>Chapter1: Basic</h2><ul>
 <li><strong>using</strong>: The keyword is used to include the <strong>System</strong> namespace in the program. A program usually has multiple using <strong>statements</strong>.</li>
 <li><strong>namespace</strong>: which contains different classes.</li>
