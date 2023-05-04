@@ -82,7 +82,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.4k</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -91,7 +91,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">5 min</span>
+            <span class="post-count">6 min</span>
         </span>
     </span>
 </div>
@@ -106,7 +106,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="1-language"><a href="#1-language" class="headerlink" title="1. language"></a>1. language</h1><h3 id="1-Comparable-vs-comparator"><a href="#1-Comparable-vs-comparator" class="headerlink" title="(1).Comparable vs comparator"></a>(1).Comparable vs comparator</h3><ul>
+  <h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="1-Comparable-vs-comparator"><a href="#1-Comparable-vs-comparator" class="headerlink" title="(1).Comparable vs comparator"></a>(1).Comparable vs comparator</h2><ul>
 <li><h4 id="第一，字面含义不同"><a href="#第一，字面含义不同" class="headerlink" title="第一，字面含义不同"></a>第一，字面含义不同</h4></li>
 </ul>
 <p>我们先从二者的字面含义来理解它，Comparable翻译为中文是“比较”的意思，而Comparator是“比较器”的意思。Comparable是以-able结尾的，表示它自身具备着某种能力，而Comparator是以-or结尾，表示自身是比较的参与者，这是从字面含义先来理解二者的不同。</p>
@@ -132,9 +132,9 @@
 <p><img src="/../images/v2-dd7e3161f5eb2d2055f73a9796cf81ff_1440w.png" alt="v2-dd7e3161f5eb2d2055f73a9796cf81ff_1440w"></p>
 <p>匿名类:</p>
 <p><img src="/../images/v2-53099add8da4513a445681f7f835d05a_1440w.png" alt="v2-53099add8da4513a445681f7f835d05a_1440w"></p>
-<h2 id="第三，使用场景不同"><a href="#第三，使用场景不同" class="headerlink" title="第三，使用场景不同"></a>第三，使用场景不同</h2><p>通过上面示例的实现代码我们可以看出，使用Comparable必须要修改原有的类，也就是你要排序那个类，就要在那个中实现Comparable接口并重写compareTo方法，所以Comparable更像是“对内”进行排序的接口。 </p>
+<h3 id="第三，使用场景不同"><a href="#第三，使用场景不同" class="headerlink" title="第三，使用场景不同"></a>第三，使用场景不同</h3><p>通过上面示例的实现代码我们可以看出，使用Comparable必须要修改原有的类，也就是你要排序那个类，就要在那个中实现Comparable接口并重写compareTo方法，所以Comparable更像是“对内”进行排序的接口。 </p>
 <p>而Comparator的使用则不相同，Comparator无需修改原有类。也就是在最极端情况下，即使Person类是第三方提供的，我们依然可以通过创建新的自定义比较器Comparator，来实现对第三方类Person的排序功能。也就是说通过Comparator接口可以实现和原有类的解耦，在不修改原有类的情况下实现排序功能，所以Comparator可以看作是“对外”提供排序的接口。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Comparable和Comparator都是用来实现元素排序的，它们二者的区别如下：</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Comparable和Comparator都是用来实现元素排序的，它们二者的区别如下：</p>
 <ul>
 <li>Comparable是“比较”的意思，而Comparator是“比较器”的意思；</li>
 <li>Comparable是通过重写compareTo方法实现排序的，而Comparator是通过重写compare方法实现排序的；</li>
@@ -154,9 +154,7 @@
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AgeComparator</span> <span class="keyword">implements</span> <span class="title class_">Comparator</span>&lt;Person&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Person p1, Person p2)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(p1.getAge(), p2.getAge());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Person&gt; persons = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        persons.add(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;John&quot;</span>, <span class="number">25</span>));</span><br><span class="line">        persons.add(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Alice&quot;</span>, <span class="number">30</span>));</span><br><span class="line">        persons.add(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Bob&quot;</span>, <span class="number">20</span>));</span><br><span class="line"></span><br><span class="line">        Collections.sort(persons, <span class="keyword">new</span> <span class="title class_">AgeComparator</span>());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Person p : persons) &#123;</span><br><span class="line">            System.out.println(p.getName() + <span class="string">&quot; &quot;</span> + p.getAge());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-
-<p><img src="/../images/java/Page1.jpg" alt="Page1"></p>
+<h2 id="JAVA-OO"><a href="#JAVA-OO" class="headerlink" title="JAVA OO"></a>JAVA OO</h2><p><img src="/../images/java/Page1.jpg" alt="Page1"></p>
 <p><img src="/../images/java/Page2.jpg" alt="Page2"></p>
 <p><img src="/../images/java/Page3.jpg" alt="Page3"></p>
 <p><img src="/../images/java/Page4.jpg" alt="Page4"></p>
@@ -165,6 +163,23 @@
 <p><img src="/../images/java/Page7.jpg" alt="Page7"></p>
 <p><img src="/../images/java/Page8.jpg" alt="Page8"></p>
 <p><img src="/../images/java/Page9.jpg" alt="Page9"></p>
+<h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="File-object"><a href="#File-object" class="headerlink" title="File object"></a>File object</h3><p>import <strong>Java.io.</strong>*;</p>
+<p>File f &#x3D; new File(Absolute path&#x2F;Relative Path);</p>
+<p>注意Windows平台使用<code>\</code>作为路径分隔符，在Java字符串中需要用<code>\\</code>表示一个<code>\</code>。Linux平台使用<code>/</code>作为路径分隔符：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">f</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;/usr/bin/javac&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>传入相对路径时，相对路径前面加上当前目录就是绝对路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 假设当前目录是C:\Docs</span><br><span class="line">File f1 = new File(&quot;sub\\javac&quot;); // 绝对路径是C:\Docs\sub\javac</span><br><span class="line">File f3 = new File(&quot;.\\sub\\javac&quot;); // 绝对路径是C:\Docs\sub\javac</span><br><span class="line">File f3 = new File(&quot;..\\sub\\javac&quot;); // 绝对路径是C:\sub\javac</span><br></pre></td></tr></table></figure>
+
+<p>This is can help to find the separator of the currect system.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File.separator</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h3><p>why fdm</p>
+<p>Why choose fdm</p>
+<p>Zuigaopinlvdedanci</p>
+<p>Xiaoshoutuandui</p>
  
       <!-- reward -->
       
