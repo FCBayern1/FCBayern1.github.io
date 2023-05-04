@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-05-02T12:49:10.452Z</updated>
+  <updated>2023-05-04T21:43:10.147Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2023/04/28/webscience/"/>
     <id>http://example.com/2023/04/28/webscience/</id>
     <published>2023-04-28T12:34:43.000Z</published>
-    <updated>2023-05-02T12:49:10.452Z</updated>
+    <updated>2023-05-04T21:43:10.147Z</updated>
     
     
       
@@ -35,6 +35,8 @@
     
     
     
+    <category term="Courses" scheme="http://example.com/tags/Courses/"/>
+    
   </entry>
   
   <entry>
@@ -42,7 +44,7 @@
     <link href="http://example.com/2023/04/25/DSA/"/>
     <id>http://example.com/2023/04/25/DSA/</id>
     <published>2023-04-25T22:11:13.000Z</published>
-    <updated>2023-05-04T21:17:24.037Z</updated>
+    <updated>2023-05-04T21:42:38.510Z</updated>
     
     
       
@@ -56,6 +58,8 @@
     
     
     
+    <category term="tech" scheme="http://example.com/tags/tech/"/>
+    
   </entry>
   
   <entry>
@@ -63,7 +67,7 @@
     <link href="http://example.com/2023/04/21/Secured-Software-Engineering/"/>
     <id>http://example.com/2023/04/21/Secured-Software-Engineering/</id>
     <published>2023-04-21T14:04:06.000Z</published>
-    <updated>2023-04-27T12:35:16.946Z</updated>
+    <updated>2023-05-04T21:43:01.152Z</updated>
     
     
       
@@ -78,6 +82,8 @@
     
     
     
+    <category term="Courses" scheme="http://example.com/tags/Courses/"/>
+    
   </entry>
   
   <entry>
@@ -85,7 +91,7 @@
     <link href="http://example.com/2023/04/20/forensics/"/>
     <id>http://example.com/2023/04/20/forensics/</id>
     <published>2023-04-20T13:49:35.000Z</published>
-    <updated>2023-04-24T08:13:45.906Z</updated>
+    <updated>2023-05-04T21:41:58.815Z</updated>
     
     
       
@@ -110,7 +116,7 @@
     <link href="http://example.com/2023/04/18/data-analyst/"/>
     <id>http://example.com/2023/04/18/data-analyst/</id>
     <published>2023-04-17T23:45:13.000Z</published>
-    <updated>2023-04-17T23:45:34.311Z</updated>
+    <updated>2023-05-04T21:40:25.791Z</updated>
     
     
       
@@ -125,6 +131,10 @@
     
     
     
+    <category term="Data Engineering" scheme="http://example.com/categories/Data-Engineering/"/>
+    
+    
+    <category term="tech" scheme="http://example.com/tags/tech/"/>
     
   </entry>
   
@@ -133,7 +143,7 @@
     <link href="http://example.com/2023/04/15/Csharp/"/>
     <id>http://example.com/2023/04/15/Csharp/</id>
     <published>2023-04-15T14:22:46.000Z</published>
-    <updated>2023-05-01T22:50:32.505Z</updated>
+    <updated>2023-05-04T21:41:05.477Z</updated>
     
     
       
@@ -147,6 +157,8 @@
     
     
     
+    <category term="tech" scheme="http://example.com/tags/tech/"/>
+    
   </entry>
   
   <entry>
@@ -154,7 +166,7 @@
     <link href="http://example.com/2023/04/01/java/"/>
     <id>http://example.com/2023/04/01/java/</id>
     <published>2023-04-01T22:53:13.000Z</published>
-    <updated>2023-05-04T02:48:59.863Z</updated>
+    <updated>2023-05-04T21:42:45.027Z</updated>
     
     
       
@@ -168,7 +180,7 @@
     
     
     
-    <category term="Josh" scheme="http://example.com/tags/Josh/"/>
+    <category term="tech" scheme="http://example.com/tags/tech/"/>
     
   </entry>
   
@@ -177,7 +189,7 @@
     <link href="http://example.com/2023/03/31/mall-developing/"/>
     <id>http://example.com/2023/03/31/mall-developing/</id>
     <published>2023-03-31T22:53:13.000Z</published>
-    <updated>2023-04-28T09:45:49.450Z</updated>
+    <updated>2023-05-04T21:42:56.312Z</updated>
     
     
       
@@ -191,6 +203,8 @@
     
     
     
+    <category term="tech" scheme="http://example.com/tags/tech/"/>
+    
   </entry>
   
   <entry>
@@ -198,7 +212,7 @@
     <link href="http://example.com/2023/02/12/First-blog/"/>
     <id>http://example.com/2023/02/12/First-blog/</id>
     <published>2023-02-12T21:43:14.000Z</published>
-    <updated>2023-02-13T16:14:46.989Z</updated>
+    <updated>2023-05-04T21:39:42.729Z</updated>
     
     
       
@@ -211,6 +225,8 @@
     
     
     
+    
+    <category term="First blog" scheme="http://example.com/tags/First-blog/"/>
     
   </entry>
   
