@@ -10,6 +10,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2022/09/22/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>data analyst</title>
     <url>/2023/04/18/data-analyst/</url>
     <content><![CDATA[<ul>
@@ -28,24 +46,6 @@
       <tags>
         <tag>tech</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/09/22/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>java studying</title>
@@ -125,6 +125,9 @@
 <p>Zuigaopinlvdedanci</p>
 <p>Xiaoshoutuandui</p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
       <tags>
         <tag>tech</tag>
       </tags>
@@ -166,6 +169,9 @@
 <p>你没看错就这样就完了。</p>
 <p>我这里创建了volume容器来对其进行持久化，位置在&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;mysql-data&#x2F;_data，从mysql容器中mount在我的cloud server上的路径为my&#x2F;own</p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
       <tags>
         <tag>tech</tag>
       </tags>
@@ -481,6 +487,9 @@
 <p> Note</p>
 <p>When running an application in Visual Studio, you can specify command-line arguments in the <a href="https://learn.microsoft.com/en-us/visualstudio/ide/reference/debug-page-project-designer">Debug Page, Project Designer</a>.</p>
 <h4 id="3-Top-level-statements"><a href="#3-Top-level-statements" class="headerlink" title="3. Top-level statements"></a>3. Top-level statements</h4>]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
       <tags>
         <tag>tech</tag>
       </tags>
@@ -675,6 +684,9 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line"><span class="comment">// 快慢指针</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">slowIndex</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">fastIndex</span> <span class="operator">=</span> <span class="number">0</span>; fastIndex &lt; nums.length; fastIndex++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[fastIndex] != val) &#123;</span><br><span class="line">                nums[slowIndex] = nums[fastIndex];</span><br><span class="line">                slowIndex++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slowIndex;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
       <tags>
         <tag>tech</tag>
       </tags>
@@ -1604,6 +1616,9 @@
 <p>![image-20230427124928638](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427124928638.png)</p>
 <p>![image-20230427125103365](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427125103365.png)</p>
 ]]></content>
+      <categories>
+        <category>Courses</category>
+      </categories>
       <tags>
         <tag>Courses</tag>
       </tags>
@@ -2120,6 +2135,9 @@
 <p><strong>Magic numbers:</strong></p>
 <p>In the context of computer file formats, a magic number is a sequence of bytes that identifies the format of a file. It is called a “magic number” because it is often used like a magic spell to identify the file format, much like a spell might be used to identify a person or object.</p>
 ]]></content>
+      <categories>
+        <category>Courses</category>
+      </categories>
       <tags>
         <tag>Courses</tag>
       </tags>
@@ -3846,6 +3864,9 @@
 </ol>
 <p>Keep in mind that predicting stock trends is inherently difficult due to the complex and dynamic nature of financial markets. No model can guarantee accurate predictions, and it is essential to manage risks and avoid relying solely on model predictions for making investment decisions.</p>
 ]]></content>
+      <categories>
+        <category>Courses</category>
+      </categories>
       <tags>
         <tag>Courses</tag>
       </tags>

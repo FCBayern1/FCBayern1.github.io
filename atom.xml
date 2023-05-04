@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-05-04T21:43:10.147Z</updated>
+  <updated>2023-05-04T21:44:26.461Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2023/04/28/webscience/"/>
     <id>http://example.com/2023/04/28/webscience/</id>
     <published>2023-04-28T12:34:43.000Z</published>
-    <updated>2023-05-04T21:43:10.147Z</updated>
+    <updated>2023-05-04T21:44:26.461Z</updated>
     
     
       
@@ -34,6 +34,8 @@
     
     
     
+    <category term="Courses" scheme="http://example.com/categories/Courses/"/>
+    
     
     <category term="Courses" scheme="http://example.com/tags/Courses/"/>
     
@@ -44,7 +46,7 @@
     <link href="http://example.com/2023/04/25/DSA/"/>
     <id>http://example.com/2023/04/25/DSA/</id>
     <published>2023-04-25T22:11:13.000Z</published>
-    <updated>2023-05-04T21:42:38.510Z</updated>
+    <updated>2023-05-04T21:44:11.188Z</updated>
     
     
       
@@ -57,6 +59,8 @@
     
     
     
+    <category term="java" scheme="http://example.com/categories/java/"/>
+    
     
     <category term="tech" scheme="http://example.com/tags/tech/"/>
     
@@ -67,7 +71,7 @@
     <link href="http://example.com/2023/04/21/Secured-Software-Engineering/"/>
     <id>http://example.com/2023/04/21/Secured-Software-Engineering/</id>
     <published>2023-04-21T14:04:06.000Z</published>
-    <updated>2023-05-04T21:43:01.152Z</updated>
+    <updated>2023-05-04T21:44:24.185Z</updated>
     
     
       
@@ -81,6 +85,8 @@
     
     
     
+    <category term="Courses" scheme="http://example.com/categories/Courses/"/>
+    
     
     <category term="Courses" scheme="http://example.com/tags/Courses/"/>
     
@@ -91,7 +97,7 @@
     <link href="http://example.com/2023/04/20/forensics/"/>
     <id>http://example.com/2023/04/20/forensics/</id>
     <published>2023-04-20T13:49:35.000Z</published>
-    <updated>2023-05-04T21:41:58.815Z</updated>
+    <updated>2023-05-04T21:44:14.148Z</updated>
     
     
       
@@ -105,6 +111,8 @@
       
     
     
+    
+    <category term="Courses" scheme="http://example.com/categories/Courses/"/>
     
     
     <category term="Courses" scheme="http://example.com/tags/Courses/"/>
@@ -143,7 +151,7 @@
     <link href="http://example.com/2023/04/15/Csharp/"/>
     <id>http://example.com/2023/04/15/Csharp/</id>
     <published>2023-04-15T14:22:46.000Z</published>
-    <updated>2023-05-04T21:41:05.477Z</updated>
+    <updated>2023-05-04T21:44:08.936Z</updated>
     
     
       
@@ -156,6 +164,8 @@
     
     
     
+    <category term="C#" scheme="http://example.com/categories/C/"/>
+    
     
     <category term="tech" scheme="http://example.com/tags/tech/"/>
     
@@ -166,7 +176,7 @@
     <link href="http://example.com/2023/04/01/java/"/>
     <id>http://example.com/2023/04/01/java/</id>
     <published>2023-04-01T22:53:13.000Z</published>
-    <updated>2023-05-04T21:42:45.027Z</updated>
+    <updated>2023-05-04T21:44:18.702Z</updated>
     
     
       
@@ -179,6 +189,8 @@
     
     
     
+    <category term="java" scheme="http://example.com/categories/java/"/>
+    
     
     <category term="tech" scheme="http://example.com/tags/tech/"/>
     
@@ -189,7 +201,7 @@
     <link href="http://example.com/2023/03/31/mall-developing/"/>
     <id>http://example.com/2023/03/31/mall-developing/</id>
     <published>2023-03-31T22:53:13.000Z</published>
-    <updated>2023-05-04T21:42:56.312Z</updated>
+    <updated>2023-05-04T21:44:20.939Z</updated>
     
     
       
@@ -201,6 +213,8 @@
       
     
     
+    
+    <category term="java" scheme="http://example.com/categories/java/"/>
     
     
     <category term="tech" scheme="http://example.com/tags/tech/"/>
