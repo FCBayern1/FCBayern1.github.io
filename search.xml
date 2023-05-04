@@ -39,6 +39,44 @@
 ]]></content>
   </entry>
   <entry>
+    <title>mall developing</title>
+    <url>/2023/03/31/mall-developing/</url>
+    <content><![CDATA[<h1 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h1><h2 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h2><p><strong>captcha disappearance</strong></p>
+<p><a href="https://www.javazxz.com/thread-7116-1-1.html">https://www.javazxz.com/thread-7116-1-1.html</a></p>
+<h2 id="Bug2"><a href="#Bug2" class="headerlink" title="Bug2."></a>Bug2.</h2><p><strong>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</strong></p>
+<p>network problem. The student.gla.ac.uk network filed cannot access to tencent server.</p>
+<h2 id="Bug3"><a href="#Bug3" class="headerlink" title="Bug3."></a>Bug3.</h2><p><strong>No spring.config.import property has been defined</strong></p>
+<p>产生问题的原因是bootstrap.properties比application.properties的优先级要高<br>由于bootstrap.properties是系统级的资源配置文件，是用在程序引导执行时更加早期配置信息读取；<br>而application.properties是用户级的资源配置文件，是用来后续的一些配置所需要的公共参数。<br>但是在SpringCloud 2020.* 版本把bootstrap禁用了，导致在读取文件的时候读取不到而报错，所以我们只要把bootstrap从新导入进来就会生效了。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.clouds<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在全部使用nacos配置后，就不用引用这个了</p>
+<h1 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h1><h2 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h2><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
+<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
+<p>![image-20230403164227851](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164227851.png)</p>
+<p><strong>JDBC</strong></p>
+<p>Info:</p>
+<p>Url:jdbc:mysql:&#x2F;&#x2F;47.98.63.250:3306&#x2F;mall_pms</p>
+<p><em>use the server’s public ip addr</em></p>
+<p>DBMS: MySQL (ver. 5.7.41)<br>Case sensitivity: plain&#x3D;exact, delimited&#x3D;exact<br>Driver: MySQL Connector&#x2F;J (ver. mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0), JDBC4.2)</p>
+<p>Ping: 1 sec, 25 ms<br>SSL: yes</p>
+<p><strong>nacos:</strong></p>
+<p>nacos配置按照最新版本的springcloud alibaba来</p>
+<p>不用使用bootstrap的配置文件来定位nacos</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 排除 bootstrap, 未来版本 spring-cloud-alibaba 应该在 spring boot &gt;= 2.4.0 时将该依赖设置为 optional --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">        <span class="attr">namespace:</span> <span class="string">2e40d043-66f9-4a92-acc1-af90e80b9204</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">import:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mall-coupon.yml?group=dev</span> <span class="comment"># 监听 DEFAULT_GROUP:mall-coupon.yml覆盖默认 group, 监听 group_01:test01.yml</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:datasource.yml?group=dev&amp;refreshEnabled=false</span> <span class="comment"># 不开启动态刷新</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mybatis.yml?group=dev</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:other.yml?group=dev</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>容器重启数据丢失问题:</strong></p>
+<p>解决方法<br>了解上面的介绍后，解决它就很简单了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps -a 找到我们上次运行的容器<span class="built_in">id</span></span><br><span class="line">docker restart <span class="built_in">id</span> 即可</span><br></pre></td></tr></table></figure>
+
+<p>你没看错就这样就完了。</p>
+<p>我这里创建了volume容器来对其进行持久化，位置在&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;mysql-data&#x2F;_data，从mysql容器中mount在我的cloud server上的路径为my&#x2F;own</p>
+]]></content>
+  </entry>
+  <entry>
     <title>java studying</title>
     <url>/2023/04/01/java/</url>
     <content><![CDATA[<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="1-Comparable-vs-comparator"><a href="#1-Comparable-vs-comparator" class="headerlink" title="(1).Comparable vs comparator"></a>(1).Comparable vs comparator</h2><ul>
@@ -119,44 +157,6 @@
       <tags>
         <tag>Josh</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>mall developing</title>
-    <url>/2023/03/31/mall-developing/</url>
-    <content><![CDATA[<h1 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h1><h2 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h2><p><strong>captcha disappearance</strong></p>
-<p><a href="https://www.javazxz.com/thread-7116-1-1.html">https://www.javazxz.com/thread-7116-1-1.html</a></p>
-<h2 id="Bug2"><a href="#Bug2" class="headerlink" title="Bug2."></a>Bug2.</h2><p><strong>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</strong></p>
-<p>network problem. The student.gla.ac.uk network filed cannot access to tencent server.</p>
-<h2 id="Bug3"><a href="#Bug3" class="headerlink" title="Bug3."></a>Bug3.</h2><p><strong>No spring.config.import property has been defined</strong></p>
-<p>产生问题的原因是bootstrap.properties比application.properties的优先级要高<br>由于bootstrap.properties是系统级的资源配置文件，是用在程序引导执行时更加早期配置信息读取；<br>而application.properties是用户级的资源配置文件，是用来后续的一些配置所需要的公共参数。<br>但是在SpringCloud 2020.* 版本把bootstrap禁用了，导致在读取文件的时候读取不到而报错，所以我们只要把bootstrap从新导入进来就会生效了。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.clouds<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在全部使用nacos配置后，就不用引用这个了</p>
-<h1 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h1><h2 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h2><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
-<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
-<p>![image-20230403164227851](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164227851.png)</p>
-<p><strong>JDBC</strong></p>
-<p>Info:</p>
-<p>Url:jdbc:mysql:&#x2F;&#x2F;47.98.63.250:3306&#x2F;mall_pms</p>
-<p><em>use the server’s public ip addr</em></p>
-<p>DBMS: MySQL (ver. 5.7.41)<br>Case sensitivity: plain&#x3D;exact, delimited&#x3D;exact<br>Driver: MySQL Connector&#x2F;J (ver. mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0), JDBC4.2)</p>
-<p>Ping: 1 sec, 25 ms<br>SSL: yes</p>
-<p><strong>nacos:</strong></p>
-<p>nacos配置按照最新版本的springcloud alibaba来</p>
-<p>不用使用bootstrap的配置文件来定位nacos</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 排除 bootstrap, 未来版本 spring-cloud-alibaba 应该在 spring boot &gt;= 2.4.0 时将该依赖设置为 optional --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">        <span class="attr">namespace:</span> <span class="string">2e40d043-66f9-4a92-acc1-af90e80b9204</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">import:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mall-coupon.yml?group=dev</span> <span class="comment"># 监听 DEFAULT_GROUP:mall-coupon.yml覆盖默认 group, 监听 group_01:test01.yml</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:datasource.yml?group=dev&amp;refreshEnabled=false</span> <span class="comment"># 不开启动态刷新</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mybatis.yml?group=dev</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:other.yml?group=dev</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>容器重启数据丢失问题:</strong></p>
-<p>解决方法<br>了解上面的介绍后，解决它就很简单了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps -a 找到我们上次运行的容器<span class="built_in">id</span></span><br><span class="line">docker restart <span class="built_in">id</span> 即可</span><br></pre></td></tr></table></figure>
-
-<p>你没看错就这样就完了。</p>
-<p>我这里创建了volume容器来对其进行持久化，位置在&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;mysql-data&#x2F;_data，从mysql容器中mount在我的cloud server上的路径为my&#x2F;own</p>
-]]></content>
   </entry>
   <entry>
     <title>Csharp</title>

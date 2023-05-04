@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mingwei’s Blog</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-05-02T12:49:10.452Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Mingwei Li</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webscience</title>
+    <link href="http://example.com/2023/04/28/webscience/"/>
+    <id>http://example.com/2023/04/28/webscience/</id>
+    <published>2023-04-28T12:34:43.000Z</published>
+    <updated>2023-05-02T12:49:10.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Revision&quot;&gt;&lt;a href=&quot;#Revision&quot; class=&quot;headerlink&quot; title=&quot;Revision&quot;&gt;&lt;/a&gt;Revision&lt;/h1&gt;&lt;h2 id=&quot;Topic-1-Social-Media-Twitter-Crawl&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>DSA</title>
+    <link href="http://example.com/2023/04/25/DSA/"/>
+    <id>http://example.com/2023/04/25/DSA/</id>
+    <published>2023-04-25T22:11:13.000Z</published>
+    <updated>2023-05-04T21:17:24.037Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;DSA&quot;&gt;&lt;a href=&quot;#DSA&quot; class=&quot;headerlink&quot; title=&quot;DSA&quot;&gt;&lt;/a&gt;DSA&lt;/h1&gt;&lt;h3 id=&quot;Time-complexity&quot;&gt;&lt;a href=&quot;#Time-complexity&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Secured Software Engineering</title>
+    <link href="http://example.com/2023/04/21/Secured-Software-Engineering/"/>
+    <id>http://example.com/2023/04/21/Secured-Software-Engineering/</id>
+    <published>2023-04-21T14:04:06.000Z</published>
+    <updated>2023-04-27T12:35:16.946Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;The below case studies are given here in advance, they will be part of the final exam. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Case Study 1:&lt;/strong&gt; You are</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>forensics</title>
+    <link href="http://example.com/2023/04/20/forensics/"/>
+    <id>http://example.com/2023/04/20/forensics/</id>
+    <published>2023-04-20T13:49:35.000Z</published>
+    <updated>2023-04-24T08:13:45.906Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;5080 UofG&lt;/p&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;Revision-and-Reflection&quot;&gt;&lt;a href=&quot;#Revision-and-Reflection&quot; class=&quot;headerlink&quot; title=&quot;Revision and</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Courses" scheme="http://example.com/tags/Courses/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>data analyst</title>
+    <link href="http://example.com/2023/04/18/data-analyst/"/>
+    <id>http://example.com/2023/04/18/data-analyst/</id>
+    <published>2023-04-17T23:45:13.000Z</published>
+    <updated>2023-04-17T23:45:34.311Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;Have completed an undergraduate degree to a (2.1 minimum) with a Mathematical or Scientific background&lt;/li&gt;
+&lt;li&gt;Knowledge in SQL</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Csharp</title>
+    <link href="http://example.com/2023/04/15/Csharp/"/>
+    <id>http://example.com/2023/04/15/Csharp/</id>
+    <published>2023-04-15T14:22:46.000Z</published>
+    <updated>2023-05-01T22:50:32.505Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;C-Get-started&quot;&gt;&lt;a href=&quot;#C-Get-started&quot; class=&quot;headerlink&quot; title=&quot;C# Get started&quot;&gt;&lt;/a&gt;C# Get started&lt;/h1&gt;&lt;p&gt;hello guys, follow me</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java studying</title>
+    <link href="http://example.com/2023/04/01/java/"/>
+    <id>http://example.com/2023/04/01/java/</id>
+    <published>2023-04-01T22:53:13.000Z</published>
+    <updated>2023-05-04T02:48:59.863Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Java&quot;&gt;&lt;a href=&quot;#Java&quot; class=&quot;headerlink&quot; title=&quot;Java&quot;&gt;&lt;/a&gt;Java&lt;/h1&gt;&lt;h2 id=&quot;1-Comparable-vs-comparator&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Josh" scheme="http://example.com/tags/Josh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mall developing</title>
+    <link href="http://example.com/2023/03/31/mall-developing/"/>
+    <id>http://example.com/2023/03/31/mall-developing/</id>
+    <published>2023-03-31T22:53:13.000Z</published>
+    <updated>2023-04-28T09:45:49.450Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Bug-shooting&quot;&gt;&lt;a href=&quot;#Bug-shooting&quot; class=&quot;headerlink&quot; title=&quot;Bug shooting&quot;&gt;&lt;/a&gt;Bug shooting&lt;/h1&gt;&lt;h2 id=&quot;Bug1&quot;&gt;&lt;a href=&quot;#Bug1&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>First blog</title>
+    <link href="http://example.com/2023/02/12/First-blog/"/>
+    <id>http://example.com/2023/02/12/First-blog/</id>
+    <published>2023-02-12T21:43:14.000Z</published>
+    <updated>2023-02-13T16:14:46.989Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Git-study&quot;&gt;&lt;a href=&quot;#Git-study&quot; class=&quot;headerlink&quot; title=&quot;Git study&quot;&gt;&lt;/a&gt;Git study&lt;/h1&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2022/09/22/hello-world/"/>
+    <id>http://example.com/2022/09/22/hello-world/</id>
+    <published>2022-09-22T17:01:51.923Z</published>
+    <updated>2022-09-22T17:01:51.923Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
