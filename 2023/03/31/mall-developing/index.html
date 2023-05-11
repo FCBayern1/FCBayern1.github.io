@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">643</span>
+            <span class="post-count">782</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">4 min</span>
         </span>
     </span>
 </div>
@@ -139,6 +139,27 @@
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">        <span class="attr">namespace:</span> <span class="string">2e40d043-66f9-4a92-acc1-af90e80b9204</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">import:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mall-coupon.yml?group=dev</span> <span class="comment"># 监听 DEFAULT_GROUP:mall-coupon.yml覆盖默认 group, 监听 group_01:test01.yml</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:datasource.yml?group=dev&amp;refreshEnabled=false</span> <span class="comment"># 不开启动态刷新</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mybatis.yml?group=dev</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:other.yml?group=dev</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>容器重启数据丢失问题:</strong></p>
+<p><strong>MySQL</strong> <strong>配置</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /mydata/mysql/conf/my.cnf </span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[client] </span><br><span class="line"></span><br><span class="line">default-character-set=utf8 </span><br><span class="line"></span><br><span class="line">[mysql] </span><br><span class="line"></span><br><span class="line">default-character-set=utf8 </span><br><span class="line"></span><br><span class="line">[mysqld] </span><br><span class="line"></span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8_unicode_ci&#x27;</span> </span><br><span class="line"></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8&#x27;</span> </span><br><span class="line"></span><br><span class="line">character-set-server=utf8 </span><br><span class="line"></span><br><span class="line">collation-server=utf8_unicode_ci </span><br><span class="line"></span><br><span class="line">skip-character-set-client-handshake </span><br><span class="line"></span><br><span class="line">skip-name-resolve</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 \</span><br><span class="line">--name mysql \</span><br><span class="line">-v /mydata/mysql/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql/conf:/etc/mysql/my.cnf  \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root \</span><br><span class="line">-d mysql:5.7 </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>通过容器的</strong> <strong>mysql</strong> <strong>命令行工具连接</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql mysql -uroot -proot</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>设置</strong> <strong>root</strong> <strong>远程访问</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified by <span class="string">&#x27;root&#x27;</span> with grant option; </span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /etc/mysql</span><br><span class="line"><span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
 <p>解决方法<br>了解上面的介绍后，解决它就很简单了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a 找到我们上次运行的容器<span class="built_in">id</span></span><br><span class="line">docker restart <span class="built_in">id</span> 即可</span><br></pre></td></tr></table></figure>
 
