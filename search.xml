@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CyberSecurityFundemental</title>
+    <url>/2023/05/11/CyberSecurityFundemental/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>First blog</title>
     <url>/2023/02/12/First-blog/</url>
     <content><![CDATA[<h1 id="Git-study"><a href="#Git-study" class="headerlink" title="Git study"></a>Git study</h1><p><img src="/../images/WeChatb22903d041669c31bc759fe2fce96683.png"></p>
@@ -30,6 +35,71 @@
       </tags>
   </entry>
   <entry>
+    <title>mall developing</title>
+    <url>/2023/03/31/mall-developing/</url>
+    <content><![CDATA[<h1 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h1><h2 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h2><p><strong>captcha disappearance</strong></p>
+<p><a href="https://www.javazxz.com/thread-7116-1-1.html">https://www.javazxz.com/thread-7116-1-1.html</a></p>
+<h2 id="Bug2"><a href="#Bug2" class="headerlink" title="Bug2."></a>Bug2.</h2><p><strong>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</strong></p>
+<p>network problem. The student.gla.ac.uk network filed cannot access to tencent server.</p>
+<h2 id="Bug3"><a href="#Bug3" class="headerlink" title="Bug3."></a>Bug3.</h2><p><strong>No spring.config.import property has been defined</strong></p>
+<p>产生问题的原因是bootstrap.properties比application.properties的优先级要高<br>由于bootstrap.properties是系统级的资源配置文件，是用在程序引导执行时更加早期配置信息读取；<br>而application.properties是用户级的资源配置文件，是用来后续的一些配置所需要的公共参数。<br>但是在SpringCloud 2020.* 版本把bootstrap禁用了，导致在读取文件的时候读取不到而报错，所以我们只要把bootstrap从新导入进来就会生效了。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.clouds<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在全部使用nacos配置后，就不用引用这个了</p>
+<h1 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h1><h2 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h2><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
+<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
+<p>![image-20230403164227851](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164227851.png)</p>
+<p><strong>JDBC</strong></p>
+<p>Info:</p>
+<p>Url:jdbc:mysql:&#x2F;&#x2F;47.98.63.250:3306&#x2F;mall_pms</p>
+<p><em>use the server’s public ip addr</em></p>
+<p>DBMS: MySQL (ver. 5.7.41)<br>Case sensitivity: plain&#x3D;exact, delimited&#x3D;exact<br>Driver: MySQL Connector&#x2F;J (ver. mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0), JDBC4.2)</p>
+<p>Ping: 1 sec, 25 ms<br>SSL: yes</p>
+<p><strong>nacos:</strong></p>
+<p>nacos配置按照最新版本的springcloud alibaba来</p>
+<p>不用使用bootstrap的配置文件来定位nacos</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 排除 bootstrap, 未来版本 spring-cloud-alibaba 应该在 spring boot &gt;= 2.4.0 时将该依赖设置为 optional --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">        <span class="attr">namespace:</span> <span class="string">2e40d043-66f9-4a92-acc1-af90e80b9204</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">import:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mall-coupon.yml?group=dev</span> <span class="comment"># 监听 DEFAULT_GROUP:mall-coupon.yml覆盖默认 group, 监听 group_01:test01.yml</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:datasource.yml?group=dev&amp;refreshEnabled=false</span> <span class="comment"># 不开启动态刷新</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mybatis.yml?group=dev</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:other.yml?group=dev</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>容器重启数据丢失问题:</strong></p>
+<p><strong>MySQL</strong> <strong>配置</strong> </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /mydata/mysql/conf/my.cnf </span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[client] </span><br><span class="line"></span><br><span class="line">default-character-set=utf8 </span><br><span class="line"></span><br><span class="line">[mysql] </span><br><span class="line"></span><br><span class="line">default-character-set=utf8 </span><br><span class="line"></span><br><span class="line">[mysqld] </span><br><span class="line"></span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8_unicode_ci&#x27;</span> </span><br><span class="line"></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8&#x27;</span> </span><br><span class="line"></span><br><span class="line">character-set-server=utf8 </span><br><span class="line"></span><br><span class="line">collation-server=utf8_unicode_ci </span><br><span class="line"></span><br><span class="line">skip-character-set-client-handshake </span><br><span class="line"></span><br><span class="line">skip-name-resolve</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p 3306:3306 \</span><br><span class="line">--name mysql \</span><br><span class="line">-v /mydata/mysql/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql/conf:/etc/mysql/my.cnf  \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root \</span><br><span class="line">-d mysql:5.7 </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>通过容器的</strong> <strong>mysql</strong> <strong>命令行工具连接</strong> </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql mysql -uroot -proot</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>设置</strong> <strong>root</strong> <strong>远程访问</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grant all privileges on *.* to <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified by <span class="string">&#x27;root&#x27;</span> with grant option; </span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /etc/mysql</span><br><span class="line"><span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<p>解决方法<br>了解上面的介绍后，解决它就很简单了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps -a 找到我们上次运行的容器<span class="built_in">id</span></span><br><span class="line">docker restart <span class="built_in">id</span> 即可</span><br></pre></td></tr></table></figure>
+
+<p>你没看错就这样就完了。</p>
+<p>我这里创建了volume容器来对其进行持久化，位置在&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;mysql-data&#x2F;_data，从mysql容器中mount在我的cloud server上的路径为my&#x2F;own</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2022/09/22/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -46,6 +116,31 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>travel</title>
+    <url>/2023/05/04/travel/</url>
+    <content><![CDATA[<p><strong>Glasgow</strong></p>
+<p><img src="/../images/webs/UoG_bkgrnd_2021.jpg" alt="391667424236_.pic"></p>
+<p><strong>Edinburgh</strong></p>
+<p><img src="/../images/391667424236_.pic.jpg" alt="IMG_6792"></p>
+<p><img src="/../images/IMG_6792.jpeg" alt="IMG_6792"></p>
+<p><strong>Munich</strong></p>
+<p><img src="/../images/webs/C4B30D74-1139-4945-B8F9-F6A74834CFCD_1_102_o.jpeg" alt="IMG_6792"></p>
+<p><img src="/../images/IMG_8419.jpeg" alt="IMG_8419"></p>
+<p><strong>Swiss</strong></p>
+<p><img src="/../images/IMG_7862.jpeg" alt="IMG_7867"></p>
+<p><img src="/../images/IMG_7867.jpeg" alt="IMG_7867"></p>
+<p><strong>Paris</strong></p>
+<p><img src="/../images/IMG_7410.jpeg" alt="IMG_7410"></p>
+<p><img src="/../images/IMG_7577.jpeg" alt="IMG_7577"></p>
+]]></content>
+      <categories>
+        <category>travel</category>
+      </categories>
+      <tags>
+        <tag>travel</tag>
+      </tags>
   </entry>
   <entry>
     <title>java studying</title>
@@ -121,96 +216,6 @@
 
 
 <h3 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h3>]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>tech</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>travel</title>
-    <url>/2023/05/04/travel/</url>
-    <content><![CDATA[<p><strong>Glasgow</strong></p>
-<p><img src="/../images/webs/UoG_bkgrnd_2021.jpg" alt="391667424236_.pic"></p>
-<p><strong>Edinburgh</strong></p>
-<p><img src="/../images/391667424236_.pic.jpg" alt="IMG_6792"></p>
-<p><img src="/../images/IMG_6792.jpeg" alt="IMG_6792"></p>
-<p><strong>Munich</strong></p>
-<p><img src="/../images/webs/C4B30D74-1139-4945-B8F9-F6A74834CFCD_1_102_o.jpeg" alt="IMG_6792"></p>
-<p><img src="/../images/IMG_8419.jpeg" alt="IMG_8419"></p>
-<p><strong>Swiss</strong></p>
-<p><img src="/../images/IMG_7862.jpeg" alt="IMG_7867"></p>
-<p><img src="/../images/IMG_7867.jpeg" alt="IMG_7867"></p>
-<p><strong>Paris</strong></p>
-<p><img src="/../images/IMG_7410.jpeg" alt="IMG_7410"></p>
-<p><img src="/../images/IMG_7577.jpeg" alt="IMG_7577"></p>
-]]></content>
-      <categories>
-        <category>travel</category>
-      </categories>
-      <tags>
-        <tag>travel</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mall developing</title>
-    <url>/2023/03/31/mall-developing/</url>
-    <content><![CDATA[<h1 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h1><h2 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h2><p><strong>captcha disappearance</strong></p>
-<p><a href="https://www.javazxz.com/thread-7116-1-1.html">https://www.javazxz.com/thread-7116-1-1.html</a></p>
-<h2 id="Bug2"><a href="#Bug2" class="headerlink" title="Bug2."></a>Bug2.</h2><p><strong>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</strong></p>
-<p>network problem. The student.gla.ac.uk network filed cannot access to tencent server.</p>
-<h2 id="Bug3"><a href="#Bug3" class="headerlink" title="Bug3."></a>Bug3.</h2><p><strong>No spring.config.import property has been defined</strong></p>
-<p>产生问题的原因是bootstrap.properties比application.properties的优先级要高<br>由于bootstrap.properties是系统级的资源配置文件，是用在程序引导执行时更加早期配置信息读取；<br>而application.properties是用户级的资源配置文件，是用来后续的一些配置所需要的公共参数。<br>但是在SpringCloud 2020.* 版本把bootstrap禁用了，导致在读取文件的时候读取不到而报错，所以我们只要把bootstrap从新导入进来就会生效了。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.clouds<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在全部使用nacos配置后，就不用引用这个了</p>
-<h1 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h1><h2 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h2><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
-<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
-<p>![image-20230403164227851](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164227851.png)</p>
-<p><strong>JDBC</strong></p>
-<p>Info:</p>
-<p>Url:jdbc:mysql:&#x2F;&#x2F;47.98.63.250:3306&#x2F;mall_pms</p>
-<p><em>use the server’s public ip addr</em></p>
-<p>DBMS: MySQL (ver. 5.7.41)<br>Case sensitivity: plain&#x3D;exact, delimited&#x3D;exact<br>Driver: MySQL Connector&#x2F;J (ver. mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0), JDBC4.2)</p>
-<p>Ping: 1 sec, 25 ms<br>SSL: yes</p>
-<p><strong>nacos:</strong></p>
-<p>nacos配置按照最新版本的springcloud alibaba来</p>
-<p>不用使用bootstrap的配置文件来定位nacos</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 排除 bootstrap, 未来版本 spring-cloud-alibaba 应该在 spring boot &gt;= 2.4.0 时将该依赖设置为 optional --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">        <span class="attr">namespace:</span> <span class="string">2e40d043-66f9-4a92-acc1-af90e80b9204</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">import:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mall-coupon.yml?group=dev</span> <span class="comment"># 监听 DEFAULT_GROUP:mall-coupon.yml覆盖默认 group, 监听 group_01:test01.yml</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:datasource.yml?group=dev&amp;refreshEnabled=false</span> <span class="comment"># 不开启动态刷新</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mybatis.yml?group=dev</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:other.yml?group=dev</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>容器重启数据丢失问题:</strong></p>
-<p><strong>MySQL</strong> <strong>配置</strong> </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /mydata/mysql/conf/my.cnf </span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[client] </span><br><span class="line"></span><br><span class="line">default-character-set=utf8 </span><br><span class="line"></span><br><span class="line">[mysql] </span><br><span class="line"></span><br><span class="line">default-character-set=utf8 </span><br><span class="line"></span><br><span class="line">[mysqld] </span><br><span class="line"></span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8_unicode_ci&#x27;</span> </span><br><span class="line"></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8&#x27;</span> </span><br><span class="line"></span><br><span class="line">character-set-server=utf8 </span><br><span class="line"></span><br><span class="line">collation-server=utf8_unicode_ci </span><br><span class="line"></span><br><span class="line">skip-character-set-client-handshake </span><br><span class="line"></span><br><span class="line">skip-name-resolve</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p 3306:3306 \</span><br><span class="line">--name mysql \</span><br><span class="line">-v /mydata/mysql/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql/conf:/etc/mysql/my.cnf  \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root \</span><br><span class="line">-d mysql:5.7 </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>通过容器的</strong> <strong>mysql</strong> <strong>命令行工具连接</strong> </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql mysql -uroot -proot</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>设置</strong> <strong>root</strong> <strong>远程访问</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grant all privileges on *.* to <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified by <span class="string">&#x27;root&#x27;</span> with grant option; </span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /etc/mysql</span><br><span class="line"><span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
-
-<p>解决方法<br>了解上面的介绍后，解决它就很简单了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps -a 找到我们上次运行的容器<span class="built_in">id</span></span><br><span class="line">docker restart <span class="built_in">id</span> 即可</span><br></pre></td></tr></table></figure>
-
-<p>你没看错就这样就完了。</p>
-<p>我这里创建了volume容器来对其进行持久化，位置在&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;mysql-data&#x2F;_data，从mysql容器中mount在我的cloud server上的路径为my&#x2F;own</p>
-]]></content>
       <categories>
         <category>java</category>
       </categories>
@@ -824,7 +829,43 @@
 
 
 
-<h3 id="Leetcode-202"><a href="#Leetcode-202" class="headerlink" title="Leetcode 202"></a>Leetcode 202</h3>]]></content>
+<h3 id="Leetcode-202"><a href="#Leetcode-202" class="headerlink" title="Leetcode 202"></a>Leetcode 202</h3><p>这个题讨论3种假设情况</p>
+<ol>
+<li>最后n1-&gt;n2-&gt;…-&gt;1 true</li>
+<li>最后循环下来了,n1-&gt;n2-&gt;…-&gt;n1 false</li>
+<li>越加越大</li>
+</ol>
+<p>但是事实上不会越加越大，拿9来举例，9^2&#x3D;81,99-&gt;162, ….999-&gt;243,9999-&gt;324,99999-&gt;405这样加下去，不会超其本身，所以不会越加越大。所以我们只需要讨论前两种方案，只要在循环过程中出现了重复的，就停止循环并返回，出现1了也停止循环并返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isHappy</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        Set&lt;Integer&gt; record = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">1</span> &amp;&amp; !record.contains(n)) &#123;</span><br><span class="line">            record.add(n);</span><br><span class="line">            n = getNextNumber(n);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n == <span class="number">1</span>;</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getNextNumber</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> n%<span class="number">10</span>;</span><br><span class="line">        res+=temp*temp;</span><br><span class="line">        n=n/<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Leetcode-1"><a href="#Leetcode-1" class="headerlink" title="Leetcode 1"></a>Leetcode 1</h3><p><strong>Brute force:</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;nums.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i==j)&#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>((nums[i]+nums[j])==target)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;i,j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>HashMap:</strong></p>
+<p>本解法有四个重点：</p>
+<ul>
+<li>为什么会想到用哈希表</li>
+<li>哈希表为什么用map</li>
+<li>本题map是用来存什么的</li>
+<li>map中的key和value用来存什么的</li>
+</ul>
+<p>map目的用来存放我们访问过的元素，因为遍历数组的时候，需要记录我们之前遍历过哪些元素和对应的下标，这样才能找到与当前元素相匹配的（也就是相加等于target）</p>
+<p>接下来是map中key和value分别表示什么。</p>
+<p>这道题 我们需要 给出一个元素，判断这个元素是否出现过，如果出现过，返回这个元素的下标。</p>
+<p>那么判断元素是否出现，这个元素就要作为key，所以数组中的元素作为key，有key对应的就是value，value用来存下标。</p>
+<p>所以 map中的存储结构为 {key：数据元素，value：数组元素对应的下标}。</p>
+<p>在遍历数组的时候，只需要向map去查询是否有和目前遍历元素匹配的数值，如果有，就找到的匹配对，如果没有，就把目前遍历的元素放进map中，因为map存放的就是我们访问过的元素。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">    <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">if</span>(nums==<span class="literal">null</span>||nums.length==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> target-nums[i];</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(temp))&#123;</span><br><span class="line">            res[<span class="number">0</span>]=i;</span><br><span class="line">            res[<span class="number">1</span>]=map.get(temp);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        map.put(nums[i],i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Leetcode-454"><a href="#Leetcode-454" class="headerlink" title="Leetcode 454"></a>Leetcode 454</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fourSumCount</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2, <span class="type">int</span>[] nums3, <span class="type">int</span>[] nums4)</span> &#123;</span><br><span class="line">        Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> temp;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i:nums1)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j:nums2)&#123;</span><br><span class="line">                temp=i+j;</span><br><span class="line">                <span class="keyword">if</span> (map.containsKey(temp)) &#123;</span><br><span class="line">                    map.put(temp, map.get(temp) + <span class="number">1</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    map.put(temp, <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i:nums3)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j:nums4)&#123;</span><br><span class="line">                temp=i+j;</span><br><span class="line">                <span class="keyword">if</span> (map.containsKey(<span class="number">0</span> - temp)) &#123;</span><br><span class="line">                    res += map.get(<span class="number">0</span> - temp);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>java</category>
       </categories>
