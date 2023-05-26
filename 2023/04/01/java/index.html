@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.6k</span>
+            <span class="post-count">3.6k</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">6 min</span>
+            <span class="post-count">14 min</span>
         </span>
     </span>
 </div>
@@ -181,7 +181,120 @@
 
 
 
-<h3 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h3> 
+<h3 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h3><h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>在Java中，如果一个Java对象可以在内部持有若干其他Java对象，并对外提供访问接口，我们把这种Java对象称为集合</p>
+<p>Java的数组可以看作是一种集合</p>
+<ul>
+<li>数组初始化后大小不可变；</li>
+<li>数组只能按索引顺序存取。</li>
+</ul>
+<p>Java标准库自带的<code>java.util</code>包提供了集合类：<code>Collection</code>. 它是除<code>Map</code>外所有其他集合类的根接口。Java的<code>java.util</code>包主要提供了以下三种类型的集合：</p>
+<ul>
+<li><code>List</code>：一种有序列表的集合，例如，按索引排列的<code>Student</code>的<code>List</code>；</li>
+<li><code>Set</code>：一种保证没有重复元素的集合，例如，所有无重复名称的<code>Student</code>的<code>Set</code>；</li>
+<li><code>Map</code>：一种通过键值（key-value）查找的映射表集合，例如，根据<code>Student</code>的<code>name</code>查找对应<code>Student</code>的<code>Map</code>。</li>
+</ul>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p><code>ArrayList</code>在内部使用了数组来存储所有元素。例如，一个<code>ArrayList</code>拥有5个元素，实际数组大小为<code>6</code>(即有一个空位)</p>
+<p><code>ArrayList</code>把添加和删除的操作封装起来，让我们操作<code>List</code>类似于操作数组，却不用关心内部元素如何移动。</p>
+<p>我们考察<code>List&lt;E&gt;</code>接口，可以看到几个主要的接口方法：</p>
+<ul>
+<li>在末尾添加一个元素：<code>boolean add(E e)</code></li>
+<li>在指定索引添加一个元素：<code>boolean add(int index, E e)</code></li>
+<li>删除指定索引的元素：<code>E remove(int index)</code></li>
+<li>删除某个元素：<code>boolean remove(Object e)</code></li>
+<li>获取指定索引的元素：<code>E get(int index)</code></li>
+<li>获取链表大小（包含元素的个数）：<code>int size()</code></li>
+</ul>
+<p><code>LinkedList</code>通过“链表”也实现了List接口。在<code>LinkedList</code>中，它的内部每个元素都指向下一个元素。</p>
+<p>【遍历集合list】</p>
+<p>我们要始终坚持使用迭代器<code>Iterator</code>来访问<code>List</code>。<code>Iterator</code>本身也是一个对象，但它是由<code>List</code>的实例调用<code>iterator()</code>方法的时候创建的。<code>Iterator</code>对象知道如何遍历一个<code>List</code>，并且不同的<code>List</code>类型，返回的<code>Iterator</code>对象实现也是不同的，但总是具有最高的访问效率。</p>
+<p><code>Iterator</code>对象有两个方法：<code>boolean hasNext()</code>判断是否有下一个元素，<code>E next()</code>返回下一个元素。因此，使用<code>Iterator</code>遍历<code>List</code>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = List.of(<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;banana&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Iterator&lt;String&gt; it = list.iterator(); it.hasNext(); ) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> it.next();</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Java的<code>for each</code>循环本身就可以帮我们使用<code>Iterator</code>遍历。上面的代码再改写如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = List.of(<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;banana&quot;</span>);</span><br><span class="line">   <span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">       System.out.println(s);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>【list转化为array】</p>
+<p>把<code>List</code>变为<code>Array</code>有三种方法，第一种是调用<code>toArray()</code>方法直接返回一个<code>Object[]</code>数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = List.of(<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;banana&quot;</span>);</span><br><span class="line">Object[] array = list.toArray();</span><br><span class="line"><span class="keyword">for</span> (Object s : array) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二种方式是给<code>toArray(T[])</code>传入一个类型相同的<code>Array</code>，<code>List</code>内部自动把元素复制到传入的<code>Array</code>中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = List.of(<span class="number">12</span>, <span class="number">34</span>, <span class="number">56</span>);</span><br><span class="line">       Integer[] array = list.toArray(<span class="keyword">new</span> <span class="title class_">Integer</span>[<span class="number">3</span>]);</span><br><span class="line">       <span class="keyword">for</span> (Integer n : array) &#123;</span><br><span class="line">           System.out.println(n);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后一种更简洁的写法是通过<code>List</code>接口定义的<code>T[] toArray(IntFunction&lt;T[]&gt; generator)</code>方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer[] array = list.toArray(Integer[]::<span class="keyword">new</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p><code>Map</code>也是一个接口，最常用的实现类是<code>HashMap</code>。</p>
+<p><strong>始终牢记：Map中不存在重复的key，因为放入相同的key，只会把原有的key-value对应的value给替换掉。</strong></p>
+<p><strong>此外，在一个<code>Map</code>中，虽然<code>key</code>不能重复，但<code>value</code>是可以重复的</strong></p>
+<ul>
+<li><code>put(K key, V value)</code>: 将指定的键值对存储到HashMap中。</li>
+<li><code>get(Object key)</code>: 返回与指定键关联的值，如果键不存在，则返回null。</li>
+<li><code>containsKey(Object key)</code>: 检查HashMap中是否包含指定的键。</li>
+<li><code>containsValue(Object value)</code>: 检查HashMap中是否包含指定的值。</li>
+<li><code>remove(Object key)</code>: 从HashMap中删除指定键对应的键值对。</li>
+<li><code>size()</code>: 返回HashMap中键值对的数量。</li>
+<li><code>isEmpty()</code>: 检查HashMap是否为空。</li>
+<li><code>clear()</code>: 清空HashMap，删除所有的键值对。</li>
+<li><code>keySet()</code>: 返回HashMap中所有键构成的Set集合。</li>
+<li><code>values()</code>: 返回HashMap中所有值构成的Collection集合。</li>
+<li><code>entrySet()</code>: 返回HashMap中所有键值对构成的Set集合。</li>
+<li><code>putAll(Map&lt;? extends K, ? extends V&gt; m)</code>: 将另一个Map中的所有键值对添加到HashMap中。</li>
+<li><code>replaceAll(BiFunction&lt;? super K, ? super V, ? extends V&gt; function)</code>: 使用指定的函数对HashMap中的每个键值对进行替换操作。</li>
+<li><code>computeIfAbsent(K key, Function&lt;? super K, ? extends V&gt; mappingFunction)</code>: 如果指定的键尚未与值关联，则使用给定函数计算一个值，并将其存储到HashMap中。</li>
+<li><code>computeIfPresent(K key, BiFunction&lt;? super K, ? super V, ? extends V&gt; remappingFunction)</code>: 如果指定的键存在且与非空值关联，则使用给定函数重新计算该值，</li>
+</ul>
+<p><strong>在map中使用的作为key的对象也需要自己重新正确的编写equals()方法</strong></p>
+<p>通过<code>key</code>计算索引的方式就是调用<code>key</code>对象的<code>hashCode()</code>方法，它返回一个<code>int</code>整数。<code>HashMap</code>正是通过这个方法直接定位<code>key</code>对应的<code>value</code>的索引，继而直接返回<code>value</code>。</p>
+<p>因此，正确使用<code>Map</code>必须保证：</p>
+<ol>
+<li>作为<code>key</code>的对象必须正确覆写<code>equals()</code>方法，相等的两个<code>key</code>实例调用<code>equals()</code>必须返回<code>true</code>；</li>
+<li>作为<code>key</code>的对象还必须正确覆写<code>hashCode()</code>方法，且<code>hashCode()</code>方法要严格遵循以下规范：</li>
+</ol>
+<ul>
+<li>如果两个对象相等，则两个对象的<code>hashCode()</code>必须相等；</li>
+<li>如果两个对象不相等，则两个对象的<code>hashCode()</code>尽量不要相等。</li>
+</ul>
+<p><strong>如何编写正确的equals()？</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    String firstName;</span><br><span class="line">    String lastName;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把需要比较的字段找出来：</p>
+<ul>
+<li>firstName</li>
+<li>lastName</li>
+<li>age</li>
+</ul>
+<p>然后，引用类型使用<code>Objects.equals()</code>比较，基本类型使用<code>==</code>比较。</p>
+<p>在正确实现<code>equals()</code>的基础上，我们还需要正确实现<code>hashCode()</code>，即上述3个字段分别相同的实例，<code>hashCode()</code>返回的<code>int</code>必须相同：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    String firstName;</span><br><span class="line">    String lastName;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        h = <span class="number">31</span> * h + firstName.hashCode();</span><br><span class="line">        h = <span class="number">31</span> * h + lastName.hashCode();</span><br><span class="line">        h = <span class="number">31</span> * h + age;</span><br><span class="line">        <span class="keyword">return</span> h;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意到<code>String</code>类已经正确实现了<code>hashCode()</code>方法，我们在计算<code>Person</code>的<code>hashCode()</code>时，反复使用<code>31*h</code>，这样做的目的是为了尽量把不同的<code>Person</code>实例的<code>hashCode()</code>均匀分布到整个<code>int</code>范围。</p>
+<p>和实现<code>equals()</code>方法遇到的问题类似，如果<code>firstName</code>或<code>lastName</code>为<code>null</code>，上述代码工作起来就会抛<code>NullPointerException</code>。为了解决这个问题，我们在计算<code>hashCode()</code>的时候，经常借助<code>Objects.hash()</code>来计算：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Objects.hash(firstName, lastName, age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以，编写<code>equals()</code>和<code>hashCode()</code>遵循的原则是：</p>
+<p><strong><code>equals()</code>用到的用于比较的每一个字段，都必须在<code>hashCode()</code>中用于计算；<code>equals()</code>中没有使用到的字段，绝不可放在<code>hashCode()</code>中计算。</strong></p>
+<p><strong>Extension</strong></p>
+<ol>
+<li>hashCode()返回的<code>int</code>范围高达±21亿，先不考虑负数，<code>HashMap</code>内部使用的数组得有多大？</li>
+</ol>
+<p>既然<code>HashMap</code>内部使用了数组，通过计算<code>key</code>的<code>hashCode()</code>直接定位<code>value</code>所在的索引，那么第一个问题来了：hashCode()返回的<code>int</code>范围高达±21亿，先不考虑负数，<code>HashMap</code>内部使用的数组得有多大？</p>
+<p>实际上<code>HashMap</code>初始化时默认的数组大小只有16，任何<code>key</code>，无论它的<code>hashCode()</code>有多大，都可以简单地通过</p>
+<p>把索引确定在0～15，即永远不会超出数组范围，上述算法只是一种最简单的实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> key.hashCode() &amp; <span class="number">0xf</span>; <span class="comment">// 0xf = 15</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>如果添加超过16个<code>key-value</code>到<code>HashMap</code>，数组不够用了怎么办？</li>
+</ol>
+<p>添加超过一定数量的<code>key-value</code>时，<code>HashMap</code>会在内部自动扩容，每次扩容一倍，即长度为16的数组扩展为长度32，相应地，需要重新确定<code>hashCode()</code>计算的索引位置。例如，对长度为32的数组计算<code>hashCode()</code>对应的索引，计算方式要改为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> key.hashCode() &amp; <span class="number">0x1f</span>; <span class="comment">// 0x1f = 31</span></span><br></pre></td></tr></table></figure>
+
+<p>由于扩容会导致重新分布已有的<code>key-value</code>，所以，频繁扩容对<code>HashMap</code>的性能影响很大。如果我们确定要使用一个容量为<code>10000</code>个<code>key-value</code>的<code>HashMap</code>，更好的方式是创建<code>HashMap</code>时就指定容量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(<span class="number">10000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>虽然指定容量是<code>10000</code>，但<code>HashMap</code>内部的数组长度总是2n，因此，实际数组长度被初始化为比<code>10000</code>大的<code>16384</code> which is 2^14.</p>
+ 
       <!-- reward -->
       
       <div id="reword-out">
