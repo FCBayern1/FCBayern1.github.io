@@ -6,15 +6,6 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>First blog</title>
-    <url>/2023/02/12/First-blog/</url>
-    <content><![CDATA[<h1 id="Git-study"><a href="#Git-study" class="headerlink" title="Git study"></a>Git study</h1><p><img src="/../images/WeChatb22903d041669c31bc759fe2fce96683.png"></p>
-]]></content>
-      <tags>
-        <tag>First blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>data analyst</title>
     <url>/2023/04/18/data-analyst/</url>
     <content><![CDATA[<ul>
@@ -32,6 +23,15 @@
       </categories>
       <tags>
         <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>First blog</title>
+    <url>/2023/02/12/First-blog/</url>
+    <content><![CDATA[<h1 id="Git-study"><a href="#Git-study" class="headerlink" title="Git study"></a>Git study</h1><p><img src="/../images/WeChatb22903d041669c31bc759fe2fce96683.png"></p>
+]]></content>
+      <tags>
+        <tag>First blog</tag>
       </tags>
   </entry>
   <entry>
@@ -858,7 +858,7 @@
 <p><strong>Solution:</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span><span class="params">(<span class="type">int</span>[] prices)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">profit</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (prices[i] &gt; prices[i - <span class="number">1</span>]) &#123;</span><br><span class="line">            profit += (prices[i] - prices[i - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h3><p>什么是链表，链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。</p>
+<h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><p>什么是链表，链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。</p>
 <p>链表的入口节点称为链表的头结点也就是head。</p>
 <p>如图所示： <img src="/../images/20200806194529815.png" alt="链表1"></p>
 <p>了解完链表的类型，再来说一说链表在内存中的存储方式。</p>
@@ -1964,525 +1964,6 @@
 </ul>
 <p>![image-20230427124928638](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427124928638.png)</p>
 <p>![image-20230427125103365](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230427125103365.png)</p>
-]]></content>
-      <categories>
-        <category>Courses</category>
-      </categories>
-      <tags>
-        <tag>Courses</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>forensics</title>
-    <url>/2023/04/20/forensics/</url>
-    <content><![CDATA[<p>5080 UofG</p>
-<p>[TOC]</p>
-<h1 id="Revision-and-Reflection"><a href="#Revision-and-Reflection" class="headerlink" title="Revision and Reflection:"></a>Revision and Reflection:</h1><ol>
-<li><h2 id="Raphael-Aerospace"><a href="#Raphael-Aerospace" class="headerlink" title="Raphael Aerospace"></a>Raphael Aerospace</h2></li>
-</ol>
-<p>The fictional Raphael Aerospace is a leading multinational, specialising in software engineering for defense systems. The organisation has seized a laptop from one of its employees during a routine search that occurs at the entry and exit point to its North America campus. The company is concerned that the laptop contains sensitive source code. The employee has refused to speak or cooperate with the organisation since the laptop was seized. The digital investigation team believes the laptop is password protected, employs software-based full-disk encryption and has been seized in sleep mode. The laptop has highly integrated components to achieve a ‘slim-line’ profile and potentially has a Trusted Platform Module (TPM). The investigation team needs to acquire the keys associated with decryption and encryption of hard disk contents.</p>
-<p><strong>a).  Outline the SIX states of the Advanced Configuration and Power Interface (ACPI) and argue the relevancy to software-based full-disk encryption for each state.</strong></p>
-<p>The Advanced Configuration and Power Interface (ACPI) is a specification that defines power management and system configuration for computers. It establishes different power states, which play a significant role in the energy consumption and performance of a device. These power states are relevant to software-based full-disk encryption, as they can impact the security and accessibility of encrypted data. The six ACPI power states are:</p>
-<ol>
-<li>G0 (S0) - Working State: In this state, the system is fully powered on and operational. The CPU is executing instructions, and all peripherals are active. In the context of full-disk encryption, this state is when the system is most vulnerable to attacks. However, it’s also the state in which encryption and decryption processes can be performed.</li>
-<li>G1 (S1-S4) - Sleeping States: There are four different sleep states, S1 to S4, with S1 being the lightest sleep and S4 the deepest sleep state. As the sleep state deepens, more components are powered down, and the system consumes less power. Full-disk encryption keys are typically stored in RAM or the TPM. In sleep states, the encryption keys remain in memory, making it possible to access encrypted data without re-entering the password. However, these states also increase the risk of cold boot attacks, where attackers can extract the keys from RAM or TPM if they can gain physical access to the machine.</li>
-<li>G2 (S5) - Soft Off State: In this state, the system is powered off, but some components may still receive power to support features like Wake-on-LAN. The encryption keys are not present in memory, so an attacker cannot extract them. However, encrypted data on the disk remains secure, and a password is required to access the system upon startup.</li>
-<li>G3 - Mechanical Off State: The system is completely powered off, and no components receive power. In this state, the encryption keys are not present in memory, and the encrypted data is secure. To access the data, the user must power on the system and enter the password.</li>
-<li>S4 - Hibernate State: In this state, the system’s state is saved to the hard drive before powering down. The encryption keys are not present in memory, making the data secure. However, the system will require the password upon waking from hibernation to access the encrypted data.</li>
-<li>C0-C3 - Processor Power States: These are the power states of the CPU itself, with C0 being the fully operational state and C3 being the deepest sleep state. These states are less relevant to full-disk encryption, as they primarily affect the CPU’s power consumption and performance. However, the encryption and decryption processes may be slower in deeper sleep states due to reduced CPU performance.</li>
-</ol>
-<p>In summary, ACPI power states have varying degrees of relevancy to software-based full-disk encryption. The Working State (G0) and Sleeping States (G1) are the most relevant, as they impact the security and accessibility of encrypted data. The Soft Off State (G2), Mechanical Off State (G3), Hibernate State (S4), and Processor Power States (C0-C3) are less directly relevant but may still influence the security of encrypted data in certain situations.</p>
-<p><strong>b). Evaluate and describe THREE potential approaches to recover the keys associated with software-based full-disk encryption and argue for the optimal approach in the given context.</strong></p>
-<p>There are several potential approaches to recover the keys associated with software-based full-disk encryption (FDE). Here are three possible methods:</p>
-<ol>
-<li>Brute-force attack: This approach involves systematically trying every possible combination of characters to find the correct encryption key or password. Given enough time and computational resources, a brute-force attack will eventually succeed.</li>
-</ol>
-<p>Pros:</p>
-<ul>
-<li>Guaranteed to find the correct key or password eventually.</li>
-</ul>
-<p>Cons:</p>
-<ul>
-<li>Requires a significant amount of time and computational power, making it inefficient.</li>
-<li>May be ineffective against long, complex passwords or strong encryption algorithms.</li>
-</ul>
-<ol>
-<li>Dictionary attack: This method involves using a pre-compiled list of words or phrases (a “dictionary”) to attempt to recover the encryption key or password. Dictionary attacks are faster than brute-force attacks since they rely on a smaller set of possibilities, usually based on known common passwords or phrases.</li>
-</ol>
-<p>Pros:</p>
-<ul>
-<li>Faster than brute-force attacks.</li>
-<li>Effective against weak passwords or phrases.</li>
-</ul>
-<p>Cons:</p>
-<ul>
-<li>Less effective against strong, unique passwords or phrases.</li>
-<li>Relies on the quality of the dictionary used.</li>
-</ul>
-<ol>
-<li>Cryptanalysis attack: This approach involves analyzing the encrypted data or the encryption algorithm itself to discover weaknesses or flaws that can be exploited to recover the encryption key. This method often requires deep knowledge of cryptography and a thorough understanding of the specific encryption algorithm used.</li>
-</ol>
-<p>Pros:</p>
-<ul>
-<li>Can be more efficient than brute-force or dictionary attacks.</li>
-<li>Exploits weaknesses or flaws in the encryption algorithm itself, potentially making it more successful.</li>
-</ul>
-<p>Cons:</p>
-<ul>
-<li>Requires extensive knowledge and expertise in cryptography.</li>
-<li>May not be successful if the encryption algorithm is well-designed and without significant weaknesses.</li>
-</ul>
-<p>In the given context, the optimal approach to recover the keys associated with software-based full-disk encryption would depend on several factors, such as the strength of the encryption algorithm, the complexity of the password, and the available resources (time and computational power).</p>
-<p>If the encryption algorithm is known to have weaknesses or flaws, a cryptanalysis attack could be the most efficient method to recover the keys. However, this approach requires a high level of expertise in cryptography.</p>
-<p>In cases where the password is known to be weak or likely to be found in a dictionary, a dictionary attack would be the preferred approach, as it is faster and more efficient than brute-force attacks.</p>
-<p>If no information about the password or encryption algorithm’s weaknesses is available, a brute-force attack could be the only viable option. However, this method may be time-consuming and resource-intensive.</p>
-<p>Ultimately, the choice of the optimal approach will depend on the specific circumstances and the available resources. In many cases, a combination of these approaches may be required to successfully recover the keys associated with software-based full-disk encryption.</p>
-<p><strong>c). Raphael Aerospace is a British company, but the laptop was seized at the North American campus. The employee is a United Kingdom (UK) citizen and is concerned about the laws regarding software-based full-disk encryption in the United States (US). The employee believes that the UK will be a more favorable jurisdiction from the perspective of being forced to reveal any keys or passwords associated with encryption. Contrast the UK and US legal perspectives regards compelled decryption, speculate on the optimal jurisdiction in the given context.</strong></p>
-<p>The legal perspectives on compelled decryption differ between the United States (US) and the United Kingdom (UK). Here is a brief overview of the legal stances in both jurisdictions:</p>
-<p>United States (US): In the US, the Fifth Amendment to the Constitution protects individuals from self-incrimination. This has been interpreted by some courts as providing protection against being forced to reveal encryption keys or passwords, as doing so could be seen as self-incrimination. However, the interpretation of the Fifth Amendment in the context of compelled decryption is not uniform across all courts, and some have ruled that individuals can be compelled to provide decryption keys or passwords under certain circumstances.</p>
-<p>United Kingdom (UK): In the UK, the Regulation of Investigatory Powers Act 2000 (RIPA) governs the legal framework surrounding encryption and compelled decryption. Under RIPA, individuals can be legally compelled to provide encryption keys or passwords to law enforcement authorities when ordered to do so by a court. Failure to comply with such an order can result in severe penalties, including imprisonment.</p>
-<p>In the given context, the employee’s belief that the UK might be a more favorable jurisdiction from the perspective of being forced to reveal encryption keys or passwords might be misguided. The UK’s legal framework, as established by RIPA, clearly allows for compelled decryption under certain circumstances, whereas the US legal system provides some degree of protection against self-incrimination through the Fifth Amendment.</p>
-<p>However, it is important to note that the specific circumstances of the case and the legal interpretations of the relevant laws may vary, leading to different outcomes in each jurisdiction. The optimal jurisdiction would depend on various factors, including the details of the case and the stance of the courts involved.</p>
-<p>In conclusion, while the US legal system may offer more protection against compelled decryption than the UK, there are no guarantees, and the optimal jurisdiction would depend on the specific circumstances and the courts involved. The employee should seek legal counsel to better understand their rights and potential risks in both jurisdictions.</p>
-<ol start="2">
-<li><h2 id="BCO-Case"><a href="#BCO-Case" class="headerlink" title="BCO Case"></a>BCO Case</h2></li>
-</ol>
-<p>The fictional United States (US) Borders and Customs Office (BCO) wants to strengthen border controls. The BCO wants to ensure rigorous checks are possible at the border to ensure illegal digital content does not come across the border on physical devices. The BCO is particularly concerned that such files are hidden in unallocated space on drives. The BCO want a rapid process that can confirm a target file or traces of a target file are present on a suspected system. The suspected system can then be kept for further, deeper analysis. Argue an appropriate file carving technique and outline an implementation for the given context.</p>
-<p><strong>a). In the given context, the BCO aims to quickly identify whether a target file or traces of it are present on a suspected system, particularly in unallocated space on drives. An appropriate technique for this purpose is file carving.</strong></p>
-<p>In the given context, the BCO aims to quickly identify whether a target file or traces of it are present on a suspected system, particularly in unallocated space on drives. An appropriate technique for this purpose is file carving. Among the file carving techniques, Hash Based Carving is a suitable choice for the BCO’s requirements.</p>
-<p>Hash Based Carving involves creating hash values of known target files and comparing them to the hash values of data blocks in the unallocated space of a drive. This technique is fast and can efficiently identify complete or partial matches of target files on a suspected system.</p>
-<p>The implementation of Hash Based Carving for the BCO’s context can be outlined as follows:</p>
-<p>Preparation: Compile a list of known target files that the BCO is concerned about. Calculate the hash values for these files and store them in a database.</p>
-<p>Drive imaging: At the border, if a suspicious device is identified, create a forensically sound image of the drive to avoid tampering with the original evidence.</p>
-<p>Data extraction: Extract data blocks from the unallocated space of the drive image. Divide the extracted data into fixed-size blocks, which will be used for hash comparison.</p>
-<p>Hash comparison: Calculate hash values for each data block extracted from the unallocated space. Compare these hash values with the hash values of the known target files stored in the database.</p>
-<p>Identification: If a match is found between the hash values, it indicates that the target file or traces of it are present on the suspected system. In such cases, the system can be retained for further, deeper analysis.</p>
-<p>Hash Based Carving allows the BCO to rapidly check devices at the border for illegal digital content, enabling them to focus on suspicious systems for more in-depth investigation. This technique not only minimizes false positives but also helps streamline the process of detecting and preventing the transportation of illegal digital content across the border.</p>
-<p><strong>b). The BCO want to reduce the number of false positives as this can result in unnecessary workload and delays at the border. Evaluate your proposed approach in (a), indicate potential causes of false positives and argue how they can be addressed.</strong></p>
-<p>The proposed approach in (a) is Hash Based Carving. While it is a fast and efficient method to identify target files or their traces, it is not without potential causes of false positives. Here, we’ll evaluate the approach, highlight the possible reasons for false positives, and suggest ways to address them.</p>
-<p>Potential causes of false positives:</p>
-<p>Hash collisions: Although rare, hash collisions can occur when two different data blocks result in the same hash value. In such cases, the carving tool might falsely identify a non-target file as a target file, leading to false positives.</p>
-<p>Partial matches: Hash Based Carving can detect partial matches of target files. However, there might be instances where the partial matches are unrelated to the target files, thus causing false positives.</p>
-<p>Addressing false positives:</p>
-<p>Utilize multiple hash algorithms: To minimize the chances of hash collisions, the BCO can use multiple hash algorithms (such as SHA-256, SHA-3, or others) and perform a comparison based on a combination of hash values. This approach significantly reduces the likelihood of false positives due to hash collisions.</p>
-<p>Verify file headers and footers: In addition to hash comparison, the BCO can implement a secondary check for file headers and footers to ensure that the identified files are indeed the target files. By verifying the unique file signatures of known target files, the BCO can further minimize false positives.</p>
-<p>Threshold-based matching: To address false positives due to partial matches, the BCO can set a threshold value for the level of similarity required for a match. By refining the matching criteria, the BCO can filter out unrelated partial matches, thereby reducing false positives.</p>
-<p>By addressing these potential causes of false positives, the BCO can enhance the efficiency of the Hash Based Carving approach, ensuring a more accurate and streamlined process at the border. This will minimize unnecessary workload and delays, allowing the BCO to focus on genuine cases that require deeper analysis.</p>
-<p><strong>c). The BCO also want to ensure the legality of the approach. The BCO want to ensure the approach does not require a specific search warrant, as this would impact on the speed and efficiency of the approach in terms of border control. Argue the potential legal concerns and outline how they may be addressed in any implementation for the given context.</strong></p>
-<p>Potential legal concerns:</p>
-<ol>
-<li>Privacy rights: Conducting a file carving process on a suspected system may raise concerns about an individual’s right to privacy, as it involves searching and potentially extracting personal and private information without their consent.</li>
-<li>Search and seizure laws: Depending on the jurisdiction, searching an individual’s digital device without a specific search warrant could potentially violate search and seizure laws, which generally require law enforcement to obtain a warrant before conducting a search that infringes on an individual’s privacy.</li>
-<li>Chain of custody: Ensuring the integrity and admissibility of any digital evidence obtained through file carving in a court of law requires maintaining a proper chain of custody. This involves documenting every step of the evidence handling process, from the initial search to the final analysis.</li>
-</ol>
-<p>Ways to address legal concerns:</p>
-<ol>
-<li>Establish clear policies and guidelines: Develop and implement clear policies and guidelines for border agents to follow when conducting file carving or other digital forensic searches. These guidelines should outline the circumstances under which such searches are permissible, the extent of the search, and the steps to be followed to ensure legal compliance.</li>
-<li>Train border agents: Provide regular training for border agents on the legal aspects of digital forensics and the proper procedures for conducting file carving and other digital searches. This can help minimize the risk of violating privacy rights and search and seizure laws.</li>
-<li>Obtain appropriate authorization: While the BCO aims to avoid the need for specific search warrants, it is essential to obtain the necessary legal authorization to conduct file carving searches. This could involve establishing a reasonable suspicion or probable cause before conducting a search, depending on the jurisdiction’s requirements.</li>
-<li>Implement a tiered search approach: To minimize potential privacy intrusions, consider implementing a tiered search approach that starts with less invasive techniques (such as basic keyword searches) and only escalates to more intrusive methods like file carving when there’s a reasonable basis for suspicion.</li>
-<li>Maintain proper documentation: Ensure that a proper chain of custody is maintained throughout the entire digital forensics process. This includes documenting every step of the evidence handling process, from the initial search to the final analysis, to ensure the admissibility of any evidence obtained in a court of law.</li>
-</ol>
-<p>Ultimately, it is crucial for the BCO to consult with legal experts to develop a compliant and legally defensible approach to file carving and other digital forensic techniques at the border. This can help ensure that the method is both effective in identifying illegal digital content and respecting individual privacy rights and due process requirements.</p>
-<ol start="3">
-<li><h2 id="Conway-Energy-Case"><a href="#Conway-Energy-Case" class="headerlink" title="Conway Energy Case"></a><strong>Conway Energy Case</strong></h2></li>
-</ol>
-<p>Conway Energy is a large enterprise with many customers. The company recently discovered that an employee generated letters demanding missed payments from hundreds of customers. The employee used a variant of a standard company letter and altered it to instruct recipients to make payment into their bank account. The employee then lodged the letters with the corporate file store for automatic dispatch. The technical team state the letters can be retrieved, but have concerns as the corporate file store contains millions of documents and letters. The company legal and management team have approved an investigation by the technical team to extract the hundreds of generated letters. The technical team have uncovered a template for the fraudulent standard letter on a corporate workstation. The technical team have altered the letter to include a known affected customer name and address. The technical team then generated a hash of the file, but were unable to identify a match in the file store.</p>
-<p><strong>a). The management team are concerned that evidence discovered during the internal investigation may eventually be presented in court. The management team are confident the fraudulent standard letter has been seized legally with appropriate authority. However, the management team want to ensure the discovered standard letter is admissible evidence in court. Evaluate and argue if the uncovered fraudulent letter is admissible evidence to a court of law in the given context.</strong> </p>
-<p>The use of scientifically derived and proven methods towards the preservation, collection, validation, identification, analysis, interpretation and presentation of digital evidence derived from digital sources for the purposes of facilitating or furthering the reconstruction of events found to be criminal or helping to  anticipate the unauthorised actions shown to be disruptive to planned operations</p>
-<p>Admissibility depends upon several factors: (1) authenticity, (2) relevancy, and (3) competency. </p>
-<p>In the context of the discovered fraudulent standard letter, the following factors can be considered:</p>
-<ol>
-<li>Relevance: <em>The term relevancy</em> means that the information must reasonably tend to prove or disprove any matter in issue. The question or test involved is, “Does the evidence aid the court in answering the question before it?”. The fraudulent letter is directly related to the case at hand, as it demonstrates the employee’s actions to create and distribute the letters demanding missed payments. It is likely to be considered relevant evidence.</li>
-<li>Reliability: The technical team must be able to demonstrate that the letter was discovered through a reliable and consistent process, and that the investigation methods were accurate and thorough. Proper documentation of the investigation process, such as the steps taken to identify the fraudulent letter, can help establish its reliability.</li>
-<li>Authenticity: The term <em>authenticity</em> refers to the genuine character of the evidence. The court will want to ensure that the discovered letter is indeed the fraudulent standard letter created by the employee. The technical team should be prepared to provide evidence that confirms the letter’s authenticity, such as metadata, timestamps, and any other identifying information. A proper chain of custody should also be maintained to document the handling, storage, and transfer of the letter.</li>
-<li>Competency: <em>Competent</em> as used to describe evidence means that the evidence is relevant and not barred by any exclusionary rule. The competency of the evidence in Conway Energy’s case will depend on the technical team’s qualifications and expertise, the methods and techniques used in the investigation, proper documentation and record-keeping, and compliance with legal and procedural requirements. Ensuring these factors are addressed will increase the likelihood of the evidence being considered competent and admissible in court.</li>
-</ol>
-<p><strong>b). The technical team have uncovered more fraudulent letters, but hashes of each do not match any in the corporate file store. Upon closer inspection the technical team have determined that the employee has inserted words with the font colour set to white. The words are effectively ‘hidden to visual inspection as they are not easily observable. The technical team have generated a definitive list of the hidden words present in the fraudulent letters. The technical team are unconvinced that generating a hash of each fraudulent letter is an effective route. The technical team need to utilise a hashing approach that is able to identify homologous patterns between the known fraudulent letters and those in the file store. Devise and explain an effective hashing approach in the given context.</strong></p>
-<p>Since the traditional hashing approach does not seem to be effective in identifying the fraudulent letters, the technical team can explore alternative hashing techniques that focus on content-based similarity rather than exact file matches. One such approach is known as <strong>locality-sensitive hashing (LSH)</strong>.</p>
-<p>Locality-sensitive hashing is a technique used to identify similar documents by generating hashes that have a higher probability of colliding when the documents are similar. This approach is more effective in identifying homologous patterns between the known fraudulent letters and those in the file store.</p>
-<p>Here’s a possible approach to implementing LSH in this context:</p>
-<ol>
-<li>Preprocess the documents: Convert all the documents in the corporate file store and the known fraudulent letters to plain text, including the hidden white text, to ensure a consistent format for comparison.</li>
-<li>Tokenize and create document vectors: Break the text of each document into tokens (e.g., words or phrases) and represent each document as a high-dimensional vector using techniques like term frequency-inverse document frequency (TF-IDF) or word embeddings. This process converts the documents into a suitable format for LSH.</li>
-<li>Implement locality-sensitive hashing: Apply an LSH algorithm to the document vectors. The algorithm will generate similar hashes for documents with similar content, making it easier to identify the fraudulent letters with homologous patterns in the file store.</li>
-<li>Set a similarity threshold: Determine an appropriate similarity threshold to identify potential matches. This threshold will depend on the specific LSH algorithm used and the desired balance between precision and recall.</li>
-<li>Compare and flag potential matches: Compare the LSH hashes of the known fraudulent letters with those in the corporate file store. Flag any documents with hashes that exceed the set similarity threshold for further investigation.</li>
-<li>Verify flagged documents: Manually review the flagged documents to ensure they are indeed fraudulent letters and not false positives. Make note of any discrepancies or issues to further refine the LSH algorithm or similarity threshold, if necessary.</li>
-<li>Preserve evidence and implement preventive measures: Once the fraudulent letters have been identified and extracted, preserve the evidence and consider implementing additional security measures to prevent similar incidents in the future.</li>
-</ol>
-<p>By employing locality-sensitive hashing, the technical team can identify fraudulent letters with similar content patterns, even when the exact file hashes do not match. This approach should be more effective in detecting the hidden white text and other subtle alterations made by the employee.</p>
-<p><strong>CTPH:</strong></p>
-<ol>
-<li>Preprocess the documents: Convert all the documents in the corporate file store and the known fraudulent letters to plain text, including the hidden white text, to ensure a consistent format for comparison.</li>
-<li>Apply CTPH algorithm: Implement a CTPH algorithm, such as ssdeep, to generate fuzzy hash values for each document. The algorithm will create hashes that are similar for documents with similar content.</li>
-<li>Set a similarity threshold: Determine an appropriate similarity threshold for comparing the generated fuzzy hashes. This threshold will depend on the desired balance between precision and recall in identifying similar documents.</li>
-<li>Compare and flag potential matches: Compare the fuzzy hashes of the known fraudulent letters with those in the corporate file store. Flag any documents with hashes that exceed the set similarity threshold for further investigation.</li>
-<li>Verify flagged documents: Manually review the flagged documents to ensure they are indeed fraudulent letters and not false positives. Make note of any discrepancies or issues to further refine the CTPH algorithm or similarity threshold, if necessary.</li>
-<li>Preserve evidence and implement preventive measures: Once the fraudulent letters have been identified and extracted, preserve the evidence and consider implementing additional security measures to prevent similar incidents in the future.</li>
-</ol>
-<p>By employing CTPH, the technical team can identify fraudulent letters with similar content patterns, even when there are subtle differences such as the hidden white text. This approach should be more effective in detecting the homologous patterns between the known fraudulent letters and those in the file store compared to traditional hashing methods.</p>
-<p><strong>c). The technical team are concerned that the hashing approach devised in (b) may not be appropriate in the given context. Identify potential concerns with the hashing approach devised in (b) for the given context.</strong></p>
-<ol>
-<li>Sensitivity to small changes: Although CTPH is designed to detect similar files, it may not always be sensitive enough to detect subtle differences, such as the hidden white text used in the fraudulent letters. This could lead to false negatives, where the technical team fails to identify some fraudulent letters.</li>
-<li>False positives: CTPH can sometimes produce false positives, where non-fraudulent documents are flagged as potentially fraudulent due to similarity in content or structure. This could result in the technical team spending time and resources on manually reviewing non-fraudulent documents.</li>
-<li>Scalability: Given that the corporate file store contains millions of documents, comparing the fuzzy hashes of the known fraudulent letters with those in the file store could be computationally expensive and time-consuming.</li>
-<li>Accuracy: The accuracy of CTPH in identifying fraudulent letters depends on the chosen similarity threshold. Setting an appropriate threshold can be challenging, as a high threshold might result in false negatives, while a low threshold could lead to false positives.</li>
-<li>Legal admissibility: There may be concerns about the legal admissibility of the evidence gathered using CTPH, as it relies on similarity rather than exact matches. The court may require additional validation or proof that the flagged documents are indeed fraudulent.</li>
-</ol>
-<p>Given these concerns, the technical team should carefully consider whether the CTPH approach is appropriate for their specific context. They may need to explore alternative methods, such as advanced text analytics or machine learning techniques, to more accurately and efficiently identify the fraudulent letters in the file store. Additionally, the technical team should consult with legal professionals to ensure the chosen approach meets the requirements for evidence admissibility in court.</p>
-<p><strong>However, if we use LSH,</strong></p>
-<p>Using locality-sensitive hashing (LSH) as your hash algorithm could be a suitable alternative for Conway Energy’s case, as LSH is designed to identify similar documents by generating hashes that have a higher probability of colliding when the documents are similar. This approach can be more effective in identifying homologous patterns between the known fraudulent letters and those in the file store.</p>
-<p>Still we need to consider the potential problems of LSH:</p>
-<p>Locality-sensitive hashing (LSH) is a powerful technique for identifying similar documents, but it comes with some potential concerns that should be considered in the context of the Conway Energy case:</p>
-<ol>
-<li>False positives: LSH can produce false positives, where non-fraudulent documents are flagged as potentially fraudulent due to similarity in content or structure. This can lead to spending additional time and resources on manual review of non-fraudulent documents.</li>
-<li>False negatives: Depending on the chosen similarity threshold and LSH algorithm, LSH can also produce false negatives, where fraudulent documents are not flagged due to insufficient similarity in their LSH hashes. This can result in missing important evidence.</li>
-<li>Scalability: LSH requires a considerable amount of computation and storage, especially when dealing with large datasets like Conway Energy’s corporate file store. This can lead to increased processing time and resource requirements.</li>
-<li>Parameter selection: LSH algorithms often have several parameters that need to be fine-tuned, such as the similarity threshold, the number of hash functions, and the number of hash tables. Selecting appropriate parameters can be challenging and may require empirical testing and validation.</li>
-<li>Preprocessing and feature extraction: LSH relies on converting documents into high-dimensional vectors, which may require considerable preprocessing and feature extraction, such as tokenization, stemming, and text vectorization using techniques like TF-IDF or word embeddings. This can be computationally expensive and may introduce additional complexity.</li>
-<li>Legal admissibility: Similar to CTPH, there may be concerns about the legal admissibility of the evidence gathered using LSH, as it relies on similarity rather than exact matches. The court may require additional validation or proof that the flagged documents are indeed fraudulent.</li>
-</ol>
-<p>Given these potential concerns, the technical team should carefully consider whether the LSH approach is appropriate for their specific context. They may need to explore alternative methods or combine LSH with other techniques to improve accuracy, efficiency, and legal admissibility. Additionally, the technical team should consult with legal professionals to ensure the chosen approach meets the requirements for evidence admissibility in court.</p>
-<ol start="4">
-<li><h2 id="Laputa-University-Case"><a href="#Laputa-University-Case" class="headerlink" title="Laputa University Case"></a>Laputa University Case</h2></li>
-</ol>
-<p>The University of Laputa replaces computer systems for staff every five years. The management team have been informed by research staff that some systems have been replaced without sufficient notice and as a result important files have been lost. The management team have also been informed that some systems are being sold through various online auction websites, rather than being recycled.</p>
-<p>The management team suspects a member of the systems support team has been selling the systems via online auction websites. The management team have authorised the digital investigations team to purchase several systems from online auction websites that they suspect have come from the institution. The management team have also authorised the digital investigation team to utilise appropriate data recovery techniques to recover files.</p>
-<p><strong>a). The digital investigations team want to recover any previous Personal Storage Table (PST) files from many of the systems they have purchased from online auction websites. The digital investigations team believe such a file, in general, will not be heavily fragmented due to the numerous approaches adopted by modern file systems. Argue whether the position of the digital investigations team is accurate.</strong></p>
-<p>The digital investigations team’s position that Personal Storage Table (PST) files, in general, will not be heavily fragmented due to the numerous approaches adopted by modern file systems is mostly accurate. However, some factors can still contribute to the fragmentation of PST files, even on modern file systems.</p>
-<p>Modern file systems, such as NTFS, HFS+, and ext4, are designed to minimize fragmentation by using various allocation strategies and techniques. These file systems attempt to keep related data blocks close together and allocate new blocks in a way that minimizes fragmentation. As a result, the overall fragmentation of files on these file systems tends to be less severe compared to older file systems like FAT.</p>
-<p>However, PST files, which are used by Microsoft Outlook to store email messages, contacts, and other data, can still become fragmented under certain conditions:</p>
-<p>Large file sizes: PST files can grow quite large over time, especially if users have many emails and attachments. Large files can be more susceptible to fragmentation as they are more likely to be allocated in non-contiguous blocks.</p>
-<p>Frequent updates: PST files are updated frequently as new emails are received, sent, or deleted. These updates can lead to fragmentation as the file system may need to allocate new blocks to accommodate the changes in file size and content.</p>
-<p>Insufficient free space: If there is insufficient free space available on the storage device, it may be challenging for the file system to allocate contiguous blocks for new or updated data, resulting in fragmentation.</p>
-<p>Multiple concurrent users: In a shared environment, multiple users might be accessing and modifying different files simultaneously. This can create a higher likelihood of fragmentation as the file system attempts to allocate blocks for various files concurrently.</p>
-<p>While modern file systems are better at managing fragmentation, it is still essential for the digital investigations team to consider the factors mentioned above when attempting to recover PST files from the purchased systems. Fragmentation can affect the ease and success of the data recovery process, and the team may need to employ specialized data recovery tools or techniques to recover fragmented PST files effectively.</p>
-<p><strong>b). The digital investigations team eventually assume the PST files they want to extract from the purchased systems are likely to comprise of more than two fragments and the relevant clusters are not necessarily in sequence. Devise and justify a carving approach to recover a single file in the given context. Highlight any limitations or constraints in the proposed solution.</strong></p>
-<p>In the given context, the digital investigations team can employ a carving approach that combines signature-based carving and file system metadata analysis to recover the fragmented PST files. This approach involves the following steps:</p>
-<ol>
-<li>Signature-based carving: Scan the storage device for known file signatures or magic numbers associated with PST files. This process can help identify the starting point of each PST file fragment. Common magic numbers for PST files include <code>!BDN</code> for Outlook 97-2002 and <code>!BD0</code> for Outlook 2003 and later.</li>
-<li>File system metadata analysis: Analyze the file system metadata to gather information about the allocation and location of clusters associated with PST files. This can help identify the correct sequence of fragmented clusters and uncover additional fragments that may not have been detected through signature-based carving.</li>
-<li>Cluster chaining: Once the starting points of the file fragments and their metadata are identified, attempt to reconstruct the file by chaining the clusters in the correct order based on their allocation in the file system. This can be done using specialized data recovery tools or custom-built scripts.</li>
-<li>File validation: After the PST file has been reconstructed, validate its integrity by checking its internal structure and attempting to open it using a compatible email client or PST viewer. This step helps ensure that the recovered file is complete and functional.</li>
-<li>Iterative refinement: If the initial reconstruction is unsuccessful, refine the carving approach by adjusting parameters, such as the search window for signature-based carving or the cluster allocation strategy. Repeat the process until a successful recovery is achieved or it becomes clear that the file cannot be recovered.</li>
-</ol>
-<p>Limitations and constraints of the proposed solution:</p>
-<ol>
-<li>Incomplete recovery: The carving approach may not always be successful in recovering the entire PST file, particularly if some fragments are missing or corrupted.</li>
-<li>Time-consuming: This process can be time-consuming, especially when dealing with large PST files or complex fragmentation patterns.</li>
-<li>False positives: Signature-based carving can sometimes produce false positives, where unrelated data is mistakenly identified as part of the PST file.</li>
-<li>Expertise required: The proposed carving approach requires a certain level of expertise in data recovery and file system analysis, as well as access to specialized tools or custom scripts.</li>
-</ol>
-<p>Despite these limitations, the proposed carving approach should provide the digital investigations team with a robust method for recovering fragmented PST files from the purchased systems. The team may need to iterate and refine the approach as necessary to maximize the chances of successful file recovery.</p>
-<p><strong>c). The digital investigations team have since learned that they need to recover several PST files from each system, not just a single PST file. The digital investigations team have decided that the speed of recovery of the multiple files is more important than the accuracy of recovery. Devise a carving approach to recover multiple files in the given context. Highlight any limitations or constraints in the proposed solution.</strong></p>
-<p>In the given context, where the speed of recovery is more important than accuracy, the digital investigations team can employ a streamlined carving approach to recover multiple PST files from each system. This approach involves the following steps:</p>
-<ol>
-<li>Signature-based carving: Perform a bulk scan of the storage device for known file signatures or magic numbers associated with PST files (e.g., <code>!BDN</code> for Outlook 97-2002 and <code>!BD0</code> for Outlook 2003 and later). This process helps identify the starting point of each PST file fragment.</li>
-<li>File size estimation: Estimate the size of each PST file based on the distance between consecutive file signatures. This can help in the quick recovery of files without needing extensive file system metadata analysis.</li>
-<li>File extraction: Extract the identified file fragments based on the estimated size and signature locations. This step may involve some level of over-extraction or under-extraction to ensure that complete files are recovered, at the expense of potential inaccuracies.</li>
-<li>File validation (optional): If time permits, validate the integrity of the recovered PST files by checking their internal structure and attempting to open them using a compatible email client or PST viewer. This step can help identify any major issues with the recovered files.</li>
-</ol>
-<p>Limitations and constraints of the proposed solution:</p>
-<ol>
-<li>Inaccurate recovery: By prioritizing speed over accuracy, the carving approach may result in inaccurately recovered PST files, with potentially missing or corrupted data.</li>
-<li>False positives: Signature-based carving can produce false positives, where unrelated data is mistakenly identified as part of the PST file. This may lead to the recovery of irrelevant or incomplete files.</li>
-<li>File fragmentation: This approach does not account for fragmented files, which may result in incomplete recovery of some PST files.</li>
-<li>File validation: Skipping or minimizing the file validation step can increase the risk of recovering unusable or corrupted files.</li>
-<li>Expertise required: The proposed carving approach requires a certain level of expertise in data recovery and the ability to quickly analyze and adapt to the specific storage device’s conditions.</li>
-</ol>
-<p>Despite these limitations, the proposed carving approach should provide the digital investigations team with a faster method for recovering multiple PST files from the purchased systems. The team may need to accept the trade-off between speed and accuracy, understanding that some of the recovered files may be incomplete or corrupted.</p>
-<p><strong>d). The digital investigations team have recovered the PST file from one of the systems purchased online with the revelation that the PST does not belong to any researcher or member of the staff at the University of Laputa. The digital investigations team actually suspect the file might belong to another university. The digital investigations team have decided to investigate the system further to identify the specific individual. Argue whether the actions of the digital investigation team are appropriate in the given context.</strong></p>
-<p>In the given context, the actions of the digital investigations team can be seen as both appropriate and inappropriate, depending on the objectives and the ethical considerations involved.</p>
-<p>Arguments for the appropriateness of the digital investigations team’s actions:</p>
-<ol>
-<li>Prevent potential misuse of data: The recovery of a PST file that does not belong to any researcher or staff member at the University of Laputa raises concerns about the potential misuse of the data contained within it. Investigating the system further could help the team understand how this file ended up on the system and prevent any potential misuse of the information.</li>
-<li>Uphold data privacy and security: Universities are responsible for protecting the privacy and security of personal and sensitive information. Investigating the origin of the unknown PST file and identifying the individual it belongs to could help the team ensure that the university is upholding its data protection obligations.</li>
-</ol>
-<p>Arguments against the appropriateness of the digital investigations team’s actions:</p>
-<ol>
-<li>Privacy concerns: Investigating the contents of a PST file that does not belong to a member of the University of Laputa could be seen as an invasion of privacy. The team should consider the ethical implications of accessing someone else’s personal data without their consent.</li>
-<li>Legal considerations: The digital investigations team should be aware of any legal implications associated with accessing and analyzing data that does not belong to their institution. There might be laws and regulations that govern the handling of such data, and the team should ensure they are acting within the legal framework.</li>
-<li>Scope of investigation: The primary objective of the investigation was to determine whether a member of the systems support team was selling university-owned systems online. The discovery of a PST file that does not belong to any researcher or staff member may not be directly relevant to this objective. The team should consider whether further investigation of the file falls within the scope of their initial mandate.</li>
-</ol>
-<p>In conclusion, the actions of the digital investigations team can be considered appropriate if they are conducted within legal and ethical boundaries and if they serve a legitimate purpose, such as protecting data privacy and security. However, the team should carefully weigh the potential risks and implications of their actions, ensuring they do not infringe upon the privacy rights of individuals or act outside the scope of their initial investigation.</p>
-<h1 id="Sample-exam-paper-2020"><a href="#Sample-exam-paper-2020" class="headerlink" title="Sample exam paper 2020"></a>Sample exam paper 2020</h1><ol>
-<li><h2 id="Lime-Legal-Case"><a href="#Lime-Legal-Case" class="headerlink" title="Lime Legal Case"></a>Lime Legal Case</h2></li>
-</ol>
-<p>The management team for Lime Legal, a large legal firm that conducts numerous digital investigations, has decided to develop its own hash function for use in digital investigations. The management team has commissioned a specialised software developer to design and implement the hash function. The specialised software developer states that compression is an important requirement for a hash function.</p>
-<p><strong>a). Argue for another TWO important requirements for a hash function in the given  context. (approximately 200 words)</strong></p>
-<p>要想要设计一个哈希算法，需要满足以下几点要求：</p>
-<ol>
-<li>从哈希值不能反向推导出原始数据（哈希算法更多算是一种单向加密算法）。</li>
-<li>对输入数据敏感，输入数据只要改变 1 bit，那么最终得到的哈希值也要不同。</li>
-<li>冲突的概率要小，即对于不同的原始数据，哈希值相同的概率非常小。</li>
-<li>哈希算法的执行效率要高，针对较长的文本，也能快速计算出哈希值。</li>
-</ol>
-<p>While compression is indeed an important requirement for a hash function, there are two other crucial requirements that must be considered for Lime Legal’s digital investigations: security and performance.</p>
-<p>Firstly, security is paramount for a hash function in the context of digital investigations. A secure hash function needs to exhibit several properties, including collision resistance, preimage resistance, and second preimage resistance. Collision resistance ensures that it is computationally infeasible to find two distinct inputs that map to the same hash output, which is crucial to maintain the integrity of the evidence. Preimage resistance makes it difficult to find an input for a given hash output, while second preimage resistance ensures that it is hard to find a different input with the same hash output as an existing input. These security properties are essential for Lime Legal’s work as they ensure the reliability and trustworthiness of the digital evidence in legal proceedings.</p>
-<p>Secondly, performance is another key requirement for a hash function in digital investigations. Lime Legal’s work likely involves processing large volumes of data in a timely manner. As such, the hash function must be efficient in terms of computational and memory requirements. A fast and resource-efficient hash function will not only minimize the time spent on processing the data but also reduce the likelihood of bottlenecks in the investigation process. This enables Lime Legal to provide more effective and timely services to their clients.</p>
-<p>In conclusion, besides compression, security and performance are two essential requirements for a hash function in the context of Lime Legal’s digital investigations. Ensuring a secure and efficient hash function will not only maintain the integrity of digital evidence but also enhance the effectiveness of the firm’s investigative processes.</p>
-<p><strong>b). The specialised software developer states that elements of the bespoke hash  function will rely upon some internal initial values and constants. The  specialised software developer states that these values and constants will be generated using a sophisticated and secret algorithm. The specialised software  developer informs the management team that the initial values and constants  will be made public along with the design and implementation details, but the  algorithm to generate them will be kept secret and managed by the company.  Argue whether the approach favoured by the specialised software developer is  appropriate in the given context.(approximately 400 words)</strong></p>
-<p>One of the primary concerns is the lack of transparency in the process. In the field of cryptography, it is widely accepted that security should rely on the <strong>strength of the algorithm</strong> rather than the secrecy of its design. This principle is known as <strong>Kerckhoffs’s principle</strong>. By keeping the algorithm for generating initial values and constants secret, Lime Legal risks undermining the trust and credibility of their hash function. Digital evidence generated using a hash function with undisclosed components may face challenges in legal proceedings, as opposing parties could question its integrity.</p>
-<p>Additionally, the secrecy of the algorithm prevents independent verification and analysis by the broader cryptographic community. Peer review and open scrutiny are essential to establishing the security and reliability of cryptographic algorithms. Closed-source designs may contain unintentional flaws or vulnerabilities that would otherwise be identified and resolved through a transparent review process.</p>
-<p>Furthermore, the reliance on a secret algorithm for generating initial values and constants introduces the possibility of a single point of failure. If the secret algorithm is compromised, the entire hash function could be rendered insecure, potentially jeopardizing ongoing and past investigations.</p>
-<p>In conclusion, the approach favored by the specialized software developer is not appropriate in the given context. Lime Legal should consider adhering to established cryptographic principles and industry best practices, which emphasize transparency, open scrutiny, and independent verification to ensure the credibility and robustness of their bespoke hash function.</p>
-<p><strong>c). The specialised software developer is not entirely sure how to design the bespoke hash function. Devise a potential hash function that exhibits a Merkle-Damgård construction, highlight and argue the importance of any core components. (approximately 400 words)</strong></p>
-<p><strong>d). The management team want to employ the use of the bespoke hash function to identify unauthorised files on employee smartphones and laptops. The specialised software developer states they can develop a system that can be used to rapidly inspect employee smartphones and laptops as part of random security searches as employees leave campus. A member of the management team is concerned that such a process may violate the privacy of the employee and some employees may feel targeted. Argue whether the approach favoured by the management team is appropriate  in the given context.(approximately 250 words)</strong></p>
-<ol start="2">
-<li><h2 id="Orange-Entertainment"><a href="#Orange-Entertainment" class="headerlink" title="Orange Entertainment"></a>Orange Entertainment</h2></li>
-</ol>
-<p>The management team for Orange Entertainment want to recover files from a Microsoft Windows 10 workstation that have been destroyed by a disgruntled employee. The management team believe the employee destroyed the files as they had been manipulating them for their own gain over several months. The management team have authorised the systems support team to recover the files as part of their investigation. The systems support team have allocated trainees Bill and Ben to lead the investigation and recover the files.</p>
-<p><strong>a). Ben has identified ShadowExplorer as a useful tool to recover files from the Microsoft Windows 10 workstation.Discuss TWO relevant features of the ShadowExplorer tool and argue the relevance in the given context. (approximately 200 words)</strong></p>
-<p>ShadowExplorer is a valuable tool for recovering lost or damaged files, offering two key features that make it particularly relevant for the Orange Entertainment management team’s investigation.</p>
-<ol>
-<li>Access to Shadow Copies: Since it is a Windows OS, One of the primary features of ShadowExplorer is its ability to access and browse through the shadow copies of files created by the Windows Volume Shadow Copy Service (VSS) on Windows. These shadow copies act as snapshots of the files and their respective states at different points in time. In the context of Orange Entertainment’s investigation, this feature is crucial as it allows Bill and Ben to potentially recover earlier versions of the manipulated files. By restoring these earlier versions, the management team can gain insight into the disgruntled employee’s actions and better understand the extent of the manipulation.</li>
-<li>User-friendly interface: ShadowExplorer’s intuitive and user-friendly interface is another important feature that makes it suitable for the investigation. The tool presents a familiar Explorer-like interface, enabling Bill and Ben to easily navigate through the shadow copies and locate the relevant files. This ease of use will help streamline the recovery process, allowing the trainees to efficiently identify and restore the destroyed files. Furthermore, since both Bill and Ben are trainees, the simplicity of the tool will make it easier for them to learn and utilize in their investigation, reducing the chances of making mistakes during the recovery process.</li>
-</ol>
-<p>In summary, ShadowExplorer’s ability to access shadow copies and its user-friendly interface make it an ideal tool for Bill and Ben to recover the destroyed files, providing Orange Entertainment’s management team with the information they need to assess the situation and address the employee’s misconduct.</p>
-<p><strong>b. Bill has decided to use ShadowExplorer on the employee workstation in-situ, but Ben is concerned if such an approach is appropriate. Ben also suggests the pair should at least take some simple notes of their actions, Bill argues it is not necessary. Critique the differing positions of Bill and Ben in the given context.(approximately 300 words)</strong></p>
-<p>Bill’s decision to use ShadowExplorer directly on the employee workstation in-situ might seem efficient and time-saving; however, Ben’s concerns are valid, particularly in the context of an investigation where preserving evidence and maintaining a clear chain of custody is crucial.</p>
-<p>Using ShadowExplorer in-situ poses <strong>several risks</strong>. First, the process might inadvertently alter the state of the workstation, potentially corrupting or overwriting evidence. Such modifications can jeopardize the <strong>integrity of the investigation</strong> and might also <strong>impact the legal admissibility of the evidence</strong>, should the management team decide to pursue legal action against the disgruntled employee. Instead, it is more appropriate to <strong>create a forensic image</strong> of the hard drive and work on a copy of that image to ensure the original data remains unaltered.</p>
-<p>Second, working directly on the employee workstation increases the risk of <strong>accidental data loss or damage</strong>, especially given that both Bill and Ben are trainees. Utilizing a forensic copy provides a <strong>safety net</strong>, allowing them to <strong>revert</strong> to the original state if any mistakes are made during the recovery process <strong>(investigation revertiable)</strong>.</p>
-<p>Regarding the documentation of their actions, Ben’s suggestion to take simple notes is actually a necessary step in a proper investigation. Maintaining detailed records of their actions, tools used, and findings is essential for several reasons:</p>
-<ol>
-<li>Accountability: Documenting the investigation process ensures that all actions taken can be justified and reviewed, which helps maintain the credibility and integrity of the investigation.</li>
-<li>Reproducibility: Detailed notes allow others, including senior team members or external experts, to review and reproduce the steps taken in the investigation if needed, helping to validate the findings.</li>
-<li>Legal purposes: Should the case go to court, proper documentation is vital for establishing the chain of custody and proving the legitimacy of the evidence obtained.</li>
-</ol>
-<p>In conclusion, Ben’s concerns about using ShadowExplorer in-situ and the need for documentation are valid. Adopting a more cautious approach that preserves the integrity of the evidence and maintains a clear record of their actions will not only improve the quality of the investigation but also ensure that the recovered data can be used effectively in any potential legal proceedings.</p>
-<h1 id="2019-Sample-Paper"><a href="#2019-Sample-Paper" class="headerlink" title="2019 Sample Paper"></a>2019 Sample Paper</h1><h2 id="1-Janus-in-BBFS"><a href="#1-Janus-in-BBFS" class="headerlink" title="1. Janus in BBFS"></a>1. Janus in BBFS</h2><p>Janus is a software engineer for Bill and Ben Financial Services (BBFS). Janus has concerns about algorithms that unfairly disadvantage business customers. Janus has raised it with his line manager, but she was disinterested in his concerns. Janus decides to effectively smuggle elements of source code and associated documents outside the organisation using an external disk.</p>
-<p><strong>(a) Janus is aware that the company utilises forensic techniques to identify encrypted files on external disks taken outside the organisation. Janus decides to smuggle the data via an external disk using steganography.Contrast steganography with cryptography and argue for steganography in the given context.[4]</strong></p>
-<p>Steganography and cryptography are two distinct techniques used for protecting and concealing data. While both methods have their applications, steganography might be more suitable for Janus’s situation due to its ability to hide information within other data.</p>
-<p>Steganography involves concealing information within another file or data stream, such as an image, audio, or video file, in such a way that it is virtually undetectable to an observer. The information is embedded in the carrier file without changing its perceptible characteristics, making it difficult to identify the presence of hidden data. This technique allows for the secret transfer of information, as the carrier file appears innocuous and attracts little suspicion.</p>
-<p>Cryptography, on the other hand, focuses on encrypting data to make it unreadable and incomprehensible to unauthorized parties. While cryptography protects the contents of a message, it does not hide the fact that encrypted data exists. Encrypted files can draw attention and raise suspicion, potentially leading to further investigation.</p>
-<p>In the given context, steganography might be more suitable for Janus’s needs. Since BBFS uses forensic techniques to identify encrypted files, using cryptography to protect the data on an external disk could raise red flags and make it more likely for Janus’s actions to be discovered. Steganography, however, would allow Janus to hide the source code and documents within seemingly harmless files, avoiding detection by BBFS’s security measures. By employing steganography, Janus can minimize the risk of his actions being discovered while still smuggling the data out of the organization.</p>
-<p><strong>(b) Janus has decided to use the Bit Plane Complexity Segmentation (BPCS) algorithm to ensure high-capacity use of vessel images. Janus wants to ensure that insertion of the payload will not result in images that are vulnerable to human visualinspection. Janus plans to use several holiday images in Pure Binary Coding (PBC) with many ‘noisy’ qualities, e.g. sand and rain. Explain THREE operations of the BPCS algorithm to ensure the payload is effectively hidden in the given context.[9]</strong></p>
-<p><strong>BPCS-隐写术（Bit-Plane Complexity Segmentation steganography）是</strong><a href="https://en.wikipedia.org/wiki/File_camouflage">数字隐写术</a>的一种。</p>
-<p>数字隐写术可以通过将机密数据（即秘密文件）嵌入到一些称为“容器数据”的媒体数据中来非常安全地隐藏它们。容器数据也称为“承运人、封面或虚拟数据”。在 BPCS 隐写术中，<a href="https://en.wikipedia.org/wiki/24-bit_color">真彩色</a>图像（即<a href="https://en.wikipedia.org/wiki/24-bit_color">24 位彩色</a>图像）主要用于血管数据。实际中的嵌入操作是用机密数据替换血管图像<a href="https://en.wikipedia.org/wiki/Bit_plane">位平面</a>上的“复杂区域” 。BPCS-隐写术最重要的方面是嵌入容量非常大。与仅使用最不重要的数据位的简单图像隐写术相比，因此（对于<a href="https://en.wikipedia.org/wiki/24-bit_color">24 位颜色</a>图像）只能嵌入相当于总大小 1&#x2F;8 的数据，而 BPCS 隐写术使用多个位平面，因此可以嵌入更多的数据，尽管这取决于单个图像。对于“正常”图像，在图像退化变得明显之前，大约 50% 的数据可能可以用秘密数据替换。</p>
-<p>比特平面复杂度分割（BPCS）算法是一种有效的隐写术方法，用于在图像中隐藏数据，特别是那些具有 “噪音 “性质的图像。在Janus的案例中，使用带有沙子和雨水的假日图像对BPCS隐写术是有利的。以下是BPCS算法的三个关键操作，有助于确保有效地隐藏有效载荷：</p>
-<p>分解为位平面： BPCS算法首先将容器图像分解为一系列的位平面。每个比特平面代表了图像二进制表示法中的不同重要性水平。例如，最重要的位（MSB）平面包含最高的对比度信息，而最不重要的位（LSB）平面包含最低的对比度信息。通过以这种方式分解图像，BPCS可以操作对比度较低、”噪音较大 “的位平面来嵌入有效载荷，而不会对图像造成明显的变化。</p>
-<p>复杂度计算和分割： BPCS通过计算不同值（0或1）的接壤像素对的比例来评估每个位面段的复杂性。如果一个片段的复杂性超过了预定的阈值，它就被认为是 “有噪声 “的，适合嵌入有效载荷。在Janus的案例中，使用带有沙子和雨水的图像增加了可用于数据隐藏的复杂片段的数量。这有助于确保有效载荷被很好地隐藏起来，难以被人类的视觉检查所发现。</p>
-<p>自适应的数据嵌入： BPCS将有效载荷嵌入到上一步确定的复杂片段中。通过根据其复杂性自适应地选择合适的片段，BPCS确保嵌入的数据不会对图像造成明显的变化。该算法以保持图像的整体复杂性的方式，用有效载荷数据替换原始的复杂片段。这种自适应的嵌入过程对于在给定的环境中有效地隐藏有效载荷至关重要，因为它减少了通过视觉检查发现的风险。</p>
-<p>通过使用BPCS算法，Janus可以利用假日图像的噪声特性来有效地隐藏有效载荷。分解为位平面，复杂度计算和分割，以及自适应数据嵌入操作共同作用，确保隐藏的数据难以被发现，同时对图像的视觉质量影响最小。</p>
-<p><strong>(c) Janus is planning on implementing the BPCS algorithm on his workstation as to ensure he can embed payload data in the vessel images.Devise a simple BPCS algorithm to embed payload data in vessel images.[6]</strong></p>
-<p>A simple BPCS algorithm for embedding payload data in vessel images can be broken down into the following steps:</p>
-<ol>
-<li>Image Preparation: Convert the vessel image to a suitable format, such as a lossless format like PNG or BMP, to prevent compression artifacts from affecting the steganography process. Resize the image if necessary to accommodate the payload data.</li>
-<li>Bit Plane Decomposition: Decompose the vessel image into a series of bit planes. Separate the image into its color channels (e.g., red, green, and blue) and represent each channel using binary values. Then, create bit planes for each level of significance, from the most significant bit (MSB) to the least significant bit (LSB).</li>
-<li>Payload Preparation: Convert the payload data into binary format. You may consider compressing and encrypting the data beforehand to further protect and optimize the payload.</li>
-<li>Complexity Calculation and Segmentation: Evaluate the complexity of each bit plane segment by calculating the proportion of bordering pixel pairs with different values (0 or 1). If a segment’s complexity surpasses a predefined threshold, it is considered ‘noisy’ and suitable for embedding the payload.</li>
-<li>Adaptive Data Embedding: Iterate through the noisy segments identified in the previous step, and embed the payload data by replacing the original complex segments. Ensure that the embedding process maintains the overall complexity of the image to avoid arousing suspicion.</li>
-<li>Image Reconstruction: Reassemble the modified bit planes into their respective color channels, and then combine the channels to create the final stego-image. Save the stego-image in a lossless format to preserve the embedded data.</li>
-<li>Payload Extraction: To extract the payload data from the stego-image, reverse the process by decomposing the stego-image into bit planes, identifying the noisy segments where the payload data was embedded, and reconstructing the original payload data from the binary values stored in those segments.</li>
-</ol>
-<p>By following these steps, Janus can implement a simple BPCS algorithm to effectively embed payload data in vessel images. The use of noisy segments for data embedding makes the hidden information difficult to detect through visual inspection, providing a level of security for the concealed data.</p>
-<p><strong>(d) Janus is concerned that inspection techniques will reveal use of the steganography approach. Janus is concerned he will be legally required to reveal the devised algorithm in (c) to relevant authorities under the (UK) Regulation of Investigatory Powers Act 2000 (RIPA).Argue whether Janus would be required to reveal the devised algorithm in (c) under the (UK) Regulation of Investigatory Powers Act 2000 (RIPA).[4]</strong></p>
-<p>While I am not a legal expert, I can provide some general information on the matter. The Regulation of Investigatory Powers Act 2000 (RIPA) in the UK provides a legal framework for the use of investigatory powers by authorities, including the interception of communications, acquisition of communications data, and the use of covert human intelligence sources, among others.</p>
-<p>Under Part III of RIPA, authorities may legally demand the disclosure of protected information, which includes encrypted data or keys necessary to decrypt the information. If served with a notice under RIPA, individuals or organizations are required to provide the requested information or assistance, or face penalties for non-compliance.</p>
-<p>In the case of Janus, if the relevant authorities become aware of his use of steganography and suspect that he has hidden sensitive or illegal information within the images, they may issue a notice under RIPA, requiring Janus to disclose the hidden data or provide the necessary means to access it. This could potentially include revealing the BPCS algorithm devised in (c).</p>
-<p>However, RIPA notices are typically issued when there is a justified need for access to the protected information, such as in cases of national security, crime prevention, or public safety concerns. Whether Janus would be required to reveal the devised algorithm under RIPA would depend on the specific circumstances of his case and whether the authorities deem it necessary to obtain the hidden data for a lawful purpose.</p>
-<p>It is essential for Janus to consider the legal implications of his actions and consult with a legal professional if he has concerns regarding the use of steganography and potential requirements under RIPA.</p>
-<h2 id="2-Pagli-and-Antonellis"><a href="#2-Pagli-and-Antonellis" class="headerlink" title="2. Pagli and Antonellis"></a>2. Pagli and Antonellis</h2><p>Pagli and Antonellis are novice cyber system forensic investigators and have started a small start-up business. The pair have invested in two, basic laptop computers. The pair have been contracted by a large company to investigate an employee workstation. The company has multiple workstations, comprising of basic components, e.g. limited processing capabilities. The company management are particularly interested in specific Microsoft Word documents. The company state the workstations do not make use of any anti-forensics techniques, e.g. full-disk encryption.</p>
-<p><strong>(a) Pagli and Antonellis have recovered the files of particular interest to company management but have discovered the files are encrypted and protected by unknown passwords. The pair are concerned that the passwords are sophisticated and cannot be easily determined. Pagli argues that the Distributed Network Attack (DNA) software tool from AccessData could be valuable.Describe TWO technical approaches employed by Distributed Network Attack(DNA) tool and argue the relevance in the given context[6]</strong></p>
-<p>The Distributed Network Attack (DNA) tool from AccessData is designed to assist in recovering passwords for encrypted files by leveraging the power of distributed computing. In the given context, where Pagli and Antonellis have recovered encrypted Microsoft Word documents with unknown passwords, DNA could be a valuable tool to help them gain access to the files. Here are two technical approaches employed by the DNA tool and their relevance in this context:</p>
-<ol>
-<li>Brute-force attack: DNA can perform a brute-force attack, which involves systematically attempting every possible password combination until the correct one is found. Brute-force attacks can be time-consuming, especially if the password is long and complex. However, DNA’s distributed computing capabilities allow it to harness the processing power of multiple computers, including the company’s workstations, to expedite the password recovery process. This distributed approach makes it more feasible to crack sophisticated passwords within a reasonable time frame, increasing the likelihood of success for Pagli and Antonellis.</li>
-<li>Dictionary attack: Another approach employed by DNA is the dictionary attack. This method involves using a precompiled list of words, phrases, or known passwords (a dictionary) to attempt to guess the password. DNA can also utilize rules-based variations, such as common substitutions or character additions, to further expand the list of potential passwords. Dictionary attacks are generally faster than brute-force attacks, as they focus on more likely password candidates. In the given context, this approach could be relevant if the employee used a password based on a dictionary word, a common phrase, or a known pattern.</li>
-</ol>
-<p>In conclusion, the Distributed Network Attack tool could be valuable for Pagli and Antonellis in their efforts to recover the passwords for the encrypted Microsoft Word documents. By employing both brute-force and dictionary attacks, while utilizing distributed computing resources, DNA increases the chances of successfully cracking the passwords, even if they are sophisticated. This would ultimately help Pagli and Antonellis fulfill their contract and provide the company management with access to the files of interest.</p>
-<p><strong>(b) Antonellis argues that the pair cannot afford to invest in Distributed Network Attack (DNA) software as resources are limited. Pagli argues that tool would be invaluable to the current case. Antonellis argues the pair should use a combination of command line tools and tailored scripts.Compare and contrast the tools suggested by Pagli and Antonellis and argue for the optimal approach in the given context.[8]</strong></p>
-<p>Both the Distributed Network Attack (DNA) software and a combination of command line tools and tailored scripts have their merits and drawbacks in the given context. Here, we will compare and contrast these approaches and argue for the optimal solution for Pagli and Antonellis.</p>
-<p>Distributed Network Attack (DNA) software: Pros:</p>
-<ol>
-<li>Comprehensive and user-friendly: DNA is a dedicated tool designed for password recovery, with built-in features and functionality that simplify the process for users.</li>
-<li>Distributed computing: DNA leverages the power of multiple computers to speed up the password recovery process, making it more efficient for cracking complex passwords.</li>
-<li>Multiple attack strategies: DNA supports both brute-force and dictionary attacks, offering a versatile approach to password recovery.</li>
-</ol>
-<p>Cons:</p>
-<ol>
-<li>Cost: DNA may be expensive, particularly for a small start-up with limited resources.</li>
-<li>Overkill for simple cases: DNA’s advanced capabilities may not be necessary if the target password is weak or follows a predictable pattern.</li>
-</ol>
-<p>Command line tools and tailored scripts: Pros:</p>
-<ol>
-<li>Cost-effective: Using open-source command line tools and custom scripts can be more budget-friendly, as there is no need to invest in expensive software.</li>
-<li>Flexibility: Tailored scripts can be customized to the specific needs of the case, allowing Pagli and Antonellis to adapt their approach as required.</li>
-</ol>
-<p>Cons:</p>
-<ol>
-<li>Time-consuming setup: Developing and configuring custom scripts and tools may require a significant investment of time and expertise.</li>
-<li>Limited scalability: The performance of command line tools and scripts may be constrained by the available hardware resources, making it less suitable for cracking complex passwords in a timely manner.</li>
-</ol>
-<p>In the given context, the optimal approach depends on several factors, including the available budget, time constraints, and the complexity of the passwords. If Pagli and Antonellis believe that the encrypted files are of high importance and the passwords are likely to be sophisticated, investing in the DNA software could prove invaluable for its speed, efficiency, and user-friendly features. The distributed computing capabilities and the support for multiple attack strategies can significantly increase the chances of success.</p>
-<p>However, if the pair’s budget is truly limited and they possess the technical expertise to develop custom scripts, using command line tools and tailored scripts may be a more cost-effective alternative. This approach would allow them to retain control over the process and adapt their strategy to the specific case.</p>
-<p>Ultimately, the optimal approach will depend on the pair’s assessment of the case’s importance, the potential value of the encrypted files, and their available resources. It is crucial for Pagli and Antonellis to weigh the pros and cons of each option carefully before deciding on the best course of action.</p>
-<h1 id="Terminology-amp-Jargons"><a href="#Terminology-amp-Jargons" class="headerlink" title="Terminology&amp;Jargons:"></a>Terminology&amp;Jargons:</h1><p><strong>FDE:</strong> </p>
-<p>Full Disk Encryption (FDE) is an encryption technology implemented on hard disk drives or solid state drives. It protects all data stored on the disk, including operating system, program files, user data, etc. Its main purpose is to ensure that sensitive data on the disk cannot be deciphered in case of unauthorized access.</p>
-<p><strong>File Carving:</strong> </p>
-<p>File carving is a process used in [computer forensics](<a href="https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec">https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec</a> network&amp;utm_campaign&#x3D;course pricing&amp;utm_content&#x3D;hyperlink) to extract data from a disk drive or other storage device without the assistance of the file system that originality created the file. </p>
-<p><strong>Unallocated area:</strong> </p>
-<p>Unallocated space refers to the area of the drive which no longer holds any file information as indicated by the file system structures like the file table. </p>
-<p><strong>Ip:</strong>  </p>
-<p>investigative process.</p>
-<p><strong>DFI</strong>(Digital forensics investigation): </p>
-<p>investigate the tool of crime and subject of crime.</p>
-<p><strong>Hash</strong>:</p>
-<p>哈希算法是指将任意长度的二进制值串映射为固定长度的二进制值串。原始数据经过映射之后得到的二进制值串就是哈希值。</p>
-<p><strong>MD5加密原理步骤</strong>:</p>
-<p>​	<strong>a). 填充，将其长度填充为512的整数倍:</strong></p>
-<p>​	填充的方法如下：</p>
-<p>​	<strong>1)</strong> 在信息的后面填充一个1和无数个0，直到满足上面的条件时才停止用0对信息的填充。</p>
-<p>​	<strong>2)</strong> 在这个结果后面附加一个以64位二进制表示的填充前信息长度（单位为Bit），如果二</p>
-<p>​	进制表示的填充前信息长度超过64位，则取低64位。</p>
-<p>​	经过这两步的处理，信息的位长&#x3D;N<em>512+448+64&#x3D;(N+1）</em>512，即长度恰好是512的整数倍。这样做的原因是为满足后面处理中对信息长度的要求。</p>
-<p>​	<strong>b). 初始化变量</strong></p>
-<p>​	初始的128位值为初试链接变量，这些参数用于第一轮的运算，以大端<a href="https://link.zhihu.com/?target=https://baike.baidu.com/item/%E5%AD%97%E8%8A%82%E5%BA%8F">字节序</a>来表示，他们分别为： 				  A&#x3D;0x01234567，B&#x3D;0x89ABCDEF，C&#x3D;0xFEDCBA98，D&#x3D;0x76543210。</p>
-<p>​	（每一个变量给出的数值是高字节存于内存低地址，低字节存于内存高地址，即大端字节序。在程序中变量A、	B、C、D的值分别为0x67452301，0xEFCDAB89，0x98BADCFE，0x10325476）</p>
-<p>​	<strong>c).处理分组数据</strong></p>
-<p>​	每一分组的算法流程如下：</p>
-<p>​	第一分组需要将上面四个链接变量复制到另外四个变量中：A到a，B到b，C到c，D到d。从第二分组开始的变量	为上一分组的运算结果，即A &#x3D; a， B &#x3D; b， C &#x3D; c， D &#x3D; d。</p>
-<p>​	主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行16次操作。每次操作对a、b、c和d中的其中	三个作一次非线性函数运算，然后将所得结果加上第四个变量，文本的一个子分组和一个常数。再将所得结果	向左<strong>环移</strong>一个不定的数，并加上a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。</p>
-<p>​	以下是每次操作中用到的四个非线性函数（每轮一个）。</p>
-<p>​	F( X ,Y ,Z ) &#x3D; ( X &amp; Y ) | ( (~X) &amp; Z )</p>
-<p>​	G( X ,Y ,Z ) &#x3D; ( X &amp; Z ) | ( Y &amp; (~Z) )</p>
-<p>​	H( X ,Y ,Z ) &#x3D;X ^ Y ^ Z</p>
-<p>​	I( X ,Y ,Z ) &#x3D;Y ^ ( X | (~Z) )</p>
-<p>​	（&amp;是与（And），|是或（Or），~是非（Not），^是异或（Xor））</p>
-<hr>
-<p><strong>Merkle–Damgård</strong></p>
-<p>Merkle–Damgård结构简称为MD结构，主要用在hash算法中抵御碰撞攻击。这个结构是一些优秀的hash算法，比如MD5,SHA-1和SHA-2的基础。今天给大家讲解一下这个MD结构和对他进行的长度延展攻击。</p>
-<p><strong>Steps</strong>:</p>
-<p><strong>Padding</strong></p>
-<p>MD结构首先对输入消息进行填充，让消息变成固定长度的整数倍（比如512或者1024）。这是因为压缩算法是不能对任意长度的消息进行处理的，所以在处理之前必须进行填充。在原始数据的尾部添上1000…然后加上原始消息长度的2进制值使其长度变为512或1024的整数倍;<strong>使用额外的block</strong>，额外的使用一个block往往有点浪费，一个更加节约空间的做法就是，如果填充到最后一个block的0中有住够的空间的话，那么可以消息的长度放在那里。</p>
-<p><strong>Compress</strong></p>
-<p>完成padding之后就可以进行compress了。消息被分成了很多个block，最开始的初始化向量和第一个block进行f操作，得到了的结果再和第二个block进行操作，如此循环进行，最终得到了最后的结果。</p>
-<p><img src="/../images/v2-43958e721f4c71625fde28962a327e3b_720w.webp" alt="MD Structure"></p>
-<p><strong>长度延展攻击</strong></p>
-<p>MD结构，是将消息分成一个一个的block，前一个block 运算出来的值会跟下一个block再次进行运算，这种结构可以很方便的进行长度延展攻击。前提是我们需要知道原消息的长度。在密码学中长度延展攻击就是指攻击者通过已知的hash(message1)和message1的长度，从而能够知道hash（message1‖message2）的值。其中‖ 表示的是连接符。并且攻击性并需要知道message1到底是什么。</p>
-<p><strong>Wide pipe</strong></p>
-<p>为了避免长度延展攻击，我们可以对MD结构进行一些变形。</p>
-<p><img src="/../images/v2-7bcc1f1e64f49a021592e673c80f205a_720w.webp" alt="Wide pipe"></p>
-<p>wide pipe和MD的流程基本上是一致的，不同的是生成的中间临时的加密后的消息长度是最终生成消息长度的两倍。</p>
-<p>这也就是为什么上图中会有两个初始向量IV1 和 IV2。假如最终的结果长度是n的话，那么在中间生成的结果的长度就是2n。我们需要在最后的final 这一步中，将2n长度的数据缩减为n长度的数据。</p>
-<p><strong>Fast wide pipe</strong></p>
-<p>SHA-512&#x2F;224 和 SHA-512&#x2F;256 只是简单的丢弃掉一半数据。</p>
-<p>还有一种比wide pipe更快的算法叫做fast wide pipe：</p>
-<p><img src="/../images/v2-38067688fe25a216016a8819756dd105_r.jpg" alt="Fast wide pipe"></p>
-<p>和wide pipe不同的是，它的主要思想是将前一个链接值的一半转发给XOR，然后将其与压缩函数的输出进行XOR。</p>
-<p><strong>SLACK SPACE:</strong></p>
-<p>Slack space occurs when a file can not be efficiently <strong>compartmentalised into file systems containers</strong>.</p>
-<p>Feature: effectively containers are not going to be completely full, there is some <strong>slack space</strong>.</p>
-<p>Example: consider file that is 59 bytes in size, that is allocated a 2048 byte cluster - the remaining 1989 bytes are considered slack space.</p>
-<p>Potential for slack space to contain interesting data or data from previous files.</p>
-<p>Data may exist between the end of the allocated file data and the sector.</p>
-<p>Data may also exist between the sectors within the cluster that are not allocated data.</p>
-<p>Interesting data may also exist in the sectors within the cluster.</p>
-<p>an important aspect of slack space is that it is <strong>allocated</strong> space, it not unallocated. </p>
-<p><strong>Sector and Cluster:</strong></p>
-<p>In computer file systems, a sector is the smallest unit of storage on a disk. A cluster is a group of sectors that are treated as a single unit of storage. Sector is a fixed-size, contiguous block of storage space on the disk, typically ranging from 512 bytes to 4096 bytes, depending on the disk format. Clusters are used to allocate disk space for files, and they are typically much larger than sectors, ranging from a few sectors to several kilobytes in size, depending on the file system and disk size.</p>
-<p><strong>FIRST AVAILABLE:</strong></p>
-<p>in terms of forensics, recovery of deleted data will likely be more fruitful near the end of the file system.</p>
-<p><strong>NEXT AVAILABLE:</strong></p>
-<p>in terms of forensics, recovery of deleted data may be more balanced in comparison. </p>
-<p><strong>BEST FIT:</strong></p>
-<p>recall, the file itself may grow and data can become scattered across the system.</p>
-<p><img src="/../images/byte_groups.png" alt="bytegroupings"></p>
-<p><strong>FRAGMENTATION</strong></p>
-<p>• systems become fragmented as files are deleted, added and altered. </p>
-<p>• file considered fragmented when its containers are not consecutive, but are rather scattered across the storage device.</p>
-<p>• fragmentation typically occurs due to <strong>alteration</strong> of files, <strong>low disk space</strong> and specific approaches.</p>
-<p>• fragmentation of files is relatively uncommon in modern systems.</p>
-<p>• modern operating systems are effective at avoiding fragmentation as this affords faster reading and writing.</p>
-<p>• disk space has became less of a concern, suggesting that fragmentation is more likely on relatively smaller disks.</p>
-<p>• researchers argue fragmented files are more likely of interest to investigators.</p>
-<p><strong>FILE EXTENSION FRAGMENTATION:</strong></p>
-<p>• different fragmentation rates are observed for different file types.<br>• temporary and logs files are often fragmented as they grow over system lifetime.<br>• movie, image, document and personal organisation information are often highly fragment.<br>• arguably such files are more pertinent to investigation than benign system files</p>
-<p><strong>HIGH FRAGMENTATION:</strong></p>
-<p>• there are some files that are highly fragmented, potentially into more than 100 or over 1000 fragments.</p>
-<p>• such fragments are typically associated with large system updates or patches</p>
-<p><strong>FILE CARVING:</strong></p>
-<p>• process of <strong>reconstructing files based on structure and</strong> <strong>content</strong>, instead of meta-data.</p>
-<p>• typically used to recover data from <strong>unallocated space</strong> on the disk as indicated by the file system.</p>
-<p>• useful for <strong>data recovery when the device itself has been damaged</strong>, e.g. hard disk.</p>
-<p>• valuable in <strong>forensics when specific files have been deleted</strong>, e.g. data still present in sectors</p>
-<p>• may not recognise the file system used or even trust the file system itself.</p>
-<p>• early file carver approaches relied on <strong>magic numbers</strong> to discover and recover files.</p>
-<p>• limitation is that the file craver would recover continuous data unsure that it is actually valid or properly associated with the file</p>
-<p><strong>Chanllenges:</strong></p>
-<ol>
-<li><p>the initial challenge is to identify the files that are to be carved from the image itself.</p>
-</li>
-<li><p>process must exist that ensures the files are actually intact.</p>
-</li>
-<li><p>files then need to be carved or extracted from the image.</p>
-</li>
-</ol>
-<p><strong>LIMITATIONS:</strong></p>
-<p>• problem is that unless clusters are contiguous can be difficult to recover file.</p>
-<p>• even if associated clusters are recovered, difficult to validated file is what is expected.</p>
-<p><strong>Hex Carving:</strong></p>
-<p>在进行Hex Carving时，分析师需要寻找特定的十六进制签名（也称为文件头和文件尾），这些签名是文件类型的特征，例如JPEG图片、PDF文档等。一旦找到这些签名，就可以从存储介质上提取相应的数据块，并将其恢复为完整的文件。</p>
-<p><strong>Bitfragment Gap Carving(BGC):</strong></p>
-<p><strong>Steps:</strong></p>
-<p>• initial step is to determine the header and footer of the file.<br>• process the clusters between the header and footer to confirm the contents of the container files.<br>• perform the computationally expensive step of validating each cluster.<br>• Know bh and bz, start with g &#x3D; 1 and grow until each fragment validates</p>
-<p><strong>Limitation:</strong></p>
-<p>• approach works when the file is bi-fragmented, anymore fragments it will not work.</p>
-<p>• corrupted or lost clusters will result in the worse case performance.</p>
-<p>• approach works for files that have structure that can actually be validated and&#x2F;or decoded.</p>
-<p>• not always possible to trust validation and&#x2F;or decoding approach.</p>
-<p>• approach struggles with large gaps.</p>
-<p>Bitfragment Gap Carving (BGC) 旨在克服传统的 Hex Carving 方法在面对破碎文件时的局限性。在某些情况下，文件在存储介质上可能是分散的，这意味着文件的各个部分可能不是连续存储的。</p>
-<p>BGC 通过在存储介质中搜索特定的文件片段（称为比特片段）来解决这个问题，而不是仅搜索文件头和文件尾。这些文件片段可能包含文件的重要信息，如内容、元数据等。在确定了这些比特片段之后，BGC 将尝试将它们重新组合成一个完整的文件。</p>
-<p>BGC 的一个关键优势是它可以在不了解文件系统的情况下恢复分散的文件，这使得它在处理损坏的文件系统或恢复被删除的文件时非常有用。然而，BGC 也存在一些挑战，例如需要开发针对特定文件类型的比特片段签名、可能出现误报以及需要处理大量的比特片段组合。</p>
-<p>​	<strong>Do we think it is wise to carve out the fragments  between the header and footer?</strong></p>
-<p>在使用 Bitfragment Gap Carving（BGC）方法时，在文件头和文件尾之间提取文件片段通常是有意义的。这是因为在某些情况下，文件的各个部分可能是分散存储的，而不是连续存储的。这意味着文件头和文件尾之间可能存在其他文件片段，这些片段包含文件的重要信息，如内容、元数据等。</p>
-<p>​	<strong>What else do we typically know about the files were interested in?</strong></p>
-<p>在使用 Bitfragment Gap Carving（BGC）方法时，我们通常需要了解一些关于感兴趣文件的信息，以提高恢复的成功率和准确性。以下是在 BGC 中可能需要了解的文件相关信息：</p>
-<ol>
-<li>文件类型：了解目标文件的类型有助于确定特定的文件片段签名。例如，JPEG 图像、PDF 文档和 Microsoft Word 文件等具有不同的文件结构和特征。了解文件类型有助于缩小搜索范围并提高恢复效果。</li>
-<li>文件片段签名：针对特定文件类型，需要了解其比特片段签名，以便在存储介质上搜索和识别文件片段。这些签名可能包括文件头、文件尾以及其他特征信息，如元数据、内容标记等。</li>
-<li>文件大小：如果可能的话，了解文件的大致大小可以帮助估算文件片段的数量和潜在位置。这可以提高搜索效率并减少误报。</li>
-<li>存储设备和文件系统信息：了解所使用的存储设备（如硬盘、USB 闪存驱动器等）和文件系统（如 NTFS、FAT32、ext4 等）可能有助于确定文件分散的程度和方式，以及优化 BGC 方法。</li>
-<li>数据删除或损坏的原因：了解数据丢失或损坏的原因（如意外删除、硬盘损坏、恶意软件攻击等）可能有助于确定最佳的恢复策略。</li>
-</ol>
-<p>​	<strong>If we have determined the header and footers, plus container structure - what else could we do?</strong></p>
-<ol>
-<li>分析文件内部结构：了解特定文件类型的内部结构有助于识别并提取更多相关的比特片段。这包括文件的元数据、编码方式、标记和其他特征信息。掌握这些信息可以帮助更准确地搜索和识别文件片段。</li>
-<li>优化搜索策略：根据已知的文件头、文件尾和容器结构，优化搜索策略以提高效率。这可能包括限制搜索范围、调整搜索参数，或者根据已知的文件大小信息预测文件片段的潜在位置。</li>
-<li>验证恢复结果：在提取和重新组合文件片段后，仔细检查恢复结果以确保准确性和完整性。这可能包括验证文件的元数据、内容和内部结构。如果发现问题，可以返回到搜索和提取阶段，尝试使用不同的参数和策略。</li>
-<li>结合其他恢复技术：在某些情况下，BGC 方法可能无法完全恢复文件。这时，可以尝试结合其他文件恢复技术和工具，如 Hex Carving、文件系统分析等，以提高恢复结果的准确性和完整性。</li>
-<li>优化和学习：通过不断地学习和优化比特片段签名、搜索策略和参数设置，可以提高 BGC 方法的性能。在实践中，分析师可能需要面对各种不同的文件类型和存储设备，因此需要不断地调整和优化方法以适应不同的情况。</li>
-</ol>
-<p><strong>Theoretical Graph Carving:</strong></p>
-<p>THEORETICAL GRAPH CARVING </p>
-<p>• need to determine the clusters that are adjacent to each other. </p>
-<p>• approach is to determine the correct ordering is to weight fragment pairs. </p>
-<p>• use function to generate a weight for each pair of clusters, select the heaviest pairing.</p>
-<p>• ideal permutation is that where the sum of the ordering is maximum. </p>
-<p>• determining the path is the same as finding maximum weight Hamiltonian path in a complete graph</p>
-<p><strong>Graph Carving:</strong></p>
-<p>• Hamiltonian path approach does not consider the situation where we have multiple files.</p>
-<p>• Problem can be reconsidered as <em>k</em>-vertex disjointed path problem.</p>
-<p>• Where we consider <em>k</em> as the number of files, identified from the number of headers.</p>
-<p>• Disjointed path problem if we consider that each cluster only belongs to one file.</p>
-<p>​	PARALLEL UNIQUE PATH(PUP):</p>
-<p><strong>Hash Carving:</strong></p>
-<p>哈希雕刻的工作流程分为以下几个步骤：</p>
-<ol>
-<li>确定已知文件的哈希值：通过使用独立于磁盘镜像或文件系统的工具，计算已知文件的哈希值，并记录下来。</li>
-<li>扫描磁盘镜像或文件系统：使用哈希雕刻工具扫描磁盘镜像或文件系统，并计算每个数据块的哈希值。</li>
-<li>匹配哈希值：将扫描到的每个数据块的哈希值与已知文件的哈希值进行比较。如果匹配成功，则说明该数据块可能包含被删除文件的内容。</li>
-<li>恢复文件内容：对于匹配成功的数据块，使用哈希雕刻工具将其提取出来，并尝试恢复被删除文件的内容。</li>
-<li>验证数据完整性：对于已恢复的文件，应该进行数据完整性验证，以确保文件的完整性和可靠性。</li>
-</ol>
-<p>需要注意的是，哈希雕刻可能会产生虚假匹配或错误的结果，因此需要对结果进行进一步的验证和分析。同时，在进行哈希雕刻时，也需要考虑数据隐私和法律规定，以确保取证过程的合法性和证据的可靠性。</p>
-<p>**Non-probative block test:**（非证据块测试）</p>
-<p>是指在数字取证中使用的一种测试方法，用于排除磁盘镜像或文件系统中的非证据块，以减少后续分析的时间和资源消耗。</p>
-<p>在数字取证中，非证据块通常是指不包含有效数据或与案件无关的数据块，如操作系统的空闲块、已删除的文件块等。非证据块测试可以通过计算每个数据块的哈希值，并与已知的非证据块哈希值进行比较，以快速识别和排除这些非证据块。这可以大大减少后续分析的时间和资源消耗，并有助于集中分析有价值的证据数据。</p>
-<p>需要注意的是，非证据块测试并不能保证100%的准确性，可能会产生误判或漏判的情况。因此，在数字取证中，还需要结合其他分析方法和工具，进行综合分析和验证，以确保取证结果的准确性和可靠性。</p>
-<p><strong>Magic numbers:</strong></p>
-<p>In the context of computer file formats, a magic number is a sequence of bytes that identifies the format of a file. It is called a “magic number” because it is often used like a magic spell to identify the file format, much like a spell might be used to identify a person or object.</p>
 ]]></content>
       <categories>
         <category>Courses</category>
@@ -4212,6 +3693,525 @@
 <li>Prediction: Once the model has been fine-tuned and performs well on the testing data, use it to predict future stock trends based on the input features.</li>
 </ol>
 <p>Keep in mind that predicting stock trends is inherently difficult due to the complex and dynamic nature of financial markets. No model can guarantee accurate predictions, and it is essential to manage risks and avoid relying solely on model predictions for making investment decisions.</p>
+]]></content>
+      <categories>
+        <category>Courses</category>
+      </categories>
+      <tags>
+        <tag>Courses</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>forensics</title>
+    <url>/2023/04/20/forensics/</url>
+    <content><![CDATA[<p>5080 UofG</p>
+<p>[TOC]</p>
+<h1 id="Revision-and-Reflection"><a href="#Revision-and-Reflection" class="headerlink" title="Revision and Reflection:"></a>Revision and Reflection:</h1><ol>
+<li><h2 id="Raphael-Aerospace"><a href="#Raphael-Aerospace" class="headerlink" title="Raphael Aerospace"></a>Raphael Aerospace</h2></li>
+</ol>
+<p>The fictional Raphael Aerospace is a leading multinational, specialising in software engineering for defense systems. The organisation has seized a laptop from one of its employees during a routine search that occurs at the entry and exit point to its North America campus. The company is concerned that the laptop contains sensitive source code. The employee has refused to speak or cooperate with the organisation since the laptop was seized. The digital investigation team believes the laptop is password protected, employs software-based full-disk encryption and has been seized in sleep mode. The laptop has highly integrated components to achieve a ‘slim-line’ profile and potentially has a Trusted Platform Module (TPM). The investigation team needs to acquire the keys associated with decryption and encryption of hard disk contents.</p>
+<p><strong>a).  Outline the SIX states of the Advanced Configuration and Power Interface (ACPI) and argue the relevancy to software-based full-disk encryption for each state.</strong></p>
+<p>The Advanced Configuration and Power Interface (ACPI) is a specification that defines power management and system configuration for computers. It establishes different power states, which play a significant role in the energy consumption and performance of a device. These power states are relevant to software-based full-disk encryption, as they can impact the security and accessibility of encrypted data. The six ACPI power states are:</p>
+<ol>
+<li>G0 (S0) - Working State: In this state, the system is fully powered on and operational. The CPU is executing instructions, and all peripherals are active. In the context of full-disk encryption, this state is when the system is most vulnerable to attacks. However, it’s also the state in which encryption and decryption processes can be performed.</li>
+<li>G1 (S1-S4) - Sleeping States: There are four different sleep states, S1 to S4, with S1 being the lightest sleep and S4 the deepest sleep state. As the sleep state deepens, more components are powered down, and the system consumes less power. Full-disk encryption keys are typically stored in RAM or the TPM. In sleep states, the encryption keys remain in memory, making it possible to access encrypted data without re-entering the password. However, these states also increase the risk of cold boot attacks, where attackers can extract the keys from RAM or TPM if they can gain physical access to the machine.</li>
+<li>G2 (S5) - Soft Off State: In this state, the system is powered off, but some components may still receive power to support features like Wake-on-LAN. The encryption keys are not present in memory, so an attacker cannot extract them. However, encrypted data on the disk remains secure, and a password is required to access the system upon startup.</li>
+<li>G3 - Mechanical Off State: The system is completely powered off, and no components receive power. In this state, the encryption keys are not present in memory, and the encrypted data is secure. To access the data, the user must power on the system and enter the password.</li>
+<li>S4 - Hibernate State: In this state, the system’s state is saved to the hard drive before powering down. The encryption keys are not present in memory, making the data secure. However, the system will require the password upon waking from hibernation to access the encrypted data.</li>
+<li>C0-C3 - Processor Power States: These are the power states of the CPU itself, with C0 being the fully operational state and C3 being the deepest sleep state. These states are less relevant to full-disk encryption, as they primarily affect the CPU’s power consumption and performance. However, the encryption and decryption processes may be slower in deeper sleep states due to reduced CPU performance.</li>
+</ol>
+<p>In summary, ACPI power states have varying degrees of relevancy to software-based full-disk encryption. The Working State (G0) and Sleeping States (G1) are the most relevant, as they impact the security and accessibility of encrypted data. The Soft Off State (G2), Mechanical Off State (G3), Hibernate State (S4), and Processor Power States (C0-C3) are less directly relevant but may still influence the security of encrypted data in certain situations.</p>
+<p><strong>b). Evaluate and describe THREE potential approaches to recover the keys associated with software-based full-disk encryption and argue for the optimal approach in the given context.</strong></p>
+<p>There are several potential approaches to recover the keys associated with software-based full-disk encryption (FDE). Here are three possible methods:</p>
+<ol>
+<li>Brute-force attack: This approach involves systematically trying every possible combination of characters to find the correct encryption key or password. Given enough time and computational resources, a brute-force attack will eventually succeed.</li>
+</ol>
+<p>Pros:</p>
+<ul>
+<li>Guaranteed to find the correct key or password eventually.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Requires a significant amount of time and computational power, making it inefficient.</li>
+<li>May be ineffective against long, complex passwords or strong encryption algorithms.</li>
+</ul>
+<ol>
+<li>Dictionary attack: This method involves using a pre-compiled list of words or phrases (a “dictionary”) to attempt to recover the encryption key or password. Dictionary attacks are faster than brute-force attacks since they rely on a smaller set of possibilities, usually based on known common passwords or phrases.</li>
+</ol>
+<p>Pros:</p>
+<ul>
+<li>Faster than brute-force attacks.</li>
+<li>Effective against weak passwords or phrases.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Less effective against strong, unique passwords or phrases.</li>
+<li>Relies on the quality of the dictionary used.</li>
+</ul>
+<ol>
+<li>Cryptanalysis attack: This approach involves analyzing the encrypted data or the encryption algorithm itself to discover weaknesses or flaws that can be exploited to recover the encryption key. This method often requires deep knowledge of cryptography and a thorough understanding of the specific encryption algorithm used.</li>
+</ol>
+<p>Pros:</p>
+<ul>
+<li>Can be more efficient than brute-force or dictionary attacks.</li>
+<li>Exploits weaknesses or flaws in the encryption algorithm itself, potentially making it more successful.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Requires extensive knowledge and expertise in cryptography.</li>
+<li>May not be successful if the encryption algorithm is well-designed and without significant weaknesses.</li>
+</ul>
+<p>In the given context, the optimal approach to recover the keys associated with software-based full-disk encryption would depend on several factors, such as the strength of the encryption algorithm, the complexity of the password, and the available resources (time and computational power).</p>
+<p>If the encryption algorithm is known to have weaknesses or flaws, a cryptanalysis attack could be the most efficient method to recover the keys. However, this approach requires a high level of expertise in cryptography.</p>
+<p>In cases where the password is known to be weak or likely to be found in a dictionary, a dictionary attack would be the preferred approach, as it is faster and more efficient than brute-force attacks.</p>
+<p>If no information about the password or encryption algorithm’s weaknesses is available, a brute-force attack could be the only viable option. However, this method may be time-consuming and resource-intensive.</p>
+<p>Ultimately, the choice of the optimal approach will depend on the specific circumstances and the available resources. In many cases, a combination of these approaches may be required to successfully recover the keys associated with software-based full-disk encryption.</p>
+<p><strong>c). Raphael Aerospace is a British company, but the laptop was seized at the North American campus. The employee is a United Kingdom (UK) citizen and is concerned about the laws regarding software-based full-disk encryption in the United States (US). The employee believes that the UK will be a more favorable jurisdiction from the perspective of being forced to reveal any keys or passwords associated with encryption. Contrast the UK and US legal perspectives regards compelled decryption, speculate on the optimal jurisdiction in the given context.</strong></p>
+<p>The legal perspectives on compelled decryption differ between the United States (US) and the United Kingdom (UK). Here is a brief overview of the legal stances in both jurisdictions:</p>
+<p>United States (US): In the US, the Fifth Amendment to the Constitution protects individuals from self-incrimination. This has been interpreted by some courts as providing protection against being forced to reveal encryption keys or passwords, as doing so could be seen as self-incrimination. However, the interpretation of the Fifth Amendment in the context of compelled decryption is not uniform across all courts, and some have ruled that individuals can be compelled to provide decryption keys or passwords under certain circumstances.</p>
+<p>United Kingdom (UK): In the UK, the Regulation of Investigatory Powers Act 2000 (RIPA) governs the legal framework surrounding encryption and compelled decryption. Under RIPA, individuals can be legally compelled to provide encryption keys or passwords to law enforcement authorities when ordered to do so by a court. Failure to comply with such an order can result in severe penalties, including imprisonment.</p>
+<p>In the given context, the employee’s belief that the UK might be a more favorable jurisdiction from the perspective of being forced to reveal encryption keys or passwords might be misguided. The UK’s legal framework, as established by RIPA, clearly allows for compelled decryption under certain circumstances, whereas the US legal system provides some degree of protection against self-incrimination through the Fifth Amendment.</p>
+<p>However, it is important to note that the specific circumstances of the case and the legal interpretations of the relevant laws may vary, leading to different outcomes in each jurisdiction. The optimal jurisdiction would depend on various factors, including the details of the case and the stance of the courts involved.</p>
+<p>In conclusion, while the US legal system may offer more protection against compelled decryption than the UK, there are no guarantees, and the optimal jurisdiction would depend on the specific circumstances and the courts involved. The employee should seek legal counsel to better understand their rights and potential risks in both jurisdictions.</p>
+<ol start="2">
+<li><h2 id="BCO-Case"><a href="#BCO-Case" class="headerlink" title="BCO Case"></a>BCO Case</h2></li>
+</ol>
+<p>The fictional United States (US) Borders and Customs Office (BCO) wants to strengthen border controls. The BCO wants to ensure rigorous checks are possible at the border to ensure illegal digital content does not come across the border on physical devices. The BCO is particularly concerned that such files are hidden in unallocated space on drives. The BCO want a rapid process that can confirm a target file or traces of a target file are present on a suspected system. The suspected system can then be kept for further, deeper analysis. Argue an appropriate file carving technique and outline an implementation for the given context.</p>
+<p><strong>a). In the given context, the BCO aims to quickly identify whether a target file or traces of it are present on a suspected system, particularly in unallocated space on drives. An appropriate technique for this purpose is file carving.</strong></p>
+<p>In the given context, the BCO aims to quickly identify whether a target file or traces of it are present on a suspected system, particularly in unallocated space on drives. An appropriate technique for this purpose is file carving. Among the file carving techniques, Hash Based Carving is a suitable choice for the BCO’s requirements.</p>
+<p>Hash Based Carving involves creating hash values of known target files and comparing them to the hash values of data blocks in the unallocated space of a drive. This technique is fast and can efficiently identify complete or partial matches of target files on a suspected system.</p>
+<p>The implementation of Hash Based Carving for the BCO’s context can be outlined as follows:</p>
+<p>Preparation: Compile a list of known target files that the BCO is concerned about. Calculate the hash values for these files and store them in a database.</p>
+<p>Drive imaging: At the border, if a suspicious device is identified, create a forensically sound image of the drive to avoid tampering with the original evidence.</p>
+<p>Data extraction: Extract data blocks from the unallocated space of the drive image. Divide the extracted data into fixed-size blocks, which will be used for hash comparison.</p>
+<p>Hash comparison: Calculate hash values for each data block extracted from the unallocated space. Compare these hash values with the hash values of the known target files stored in the database.</p>
+<p>Identification: If a match is found between the hash values, it indicates that the target file or traces of it are present on the suspected system. In such cases, the system can be retained for further, deeper analysis.</p>
+<p>Hash Based Carving allows the BCO to rapidly check devices at the border for illegal digital content, enabling them to focus on suspicious systems for more in-depth investigation. This technique not only minimizes false positives but also helps streamline the process of detecting and preventing the transportation of illegal digital content across the border.</p>
+<p><strong>b). The BCO want to reduce the number of false positives as this can result in unnecessary workload and delays at the border. Evaluate your proposed approach in (a), indicate potential causes of false positives and argue how they can be addressed.</strong></p>
+<p>The proposed approach in (a) is Hash Based Carving. While it is a fast and efficient method to identify target files or their traces, it is not without potential causes of false positives. Here, we’ll evaluate the approach, highlight the possible reasons for false positives, and suggest ways to address them.</p>
+<p>Potential causes of false positives:</p>
+<p>Hash collisions: Although rare, hash collisions can occur when two different data blocks result in the same hash value. In such cases, the carving tool might falsely identify a non-target file as a target file, leading to false positives.</p>
+<p>Partial matches: Hash Based Carving can detect partial matches of target files. However, there might be instances where the partial matches are unrelated to the target files, thus causing false positives.</p>
+<p>Addressing false positives:</p>
+<p>Utilize multiple hash algorithms: To minimize the chances of hash collisions, the BCO can use multiple hash algorithms (such as SHA-256, SHA-3, or others) and perform a comparison based on a combination of hash values. This approach significantly reduces the likelihood of false positives due to hash collisions.</p>
+<p>Verify file headers and footers: In addition to hash comparison, the BCO can implement a secondary check for file headers and footers to ensure that the identified files are indeed the target files. By verifying the unique file signatures of known target files, the BCO can further minimize false positives.</p>
+<p>Threshold-based matching: To address false positives due to partial matches, the BCO can set a threshold value for the level of similarity required for a match. By refining the matching criteria, the BCO can filter out unrelated partial matches, thereby reducing false positives.</p>
+<p>By addressing these potential causes of false positives, the BCO can enhance the efficiency of the Hash Based Carving approach, ensuring a more accurate and streamlined process at the border. This will minimize unnecessary workload and delays, allowing the BCO to focus on genuine cases that require deeper analysis.</p>
+<p><strong>c). The BCO also want to ensure the legality of the approach. The BCO want to ensure the approach does not require a specific search warrant, as this would impact on the speed and efficiency of the approach in terms of border control. Argue the potential legal concerns and outline how they may be addressed in any implementation for the given context.</strong></p>
+<p>Potential legal concerns:</p>
+<ol>
+<li>Privacy rights: Conducting a file carving process on a suspected system may raise concerns about an individual’s right to privacy, as it involves searching and potentially extracting personal and private information without their consent.</li>
+<li>Search and seizure laws: Depending on the jurisdiction, searching an individual’s digital device without a specific search warrant could potentially violate search and seizure laws, which generally require law enforcement to obtain a warrant before conducting a search that infringes on an individual’s privacy.</li>
+<li>Chain of custody: Ensuring the integrity and admissibility of any digital evidence obtained through file carving in a court of law requires maintaining a proper chain of custody. This involves documenting every step of the evidence handling process, from the initial search to the final analysis.</li>
+</ol>
+<p>Ways to address legal concerns:</p>
+<ol>
+<li>Establish clear policies and guidelines: Develop and implement clear policies and guidelines for border agents to follow when conducting file carving or other digital forensic searches. These guidelines should outline the circumstances under which such searches are permissible, the extent of the search, and the steps to be followed to ensure legal compliance.</li>
+<li>Train border agents: Provide regular training for border agents on the legal aspects of digital forensics and the proper procedures for conducting file carving and other digital searches. This can help minimize the risk of violating privacy rights and search and seizure laws.</li>
+<li>Obtain appropriate authorization: While the BCO aims to avoid the need for specific search warrants, it is essential to obtain the necessary legal authorization to conduct file carving searches. This could involve establishing a reasonable suspicion or probable cause before conducting a search, depending on the jurisdiction’s requirements.</li>
+<li>Implement a tiered search approach: To minimize potential privacy intrusions, consider implementing a tiered search approach that starts with less invasive techniques (such as basic keyword searches) and only escalates to more intrusive methods like file carving when there’s a reasonable basis for suspicion.</li>
+<li>Maintain proper documentation: Ensure that a proper chain of custody is maintained throughout the entire digital forensics process. This includes documenting every step of the evidence handling process, from the initial search to the final analysis, to ensure the admissibility of any evidence obtained in a court of law.</li>
+</ol>
+<p>Ultimately, it is crucial for the BCO to consult with legal experts to develop a compliant and legally defensible approach to file carving and other digital forensic techniques at the border. This can help ensure that the method is both effective in identifying illegal digital content and respecting individual privacy rights and due process requirements.</p>
+<ol start="3">
+<li><h2 id="Conway-Energy-Case"><a href="#Conway-Energy-Case" class="headerlink" title="Conway Energy Case"></a><strong>Conway Energy Case</strong></h2></li>
+</ol>
+<p>Conway Energy is a large enterprise with many customers. The company recently discovered that an employee generated letters demanding missed payments from hundreds of customers. The employee used a variant of a standard company letter and altered it to instruct recipients to make payment into their bank account. The employee then lodged the letters with the corporate file store for automatic dispatch. The technical team state the letters can be retrieved, but have concerns as the corporate file store contains millions of documents and letters. The company legal and management team have approved an investigation by the technical team to extract the hundreds of generated letters. The technical team have uncovered a template for the fraudulent standard letter on a corporate workstation. The technical team have altered the letter to include a known affected customer name and address. The technical team then generated a hash of the file, but were unable to identify a match in the file store.</p>
+<p><strong>a). The management team are concerned that evidence discovered during the internal investigation may eventually be presented in court. The management team are confident the fraudulent standard letter has been seized legally with appropriate authority. However, the management team want to ensure the discovered standard letter is admissible evidence in court. Evaluate and argue if the uncovered fraudulent letter is admissible evidence to a court of law in the given context.</strong> </p>
+<p>The use of scientifically derived and proven methods towards the preservation, collection, validation, identification, analysis, interpretation and presentation of digital evidence derived from digital sources for the purposes of facilitating or furthering the reconstruction of events found to be criminal or helping to  anticipate the unauthorised actions shown to be disruptive to planned operations</p>
+<p>Admissibility depends upon several factors: (1) authenticity, (2) relevancy, and (3) competency. </p>
+<p>In the context of the discovered fraudulent standard letter, the following factors can be considered:</p>
+<ol>
+<li>Relevance: <em>The term relevancy</em> means that the information must reasonably tend to prove or disprove any matter in issue. The question or test involved is, “Does the evidence aid the court in answering the question before it?”. The fraudulent letter is directly related to the case at hand, as it demonstrates the employee’s actions to create and distribute the letters demanding missed payments. It is likely to be considered relevant evidence.</li>
+<li>Reliability: The technical team must be able to demonstrate that the letter was discovered through a reliable and consistent process, and that the investigation methods were accurate and thorough. Proper documentation of the investigation process, such as the steps taken to identify the fraudulent letter, can help establish its reliability.</li>
+<li>Authenticity: The term <em>authenticity</em> refers to the genuine character of the evidence. The court will want to ensure that the discovered letter is indeed the fraudulent standard letter created by the employee. The technical team should be prepared to provide evidence that confirms the letter’s authenticity, such as metadata, timestamps, and any other identifying information. A proper chain of custody should also be maintained to document the handling, storage, and transfer of the letter.</li>
+<li>Competency: <em>Competent</em> as used to describe evidence means that the evidence is relevant and not barred by any exclusionary rule. The competency of the evidence in Conway Energy’s case will depend on the technical team’s qualifications and expertise, the methods and techniques used in the investigation, proper documentation and record-keeping, and compliance with legal and procedural requirements. Ensuring these factors are addressed will increase the likelihood of the evidence being considered competent and admissible in court.</li>
+</ol>
+<p><strong>b). The technical team have uncovered more fraudulent letters, but hashes of each do not match any in the corporate file store. Upon closer inspection the technical team have determined that the employee has inserted words with the font colour set to white. The words are effectively ‘hidden to visual inspection as they are not easily observable. The technical team have generated a definitive list of the hidden words present in the fraudulent letters. The technical team are unconvinced that generating a hash of each fraudulent letter is an effective route. The technical team need to utilise a hashing approach that is able to identify homologous patterns between the known fraudulent letters and those in the file store. Devise and explain an effective hashing approach in the given context.</strong></p>
+<p>Since the traditional hashing approach does not seem to be effective in identifying the fraudulent letters, the technical team can explore alternative hashing techniques that focus on content-based similarity rather than exact file matches. One such approach is known as <strong>locality-sensitive hashing (LSH)</strong>.</p>
+<p>Locality-sensitive hashing is a technique used to identify similar documents by generating hashes that have a higher probability of colliding when the documents are similar. This approach is more effective in identifying homologous patterns between the known fraudulent letters and those in the file store.</p>
+<p>Here’s a possible approach to implementing LSH in this context:</p>
+<ol>
+<li>Preprocess the documents: Convert all the documents in the corporate file store and the known fraudulent letters to plain text, including the hidden white text, to ensure a consistent format for comparison.</li>
+<li>Tokenize and create document vectors: Break the text of each document into tokens (e.g., words or phrases) and represent each document as a high-dimensional vector using techniques like term frequency-inverse document frequency (TF-IDF) or word embeddings. This process converts the documents into a suitable format for LSH.</li>
+<li>Implement locality-sensitive hashing: Apply an LSH algorithm to the document vectors. The algorithm will generate similar hashes for documents with similar content, making it easier to identify the fraudulent letters with homologous patterns in the file store.</li>
+<li>Set a similarity threshold: Determine an appropriate similarity threshold to identify potential matches. This threshold will depend on the specific LSH algorithm used and the desired balance between precision and recall.</li>
+<li>Compare and flag potential matches: Compare the LSH hashes of the known fraudulent letters with those in the corporate file store. Flag any documents with hashes that exceed the set similarity threshold for further investigation.</li>
+<li>Verify flagged documents: Manually review the flagged documents to ensure they are indeed fraudulent letters and not false positives. Make note of any discrepancies or issues to further refine the LSH algorithm or similarity threshold, if necessary.</li>
+<li>Preserve evidence and implement preventive measures: Once the fraudulent letters have been identified and extracted, preserve the evidence and consider implementing additional security measures to prevent similar incidents in the future.</li>
+</ol>
+<p>By employing locality-sensitive hashing, the technical team can identify fraudulent letters with similar content patterns, even when the exact file hashes do not match. This approach should be more effective in detecting the hidden white text and other subtle alterations made by the employee.</p>
+<p><strong>CTPH:</strong></p>
+<ol>
+<li>Preprocess the documents: Convert all the documents in the corporate file store and the known fraudulent letters to plain text, including the hidden white text, to ensure a consistent format for comparison.</li>
+<li>Apply CTPH algorithm: Implement a CTPH algorithm, such as ssdeep, to generate fuzzy hash values for each document. The algorithm will create hashes that are similar for documents with similar content.</li>
+<li>Set a similarity threshold: Determine an appropriate similarity threshold for comparing the generated fuzzy hashes. This threshold will depend on the desired balance between precision and recall in identifying similar documents.</li>
+<li>Compare and flag potential matches: Compare the fuzzy hashes of the known fraudulent letters with those in the corporate file store. Flag any documents with hashes that exceed the set similarity threshold for further investigation.</li>
+<li>Verify flagged documents: Manually review the flagged documents to ensure they are indeed fraudulent letters and not false positives. Make note of any discrepancies or issues to further refine the CTPH algorithm or similarity threshold, if necessary.</li>
+<li>Preserve evidence and implement preventive measures: Once the fraudulent letters have been identified and extracted, preserve the evidence and consider implementing additional security measures to prevent similar incidents in the future.</li>
+</ol>
+<p>By employing CTPH, the technical team can identify fraudulent letters with similar content patterns, even when there are subtle differences such as the hidden white text. This approach should be more effective in detecting the homologous patterns between the known fraudulent letters and those in the file store compared to traditional hashing methods.</p>
+<p><strong>c). The technical team are concerned that the hashing approach devised in (b) may not be appropriate in the given context. Identify potential concerns with the hashing approach devised in (b) for the given context.</strong></p>
+<ol>
+<li>Sensitivity to small changes: Although CTPH is designed to detect similar files, it may not always be sensitive enough to detect subtle differences, such as the hidden white text used in the fraudulent letters. This could lead to false negatives, where the technical team fails to identify some fraudulent letters.</li>
+<li>False positives: CTPH can sometimes produce false positives, where non-fraudulent documents are flagged as potentially fraudulent due to similarity in content or structure. This could result in the technical team spending time and resources on manually reviewing non-fraudulent documents.</li>
+<li>Scalability: Given that the corporate file store contains millions of documents, comparing the fuzzy hashes of the known fraudulent letters with those in the file store could be computationally expensive and time-consuming.</li>
+<li>Accuracy: The accuracy of CTPH in identifying fraudulent letters depends on the chosen similarity threshold. Setting an appropriate threshold can be challenging, as a high threshold might result in false negatives, while a low threshold could lead to false positives.</li>
+<li>Legal admissibility: There may be concerns about the legal admissibility of the evidence gathered using CTPH, as it relies on similarity rather than exact matches. The court may require additional validation or proof that the flagged documents are indeed fraudulent.</li>
+</ol>
+<p>Given these concerns, the technical team should carefully consider whether the CTPH approach is appropriate for their specific context. They may need to explore alternative methods, such as advanced text analytics or machine learning techniques, to more accurately and efficiently identify the fraudulent letters in the file store. Additionally, the technical team should consult with legal professionals to ensure the chosen approach meets the requirements for evidence admissibility in court.</p>
+<p><strong>However, if we use LSH,</strong></p>
+<p>Using locality-sensitive hashing (LSH) as your hash algorithm could be a suitable alternative for Conway Energy’s case, as LSH is designed to identify similar documents by generating hashes that have a higher probability of colliding when the documents are similar. This approach can be more effective in identifying homologous patterns between the known fraudulent letters and those in the file store.</p>
+<p>Still we need to consider the potential problems of LSH:</p>
+<p>Locality-sensitive hashing (LSH) is a powerful technique for identifying similar documents, but it comes with some potential concerns that should be considered in the context of the Conway Energy case:</p>
+<ol>
+<li>False positives: LSH can produce false positives, where non-fraudulent documents are flagged as potentially fraudulent due to similarity in content or structure. This can lead to spending additional time and resources on manual review of non-fraudulent documents.</li>
+<li>False negatives: Depending on the chosen similarity threshold and LSH algorithm, LSH can also produce false negatives, where fraudulent documents are not flagged due to insufficient similarity in their LSH hashes. This can result in missing important evidence.</li>
+<li>Scalability: LSH requires a considerable amount of computation and storage, especially when dealing with large datasets like Conway Energy’s corporate file store. This can lead to increased processing time and resource requirements.</li>
+<li>Parameter selection: LSH algorithms often have several parameters that need to be fine-tuned, such as the similarity threshold, the number of hash functions, and the number of hash tables. Selecting appropriate parameters can be challenging and may require empirical testing and validation.</li>
+<li>Preprocessing and feature extraction: LSH relies on converting documents into high-dimensional vectors, which may require considerable preprocessing and feature extraction, such as tokenization, stemming, and text vectorization using techniques like TF-IDF or word embeddings. This can be computationally expensive and may introduce additional complexity.</li>
+<li>Legal admissibility: Similar to CTPH, there may be concerns about the legal admissibility of the evidence gathered using LSH, as it relies on similarity rather than exact matches. The court may require additional validation or proof that the flagged documents are indeed fraudulent.</li>
+</ol>
+<p>Given these potential concerns, the technical team should carefully consider whether the LSH approach is appropriate for their specific context. They may need to explore alternative methods or combine LSH with other techniques to improve accuracy, efficiency, and legal admissibility. Additionally, the technical team should consult with legal professionals to ensure the chosen approach meets the requirements for evidence admissibility in court.</p>
+<ol start="4">
+<li><h2 id="Laputa-University-Case"><a href="#Laputa-University-Case" class="headerlink" title="Laputa University Case"></a>Laputa University Case</h2></li>
+</ol>
+<p>The University of Laputa replaces computer systems for staff every five years. The management team have been informed by research staff that some systems have been replaced without sufficient notice and as a result important files have been lost. The management team have also been informed that some systems are being sold through various online auction websites, rather than being recycled.</p>
+<p>The management team suspects a member of the systems support team has been selling the systems via online auction websites. The management team have authorised the digital investigations team to purchase several systems from online auction websites that they suspect have come from the institution. The management team have also authorised the digital investigation team to utilise appropriate data recovery techniques to recover files.</p>
+<p><strong>a). The digital investigations team want to recover any previous Personal Storage Table (PST) files from many of the systems they have purchased from online auction websites. The digital investigations team believe such a file, in general, will not be heavily fragmented due to the numerous approaches adopted by modern file systems. Argue whether the position of the digital investigations team is accurate.</strong></p>
+<p>The digital investigations team’s position that Personal Storage Table (PST) files, in general, will not be heavily fragmented due to the numerous approaches adopted by modern file systems is mostly accurate. However, some factors can still contribute to the fragmentation of PST files, even on modern file systems.</p>
+<p>Modern file systems, such as NTFS, HFS+, and ext4, are designed to minimize fragmentation by using various allocation strategies and techniques. These file systems attempt to keep related data blocks close together and allocate new blocks in a way that minimizes fragmentation. As a result, the overall fragmentation of files on these file systems tends to be less severe compared to older file systems like FAT.</p>
+<p>However, PST files, which are used by Microsoft Outlook to store email messages, contacts, and other data, can still become fragmented under certain conditions:</p>
+<p>Large file sizes: PST files can grow quite large over time, especially if users have many emails and attachments. Large files can be more susceptible to fragmentation as they are more likely to be allocated in non-contiguous blocks.</p>
+<p>Frequent updates: PST files are updated frequently as new emails are received, sent, or deleted. These updates can lead to fragmentation as the file system may need to allocate new blocks to accommodate the changes in file size and content.</p>
+<p>Insufficient free space: If there is insufficient free space available on the storage device, it may be challenging for the file system to allocate contiguous blocks for new or updated data, resulting in fragmentation.</p>
+<p>Multiple concurrent users: In a shared environment, multiple users might be accessing and modifying different files simultaneously. This can create a higher likelihood of fragmentation as the file system attempts to allocate blocks for various files concurrently.</p>
+<p>While modern file systems are better at managing fragmentation, it is still essential for the digital investigations team to consider the factors mentioned above when attempting to recover PST files from the purchased systems. Fragmentation can affect the ease and success of the data recovery process, and the team may need to employ specialized data recovery tools or techniques to recover fragmented PST files effectively.</p>
+<p><strong>b). The digital investigations team eventually assume the PST files they want to extract from the purchased systems are likely to comprise of more than two fragments and the relevant clusters are not necessarily in sequence. Devise and justify a carving approach to recover a single file in the given context. Highlight any limitations or constraints in the proposed solution.</strong></p>
+<p>In the given context, the digital investigations team can employ a carving approach that combines signature-based carving and file system metadata analysis to recover the fragmented PST files. This approach involves the following steps:</p>
+<ol>
+<li>Signature-based carving: Scan the storage device for known file signatures or magic numbers associated with PST files. This process can help identify the starting point of each PST file fragment. Common magic numbers for PST files include <code>!BDN</code> for Outlook 97-2002 and <code>!BD0</code> for Outlook 2003 and later.</li>
+<li>File system metadata analysis: Analyze the file system metadata to gather information about the allocation and location of clusters associated with PST files. This can help identify the correct sequence of fragmented clusters and uncover additional fragments that may not have been detected through signature-based carving.</li>
+<li>Cluster chaining: Once the starting points of the file fragments and their metadata are identified, attempt to reconstruct the file by chaining the clusters in the correct order based on their allocation in the file system. This can be done using specialized data recovery tools or custom-built scripts.</li>
+<li>File validation: After the PST file has been reconstructed, validate its integrity by checking its internal structure and attempting to open it using a compatible email client or PST viewer. This step helps ensure that the recovered file is complete and functional.</li>
+<li>Iterative refinement: If the initial reconstruction is unsuccessful, refine the carving approach by adjusting parameters, such as the search window for signature-based carving or the cluster allocation strategy. Repeat the process until a successful recovery is achieved or it becomes clear that the file cannot be recovered.</li>
+</ol>
+<p>Limitations and constraints of the proposed solution:</p>
+<ol>
+<li>Incomplete recovery: The carving approach may not always be successful in recovering the entire PST file, particularly if some fragments are missing or corrupted.</li>
+<li>Time-consuming: This process can be time-consuming, especially when dealing with large PST files or complex fragmentation patterns.</li>
+<li>False positives: Signature-based carving can sometimes produce false positives, where unrelated data is mistakenly identified as part of the PST file.</li>
+<li>Expertise required: The proposed carving approach requires a certain level of expertise in data recovery and file system analysis, as well as access to specialized tools or custom scripts.</li>
+</ol>
+<p>Despite these limitations, the proposed carving approach should provide the digital investigations team with a robust method for recovering fragmented PST files from the purchased systems. The team may need to iterate and refine the approach as necessary to maximize the chances of successful file recovery.</p>
+<p><strong>c). The digital investigations team have since learned that they need to recover several PST files from each system, not just a single PST file. The digital investigations team have decided that the speed of recovery of the multiple files is more important than the accuracy of recovery. Devise a carving approach to recover multiple files in the given context. Highlight any limitations or constraints in the proposed solution.</strong></p>
+<p>In the given context, where the speed of recovery is more important than accuracy, the digital investigations team can employ a streamlined carving approach to recover multiple PST files from each system. This approach involves the following steps:</p>
+<ol>
+<li>Signature-based carving: Perform a bulk scan of the storage device for known file signatures or magic numbers associated with PST files (e.g., <code>!BDN</code> for Outlook 97-2002 and <code>!BD0</code> for Outlook 2003 and later). This process helps identify the starting point of each PST file fragment.</li>
+<li>File size estimation: Estimate the size of each PST file based on the distance between consecutive file signatures. This can help in the quick recovery of files without needing extensive file system metadata analysis.</li>
+<li>File extraction: Extract the identified file fragments based on the estimated size and signature locations. This step may involve some level of over-extraction or under-extraction to ensure that complete files are recovered, at the expense of potential inaccuracies.</li>
+<li>File validation (optional): If time permits, validate the integrity of the recovered PST files by checking their internal structure and attempting to open them using a compatible email client or PST viewer. This step can help identify any major issues with the recovered files.</li>
+</ol>
+<p>Limitations and constraints of the proposed solution:</p>
+<ol>
+<li>Inaccurate recovery: By prioritizing speed over accuracy, the carving approach may result in inaccurately recovered PST files, with potentially missing or corrupted data.</li>
+<li>False positives: Signature-based carving can produce false positives, where unrelated data is mistakenly identified as part of the PST file. This may lead to the recovery of irrelevant or incomplete files.</li>
+<li>File fragmentation: This approach does not account for fragmented files, which may result in incomplete recovery of some PST files.</li>
+<li>File validation: Skipping or minimizing the file validation step can increase the risk of recovering unusable or corrupted files.</li>
+<li>Expertise required: The proposed carving approach requires a certain level of expertise in data recovery and the ability to quickly analyze and adapt to the specific storage device’s conditions.</li>
+</ol>
+<p>Despite these limitations, the proposed carving approach should provide the digital investigations team with a faster method for recovering multiple PST files from the purchased systems. The team may need to accept the trade-off between speed and accuracy, understanding that some of the recovered files may be incomplete or corrupted.</p>
+<p><strong>d). The digital investigations team have recovered the PST file from one of the systems purchased online with the revelation that the PST does not belong to any researcher or member of the staff at the University of Laputa. The digital investigations team actually suspect the file might belong to another university. The digital investigations team have decided to investigate the system further to identify the specific individual. Argue whether the actions of the digital investigation team are appropriate in the given context.</strong></p>
+<p>In the given context, the actions of the digital investigations team can be seen as both appropriate and inappropriate, depending on the objectives and the ethical considerations involved.</p>
+<p>Arguments for the appropriateness of the digital investigations team’s actions:</p>
+<ol>
+<li>Prevent potential misuse of data: The recovery of a PST file that does not belong to any researcher or staff member at the University of Laputa raises concerns about the potential misuse of the data contained within it. Investigating the system further could help the team understand how this file ended up on the system and prevent any potential misuse of the information.</li>
+<li>Uphold data privacy and security: Universities are responsible for protecting the privacy and security of personal and sensitive information. Investigating the origin of the unknown PST file and identifying the individual it belongs to could help the team ensure that the university is upholding its data protection obligations.</li>
+</ol>
+<p>Arguments against the appropriateness of the digital investigations team’s actions:</p>
+<ol>
+<li>Privacy concerns: Investigating the contents of a PST file that does not belong to a member of the University of Laputa could be seen as an invasion of privacy. The team should consider the ethical implications of accessing someone else’s personal data without their consent.</li>
+<li>Legal considerations: The digital investigations team should be aware of any legal implications associated with accessing and analyzing data that does not belong to their institution. There might be laws and regulations that govern the handling of such data, and the team should ensure they are acting within the legal framework.</li>
+<li>Scope of investigation: The primary objective of the investigation was to determine whether a member of the systems support team was selling university-owned systems online. The discovery of a PST file that does not belong to any researcher or staff member may not be directly relevant to this objective. The team should consider whether further investigation of the file falls within the scope of their initial mandate.</li>
+</ol>
+<p>In conclusion, the actions of the digital investigations team can be considered appropriate if they are conducted within legal and ethical boundaries and if they serve a legitimate purpose, such as protecting data privacy and security. However, the team should carefully weigh the potential risks and implications of their actions, ensuring they do not infringe upon the privacy rights of individuals or act outside the scope of their initial investigation.</p>
+<h1 id="Sample-exam-paper-2020"><a href="#Sample-exam-paper-2020" class="headerlink" title="Sample exam paper 2020"></a>Sample exam paper 2020</h1><ol>
+<li><h2 id="Lime-Legal-Case"><a href="#Lime-Legal-Case" class="headerlink" title="Lime Legal Case"></a>Lime Legal Case</h2></li>
+</ol>
+<p>The management team for Lime Legal, a large legal firm that conducts numerous digital investigations, has decided to develop its own hash function for use in digital investigations. The management team has commissioned a specialised software developer to design and implement the hash function. The specialised software developer states that compression is an important requirement for a hash function.</p>
+<p><strong>a). Argue for another TWO important requirements for a hash function in the given  context. (approximately 200 words)</strong></p>
+<p>要想要设计一个哈希算法，需要满足以下几点要求：</p>
+<ol>
+<li>从哈希值不能反向推导出原始数据（哈希算法更多算是一种单向加密算法）。</li>
+<li>对输入数据敏感，输入数据只要改变 1 bit，那么最终得到的哈希值也要不同。</li>
+<li>冲突的概率要小，即对于不同的原始数据，哈希值相同的概率非常小。</li>
+<li>哈希算法的执行效率要高，针对较长的文本，也能快速计算出哈希值。</li>
+</ol>
+<p>While compression is indeed an important requirement for a hash function, there are two other crucial requirements that must be considered for Lime Legal’s digital investigations: security and performance.</p>
+<p>Firstly, security is paramount for a hash function in the context of digital investigations. A secure hash function needs to exhibit several properties, including collision resistance, preimage resistance, and second preimage resistance. Collision resistance ensures that it is computationally infeasible to find two distinct inputs that map to the same hash output, which is crucial to maintain the integrity of the evidence. Preimage resistance makes it difficult to find an input for a given hash output, while second preimage resistance ensures that it is hard to find a different input with the same hash output as an existing input. These security properties are essential for Lime Legal’s work as they ensure the reliability and trustworthiness of the digital evidence in legal proceedings.</p>
+<p>Secondly, performance is another key requirement for a hash function in digital investigations. Lime Legal’s work likely involves processing large volumes of data in a timely manner. As such, the hash function must be efficient in terms of computational and memory requirements. A fast and resource-efficient hash function will not only minimize the time spent on processing the data but also reduce the likelihood of bottlenecks in the investigation process. This enables Lime Legal to provide more effective and timely services to their clients.</p>
+<p>In conclusion, besides compression, security and performance are two essential requirements for a hash function in the context of Lime Legal’s digital investigations. Ensuring a secure and efficient hash function will not only maintain the integrity of digital evidence but also enhance the effectiveness of the firm’s investigative processes.</p>
+<p><strong>b). The specialised software developer states that elements of the bespoke hash  function will rely upon some internal initial values and constants. The  specialised software developer states that these values and constants will be generated using a sophisticated and secret algorithm. The specialised software  developer informs the management team that the initial values and constants  will be made public along with the design and implementation details, but the  algorithm to generate them will be kept secret and managed by the company.  Argue whether the approach favoured by the specialised software developer is  appropriate in the given context.(approximately 400 words)</strong></p>
+<p>One of the primary concerns is the lack of transparency in the process. In the field of cryptography, it is widely accepted that security should rely on the <strong>strength of the algorithm</strong> rather than the secrecy of its design. This principle is known as <strong>Kerckhoffs’s principle</strong>. By keeping the algorithm for generating initial values and constants secret, Lime Legal risks undermining the trust and credibility of their hash function. Digital evidence generated using a hash function with undisclosed components may face challenges in legal proceedings, as opposing parties could question its integrity.</p>
+<p>Additionally, the secrecy of the algorithm prevents independent verification and analysis by the broader cryptographic community. Peer review and open scrutiny are essential to establishing the security and reliability of cryptographic algorithms. Closed-source designs may contain unintentional flaws or vulnerabilities that would otherwise be identified and resolved through a transparent review process.</p>
+<p>Furthermore, the reliance on a secret algorithm for generating initial values and constants introduces the possibility of a single point of failure. If the secret algorithm is compromised, the entire hash function could be rendered insecure, potentially jeopardizing ongoing and past investigations.</p>
+<p>In conclusion, the approach favored by the specialized software developer is not appropriate in the given context. Lime Legal should consider adhering to established cryptographic principles and industry best practices, which emphasize transparency, open scrutiny, and independent verification to ensure the credibility and robustness of their bespoke hash function.</p>
+<p><strong>c). The specialised software developer is not entirely sure how to design the bespoke hash function. Devise a potential hash function that exhibits a Merkle-Damgård construction, highlight and argue the importance of any core components. (approximately 400 words)</strong></p>
+<p><strong>d). The management team want to employ the use of the bespoke hash function to identify unauthorised files on employee smartphones and laptops. The specialised software developer states they can develop a system that can be used to rapidly inspect employee smartphones and laptops as part of random security searches as employees leave campus. A member of the management team is concerned that such a process may violate the privacy of the employee and some employees may feel targeted. Argue whether the approach favoured by the management team is appropriate  in the given context.(approximately 250 words)</strong></p>
+<ol start="2">
+<li><h2 id="Orange-Entertainment"><a href="#Orange-Entertainment" class="headerlink" title="Orange Entertainment"></a>Orange Entertainment</h2></li>
+</ol>
+<p>The management team for Orange Entertainment want to recover files from a Microsoft Windows 10 workstation that have been destroyed by a disgruntled employee. The management team believe the employee destroyed the files as they had been manipulating them for their own gain over several months. The management team have authorised the systems support team to recover the files as part of their investigation. The systems support team have allocated trainees Bill and Ben to lead the investigation and recover the files.</p>
+<p><strong>a). Ben has identified ShadowExplorer as a useful tool to recover files from the Microsoft Windows 10 workstation.Discuss TWO relevant features of the ShadowExplorer tool and argue the relevance in the given context. (approximately 200 words)</strong></p>
+<p>ShadowExplorer is a valuable tool for recovering lost or damaged files, offering two key features that make it particularly relevant for the Orange Entertainment management team’s investigation.</p>
+<ol>
+<li>Access to Shadow Copies: Since it is a Windows OS, One of the primary features of ShadowExplorer is its ability to access and browse through the shadow copies of files created by the Windows Volume Shadow Copy Service (VSS) on Windows. These shadow copies act as snapshots of the files and their respective states at different points in time. In the context of Orange Entertainment’s investigation, this feature is crucial as it allows Bill and Ben to potentially recover earlier versions of the manipulated files. By restoring these earlier versions, the management team can gain insight into the disgruntled employee’s actions and better understand the extent of the manipulation.</li>
+<li>User-friendly interface: ShadowExplorer’s intuitive and user-friendly interface is another important feature that makes it suitable for the investigation. The tool presents a familiar Explorer-like interface, enabling Bill and Ben to easily navigate through the shadow copies and locate the relevant files. This ease of use will help streamline the recovery process, allowing the trainees to efficiently identify and restore the destroyed files. Furthermore, since both Bill and Ben are trainees, the simplicity of the tool will make it easier for them to learn and utilize in their investigation, reducing the chances of making mistakes during the recovery process.</li>
+</ol>
+<p>In summary, ShadowExplorer’s ability to access shadow copies and its user-friendly interface make it an ideal tool for Bill and Ben to recover the destroyed files, providing Orange Entertainment’s management team with the information they need to assess the situation and address the employee’s misconduct.</p>
+<p><strong>b. Bill has decided to use ShadowExplorer on the employee workstation in-situ, but Ben is concerned if such an approach is appropriate. Ben also suggests the pair should at least take some simple notes of their actions, Bill argues it is not necessary. Critique the differing positions of Bill and Ben in the given context.(approximately 300 words)</strong></p>
+<p>Bill’s decision to use ShadowExplorer directly on the employee workstation in-situ might seem efficient and time-saving; however, Ben’s concerns are valid, particularly in the context of an investigation where preserving evidence and maintaining a clear chain of custody is crucial.</p>
+<p>Using ShadowExplorer in-situ poses <strong>several risks</strong>. First, the process might inadvertently alter the state of the workstation, potentially corrupting or overwriting evidence. Such modifications can jeopardize the <strong>integrity of the investigation</strong> and might also <strong>impact the legal admissibility of the evidence</strong>, should the management team decide to pursue legal action against the disgruntled employee. Instead, it is more appropriate to <strong>create a forensic image</strong> of the hard drive and work on a copy of that image to ensure the original data remains unaltered.</p>
+<p>Second, working directly on the employee workstation increases the risk of <strong>accidental data loss or damage</strong>, especially given that both Bill and Ben are trainees. Utilizing a forensic copy provides a <strong>safety net</strong>, allowing them to <strong>revert</strong> to the original state if any mistakes are made during the recovery process <strong>(investigation revertiable)</strong>.</p>
+<p>Regarding the documentation of their actions, Ben’s suggestion to take simple notes is actually a necessary step in a proper investigation. Maintaining detailed records of their actions, tools used, and findings is essential for several reasons:</p>
+<ol>
+<li>Accountability: Documenting the investigation process ensures that all actions taken can be justified and reviewed, which helps maintain the credibility and integrity of the investigation.</li>
+<li>Reproducibility: Detailed notes allow others, including senior team members or external experts, to review and reproduce the steps taken in the investigation if needed, helping to validate the findings.</li>
+<li>Legal purposes: Should the case go to court, proper documentation is vital for establishing the chain of custody and proving the legitimacy of the evidence obtained.</li>
+</ol>
+<p>In conclusion, Ben’s concerns about using ShadowExplorer in-situ and the need for documentation are valid. Adopting a more cautious approach that preserves the integrity of the evidence and maintains a clear record of their actions will not only improve the quality of the investigation but also ensure that the recovered data can be used effectively in any potential legal proceedings.</p>
+<h1 id="2019-Sample-Paper"><a href="#2019-Sample-Paper" class="headerlink" title="2019 Sample Paper"></a>2019 Sample Paper</h1><h2 id="1-Janus-in-BBFS"><a href="#1-Janus-in-BBFS" class="headerlink" title="1. Janus in BBFS"></a>1. Janus in BBFS</h2><p>Janus is a software engineer for Bill and Ben Financial Services (BBFS). Janus has concerns about algorithms that unfairly disadvantage business customers. Janus has raised it with his line manager, but she was disinterested in his concerns. Janus decides to effectively smuggle elements of source code and associated documents outside the organisation using an external disk.</p>
+<p><strong>(a) Janus is aware that the company utilises forensic techniques to identify encrypted files on external disks taken outside the organisation. Janus decides to smuggle the data via an external disk using steganography.Contrast steganography with cryptography and argue for steganography in the given context.[4]</strong></p>
+<p>Steganography and cryptography are two distinct techniques used for protecting and concealing data. While both methods have their applications, steganography might be more suitable for Janus’s situation due to its ability to hide information within other data.</p>
+<p>Steganography involves concealing information within another file or data stream, such as an image, audio, or video file, in such a way that it is virtually undetectable to an observer. The information is embedded in the carrier file without changing its perceptible characteristics, making it difficult to identify the presence of hidden data. This technique allows for the secret transfer of information, as the carrier file appears innocuous and attracts little suspicion.</p>
+<p>Cryptography, on the other hand, focuses on encrypting data to make it unreadable and incomprehensible to unauthorized parties. While cryptography protects the contents of a message, it does not hide the fact that encrypted data exists. Encrypted files can draw attention and raise suspicion, potentially leading to further investigation.</p>
+<p>In the given context, steganography might be more suitable for Janus’s needs. Since BBFS uses forensic techniques to identify encrypted files, using cryptography to protect the data on an external disk could raise red flags and make it more likely for Janus’s actions to be discovered. Steganography, however, would allow Janus to hide the source code and documents within seemingly harmless files, avoiding detection by BBFS’s security measures. By employing steganography, Janus can minimize the risk of his actions being discovered while still smuggling the data out of the organization.</p>
+<p><strong>(b) Janus has decided to use the Bit Plane Complexity Segmentation (BPCS) algorithm to ensure high-capacity use of vessel images. Janus wants to ensure that insertion of the payload will not result in images that are vulnerable to human visualinspection. Janus plans to use several holiday images in Pure Binary Coding (PBC) with many ‘noisy’ qualities, e.g. sand and rain. Explain THREE operations of the BPCS algorithm to ensure the payload is effectively hidden in the given context.[9]</strong></p>
+<p><strong>BPCS-隐写术（Bit-Plane Complexity Segmentation steganography）是</strong><a href="https://en.wikipedia.org/wiki/File_camouflage">数字隐写术</a>的一种。</p>
+<p>数字隐写术可以通过将机密数据（即秘密文件）嵌入到一些称为“容器数据”的媒体数据中来非常安全地隐藏它们。容器数据也称为“承运人、封面或虚拟数据”。在 BPCS 隐写术中，<a href="https://en.wikipedia.org/wiki/24-bit_color">真彩色</a>图像（即<a href="https://en.wikipedia.org/wiki/24-bit_color">24 位彩色</a>图像）主要用于血管数据。实际中的嵌入操作是用机密数据替换血管图像<a href="https://en.wikipedia.org/wiki/Bit_plane">位平面</a>上的“复杂区域” 。BPCS-隐写术最重要的方面是嵌入容量非常大。与仅使用最不重要的数据位的简单图像隐写术相比，因此（对于<a href="https://en.wikipedia.org/wiki/24-bit_color">24 位颜色</a>图像）只能嵌入相当于总大小 1&#x2F;8 的数据，而 BPCS 隐写术使用多个位平面，因此可以嵌入更多的数据，尽管这取决于单个图像。对于“正常”图像，在图像退化变得明显之前，大约 50% 的数据可能可以用秘密数据替换。</p>
+<p>比特平面复杂度分割（BPCS）算法是一种有效的隐写术方法，用于在图像中隐藏数据，特别是那些具有 “噪音 “性质的图像。在Janus的案例中，使用带有沙子和雨水的假日图像对BPCS隐写术是有利的。以下是BPCS算法的三个关键操作，有助于确保有效地隐藏有效载荷：</p>
+<p>分解为位平面： BPCS算法首先将容器图像分解为一系列的位平面。每个比特平面代表了图像二进制表示法中的不同重要性水平。例如，最重要的位（MSB）平面包含最高的对比度信息，而最不重要的位（LSB）平面包含最低的对比度信息。通过以这种方式分解图像，BPCS可以操作对比度较低、”噪音较大 “的位平面来嵌入有效载荷，而不会对图像造成明显的变化。</p>
+<p>复杂度计算和分割： BPCS通过计算不同值（0或1）的接壤像素对的比例来评估每个位面段的复杂性。如果一个片段的复杂性超过了预定的阈值，它就被认为是 “有噪声 “的，适合嵌入有效载荷。在Janus的案例中，使用带有沙子和雨水的图像增加了可用于数据隐藏的复杂片段的数量。这有助于确保有效载荷被很好地隐藏起来，难以被人类的视觉检查所发现。</p>
+<p>自适应的数据嵌入： BPCS将有效载荷嵌入到上一步确定的复杂片段中。通过根据其复杂性自适应地选择合适的片段，BPCS确保嵌入的数据不会对图像造成明显的变化。该算法以保持图像的整体复杂性的方式，用有效载荷数据替换原始的复杂片段。这种自适应的嵌入过程对于在给定的环境中有效地隐藏有效载荷至关重要，因为它减少了通过视觉检查发现的风险。</p>
+<p>通过使用BPCS算法，Janus可以利用假日图像的噪声特性来有效地隐藏有效载荷。分解为位平面，复杂度计算和分割，以及自适应数据嵌入操作共同作用，确保隐藏的数据难以被发现，同时对图像的视觉质量影响最小。</p>
+<p><strong>(c) Janus is planning on implementing the BPCS algorithm on his workstation as to ensure he can embed payload data in the vessel images.Devise a simple BPCS algorithm to embed payload data in vessel images.[6]</strong></p>
+<p>A simple BPCS algorithm for embedding payload data in vessel images can be broken down into the following steps:</p>
+<ol>
+<li>Image Preparation: Convert the vessel image to a suitable format, such as a lossless format like PNG or BMP, to prevent compression artifacts from affecting the steganography process. Resize the image if necessary to accommodate the payload data.</li>
+<li>Bit Plane Decomposition: Decompose the vessel image into a series of bit planes. Separate the image into its color channels (e.g., red, green, and blue) and represent each channel using binary values. Then, create bit planes for each level of significance, from the most significant bit (MSB) to the least significant bit (LSB).</li>
+<li>Payload Preparation: Convert the payload data into binary format. You may consider compressing and encrypting the data beforehand to further protect and optimize the payload.</li>
+<li>Complexity Calculation and Segmentation: Evaluate the complexity of each bit plane segment by calculating the proportion of bordering pixel pairs with different values (0 or 1). If a segment’s complexity surpasses a predefined threshold, it is considered ‘noisy’ and suitable for embedding the payload.</li>
+<li>Adaptive Data Embedding: Iterate through the noisy segments identified in the previous step, and embed the payload data by replacing the original complex segments. Ensure that the embedding process maintains the overall complexity of the image to avoid arousing suspicion.</li>
+<li>Image Reconstruction: Reassemble the modified bit planes into their respective color channels, and then combine the channels to create the final stego-image. Save the stego-image in a lossless format to preserve the embedded data.</li>
+<li>Payload Extraction: To extract the payload data from the stego-image, reverse the process by decomposing the stego-image into bit planes, identifying the noisy segments where the payload data was embedded, and reconstructing the original payload data from the binary values stored in those segments.</li>
+</ol>
+<p>By following these steps, Janus can implement a simple BPCS algorithm to effectively embed payload data in vessel images. The use of noisy segments for data embedding makes the hidden information difficult to detect through visual inspection, providing a level of security for the concealed data.</p>
+<p><strong>(d) Janus is concerned that inspection techniques will reveal use of the steganography approach. Janus is concerned he will be legally required to reveal the devised algorithm in (c) to relevant authorities under the (UK) Regulation of Investigatory Powers Act 2000 (RIPA).Argue whether Janus would be required to reveal the devised algorithm in (c) under the (UK) Regulation of Investigatory Powers Act 2000 (RIPA).[4]</strong></p>
+<p>While I am not a legal expert, I can provide some general information on the matter. The Regulation of Investigatory Powers Act 2000 (RIPA) in the UK provides a legal framework for the use of investigatory powers by authorities, including the interception of communications, acquisition of communications data, and the use of covert human intelligence sources, among others.</p>
+<p>Under Part III of RIPA, authorities may legally demand the disclosure of protected information, which includes encrypted data or keys necessary to decrypt the information. If served with a notice under RIPA, individuals or organizations are required to provide the requested information or assistance, or face penalties for non-compliance.</p>
+<p>In the case of Janus, if the relevant authorities become aware of his use of steganography and suspect that he has hidden sensitive or illegal information within the images, they may issue a notice under RIPA, requiring Janus to disclose the hidden data or provide the necessary means to access it. This could potentially include revealing the BPCS algorithm devised in (c).</p>
+<p>However, RIPA notices are typically issued when there is a justified need for access to the protected information, such as in cases of national security, crime prevention, or public safety concerns. Whether Janus would be required to reveal the devised algorithm under RIPA would depend on the specific circumstances of his case and whether the authorities deem it necessary to obtain the hidden data for a lawful purpose.</p>
+<p>It is essential for Janus to consider the legal implications of his actions and consult with a legal professional if he has concerns regarding the use of steganography and potential requirements under RIPA.</p>
+<h2 id="2-Pagli-and-Antonellis"><a href="#2-Pagli-and-Antonellis" class="headerlink" title="2. Pagli and Antonellis"></a>2. Pagli and Antonellis</h2><p>Pagli and Antonellis are novice cyber system forensic investigators and have started a small start-up business. The pair have invested in two, basic laptop computers. The pair have been contracted by a large company to investigate an employee workstation. The company has multiple workstations, comprising of basic components, e.g. limited processing capabilities. The company management are particularly interested in specific Microsoft Word documents. The company state the workstations do not make use of any anti-forensics techniques, e.g. full-disk encryption.</p>
+<p><strong>(a) Pagli and Antonellis have recovered the files of particular interest to company management but have discovered the files are encrypted and protected by unknown passwords. The pair are concerned that the passwords are sophisticated and cannot be easily determined. Pagli argues that the Distributed Network Attack (DNA) software tool from AccessData could be valuable.Describe TWO technical approaches employed by Distributed Network Attack(DNA) tool and argue the relevance in the given context[6]</strong></p>
+<p>The Distributed Network Attack (DNA) tool from AccessData is designed to assist in recovering passwords for encrypted files by leveraging the power of distributed computing. In the given context, where Pagli and Antonellis have recovered encrypted Microsoft Word documents with unknown passwords, DNA could be a valuable tool to help them gain access to the files. Here are two technical approaches employed by the DNA tool and their relevance in this context:</p>
+<ol>
+<li>Brute-force attack: DNA can perform a brute-force attack, which involves systematically attempting every possible password combination until the correct one is found. Brute-force attacks can be time-consuming, especially if the password is long and complex. However, DNA’s distributed computing capabilities allow it to harness the processing power of multiple computers, including the company’s workstations, to expedite the password recovery process. This distributed approach makes it more feasible to crack sophisticated passwords within a reasonable time frame, increasing the likelihood of success for Pagli and Antonellis.</li>
+<li>Dictionary attack: Another approach employed by DNA is the dictionary attack. This method involves using a precompiled list of words, phrases, or known passwords (a dictionary) to attempt to guess the password. DNA can also utilize rules-based variations, such as common substitutions or character additions, to further expand the list of potential passwords. Dictionary attacks are generally faster than brute-force attacks, as they focus on more likely password candidates. In the given context, this approach could be relevant if the employee used a password based on a dictionary word, a common phrase, or a known pattern.</li>
+</ol>
+<p>In conclusion, the Distributed Network Attack tool could be valuable for Pagli and Antonellis in their efforts to recover the passwords for the encrypted Microsoft Word documents. By employing both brute-force and dictionary attacks, while utilizing distributed computing resources, DNA increases the chances of successfully cracking the passwords, even if they are sophisticated. This would ultimately help Pagli and Antonellis fulfill their contract and provide the company management with access to the files of interest.</p>
+<p><strong>(b) Antonellis argues that the pair cannot afford to invest in Distributed Network Attack (DNA) software as resources are limited. Pagli argues that tool would be invaluable to the current case. Antonellis argues the pair should use a combination of command line tools and tailored scripts.Compare and contrast the tools suggested by Pagli and Antonellis and argue for the optimal approach in the given context.[8]</strong></p>
+<p>Both the Distributed Network Attack (DNA) software and a combination of command line tools and tailored scripts have their merits and drawbacks in the given context. Here, we will compare and contrast these approaches and argue for the optimal solution for Pagli and Antonellis.</p>
+<p>Distributed Network Attack (DNA) software: Pros:</p>
+<ol>
+<li>Comprehensive and user-friendly: DNA is a dedicated tool designed for password recovery, with built-in features and functionality that simplify the process for users.</li>
+<li>Distributed computing: DNA leverages the power of multiple computers to speed up the password recovery process, making it more efficient for cracking complex passwords.</li>
+<li>Multiple attack strategies: DNA supports both brute-force and dictionary attacks, offering a versatile approach to password recovery.</li>
+</ol>
+<p>Cons:</p>
+<ol>
+<li>Cost: DNA may be expensive, particularly for a small start-up with limited resources.</li>
+<li>Overkill for simple cases: DNA’s advanced capabilities may not be necessary if the target password is weak or follows a predictable pattern.</li>
+</ol>
+<p>Command line tools and tailored scripts: Pros:</p>
+<ol>
+<li>Cost-effective: Using open-source command line tools and custom scripts can be more budget-friendly, as there is no need to invest in expensive software.</li>
+<li>Flexibility: Tailored scripts can be customized to the specific needs of the case, allowing Pagli and Antonellis to adapt their approach as required.</li>
+</ol>
+<p>Cons:</p>
+<ol>
+<li>Time-consuming setup: Developing and configuring custom scripts and tools may require a significant investment of time and expertise.</li>
+<li>Limited scalability: The performance of command line tools and scripts may be constrained by the available hardware resources, making it less suitable for cracking complex passwords in a timely manner.</li>
+</ol>
+<p>In the given context, the optimal approach depends on several factors, including the available budget, time constraints, and the complexity of the passwords. If Pagli and Antonellis believe that the encrypted files are of high importance and the passwords are likely to be sophisticated, investing in the DNA software could prove invaluable for its speed, efficiency, and user-friendly features. The distributed computing capabilities and the support for multiple attack strategies can significantly increase the chances of success.</p>
+<p>However, if the pair’s budget is truly limited and they possess the technical expertise to develop custom scripts, using command line tools and tailored scripts may be a more cost-effective alternative. This approach would allow them to retain control over the process and adapt their strategy to the specific case.</p>
+<p>Ultimately, the optimal approach will depend on the pair’s assessment of the case’s importance, the potential value of the encrypted files, and their available resources. It is crucial for Pagli and Antonellis to weigh the pros and cons of each option carefully before deciding on the best course of action.</p>
+<h1 id="Terminology-amp-Jargons"><a href="#Terminology-amp-Jargons" class="headerlink" title="Terminology&amp;Jargons:"></a>Terminology&amp;Jargons:</h1><p><strong>FDE:</strong> </p>
+<p>Full Disk Encryption (FDE) is an encryption technology implemented on hard disk drives or solid state drives. It protects all data stored on the disk, including operating system, program files, user data, etc. Its main purpose is to ensure that sensitive data on the disk cannot be deciphered in case of unauthorized access.</p>
+<p><strong>File Carving:</strong> </p>
+<p>File carving is a process used in [computer forensics](<a href="https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec">https://www.infosecinstitute.com/courses/computer-forensics-boot-camp/?utm_source=resources&amp;utm_medium=infosec</a> network&amp;utm_campaign&#x3D;course pricing&amp;utm_content&#x3D;hyperlink) to extract data from a disk drive or other storage device without the assistance of the file system that originality created the file. </p>
+<p><strong>Unallocated area:</strong> </p>
+<p>Unallocated space refers to the area of the drive which no longer holds any file information as indicated by the file system structures like the file table. </p>
+<p><strong>Ip:</strong>  </p>
+<p>investigative process.</p>
+<p><strong>DFI</strong>(Digital forensics investigation): </p>
+<p>investigate the tool of crime and subject of crime.</p>
+<p><strong>Hash</strong>:</p>
+<p>哈希算法是指将任意长度的二进制值串映射为固定长度的二进制值串。原始数据经过映射之后得到的二进制值串就是哈希值。</p>
+<p><strong>MD5加密原理步骤</strong>:</p>
+<p>​	<strong>a). 填充，将其长度填充为512的整数倍:</strong></p>
+<p>​	填充的方法如下：</p>
+<p>​	<strong>1)</strong> 在信息的后面填充一个1和无数个0，直到满足上面的条件时才停止用0对信息的填充。</p>
+<p>​	<strong>2)</strong> 在这个结果后面附加一个以64位二进制表示的填充前信息长度（单位为Bit），如果二</p>
+<p>​	进制表示的填充前信息长度超过64位，则取低64位。</p>
+<p>​	经过这两步的处理，信息的位长&#x3D;N<em>512+448+64&#x3D;(N+1）</em>512，即长度恰好是512的整数倍。这样做的原因是为满足后面处理中对信息长度的要求。</p>
+<p>​	<strong>b). 初始化变量</strong></p>
+<p>​	初始的128位值为初试链接变量，这些参数用于第一轮的运算，以大端<a href="https://link.zhihu.com/?target=https://baike.baidu.com/item/%E5%AD%97%E8%8A%82%E5%BA%8F">字节序</a>来表示，他们分别为： 				  A&#x3D;0x01234567，B&#x3D;0x89ABCDEF，C&#x3D;0xFEDCBA98，D&#x3D;0x76543210。</p>
+<p>​	（每一个变量给出的数值是高字节存于内存低地址，低字节存于内存高地址，即大端字节序。在程序中变量A、	B、C、D的值分别为0x67452301，0xEFCDAB89，0x98BADCFE，0x10325476）</p>
+<p>​	<strong>c).处理分组数据</strong></p>
+<p>​	每一分组的算法流程如下：</p>
+<p>​	第一分组需要将上面四个链接变量复制到另外四个变量中：A到a，B到b，C到c，D到d。从第二分组开始的变量	为上一分组的运算结果，即A &#x3D; a， B &#x3D; b， C &#x3D; c， D &#x3D; d。</p>
+<p>​	主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行16次操作。每次操作对a、b、c和d中的其中	三个作一次非线性函数运算，然后将所得结果加上第四个变量，文本的一个子分组和一个常数。再将所得结果	向左<strong>环移</strong>一个不定的数，并加上a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。</p>
+<p>​	以下是每次操作中用到的四个非线性函数（每轮一个）。</p>
+<p>​	F( X ,Y ,Z ) &#x3D; ( X &amp; Y ) | ( (~X) &amp; Z )</p>
+<p>​	G( X ,Y ,Z ) &#x3D; ( X &amp; Z ) | ( Y &amp; (~Z) )</p>
+<p>​	H( X ,Y ,Z ) &#x3D;X ^ Y ^ Z</p>
+<p>​	I( X ,Y ,Z ) &#x3D;Y ^ ( X | (~Z) )</p>
+<p>​	（&amp;是与（And），|是或（Or），~是非（Not），^是异或（Xor））</p>
+<hr>
+<p><strong>Merkle–Damgård</strong></p>
+<p>Merkle–Damgård结构简称为MD结构，主要用在hash算法中抵御碰撞攻击。这个结构是一些优秀的hash算法，比如MD5,SHA-1和SHA-2的基础。今天给大家讲解一下这个MD结构和对他进行的长度延展攻击。</p>
+<p><strong>Steps</strong>:</p>
+<p><strong>Padding</strong></p>
+<p>MD结构首先对输入消息进行填充，让消息变成固定长度的整数倍（比如512或者1024）。这是因为压缩算法是不能对任意长度的消息进行处理的，所以在处理之前必须进行填充。在原始数据的尾部添上1000…然后加上原始消息长度的2进制值使其长度变为512或1024的整数倍;<strong>使用额外的block</strong>，额外的使用一个block往往有点浪费，一个更加节约空间的做法就是，如果填充到最后一个block的0中有住够的空间的话，那么可以消息的长度放在那里。</p>
+<p><strong>Compress</strong></p>
+<p>完成padding之后就可以进行compress了。消息被分成了很多个block，最开始的初始化向量和第一个block进行f操作，得到了的结果再和第二个block进行操作，如此循环进行，最终得到了最后的结果。</p>
+<p><img src="/../images/v2-43958e721f4c71625fde28962a327e3b_720w.webp" alt="MD Structure"></p>
+<p><strong>长度延展攻击</strong></p>
+<p>MD结构，是将消息分成一个一个的block，前一个block 运算出来的值会跟下一个block再次进行运算，这种结构可以很方便的进行长度延展攻击。前提是我们需要知道原消息的长度。在密码学中长度延展攻击就是指攻击者通过已知的hash(message1)和message1的长度，从而能够知道hash（message1‖message2）的值。其中‖ 表示的是连接符。并且攻击性并需要知道message1到底是什么。</p>
+<p><strong>Wide pipe</strong></p>
+<p>为了避免长度延展攻击，我们可以对MD结构进行一些变形。</p>
+<p><img src="/../images/v2-7bcc1f1e64f49a021592e673c80f205a_720w.webp" alt="Wide pipe"></p>
+<p>wide pipe和MD的流程基本上是一致的，不同的是生成的中间临时的加密后的消息长度是最终生成消息长度的两倍。</p>
+<p>这也就是为什么上图中会有两个初始向量IV1 和 IV2。假如最终的结果长度是n的话，那么在中间生成的结果的长度就是2n。我们需要在最后的final 这一步中，将2n长度的数据缩减为n长度的数据。</p>
+<p><strong>Fast wide pipe</strong></p>
+<p>SHA-512&#x2F;224 和 SHA-512&#x2F;256 只是简单的丢弃掉一半数据。</p>
+<p>还有一种比wide pipe更快的算法叫做fast wide pipe：</p>
+<p><img src="/../images/v2-38067688fe25a216016a8819756dd105_r.jpg" alt="Fast wide pipe"></p>
+<p>和wide pipe不同的是，它的主要思想是将前一个链接值的一半转发给XOR，然后将其与压缩函数的输出进行XOR。</p>
+<p><strong>SLACK SPACE:</strong></p>
+<p>Slack space occurs when a file can not be efficiently <strong>compartmentalised into file systems containers</strong>.</p>
+<p>Feature: effectively containers are not going to be completely full, there is some <strong>slack space</strong>.</p>
+<p>Example: consider file that is 59 bytes in size, that is allocated a 2048 byte cluster - the remaining 1989 bytes are considered slack space.</p>
+<p>Potential for slack space to contain interesting data or data from previous files.</p>
+<p>Data may exist between the end of the allocated file data and the sector.</p>
+<p>Data may also exist between the sectors within the cluster that are not allocated data.</p>
+<p>Interesting data may also exist in the sectors within the cluster.</p>
+<p>an important aspect of slack space is that it is <strong>allocated</strong> space, it not unallocated. </p>
+<p><strong>Sector and Cluster:</strong></p>
+<p>In computer file systems, a sector is the smallest unit of storage on a disk. A cluster is a group of sectors that are treated as a single unit of storage. Sector is a fixed-size, contiguous block of storage space on the disk, typically ranging from 512 bytes to 4096 bytes, depending on the disk format. Clusters are used to allocate disk space for files, and they are typically much larger than sectors, ranging from a few sectors to several kilobytes in size, depending on the file system and disk size.</p>
+<p><strong>FIRST AVAILABLE:</strong></p>
+<p>in terms of forensics, recovery of deleted data will likely be more fruitful near the end of the file system.</p>
+<p><strong>NEXT AVAILABLE:</strong></p>
+<p>in terms of forensics, recovery of deleted data may be more balanced in comparison. </p>
+<p><strong>BEST FIT:</strong></p>
+<p>recall, the file itself may grow and data can become scattered across the system.</p>
+<p><img src="/../images/byte_groups.png" alt="bytegroupings"></p>
+<p><strong>FRAGMENTATION</strong></p>
+<p>• systems become fragmented as files are deleted, added and altered. </p>
+<p>• file considered fragmented when its containers are not consecutive, but are rather scattered across the storage device.</p>
+<p>• fragmentation typically occurs due to <strong>alteration</strong> of files, <strong>low disk space</strong> and specific approaches.</p>
+<p>• fragmentation of files is relatively uncommon in modern systems.</p>
+<p>• modern operating systems are effective at avoiding fragmentation as this affords faster reading and writing.</p>
+<p>• disk space has became less of a concern, suggesting that fragmentation is more likely on relatively smaller disks.</p>
+<p>• researchers argue fragmented files are more likely of interest to investigators.</p>
+<p><strong>FILE EXTENSION FRAGMENTATION:</strong></p>
+<p>• different fragmentation rates are observed for different file types.<br>• temporary and logs files are often fragmented as they grow over system lifetime.<br>• movie, image, document and personal organisation information are often highly fragment.<br>• arguably such files are more pertinent to investigation than benign system files</p>
+<p><strong>HIGH FRAGMENTATION:</strong></p>
+<p>• there are some files that are highly fragmented, potentially into more than 100 or over 1000 fragments.</p>
+<p>• such fragments are typically associated with large system updates or patches</p>
+<p><strong>FILE CARVING:</strong></p>
+<p>• process of <strong>reconstructing files based on structure and</strong> <strong>content</strong>, instead of meta-data.</p>
+<p>• typically used to recover data from <strong>unallocated space</strong> on the disk as indicated by the file system.</p>
+<p>• useful for <strong>data recovery when the device itself has been damaged</strong>, e.g. hard disk.</p>
+<p>• valuable in <strong>forensics when specific files have been deleted</strong>, e.g. data still present in sectors</p>
+<p>• may not recognise the file system used or even trust the file system itself.</p>
+<p>• early file carver approaches relied on <strong>magic numbers</strong> to discover and recover files.</p>
+<p>• limitation is that the file craver would recover continuous data unsure that it is actually valid or properly associated with the file</p>
+<p><strong>Chanllenges:</strong></p>
+<ol>
+<li><p>the initial challenge is to identify the files that are to be carved from the image itself.</p>
+</li>
+<li><p>process must exist that ensures the files are actually intact.</p>
+</li>
+<li><p>files then need to be carved or extracted from the image.</p>
+</li>
+</ol>
+<p><strong>LIMITATIONS:</strong></p>
+<p>• problem is that unless clusters are contiguous can be difficult to recover file.</p>
+<p>• even if associated clusters are recovered, difficult to validated file is what is expected.</p>
+<p><strong>Hex Carving:</strong></p>
+<p>在进行Hex Carving时，分析师需要寻找特定的十六进制签名（也称为文件头和文件尾），这些签名是文件类型的特征，例如JPEG图片、PDF文档等。一旦找到这些签名，就可以从存储介质上提取相应的数据块，并将其恢复为完整的文件。</p>
+<p><strong>Bitfragment Gap Carving(BGC):</strong></p>
+<p><strong>Steps:</strong></p>
+<p>• initial step is to determine the header and footer of the file.<br>• process the clusters between the header and footer to confirm the contents of the container files.<br>• perform the computationally expensive step of validating each cluster.<br>• Know bh and bz, start with g &#x3D; 1 and grow until each fragment validates</p>
+<p><strong>Limitation:</strong></p>
+<p>• approach works when the file is bi-fragmented, anymore fragments it will not work.</p>
+<p>• corrupted or lost clusters will result in the worse case performance.</p>
+<p>• approach works for files that have structure that can actually be validated and&#x2F;or decoded.</p>
+<p>• not always possible to trust validation and&#x2F;or decoding approach.</p>
+<p>• approach struggles with large gaps.</p>
+<p>Bitfragment Gap Carving (BGC) 旨在克服传统的 Hex Carving 方法在面对破碎文件时的局限性。在某些情况下，文件在存储介质上可能是分散的，这意味着文件的各个部分可能不是连续存储的。</p>
+<p>BGC 通过在存储介质中搜索特定的文件片段（称为比特片段）来解决这个问题，而不是仅搜索文件头和文件尾。这些文件片段可能包含文件的重要信息，如内容、元数据等。在确定了这些比特片段之后，BGC 将尝试将它们重新组合成一个完整的文件。</p>
+<p>BGC 的一个关键优势是它可以在不了解文件系统的情况下恢复分散的文件，这使得它在处理损坏的文件系统或恢复被删除的文件时非常有用。然而，BGC 也存在一些挑战，例如需要开发针对特定文件类型的比特片段签名、可能出现误报以及需要处理大量的比特片段组合。</p>
+<p>​	<strong>Do we think it is wise to carve out the fragments  between the header and footer?</strong></p>
+<p>在使用 Bitfragment Gap Carving（BGC）方法时，在文件头和文件尾之间提取文件片段通常是有意义的。这是因为在某些情况下，文件的各个部分可能是分散存储的，而不是连续存储的。这意味着文件头和文件尾之间可能存在其他文件片段，这些片段包含文件的重要信息，如内容、元数据等。</p>
+<p>​	<strong>What else do we typically know about the files were interested in?</strong></p>
+<p>在使用 Bitfragment Gap Carving（BGC）方法时，我们通常需要了解一些关于感兴趣文件的信息，以提高恢复的成功率和准确性。以下是在 BGC 中可能需要了解的文件相关信息：</p>
+<ol>
+<li>文件类型：了解目标文件的类型有助于确定特定的文件片段签名。例如，JPEG 图像、PDF 文档和 Microsoft Word 文件等具有不同的文件结构和特征。了解文件类型有助于缩小搜索范围并提高恢复效果。</li>
+<li>文件片段签名：针对特定文件类型，需要了解其比特片段签名，以便在存储介质上搜索和识别文件片段。这些签名可能包括文件头、文件尾以及其他特征信息，如元数据、内容标记等。</li>
+<li>文件大小：如果可能的话，了解文件的大致大小可以帮助估算文件片段的数量和潜在位置。这可以提高搜索效率并减少误报。</li>
+<li>存储设备和文件系统信息：了解所使用的存储设备（如硬盘、USB 闪存驱动器等）和文件系统（如 NTFS、FAT32、ext4 等）可能有助于确定文件分散的程度和方式，以及优化 BGC 方法。</li>
+<li>数据删除或损坏的原因：了解数据丢失或损坏的原因（如意外删除、硬盘损坏、恶意软件攻击等）可能有助于确定最佳的恢复策略。</li>
+</ol>
+<p>​	<strong>If we have determined the header and footers, plus container structure - what else could we do?</strong></p>
+<ol>
+<li>分析文件内部结构：了解特定文件类型的内部结构有助于识别并提取更多相关的比特片段。这包括文件的元数据、编码方式、标记和其他特征信息。掌握这些信息可以帮助更准确地搜索和识别文件片段。</li>
+<li>优化搜索策略：根据已知的文件头、文件尾和容器结构，优化搜索策略以提高效率。这可能包括限制搜索范围、调整搜索参数，或者根据已知的文件大小信息预测文件片段的潜在位置。</li>
+<li>验证恢复结果：在提取和重新组合文件片段后，仔细检查恢复结果以确保准确性和完整性。这可能包括验证文件的元数据、内容和内部结构。如果发现问题，可以返回到搜索和提取阶段，尝试使用不同的参数和策略。</li>
+<li>结合其他恢复技术：在某些情况下，BGC 方法可能无法完全恢复文件。这时，可以尝试结合其他文件恢复技术和工具，如 Hex Carving、文件系统分析等，以提高恢复结果的准确性和完整性。</li>
+<li>优化和学习：通过不断地学习和优化比特片段签名、搜索策略和参数设置，可以提高 BGC 方法的性能。在实践中，分析师可能需要面对各种不同的文件类型和存储设备，因此需要不断地调整和优化方法以适应不同的情况。</li>
+</ol>
+<p><strong>Theoretical Graph Carving:</strong></p>
+<p>THEORETICAL GRAPH CARVING </p>
+<p>• need to determine the clusters that are adjacent to each other. </p>
+<p>• approach is to determine the correct ordering is to weight fragment pairs. </p>
+<p>• use function to generate a weight for each pair of clusters, select the heaviest pairing.</p>
+<p>• ideal permutation is that where the sum of the ordering is maximum. </p>
+<p>• determining the path is the same as finding maximum weight Hamiltonian path in a complete graph</p>
+<p><strong>Graph Carving:</strong></p>
+<p>• Hamiltonian path approach does not consider the situation where we have multiple files.</p>
+<p>• Problem can be reconsidered as <em>k</em>-vertex disjointed path problem.</p>
+<p>• Where we consider <em>k</em> as the number of files, identified from the number of headers.</p>
+<p>• Disjointed path problem if we consider that each cluster only belongs to one file.</p>
+<p>​	PARALLEL UNIQUE PATH(PUP):</p>
+<p><strong>Hash Carving:</strong></p>
+<p>哈希雕刻的工作流程分为以下几个步骤：</p>
+<ol>
+<li>确定已知文件的哈希值：通过使用独立于磁盘镜像或文件系统的工具，计算已知文件的哈希值，并记录下来。</li>
+<li>扫描磁盘镜像或文件系统：使用哈希雕刻工具扫描磁盘镜像或文件系统，并计算每个数据块的哈希值。</li>
+<li>匹配哈希值：将扫描到的每个数据块的哈希值与已知文件的哈希值进行比较。如果匹配成功，则说明该数据块可能包含被删除文件的内容。</li>
+<li>恢复文件内容：对于匹配成功的数据块，使用哈希雕刻工具将其提取出来，并尝试恢复被删除文件的内容。</li>
+<li>验证数据完整性：对于已恢复的文件，应该进行数据完整性验证，以确保文件的完整性和可靠性。</li>
+</ol>
+<p>需要注意的是，哈希雕刻可能会产生虚假匹配或错误的结果，因此需要对结果进行进一步的验证和分析。同时，在进行哈希雕刻时，也需要考虑数据隐私和法律规定，以确保取证过程的合法性和证据的可靠性。</p>
+<p>**Non-probative block test:**（非证据块测试）</p>
+<p>是指在数字取证中使用的一种测试方法，用于排除磁盘镜像或文件系统中的非证据块，以减少后续分析的时间和资源消耗。</p>
+<p>在数字取证中，非证据块通常是指不包含有效数据或与案件无关的数据块，如操作系统的空闲块、已删除的文件块等。非证据块测试可以通过计算每个数据块的哈希值，并与已知的非证据块哈希值进行比较，以快速识别和排除这些非证据块。这可以大大减少后续分析的时间和资源消耗，并有助于集中分析有价值的证据数据。</p>
+<p>需要注意的是，非证据块测试并不能保证100%的准确性，可能会产生误判或漏判的情况。因此，在数字取证中，还需要结合其他分析方法和工具，进行综合分析和验证，以确保取证结果的准确性和可靠性。</p>
+<p><strong>Magic numbers:</strong></p>
+<p>In the context of computer file formats, a magic number is a sequence of bytes that identifies the format of a file. It is called a “magic number” because it is often used like a magic spell to identify the file format, much like a spell might be used to identify a person or object.</p>
 ]]></content>
       <categories>
         <category>Courses</category>
