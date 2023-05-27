@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">782</span>
+            <span class="post-count">984</span>
         </span>
     </span>
 
@@ -111,17 +111,27 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h1><h2 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h2><p><strong>captcha disappearance</strong></p>
+  <h2 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h2><h3 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h3><p><strong>captcha disappearance</strong></p>
 <p><a target="_blank" rel="noopener" href="https://www.javazxz.com/thread-7116-1-1.html">https://www.javazxz.com/thread-7116-1-1.html</a></p>
-<h2 id="Bug2"><a href="#Bug2" class="headerlink" title="Bug2."></a>Bug2.</h2><p><strong>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</strong></p>
+<h3 id="Bug2"><a href="#Bug2" class="headerlink" title="Bug2."></a>Bug2.</h3><p><strong>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</strong></p>
 <p>network problem. The student.gla.ac.uk network filed cannot access to tencent server.</p>
-<h2 id="Bug3"><a href="#Bug3" class="headerlink" title="Bug3."></a>Bug3.</h2><p><strong>No spring.config.import property has been defined</strong></p>
+<h3 id="Bug3"><a href="#Bug3" class="headerlink" title="Bug3."></a>Bug3.</h3><p><strong>No spring.config.import property has been defined</strong></p>
 <p>产生问题的原因是bootstrap.properties比application.properties的优先级要高<br>由于bootstrap.properties是系统级的资源配置文件，是用在程序引导执行时更加早期配置信息读取；<br>而application.properties是用户级的资源配置文件，是用来后续的一些配置所需要的公共参数。<br>但是在SpringCloud 2020.* 版本把bootstrap禁用了，导致在读取文件的时候读取不到而报错，所以我们只要把bootstrap从新导入进来就会生效了。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.clouds<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>在全部使用nacos配置后，就不用引用这个了</p>
-<h1 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h1><h2 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h2><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
-<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
+<h3 id="Bug4"><a href="#Bug4" class="headerlink" title="Bug4"></a>Bug4</h3><p>java: 找不到符号 符号：方法 XXX() 位置: 类型为io.renren.modules.sys.entity</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>这是因为你的idea中内置lombok和项目中pom文件的版本不兼容的原因，简单说就是这两个发生冲突了，大部分的出现在idea2020和2021版本上可能会出现问题。</li>
+<li>因为lombok版本是一般是受springboot版本管理的，也可以通过升级springboot的版本来提高lombok版本，只要你springboot中引用的Lombok高于上面的版本就可以。</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--Lombok--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span>//注意这行代码一定要加上去，我的问题就是出现在没有加这行代码还是会报错、</span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h2><h3 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h3><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
 <p>![image-20230403164227851](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164227851.png)</p>
 <p><strong>JDBC</strong></p>
 <p>Info:</p>

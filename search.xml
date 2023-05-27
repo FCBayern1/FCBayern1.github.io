@@ -53,19 +53,54 @@
 ]]></content>
   </entry>
   <entry>
+    <title>travel</title>
+    <url>/2023/05/04/travel/</url>
+    <content><![CDATA[<p><strong>Glasgow</strong></p>
+<p><img src="/../images/webs/UoG_bkgrnd_2021.jpg" alt="391667424236_.pic"></p>
+<p><strong>Edinburgh</strong></p>
+<p><img src="/../images/391667424236_.pic.jpg" alt="IMG_6792"></p>
+<p><img src="/../images/IMG_6792.jpeg" alt="IMG_6792"></p>
+<p><strong>Munich</strong></p>
+<p><img src="/../images/webs/C4B30D74-1139-4945-B8F9-F6A74834CFCD_1_102_o.jpeg" alt="IMG_6792"></p>
+<p><img src="/../images/IMG_8419.jpeg" alt="IMG_8419"></p>
+<p><strong>Swiss</strong></p>
+<p><img src="/../images/IMG_7862.jpeg" alt="IMG_7867"></p>
+<p><img src="/../images/IMG_7867.jpeg" alt="IMG_7867"></p>
+<p><strong>Paris</strong></p>
+<p><img src="/../images/IMG_7410.jpeg" alt="IMG_7410"></p>
+<p><img src="/../images/IMG_7577.jpeg" alt="IMG_7577"></p>
+]]></content>
+      <categories>
+        <category>travel</category>
+      </categories>
+      <tags>
+        <tag>travel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mall developing</title>
     <url>/2023/03/31/mall-developing/</url>
-    <content><![CDATA[<h1 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h1><h2 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h2><p><strong>captcha disappearance</strong></p>
+    <content><![CDATA[<h2 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h2><h3 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h3><p><strong>captcha disappearance</strong></p>
 <p><a href="https://www.javazxz.com/thread-7116-1-1.html">https://www.javazxz.com/thread-7116-1-1.html</a></p>
-<h2 id="Bug2"><a href="#Bug2" class="headerlink" title="Bug2."></a>Bug2.</h2><p><strong>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</strong></p>
+<h3 id="Bug2"><a href="#Bug2" class="headerlink" title="Bug2."></a>Bug2.</h3><p><strong>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</strong></p>
 <p>network problem. The student.gla.ac.uk network filed cannot access to tencent server.</p>
-<h2 id="Bug3"><a href="#Bug3" class="headerlink" title="Bug3."></a>Bug3.</h2><p><strong>No spring.config.import property has been defined</strong></p>
+<h3 id="Bug3"><a href="#Bug3" class="headerlink" title="Bug3."></a>Bug3.</h3><p><strong>No spring.config.import property has been defined</strong></p>
 <p>产生问题的原因是bootstrap.properties比application.properties的优先级要高<br>由于bootstrap.properties是系统级的资源配置文件，是用在程序引导执行时更加早期配置信息读取；<br>而application.properties是用户级的资源配置文件，是用来后续的一些配置所需要的公共参数。<br>但是在SpringCloud 2020.* 版本把bootstrap禁用了，导致在读取文件的时候读取不到而报错，所以我们只要把bootstrap从新导入进来就会生效了。</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.clouds<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>在全部使用nacos配置后，就不用引用这个了</p>
-<h1 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h1><h2 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h2><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
-<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
+<h3 id="Bug4"><a href="#Bug4" class="headerlink" title="Bug4"></a>Bug4</h3><p>java: 找不到符号 符号：方法 XXX() 位置: 类型为io.renren.modules.sys.entity</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>这是因为你的idea中内置lombok和项目中pom文件的版本不兼容的原因，简单说就是这两个发生冲突了，大部分的出现在idea2020和2021版本上可能会出现问题。</li>
+<li>因为lombok版本是一般是受springboot版本管理的，也可以通过升级springboot的版本来提高lombok版本，只要你springboot中引用的Lombok高于上面的版本就可以。</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--Lombok--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span>//注意这行代码一定要加上去，我的问题就是出现在没有加这行代码还是会报错、</span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h2><h3 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h3><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
 <p>![image-20230403164227851](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164227851.png)</p>
 <p><strong>JDBC</strong></p>
 <p>Info:</p>
@@ -118,29 +153,13 @@
       </tags>
   </entry>
   <entry>
-    <title>travel</title>
-    <url>/2023/05/04/travel/</url>
-    <content><![CDATA[<p><strong>Glasgow</strong></p>
-<p><img src="/../images/webs/UoG_bkgrnd_2021.jpg" alt="391667424236_.pic"></p>
-<p><strong>Edinburgh</strong></p>
-<p><img src="/../images/391667424236_.pic.jpg" alt="IMG_6792"></p>
-<p><img src="/../images/IMG_6792.jpeg" alt="IMG_6792"></p>
-<p><strong>Munich</strong></p>
-<p><img src="/../images/webs/C4B30D74-1139-4945-B8F9-F6A74834CFCD_1_102_o.jpeg" alt="IMG_6792"></p>
-<p><img src="/../images/IMG_8419.jpeg" alt="IMG_8419"></p>
-<p><strong>Swiss</strong></p>
-<p><img src="/../images/IMG_7862.jpeg" alt="IMG_7867"></p>
-<p><img src="/../images/IMG_7867.jpeg" alt="IMG_7867"></p>
-<p><strong>Paris</strong></p>
-<p><img src="/../images/IMG_7410.jpeg" alt="IMG_7410"></p>
-<p><img src="/../images/IMG_7577.jpeg" alt="IMG_7577"></p>
+    <title>job seek</title>
+    <url>/2023/05/26/job-seek/</url>
+    <content><![CDATA[<ol>
+<li>intern</li>
+<li></li>
+</ol>
 ]]></content>
-      <categories>
-        <category>travel</category>
-      </categories>
-      <tags>
-        <tag>travel</tag>
-      </tags>
   </entry>
   <entry>
     <title>Csharp</title>
@@ -839,7 +858,21 @@
 <p><strong>Solution:</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span><span class="params">(<span class="type">int</span>[] prices)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">profit</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (prices[i] &gt; prices[i - <span class="number">1</span>]) &#123;</span><br><span class="line">            profit += (prices[i] - prices[i - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h3><p><img src="/../images/DSA/Page1.jpg" alt="Page1"></p>
+<h3 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h3><p>什么是链表，链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。</p>
+<p>链表的入口节点称为链表的头结点也就是head。</p>
+<p>如图所示： <img src="/../images/20200806194529815.png" alt="链表1"></p>
+<p>了解完链表的类型，再来说一说链表在内存中的存储方式。</p>
+<p>数组是在内存中是连续分布的，但是链表在内存中可不是连续分布的。</p>
+<p>链表是通过指针域的指针链接在内存中各个节点。</p>
+<p>所以链表中的节点在内存中不是连续分布的 ，而是散乱分布在内存中的某地址上，分配机制取决于操作系统的内存管理。</p>
+<p>如图所示：</p>
+<p><img src="/../images/20200806194613920.png" alt="链表3"></p>
+<p>这个链表起始节点为2， 终止节点为7， 各个节点分布在内存的不同地址空间上，通过指针串联在一起。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">    <span class="comment">// 结点的值</span></span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 下一个结点</span></span><br><span class="line">    ListNode next;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(无参)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(有一个参数)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(有两个参数)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">(<span class="type">int</span> val, ListNode next)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">        <span class="built_in">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">JavaScript:</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">  val;</span><br><span class="line">  next = <span class="literal">null</span>;</span><br><span class="line">  constructor(value) &#123;</span><br><span class="line">    <span class="built_in">this</span>.val = value;</span><br><span class="line">    <span class="built_in">this</span>.next = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/../images/DSA/Page1.jpg" alt="Page1"></p>
 <p><img src="/.com//Page2.jpg" alt="Page2"><img src="/../images/DSA/Page3.jpg" alt="Page1"></p>
 <p><img src="/../images/DSA/Page4.jpg" alt="Page3"><img src="/../images/DSA/Page5.jpg" alt="Page4"><img src="/../images/DSA/Page6.jpg" alt="Page5"><img src="/../images/DSA/Page7.jpg" alt="Page6"><img src="/../images/DSA/Page8.jpg" alt="Page7"><img src="/../images/DSA/Page8.jpg" alt="Page8"><img src="/../images/DSA/Page9.jpg" alt="Page9"><img src="/../images/DSA/Page10.jpg" alt="Page10"><img src="/../images/DSA/Page11.jpg" alt="Page11"><img src="/../images/DSA/Page12.jpg" alt="Page12"></p>
 <h3 id="Trees"><a href="#Trees" class="headerlink" title="Trees"></a>Trees</h3><h4 id="leetcode-104"><a href="#leetcode-104" class="headerlink" title="leetcode 104"></a>leetcode 104</h4><p><img src="/../images/DSA/Page13.jpg" alt="Page13"><img src="/../images/DSA/Page14.jpg" alt="Page14"><img src="/../images/DSA/Page15.jpg" alt="Page15"><img src="/../images/DSA/Page16.jpg" alt="Page16"><img src="/../images/DSA/Page17.jpg" alt="Page17"><img src="/../images/DSA/Page18.jpg" alt="Page18"><img src="/../images/DSA/Page19.jpg" alt="Page19"><img src="/../images/DSA/Page20.jpg" alt="Page20"><img src="/../images/DSA/Page21.jpg" alt="Page21"><img src="/../images/DSA/Page22.jpg" alt="Page22"><img src="/../images/DSA/Page23.jpg" alt="Page23"><img src="/../images/DSA/Page24.jpg" alt="Page24"><img src="/../images/DSA/Page25.jpg" alt="Page25"><img src="/../images/DSA/Page26.jpg" alt="Page26"><img src="/../images/DSA/Page27.jpg" alt="Page27"></p>
@@ -929,20 +962,6 @@
 <p>看了下图，就应该明白了：</p>
 <p><img src="/../images/%E7%AE%97%E6%B3%95%E9%80%9A%E5%85%B3%E6%95%B0%E7%BB%843.png" alt="算法通关数组3"></p>
 <p>所以<strong>Java的二维数组在内存中不是 <code>3\*4</code> 的连续地址空间，而是四条连续的地址空间组成！</strong></p>
-<h2 id="Linkedlist"><a href="#Linkedlist" class="headerlink" title="Linkedlist"></a>Linkedlist</h2><p>什么是链表，链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。</p>
-<p>链表的入口节点称为链表的头结点也就是head。</p>
-<p>如图所示： <img src="/../images/20200806194529815.png" alt="链表1"></p>
-<p>了解完链表的类型，再来说一说链表在内存中的存储方式。</p>
-<p>数组是在内存中是连续分布的，但是链表在内存中可不是连续分布的。</p>
-<p>链表是通过指针域的指针链接在内存中各个节点。</p>
-<p>所以链表中的节点在内存中不是连续分布的 ，而是散乱分布在内存中的某地址上，分配机制取决于操作系统的内存管理。</p>
-<p>如图所示：</p>
-<p><img src="/../images/20200806194613920.png" alt="链表3"></p>
-<p>这个链表起始节点为2， 终止节点为7， 各个节点分布在内存的不同地址空间上，通过指针串联在一起。</p>
-<h1 id><a href="#" class="headerlink" title="#"></a><a href="https://programmercarl.com/%E9%93%BE%E8%A1%A8%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89">#</a></h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">    <span class="comment">// 结点的值</span></span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 下一个结点</span></span><br><span class="line">    ListNode next;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(无参)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(有一个参数)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(有两个参数)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">(<span class="type">int</span> val, ListNode next)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">        <span class="built_in">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">JavaScript:</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">  val;</span><br><span class="line">  next = <span class="literal">null</span>;</span><br><span class="line">  constructor(value) &#123;</span><br><span class="line">    <span class="built_in">this</span>.val = value;</span><br><span class="line">    <span class="built_in">this</span>.next = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h2><h3 id="哈希碰撞"><a href="#哈希碰撞" class="headerlink" title="哈希碰撞"></a>哈希碰撞</h3><p>如图所示，小李和小王都映射到了索引下标 1 的位置，<strong>这一现象叫做哈希碰撞</strong>。</p>
 <p><img src="/../images/2021010423494884.png" alt="哈希表3"></p>
 <p>一般哈希碰撞有两种解决方法， 拉链法和线性探测法。</p>

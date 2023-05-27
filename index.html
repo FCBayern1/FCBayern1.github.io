@@ -168,6 +168,56 @@
     
     
     <article
+  id="post-job-seek"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/05/26/job-seek/"
+    >job seek</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/26/job-seek/" class="article-date">
+  <time datetime="2023-05-26T18:58:33.000Z" itemprop="datePublished">2023-05-26</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <ol>
+<li>intern</li>
+<li></li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-CyberSecurityFundemental"
   class="article article-type-post"
   itemscope
@@ -2228,7 +2278,21 @@
 <p><strong>Solution:</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span><span class="params">(<span class="type">int</span>[] prices)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">profit</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (prices[i] &gt; prices[i - <span class="number">1</span>]) &#123;</span><br><span class="line">            profit += (prices[i] - prices[i - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h3><p><img src="/../images/DSA/Page1.jpg" alt="Page1"></p>
+<h3 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h3><p>什么是链表，链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。</p>
+<p>链表的入口节点称为链表的头结点也就是head。</p>
+<p>如图所示： <img src="/../images/20200806194529815.png" alt="链表1"></p>
+<p>了解完链表的类型，再来说一说链表在内存中的存储方式。</p>
+<p>数组是在内存中是连续分布的，但是链表在内存中可不是连续分布的。</p>
+<p>链表是通过指针域的指针链接在内存中各个节点。</p>
+<p>所以链表中的节点在内存中不是连续分布的 ，而是散乱分布在内存中的某地址上，分配机制取决于操作系统的内存管理。</p>
+<p>如图所示：</p>
+<p><img src="/../images/20200806194613920.png" alt="链表3"></p>
+<p>这个链表起始节点为2， 终止节点为7， 各个节点分布在内存的不同地址空间上，通过指针串联在一起。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">    <span class="comment">// 结点的值</span></span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 下一个结点</span></span><br><span class="line">    ListNode next;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(无参)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(有一个参数)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(有两个参数)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">(<span class="type">int</span> val, ListNode next)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">        <span class="built_in">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">JavaScript:</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">  val;</span><br><span class="line">  next = <span class="literal">null</span>;</span><br><span class="line">  constructor(value) &#123;</span><br><span class="line">    <span class="built_in">this</span>.val = value;</span><br><span class="line">    <span class="built_in">this</span>.next = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/../images/DSA/Page1.jpg" alt="Page1"></p>
 <p><img src="/.com//Page2.jpg" alt="Page2"><img src="/../images/DSA/Page3.jpg" alt="Page1"></p>
 <p><img src="/../images/DSA/Page4.jpg" alt="Page3"><img src="/../images/DSA/Page5.jpg" alt="Page4"><img src="/../images/DSA/Page6.jpg" alt="Page5"><img src="/../images/DSA/Page7.jpg" alt="Page6"><img src="/../images/DSA/Page8.jpg" alt="Page7"><img src="/../images/DSA/Page8.jpg" alt="Page8"><img src="/../images/DSA/Page9.jpg" alt="Page9"><img src="/../images/DSA/Page10.jpg" alt="Page10"><img src="/../images/DSA/Page11.jpg" alt="Page11"><img src="/../images/DSA/Page12.jpg" alt="Page12"></p>
 <h3 id="Trees"><a href="#Trees" class="headerlink" title="Trees"></a>Trees</h3><h4 id="leetcode-104"><a href="#leetcode-104" class="headerlink" title="leetcode 104"></a>leetcode 104</h4><p><img src="/../images/DSA/Page13.jpg" alt="Page13"><img src="/../images/DSA/Page14.jpg" alt="Page14"><img src="/../images/DSA/Page15.jpg" alt="Page15"><img src="/../images/DSA/Page16.jpg" alt="Page16"><img src="/../images/DSA/Page17.jpg" alt="Page17"><img src="/../images/DSA/Page18.jpg" alt="Page18"><img src="/../images/DSA/Page19.jpg" alt="Page19"><img src="/../images/DSA/Page20.jpg" alt="Page20"><img src="/../images/DSA/Page21.jpg" alt="Page21"><img src="/../images/DSA/Page22.jpg" alt="Page22"><img src="/../images/DSA/Page23.jpg" alt="Page23"><img src="/../images/DSA/Page24.jpg" alt="Page24"><img src="/../images/DSA/Page25.jpg" alt="Page25"><img src="/../images/DSA/Page26.jpg" alt="Page26"><img src="/../images/DSA/Page27.jpg" alt="Page27"></p>
@@ -2318,20 +2382,6 @@
 <p>看了下图，就应该明白了：</p>
 <p><img src="/../images/%E7%AE%97%E6%B3%95%E9%80%9A%E5%85%B3%E6%95%B0%E7%BB%843.png" alt="算法通关数组3"></p>
 <p>所以<strong>Java的二维数组在内存中不是 <code>3\*4</code> 的连续地址空间，而是四条连续的地址空间组成！</strong></p>
-<h2 id="Linkedlist"><a href="#Linkedlist" class="headerlink" title="Linkedlist"></a>Linkedlist</h2><p>什么是链表，链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向null（空指针的意思）。</p>
-<p>链表的入口节点称为链表的头结点也就是head。</p>
-<p>如图所示： <img src="/../images/20200806194529815.png" alt="链表1"></p>
-<p>了解完链表的类型，再来说一说链表在内存中的存储方式。</p>
-<p>数组是在内存中是连续分布的，但是链表在内存中可不是连续分布的。</p>
-<p>链表是通过指针域的指针链接在内存中各个节点。</p>
-<p>所以链表中的节点在内存中不是连续分布的 ，而是散乱分布在内存中的某地址上，分配机制取决于操作系统的内存管理。</p>
-<p>如图所示：</p>
-<p><img src="/../images/20200806194613920.png" alt="链表3"></p>
-<p>这个链表起始节点为2， 终止节点为7， 各个节点分布在内存的不同地址空间上，通过指针串联在一起。</p>
-<h1 id><a href="#" class="headerlink" title="#"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E9%93%BE%E8%A1%A8%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89">#</a></h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">    <span class="comment">// 结点的值</span></span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 下一个结点</span></span><br><span class="line">    ListNode next;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(无参)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(有一个参数)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 节点的构造函数(有两个参数)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">(<span class="type">int</span> val, ListNode next)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">        <span class="built_in">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">JavaScript:</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">  val;</span><br><span class="line">  next = <span class="literal">null</span>;</span><br><span class="line">  constructor(value) &#123;</span><br><span class="line">    <span class="built_in">this</span>.val = value;</span><br><span class="line">    <span class="built_in">this</span>.next = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h2><h3 id="哈希碰撞"><a href="#哈希碰撞" class="headerlink" title="哈希碰撞"></a>哈希碰撞</h3><p>如图所示，小李和小王都映射到了索引下标 1 的位置，<strong>这一现象叫做哈希碰撞</strong>。</p>
 <p><img src="/../images/2021010423494884.png" alt="哈希表3"></p>
 <p>一般哈希碰撞有两种解决方法， 拉链法和线性探测法。</p>
@@ -4625,112 +4675,6 @@
 <p>从上述代码执行结果可知，打印的Key确实是按照<code>Comparator</code>定义的顺序排序的。如果要根据Key查找Value，我们可以传入一个<code>new Person(&quot;Bob&quot;)</code>作为Key，它会返回对应的<code>Integer</code>值<code>2</code>。</p>
 <p>另外，注意到<code>Person</code>类并未覆写<code>equals()</code>和<code>hashCode()</code>，因为<code>TreeMap</code>不使用<code>equals()</code>和<code>hashCode()</code>。</p>
 <p>我们来看一个稍微复杂的例子：这次我们定义了<code>Student</code>类，并用分数<code>score</code>进行排序，高分在前：</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-mall-developing"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/03/31/mall-developing/"
-    >mall developing</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/03/31/mall-developing/" class="article-date">
-  <time datetime="2023-03-31T22:53:13.000Z" itemprop="datePublished">2023-03-31</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h1><h2 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h2><p><strong>captcha disappearance</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.javazxz.com/thread-7116-1-1.html">https://www.javazxz.com/thread-7116-1-1.html</a></p>
-<h2 id="Bug2"><a href="#Bug2" class="headerlink" title="Bug2."></a>Bug2.</h2><p><strong>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</strong></p>
-<p>network problem. The student.gla.ac.uk network filed cannot access to tencent server.</p>
-<h2 id="Bug3"><a href="#Bug3" class="headerlink" title="Bug3."></a>Bug3.</h2><p><strong>No spring.config.import property has been defined</strong></p>
-<p>产生问题的原因是bootstrap.properties比application.properties的优先级要高<br>由于bootstrap.properties是系统级的资源配置文件，是用在程序引导执行时更加早期配置信息读取；<br>而application.properties是用户级的资源配置文件，是用来后续的一些配置所需要的公共参数。<br>但是在SpringCloud 2020.* 版本把bootstrap禁用了，导致在读取文件的时候读取不到而报错，所以我们只要把bootstrap从新导入进来就会生效了。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.clouds<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在全部使用nacos配置后，就不用引用这个了</p>
-<h1 id="Config"><a href="#Config" class="headerlink" title="Config:"></a>Config:</h1><h2 id="1-redis"><a href="#1-redis" class="headerlink" title="1. redis"></a>1. redis</h2><p>Remote configuration:![image-20230403164112175](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164112175.png)</p>
-<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>![image-20230403164158804](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164158804.png)</p>
-<p>![image-20230403164227851](&#x2F;Users&#x2F;joshua&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403164227851.png)</p>
-<p><strong>JDBC</strong></p>
-<p>Info:</p>
-<p>Url:jdbc:mysql:&#x2F;&#x2F;47.98.63.250:3306&#x2F;mall_pms</p>
-<p><em>use the server’s public ip addr</em></p>
-<p>DBMS: MySQL (ver. 5.7.41)<br>Case sensitivity: plain&#x3D;exact, delimited&#x3D;exact<br>Driver: MySQL Connector&#x2F;J (ver. mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0), JDBC4.2)</p>
-<p>Ping: 1 sec, 25 ms<br>SSL: yes</p>
-<p><strong>nacos:</strong></p>
-<p>nacos配置按照最新版本的springcloud alibaba来</p>
-<p>不用使用bootstrap的配置文件来定位nacos</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 排除 bootstrap, 未来版本 spring-cloud-alibaba 应该在 spring boot &gt;= 2.4.0 时将该依赖设置为 optional --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">        <span class="attr">namespace:</span> <span class="string">2e40d043-66f9-4a92-acc1-af90e80b9204</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">import:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mall-coupon.yml?group=dev</span> <span class="comment"># 监听 DEFAULT_GROUP:mall-coupon.yml覆盖默认 group, 监听 group_01:test01.yml</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:datasource.yml?group=dev&amp;refreshEnabled=false</span> <span class="comment"># 不开启动态刷新</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:mybatis.yml?group=dev</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:other.yml?group=dev</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>容器重启数据丢失问题:</strong></p>
-<p><strong>MySQL</strong> <strong>配置</strong> </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /mydata/mysql/conf/my.cnf </span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[client] </span><br><span class="line"></span><br><span class="line">default-character-set=utf8 </span><br><span class="line"></span><br><span class="line">[mysql] </span><br><span class="line"></span><br><span class="line">default-character-set=utf8 </span><br><span class="line"></span><br><span class="line">[mysqld] </span><br><span class="line"></span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8_unicode_ci&#x27;</span> </span><br><span class="line"></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8&#x27;</span> </span><br><span class="line"></span><br><span class="line">character-set-server=utf8 </span><br><span class="line"></span><br><span class="line">collation-server=utf8_unicode_ci </span><br><span class="line"></span><br><span class="line">skip-character-set-client-handshake </span><br><span class="line"></span><br><span class="line">skip-name-resolve</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 \</span><br><span class="line">--name mysql \</span><br><span class="line">-v /mydata/mysql/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql/conf:/etc/mysql/my.cnf  \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root \</span><br><span class="line">-d mysql:5.7 </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>通过容器的</strong> <strong>mysql</strong> <strong>命令行工具连接</strong> </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql mysql -uroot -proot</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>设置</strong> <strong>root</strong> <strong>远程访问</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified by <span class="string">&#x27;root&#x27;</span> with grant option; </span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /etc/mysql</span><br><span class="line"><span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
-
-<p>解决方法<br>了解上面的介绍后，解决它就很简单了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a 找到我们上次运行的容器<span class="built_in">id</span></span><br><span class="line">docker restart <span class="built_in">id</span> 即可</span><br></pre></td></tr></table></figure>
-
-<p>你没看错就这样就完了。</p>
-<p>我这里创建了volume容器来对其进行持久化，位置在&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;mysql-data&#x2F;_data，从mysql容器中mount在我的cloud server上的路径为my&#x2F;own</p>
  
       <!-- reward -->
       
