@@ -168,6 +168,317 @@
     
     
     <article
+  id="post-docker"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/06/17/docker/"
+    >docker</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/06/17/docker/" class="article-date">
+  <time datetime="2023-06-17T09:13:50.000Z" itemprop="datePublished">2023-06-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="docker容器使用"><a href="#docker容器使用" class="headerlink" title="docker容器使用"></a>docker容器使用</h2><h3 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a><strong>获取镜像</strong></h3><p><code>docker pull</code> 可以来载入镜像</p>
+<h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a><strong>启动容器</strong></h3><p><code>docker run -it ubuntu /bin/bash</code></p>
+<p>参数说明：</p>
+<ul>
+<li><strong>-i</strong>: 交互式操作。</li>
+<li><strong>-t</strong>: 终端。</li>
+<li><strong>ubuntu</strong>: ubuntu 镜像。</li>
+<li><strong>&#x2F;bin&#x2F;bash</strong>：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 &#x2F;bin&#x2F;bash。</li>
+</ul>
+<h3 id="退出终端"><a href="#退出终端" class="headerlink" title="退出终端"></a><strong>退出终端</strong></h3><p><code>exit</code></p>
+<h3 id="查看所有的容器命令如下："><a href="#查看所有的容器命令如下：" class="headerlink" title="查看所有的容器命令如下："></a><strong>查看所有的容器命令如下：</strong></h3><p><code>docker ps -a</code></p>
+<p>然后可以用</p>
+<p><code>docker start</code>来启动已经关闭的容器</p>
+<p><code>docker stop</code>来关闭容器</p>
+<p><code>docker restart</code></p>
+<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a><strong>进入容器</strong></h3><p>在使用 <strong>-d</strong> 参数时，容器启动后会进入后台。此时想要进入容器，可以通过以下指令进入：</p>
+<ul>
+<li><strong>docker attach</strong></li>
+<li><strong>docker exec</strong>：推荐大家使用 docker exec 命令，因为此命令会退出容器终端，但不会导致容器的停止。</li>
+</ul>
+<p><strong>attach 命令</strong>，如果从这个容器退出，会导致容器的停止。</p>
+<h3 id="导出或者导入容器"><a href="#导出或者导入容器" class="headerlink" title="导出或者导入容器"></a><strong>导出或者导入容器</strong></h3><p><strong>导出容器</strong></p>
+<p>如果要导出本地某个容器，可以使用 <strong>docker export</strong> 命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">export</span> 1e560fca3906 &gt; ubuntu.tar</span><br></pre></td></tr></table></figure>
+
+<p><strong>导入容器快照</strong></p>
+<p>可以使用 docker import 从容器快照文件中再导入为镜像，以下实例将快照文件 ubuntu.tar 导入到镜像 test&#x2F;ubuntu:v1:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> docker/ubuntu.tar | docker import - <span class="built_in">test</span>/ubuntu:v1</span><br></pre></td></tr></table></figure>
+
+<p>此外，也可以通过指定 URL 或者某个目录来导入，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker import http://example.com/exampleimage.tgz example/imagerep</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a><strong>删除容器</strong></h3><p>删除容器使用 <strong>docker rm</strong> 命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> -f 1e560fca3906</span><br></pre></td></tr></table></figure>
+
+<p>下面的命令可以清理掉所有处于终止状态的容器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container prune</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="运行web"><a href="#运行web" class="headerlink" title="运行web"></a><strong>运行web</strong></h3><p>前面我们运行的容器并没有一些什么特别的用处。</p>
+<p>接下来让我们尝试使用 docker 构建一个 web 应用程序。</p>
+<p>我们将在docker容器中运行一个 Python Flask 应用来运行一个web应用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull training/webapp  <span class="comment"># 载入镜像</span></span><br><span class="line">docker run -d -P training/webapp python app.py</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>**-d:**让容器在后台运行。</li>
+<li>**-P:**将容器内部使用的网络端口随机映射到我们使用的主机上。</li>
+</ul>
+<p><strong>端口信息</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PORTS</span><br><span class="line">0.0.0.0:32769-&gt;5000/tcp</span><br></pre></td></tr></table></figure>
+
+<p>我们也可以通过 -p 参数来设置不一样的端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d -p 5000:5000 training/webapp python app.py</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="网络端口的快捷方式"><a href="#网络端口的快捷方式" class="headerlink" title="网络端口的快捷方式"></a>网络端口的快捷方式</h3><p>通过 <strong>docker ps</strong> 命令可以查看到容器的端口映射，<strong>docker</strong> 还提供了另一个快捷方式 <strong>docker port</strong>，使用 <strong>docker port</strong> 可以查看指定 （ID 或者名字）容器的某个确定端口映射到宿主机的端口号。</p>
+<p>上面我们创建的 web 应用容器 ID 为 <strong>bf08b7f2cd89</strong> 名字为 <strong>wizardly_chandrasekhar</strong>。</p>
+<p>我可以使用 <strong>docker port bf08b7f2cd89</strong> 或 <strong>docker port wizardly_chandrasekhar</strong> 来查看容器端口的映射情况。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker port bf08b7f2cd89</span><br><span class="line">5000/tcp -&gt; 0.0.0.0:5000</span><br><span class="line"></span><br><span class="line">$ docker port wizardly_chandrasekhar</span><br><span class="line">5000/tcp -&gt; 0.0.0.0:5000</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="查看-WEB-应用程序日志"><a href="#查看-WEB-应用程序日志" class="headerlink" title="查看 WEB 应用程序日志"></a>查看 WEB 应用程序日志</h3><p>docker logs [ID或者名字] 可以查看容器内部的标准输出。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker logs -f bf08b7f2cd89</span><br><span class="line"> * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)</span><br><span class="line">192.168.239.1 - - [09/May/2016 16:30:37] <span class="string">&quot;GET / HTTP/1.1&quot;</span> 200 -</span><br><span class="line">192.168.239.1 - - [09/May/2016 16:30:37] <span class="string">&quot;GET /favicon.ico HTTP/1.1&quot;</span> 404 -</span><br></pre></td></tr></table></figure>
+
+<p><strong>-f:</strong> 让 <strong>docker logs</strong> 像使用 <strong>tail -f</strong> 一样来输出容器内部的标准输出。</p>
+<p>从上面，我们可以看到应用程序使用的是 5000 端口并且能够查看到应用程序的访问日志。</p>
+<h3 id="查看WEB应用程序容器的进程"><a href="#查看WEB应用程序容器的进程" class="headerlink" title="查看WEB应用程序容器的进程"></a>查看WEB应用程序容器的进程</h3><p>我们还可以使用 docker top 来查看容器内部运行的进程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker top wizardly_chandrasekhar</span><br><span class="line">UID     PID         PPID          ...       TIME                CMD</span><br><span class="line">root    23245       23228         ...       00:00:00            python app.py</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="检查-WEB-应用程序"><a href="#检查-WEB-应用程序" class="headerlink" title="检查 WEB 应用程序"></a>检查 WEB 应用程序</h3><p>使用 <strong>docker inspect</strong> 来查看 Docker 的底层信息。它会返回一个 JSON 文件记录着 Docker 容器的配置和状态信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker inspect wizardly_chandrasekhar</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;Id&quot;</span>: <span class="string">&quot;bf08b7f2cd897b5964943134aa6d373e355c286db9b9885b1f60b6e8f82b2b85&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Created&quot;</span>: <span class="string">&quot;2018-09-17T01:41:26.174228707Z&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Path&quot;</span>: <span class="string">&quot;python&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Args&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;app.py&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;State&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;Status&quot;</span>: <span class="string">&quot;running&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Running&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="string">&quot;Paused&quot;</span>: <span class="literal">false</span>,9</span><br><span class="line">            <span class="string">&quot;Restarting&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">&quot;OOMKilled&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">&quot;Dead&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">&quot;Pid&quot;</span>: 23245,</span><br><span class="line">            <span class="string">&quot;ExitCode&quot;</span>: 0,</span><br><span class="line">            <span class="string">&quot;Error&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;StartedAt&quot;</span>: <span class="string">&quot;2018-09-17T01:41:26.494185806Z&quot;</span>,</span><br><span class="line">            <span class="string">&quot;FinishedAt&quot;</span>: <span class="string">&quot;0001-01-01T00:00:00Z&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启WEB应用容器"><a href="#重启WEB应用容器" class="headerlink" title="重启WEB应用容器"></a>重启WEB应用容器</h3><p>已经停止的容器，我们可以使用命令 docker start 来启动。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker start wizardly_chandrasekhar</span><br><span class="line">wizardly_chandrasekhar</span><br></pre></td></tr></table></figure>
+
+<p>docker ps -l 查询最后一次创建的容器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#  docker ps -l </span><br><span class="line">CONTAINER ID        IMAGE                             PORTS                     NAMES</span><br><span class="line">bf08b7f2cd89        training/webapp     ...        0.0.0.0:5000-&gt;5000/tcp    wizardly_chandrasekhar</span><br></pre></td></tr></table></figure>
+
+<p>正在运行的容器，我们可以使用 <strong>docker restart</strong> 命令来重启。</p>
+<hr>
+<h3 id="移除WEB应用容器"><a href="#移除WEB应用容器" class="headerlink" title="移除WEB应用容器"></a>移除WEB应用容器</h3><p>我们可以使用 docker rm 命令来删除不需要的容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker <span class="built_in">rm</span> wizardly_chandrasekhar  </span><br><span class="line">wizardly_chandrasekhar</span><br></pre></td></tr></table></figure>
+
+<p>删除容器时，容器必须是停止状态，否则会报如下错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker <span class="built_in">rm</span> wizardly_chandrasekhar</span><br><span class="line">Error response from daemon: You cannot remove a running container bf08b7f2cd897b5964943134aa6d373e355c286db9b9885b1f60b6e8f82b2b85. Stop the container before attempting removal or force remove</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h2><p><strong>docker images</strong></p>
+<p>各个选项说明:</p>
+<ul>
+<li><strong>REPOSITORY：</strong>表示镜像的仓库源</li>
+<li><strong>TAG：</strong>镜像的标签</li>
+<li><strong>IMAGE ID：</strong>镜像ID</li>
+<li><strong>CREATED：</strong>镜像创建时间</li>
+<li><strong>SIZE：</strong>镜像大小</li>
+</ul>
+<p>同一仓库源可以有多个 TAG，代表这个仓库源的不同个版本，如 ubuntu 仓库源里，有 15.10、14.04 等多个不同的版本，我们使用 REPOSITORY:TAG 来定义不同的镜像。</p>
+<p>所以，我们如果要使用版本为15.10的ubuntu系统镜像来运行容器时，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu:15.10 /bin/bash </span><br></pre></td></tr></table></figure>
+
+<p>如果你不指定一个镜像的版本标签，例如你只使用 ubuntu，docker 将默认使用 ubuntu:latest 镜像。</p>
+<h3 id="获取一个新的镜像"><a href="#获取一个新的镜像" class="headerlink" title="获取一个新的镜像"></a>获取一个新的镜像</h3><p>当我们在本地主机上使用一个不存在的镜像时 Docker 就会自动下载这个镜像。如果我们想预先下载这个镜像，我们可以使用 docker pull 命令来下载它。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Crunoob@runoob:~$ docker pull ubuntu:13.10</span><br><span class="line">13.10: Pulling from library/ubuntu</span><br><span class="line">6599cadaf950: Pull complete </span><br><span class="line">23eda618d451: Pull complete </span><br><span class="line">f0be3084efe9: Pull complete </span><br><span class="line">52de432f084b: Pull complete </span><br><span class="line">a3ed95caeb02: Pull complete </span><br><span class="line">Digest: sha256:15b79a6654811c8d992ebacdfbd5152fcf3d165e374e264076aa435214a947a3</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> ubuntu:13.10</span><br></pre></td></tr></table></figure>
+
+<p>下载完成后，我们可以直接使用这个镜像来运行容器。</p>
+<h3 id="查找镜像"><a href="#查找镜像" class="headerlink" title="查找镜像"></a>查找镜像</h3><p>我们可以从 Docker Hub 网站来搜索镜像，Docker Hub 网址为： <strong><a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></strong></p>
+<p>我们也可以使用 docker search 命令来搜索镜像。比如我们需要一个 httpd 的镜像来作为我们的 web 服务。我们可以通过 docker search 命令搜索 httpd 来寻找适合我们的镜像。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search httpd</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>NAME:</strong> 镜像仓库源的名称</p>
+<p><strong>DESCRIPTION:</strong> 镜像的描述</p>
+<p><strong>OFFICIAL:</strong> 是否 docker 官方发布</p>
+<p><strong>stars:</strong> 类似 Github 里面的 star，表示点赞、喜欢的意思。</p>
+<p><strong>AUTOMATED:</strong> 自动构建。</p>
+<h3 id="拖取镜像"><a href="#拖取镜像" class="headerlink" title="拖取镜像"></a>拖取镜像</h3><p>我们决定使用上图中的 httpd 官方版本的镜像，使用命令 docker pull 来下载镜像。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker pull httpd</span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/httpd</span><br><span class="line">8b87079b7a06: Pulling fs layer </span><br><span class="line">a3ed95caeb02: Download complete </span><br><span class="line">0d62ec9c6a76: Download complete </span><br><span class="line">a329d50397b9: Download complete </span><br><span class="line">ea7c1f032b5c: Waiting </span><br><span class="line">be44112b72c7: Waiting</span><br></pre></td></tr></table></figure>
+
+<p>下载完成后，我们就可以使用这个镜像了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker run httpd</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><p>镜像删除使用 <strong>docker rmi</strong> 命令，比如我们删除 hello-world 镜像：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rmi hello-world</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="当我们从-docker-镜像仓库中下载的镜像不能满足我们的需求时，我们可以通过以下两种方式对镜像进行更改。"><a href="#当我们从-docker-镜像仓库中下载的镜像不能满足我们的需求时，我们可以通过以下两种方式对镜像进行更改。" class="headerlink" title="当我们从 docker 镜像仓库中下载的镜像不能满足我们的需求时，我们可以通过以下两种方式对镜像进行更改。"></a>当我们从 docker 镜像仓库中下载的镜像不能满足我们的需求时，我们可以通过以下两种方式对镜像进行更改。</h3><ul>
+<li>1、从已经创建的容器中更新镜像，并且提交这个镜像</li>
+<li>2、使用 Dockerfile 指令来创建一个新的镜像</li>
+</ul>
+<h4 id="更新镜像"><a href="#更新镜像" class="headerlink" title="更新镜像"></a>更新镜像</h4><p>更新镜像之前，我们需要使用镜像来创建一个容器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker run -t -i ubuntu:15.10 /bin/bash</span><br><span class="line">root@e218edb10161:/<span class="comment"># </span></span><br></pre></td></tr></table></figure>
+
+<p>在运行的容器内使用 <strong>apt-get update</strong> 命令进行更新。</p>
+<p>在完成操作之后，输入 exit 命令来退出这个容器。</p>
+<p>此时 ID 为 e218edb10161 的容器，是按我们的需求更改的容器。我们可以通过命令 docker commit 来提交容器副本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m=<span class="string">&quot;has update&quot;</span> -a=<span class="string">&quot;runoob&quot;</span> e218edb10161 runoob/ubuntu:v2</span><br><span class="line">sha256:70bf1840fd7c0d2d8ef0a42a817eb29f854c1af8f7c59fc03ac7bdee9545aff8</span><br></pre></td></tr></table></figure>
+
+<p>各个参数说明：</p>
+<ul>
+<li><strong>-m:</strong> 提交的描述信息</li>
+<li><strong>-a:</strong> 指定镜像作者</li>
+<li><strong>e218edb10161：</strong>容器 ID</li>
+<li><strong>runoob&#x2F;ubuntu:v2:</strong> 指定要创建的目标镜像名</li>
+</ul>
+<p>我们可以使用 <strong>docker images</strong> 命令来查看我们的新镜像 <strong>runoob&#x2F;ubuntu:v2</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">runoob/ubuntu       v2                  70bf1840fd7c        15 seconds ago      158.5 MB</span><br><span class="line">ubuntu              14.04               90d5884b1ee0        5 days ago          188 MB</span><br><span class="line">php                 5.6                 f40e9e0f10c8        9 days ago          444.8 MB</span><br><span class="line">nginx               latest              6f8d099c3adc        12 days ago         182.7 MB</span><br><span class="line">mysql               5.6                 f2e8d6c772c0        3 weeks ago         324.6 MB</span><br><span class="line">httpd               latest              02ef73cf1bc0        3 weeks ago         194.4 MB</span><br><span class="line">ubuntu              15.10               4e3b13c8a266        4 weeks ago         136.3 MB</span><br><span class="line">hello-world         latest              690ed74de00f        6 months ago        960 B</span><br><span class="line">training/webapp     latest              6fae60ef3446        12 months ago       348.8 MB</span><br></pre></td></tr></table></figure>
+
+<p>使用我们的新镜像 <strong>runoob&#x2F;ubuntu</strong> 来启动一个容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker run -t -i runoob/ubuntu:v2 /bin/bash                            </span><br><span class="line">root@1a9fbdeb5da3:/<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h4><p>我们使用命令 <strong>docker build</strong> ， 从零开始来创建一个新的镜像。为此，我们需要创建一个 Dockerfile 文件，其中包含一组指令来告诉 Docker 如何构建我们的镜像。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ <span class="built_in">cat</span> Dockerfile </span><br><span class="line">FROM    centos:6.7</span><br><span class="line">MAINTAINER      Fisher <span class="string">&quot;fisher@sudops.com&quot;</span></span><br><span class="line"></span><br><span class="line">RUN     /bin/echo <span class="string">&#x27;root:123456&#x27;</span> |chpasswd</span><br><span class="line">RUN     useradd runoob</span><br><span class="line">RUN     /bin/echo <span class="string">&#x27;runoob:123456&#x27;</span> |chpasswd</span><br><span class="line">RUN     /bin/echo -e <span class="string">&quot;LANG=\&quot;en_US.UTF-8\&quot;&quot;</span> &gt;/etc/default/local</span><br><span class="line">EXPOSE  22</span><br><span class="line">EXPOSE  80</span><br><span class="line">CMD     /usr/sbin/sshd -D</span><br></pre></td></tr></table></figure>
+
+<p>每一个指令都会在镜像上创建一个新的层，每一个指令的前缀都必须是大写的。</p>
+<p>第一条FROM，指定使用哪个镜像源</p>
+<p>RUN 指令告诉docker 在镜像内执行命令，安装了什么。。。</p>
+<p>然后，我们使用 Dockerfile 文件，通过 docker build 命令来构建一个镜像。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker build -t runoob/centos:6.7 .</span><br><span class="line">Sending build context to Docker daemon 17.92 kB</span><br><span class="line">Step 1 : FROM centos:6.7</span><br><span class="line"> ---&amp;gt; d95b5ca17cc3</span><br><span class="line">Step 2 : MAINTAINER Fisher <span class="string">&quot;fisher@sudops.com&quot;</span></span><br><span class="line"> ---&amp;gt; Using cache</span><br><span class="line"> ---&amp;gt; 0c92299c6f03</span><br><span class="line">Step 3 : RUN /bin/echo <span class="string">&#x27;root:123456&#x27;</span> |chpasswd</span><br><span class="line"> ---&amp;gt; Using cache</span><br><span class="line"> ---&amp;gt; 0397ce2fbd0a</span><br><span class="line">Step 4 : RUN useradd runoob</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<ul>
+<li><strong>-t</strong> ：指定要创建的目标镜像名</li>
+<li><strong>.</strong> ：Dockerfile 文件所在目录，可以指定Dockerfile 的绝对路径</li>
+</ul>
+<p>使用docker images 查看创建的镜像已经在列表中存在,镜像ID为860c279d2fec</p>
+<p>我们可以使用新的镜像来创建容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker run -t -i runoob/centos:6.7  /bin/bash</span><br><span class="line">[root@41c28d18b5fb /]<span class="comment"># id runoob</span></span><br><span class="line">uid=500(runoob) gid=500(runoob) <span class="built_in">groups</span>=500(runoob)</span><br></pre></td></tr></table></figure>
+
+<p>从上面看到新镜像已经包含我们创建的用户 runoob。</p>
+<h4 id="设置镜像标签"><a href="#设置镜像标签" class="headerlink" title="设置镜像标签"></a>设置镜像标签</h4><p>我们可以使用 docker tag 命令，为镜像添加一个新的标签。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker tag 860c279d2fec runoob/centos:dev</span><br></pre></td></tr></table></figure>
+
+<p>docker tag 镜像ID，这里是 860c279d2fec ,用户名称、镜像源名(repository name)和新的标签名(tag)。</p>
+<p>使用 docker images 命令可以看到，ID为860c279d2fec的镜像多一个标签。</p>
+<h2 id="Docker-容器连接"><a href="#Docker-容器连接" class="headerlink" title="Docker 容器连接"></a>Docker 容器连接</h2><p>让外部也可以访问这些应用，可以通过 <strong>-P</strong> 或 <strong>-p</strong> 参数来指定端口映射。</p>
+<h3 id="网络端口映射"><a href="#网络端口映射" class="headerlink" title="网络端口映射"></a>网络端口映射</h3><p>我们创建了一个 python 应用的容器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker run -d -P training/webapp python app.py</span><br><span class="line">fce072cc88cee71b1cdceb57c2821d054a4a59f67da6b416fceb5593f059fc6d</span><br></pre></td></tr></table></figure>
+
+<p>另外，我们可以指定容器绑定的网络地址，比如绑定 127.0.0.1。</p>
+<p>我们使用 <strong>-P</strong> 绑定端口号，使用 <strong>docker ps</strong> 可以看到容器端口 5000 绑定主机端口 32768。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker ps</span><br><span class="line">CONTAINER ID    IMAGE               COMMAND            ...           PORTS                     NAMES</span><br><span class="line">fce072cc88ce    training/webapp     <span class="string">&quot;python app.py&quot;</span>    ...     0.0.0.0:32768-&gt;5000/tcp   grave_hopper</span><br></pre></td></tr></table></figure>
+
+<p>我们也可以使用 <strong>-p</strong> 标识来指定容器端口绑定到主机端口。</p>
+<p>两种方式的区别是:</p>
+<ul>
+<li><strong>-P :<strong>是容器内部端口</strong>随机</strong>映射到主机的端口。</li>
+<li><strong>-p :</strong> 是容器内部端口绑定到<strong>指定</strong>的主机端口。（上面的-P的就是随机分配的32768端口，而下面的则分配了主机的5000端口）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker run -d -p 5000:5000 training/webapp python app.py</span><br></pre></td></tr></table></figure>
+
+
+
+<p>另外，我们可以指定容器绑定的网络地址，比如绑定 127.0.0.1。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 127.0.0.1:5001:5000 training/webapp python app.py</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就可以通过访问 127.0.0.1:5001 来访问容器的 5000 端口。</p>
+<p>上面的例子中，默认都是绑定 tcp 端口，如果要绑定 UDP 端口，可以在端口后面加上 <strong>&#x2F;udp</strong>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 127.0.0.1:5000:5000/udp training/webapp python app.py</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>docker port</strong> 命令可以让我们快捷地查看端口的绑定情况。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$ docker port adoring_stonebraker 5000</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Docker-容器互联"><a href="#Docker-容器互联" class="headerlink" title="Docker 容器互联"></a>Docker 容器互联</h3><p>端口映射并不是唯一把 docker 连接到另一个容器的方法。</p>
+<p>docker 有一个连接系统允许将多个容器连接在一起，共享连接信息。</p>
+<p>docker 连接会创建一个父子关系，其中父容器可以看到子容器的信息。</p>
+<h4 id="容器命名"><a href="#容器命名" class="headerlink" title="容器命名"></a>容器命名</h4><p>当我们创建一个容器的时候，docker 会自动对它进行命名。另外，我们也可以使用 <strong>–name</strong> 标识来命名容器，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~$  docker run -d -P --name runoob training/webapp python app.py</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="新建网络"><a href="#新建网络" class="headerlink" title="新建网络"></a>新建网络</h4><p>下面先创建一个新的 Docker 网络。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker network create -d bridge test-net</span><br></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<p><strong>-d</strong>：参数指定 Docker 网络类型，有 bridge、overlay。</p>
+<p>其中 overlay 网络类型用于 Swarm mode，在本小节中你可以忽略它。</p>
+<h3 id="连接容器"><a href="#连接容器" class="headerlink" title="连接容器"></a>连接容器</h3><p>运行一个容器并连接到新建的 test-net 网络:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -itd --name test1 --network test-net ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>打开新的终端，再运行一个容器并加入到 test-net 网络:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -itd --name test2 --network test-net ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>用ping命令证明test1和test2都加入了test-net中。</p>
+<p>如果 test1、test2 容器内中无 ping 命令，则在容器内执行以下命令安装 ping（即学即用：可以在一个容器里安装好，提交容器到镜像，在以新的镜像重新运行以上俩个容器）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt install iputils-ping</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/docker-net3.png" alt="docker-net3"></p>
+<p>这里在test1中可以ping通test2</p>
+<p>这样，test1 容器和 test2 容器建立了互联关系。</p>
+<p>如果你有多个容器之间需要互相连接，推荐使用 Docker Compose.</p>
+<h4 id="配置-DNS"><a href="#配置-DNS" class="headerlink" title="配置 DNS"></a>配置 DNS</h4><p>我们可以在宿主机的 &#x2F;etc&#x2F;docker&#x2F;daemon.json 文件中增加以下内容来设置全部容器的 DNS：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;dns&quot;</span> : [</span><br><span class="line">    <span class="string">&quot;114.114.114.114&quot;</span>,</span><br><span class="line">    <span class="string">&quot;8.8.8.8&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置后，启动容器的 DNS 会自动配置为 114.114.114.114 和 8.8.8.8。</p>
+<p>配置完，需要重启 docker 才能生效。</p>
+<p>查看容器的 DNS 是否生效可以使用以下命令，它会输出容器的 DNS 信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --<span class="built_in">rm</span>  ubuntu  <span class="built_in">cat</span> etc/resolv.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>手动指定容器的配置</strong></p>
+<p>如果只想在指定的容器设置 DNS，则可以使用以下命令：	</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --<span class="built_in">rm</span> -h host_ubuntu  --dns=114.114.114.114 --dns-search=test.com ubuntu</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-job-seek"
   class="article article-type-post"
   itemscope
@@ -4507,606 +4818,6 @@
 <p> Note</p>
 <p>When running an application in Visual Studio, you can specify command-line arguments in the <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/visualstudio/ide/reference/debug-page-project-designer">Debug Page, Project Designer</a>.</p>
 <h4 id="3-Top-level-statements"><a href="#3-Top-level-statements" class="headerlink" title="3. Top-level statements"></a>3. Top-level statements</h4> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-java"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/04/01/java/"
-    >java studying</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/04/01/java/" class="article-date">
-  <time datetime="2023-04-01T22:53:13.000Z" itemprop="datePublished">2023-04-01</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="Comparable-vs-comparator"><a href="#Comparable-vs-comparator" class="headerlink" title="Comparable vs comparator"></a>Comparable vs comparator</h2><ul>
-<li><strong>第一，字面含义不同</strong></li>
-</ul>
-<p>我们先从二者的字面含义来理解它，Comparable翻译为中文是“比较”的意思，而Comparator是“比较器”的意思。Comparable是以-able结尾的，表示它自身具备着某种能力，而Comparator是以-or结尾，表示自身是比较的参与者，这是从字面含义先来理解二者的不同。</p>
-<ul>
-<li><strong>第二，用法不同</strong></li>
-</ul>
-<p>二者都是顶级的接口，但拥有的方法和用法是不同的，下面我们分别来看。</p>
-<h3 id="Comparable用法"><a href="#Comparable用法" class="headerlink" title="Comparable用法"></a><strong>Comparable用法</strong></h3><p>Comparable接口只有一个方法compareTo，实现Comparable接口并重写compareTo方法就可以实现某个类的排序了，它支持Collections.sort和Arrays.sort的排序。 </p>
-<p>在我们没有使用Comparable时，程序的执行是这样的</p>
-<p><img src="/../images/v2-227ef5bbf20b532f1bb342573b7ebef5_1440w.png" alt="v2-227ef5bbf20b532f1bb342573b7ebef5_1440w"></p>
-<p><img src="/../images/v2-6c8292dea0e393ceffffabc72cdae6e3_1440w.png" alt="v2-6c8292dea0e393ceffffabc72cdae6e3_1440w"></p>
-<p>从上图可以看出，当自定义类Person没有实现Comparable时，List集合是没有排序的，只能以元素的插入顺序作为输出的顺序。 </p>
-<p>然而这个时候，老板有一个需求：需要根据Person对象的年龄age属性进行倒序，也就是根据age属性从大到小进行排序，这个时候就可以请出，我们本文的主角：Comparable出场了。 </p>
-<p>Comparable的使用是在自定义对象的类中实现Comparable接口，并重写compareTo方法来实现自定义排序规则的，具体实现代码如下：</p>
-<p><img src="/../images/v2-1cbf6d14a01aa2489f5a8a5a3e80b4d2_1440w.png" alt="v2-1cbf6d14a01aa2489f5a8a5a3e80b4d2_1440w"></p>
-<p>程序的执行结果如下图所示：</p>
-<p><img src="/../images/v2-724747d21c4f51c7b37ab98df34f5db7_1440w.png" alt="v2-724747d21c4f51c7b37ab98df34f5db7_1440w"></p>
-<h4 id="compareTo排序方法说明"><a href="#compareTo排序方法说明" class="headerlink" title="compareTo排序方法说明"></a>compareTo排序方法说明</h4><p>compareTo方法接收的参数p是要对比的对象，排序规则是用当前对象和要对比的对象进行比较，然后返回一个int类型的值。正序从小到大的排序规则是：使用当前的对象值减去要对比对象的值；而倒序从大到小的排序规则刚好相反：是用对比对象的值减去当前对象的值。 </p>
-<p>注意事项：如果自定义对象没有实现Comparable接口，那么它是不能使用Collections.sort方法进行排序的</p>
-<h3 id="Comparator用法"><a href="#Comparator用法" class="headerlink" title="Comparator用法"></a>Comparator用法</h3><p>Comparator和Comparable的排序方法是不同的，Comparable排序的方法是compareTo，而Comparator排序的方法是compare，具体实现代码如下：</p>
-<p><img src="/../images/v2-f742089317861a254770a57c2a41f0ee_1440w.png" alt="v2-f742089317861a254770a57c2a41f0ee_1440w"></p>
-<p>程序的执行结果如下图所示：</p>
-<p><img src="/../images/v2-dd7e3161f5eb2d2055f73a9796cf81ff_1440w.png" alt="v2-dd7e3161f5eb2d2055f73a9796cf81ff_1440w"></p>
-<p>匿名类:</p>
-<p><img src="/../images/v2-53099add8da4513a445681f7f835d05a_1440w.png" alt="v2-53099add8da4513a445681f7f835d05a_1440w"></p>
-<h3 id="第三，使用场景不同"><a href="#第三，使用场景不同" class="headerlink" title="第三，使用场景不同"></a>第三，使用场景不同</h3><p>通过上面示例的实现代码我们可以看出，使用Comparable必须要修改原有的类，也就是你要排序那个类，就要在那个中实现Comparable接口并重写compareTo方法，所以Comparable更像是“对内”进行排序的接口。 </p>
-<p>而Comparator的使用则不相同，Comparator无需修改原有类。也就是在最极端情况下，即使Person类是第三方提供的，我们依然可以通过创建新的自定义比较器Comparator，来实现对第三方类Person的排序功能。也就是说通过Comparator接口可以实现和原有类的解耦，在不修改原有类的情况下实现排序功能，所以Comparator可以看作是“对外”提供排序的接口。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Comparable和Comparator都是用来实现元素排序的，它们二者的区别如下：</p>
-<ul>
-<li>Comparable是“比较”的意思，而Comparator是“比较器”的意思；</li>
-<li>Comparable是通过重写compareTo方法实现排序的，而Comparator是通过重写compare方法实现排序的；</li>
-<li>Comparable必须由自定义类内部实现排序方法，而Comparator是外部定义并实现排序的。</li>
-</ul>
-<p>所以用一句话总结二者的区别：Comparable可以看作是“对内”进行排序接口，而Comparator是“对外”进行排序的接口。</p>
-<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>在Java中，List是一种接口类型，它定义了一组用于操作列表（List）数据结构的方法。ArrayList是List接口的一个实现类，它使用数组来实现List接口中定义的方法。在这里，使用List<Integer> list &#x3D; new ArrayList&lt;&gt;();这样的语法是因为：</Integer></p>
-<ol>
-<li>泛型：List<Integer>中的Integer表示这个List只能存储Integer类型的元素。这是Java泛型的一种应用，它可以在编译时检查类型错误，避免在运行时出现类型不匹配的错误。</Integer></li>
-<li>多态性：使用List接口作为类型声明，而不是具体的ArrayList类，可以让代码更具有可扩展性。这样，如果需要更改实现方式，只需要更改赋值右侧的实现类，而不需要更改其余代码。</li>
-<li>简洁性：使用diamond运算符（&lt;&gt;）可以让代码更简洁。在Java 7之前，需要写成List<Integer> list &#x3D; new ArrayList<Integer>();这样的形式。</Integer></Integer></li>
-</ol>
-<h3 id="Collection-sort"><a href="#Collection-sort" class="headerlink" title="Collection.sort()"></a>Collection.sort()</h3><p>如果要给自定义泛型的集合排序，需要确保该泛型类实现了 <code>Comparable</code> 接口，并重写 <code>compareTo</code> 方法。 <code>compareTo</code> 方法用于比较两个对象的大小关系，以便于排序。<strong>或者</strong>通过实现<code>Comparator</code>接口来给自定义范型的集合排序。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;Person&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// constructor, getter and setter methods</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(Person other)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(<span class="built_in">this</span>.age, other.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AgeComparator</span> <span class="keyword">implements</span> <span class="title class_">Comparator</span>&lt;Person&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Person p1, Person p2)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(p1.getAge(), p2.getAge());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Person&gt; persons = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        persons.add(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;John&quot;</span>, <span class="number">25</span>));</span><br><span class="line">        persons.add(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Alice&quot;</span>, <span class="number">30</span>));</span><br><span class="line">        persons.add(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Bob&quot;</span>, <span class="number">20</span>));</span><br><span class="line"></span><br><span class="line">        Collections.sort(persons, <span class="keyword">new</span> <span class="title class_">AgeComparator</span>());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Person p : persons) &#123;</span><br><span class="line">            System.out.println(p.getName() + <span class="string">&quot; &quot;</span> + p.getAge());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Object-Orientated"><a href="#Object-Orientated" class="headerlink" title="Object-Orientated"></a>Object-Orientated</h2><p><img src="/../images/java/Page1.jpg" alt="Page1"></p>
-<p><img src="/../images/java/Page2.jpg" alt="Page2"></p>
-<p><img src="/../images/java/Page3.jpg" alt="Page3"></p>
-<p><img src="/../images/java/Page4.jpg" alt="Page4"></p>
-<p><img src="/../images/java/Page5.jpg" alt="Page5"></p>
-<p><img src="/../images/java/Page6.jpg" alt="Page6"></p>
-<p><img src="/../images/java/Page7.jpg" alt="Page7"></p>
-<p><img src="/../images/java/Page8.jpg" alt="Page8"></p>
-<p><img src="/../images/java/Page9.jpg" alt="Page9"></p>
-<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>在Java中，如果一个Java对象可以在内部持有若干其他Java对象，并对外提供访问接口，我们把这种Java对象称为集合</p>
-<p>Java的数组可以看作是一种集合</p>
-<ul>
-<li>数组初始化后大小不可变；</li>
-<li>数组只能按索引顺序存取。</li>
-</ul>
-<p>Java标准库自带的<code>java.util</code>包提供了集合类：<code>Collection</code>. 它是除<code>Map</code>外所有其他集合类的根接口。Java的<code>java.util</code>包主要提供了以下三种类型的集合：</p>
-<ul>
-<li><code>List</code>：一种有序列表的集合，例如，按索引排列的<code>Student</code>的<code>List</code>；</li>
-<li><code>Set</code>：一种保证没有重复元素的集合，例如，所有无重复名称的<code>Student</code>的<code>Set</code>；</li>
-<li><code>Map</code>：一种通过键值（key-value）查找的映射表集合，例如，根据<code>Student</code>的<code>name</code>查找对应<code>Student</code>的<code>Map</code>。</li>
-</ul>
-<h3 id="List-1"><a href="#List-1" class="headerlink" title="List"></a>List</h3><p><code>ArrayList</code>在内部使用了数组来存储所有元素。例如，一个<code>ArrayList</code>拥有5个元素，实际数组大小为<code>6</code>(即有一个空位)</p>
-<p><code>ArrayList</code>把添加和删除的操作封装起来，让我们操作<code>List</code>类似于操作数组，却不用关心内部元素如何移动。</p>
-<p>我们考察<code>List&lt;E&gt;</code>接口，可以看到几个主要的接口方法：</p>
-<ul>
-<li>在末尾添加一个元素：<code>boolean add(E e)</code></li>
-<li>在指定索引添加一个元素：<code>boolean add(int index, E e)</code></li>
-<li>删除指定索引的元素：<code>E remove(int index)</code></li>
-<li>删除某个元素：<code>boolean remove(Object e)</code></li>
-<li>获取指定索引的元素：<code>E get(int index)</code></li>
-<li>获取链表大小（包含元素的个数）：<code>int size()</code></li>
-</ul>
-<p><code>LinkedList</code>通过“链表”也实现了List接口。在<code>LinkedList</code>中，它的内部每个元素都指向下一个元素。</p>
-<p>【遍历集合list】</p>
-<p>我们要始终坚持使用迭代器<code>Iterator</code>来访问<code>List</code>。<code>Iterator</code>本身也是一个对象，但它是由<code>List</code>的实例调用<code>iterator()</code>方法的时候创建的。<code>Iterator</code>对象知道如何遍历一个<code>List</code>，并且不同的<code>List</code>类型，返回的<code>Iterator</code>对象实现也是不同的，但总是具有最高的访问效率。</p>
-<p><code>Iterator</code>对象有两个方法：<code>boolean hasNext()</code>判断是否有下一个元素，<code>E next()</code>返回下一个元素。因此，使用<code>Iterator</code>遍历<code>List</code>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = List.of(<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;banana&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Iterator&lt;String&gt; it = list.iterator(); it.hasNext(); ) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> it.next();</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>Java的<code>for each</code>循环本身就可以帮我们使用<code>Iterator</code>遍历。上面的代码再改写如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = List.of(<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;banana&quot;</span>);</span><br><span class="line">   <span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">       System.out.println(s);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>【list转化为array】</p>
-<p>把<code>List</code>变为<code>Array</code>有三种方法，第一种是调用<code>toArray()</code>方法直接返回一个<code>Object[]</code>数组</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = List.of(<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;banana&quot;</span>);</span><br><span class="line">Object[] array = list.toArray();</span><br><span class="line"><span class="keyword">for</span> (Object s : array) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第二种方式是给<code>toArray(T[])</code>传入一个类型相同的<code>Array</code>，<code>List</code>内部自动把元素复制到传入的<code>Array</code>中：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = List.of(<span class="number">12</span>, <span class="number">34</span>, <span class="number">56</span>);</span><br><span class="line">       Integer[] array = list.toArray(<span class="keyword">new</span> <span class="title class_">Integer</span>[<span class="number">3</span>]);</span><br><span class="line">       <span class="keyword">for</span> (Integer n : array) &#123;</span><br><span class="line">           System.out.println(n);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-
-<p>最后一种更简洁的写法是通过<code>List</code>接口定义的<code>T[] toArray(IntFunction&lt;T[]&gt; generator)</code>方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer[] array = list.toArray(Integer[]::<span class="keyword">new</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p><code>Map</code>也是一个接口，最常用的实现类是<code>HashMap</code>。</p>
-<p><strong>始终牢记：Map中不存在重复的key，因为放入相同的key，只会把原有的key-value对应的value给替换掉。</strong></p>
-<p><strong>此外，在一个<code>Map</code>中，虽然<code>key</code>不能重复，但<code>value</code>是可以重复的</strong></p>
-<ul>
-<li><code>put(K key, V value)</code>: 将指定的键值对存储到HashMap中。</li>
-<li><code>get(Object key)</code>: 返回与指定键关联的值，如果键不存在，则返回null。</li>
-<li><code>containsKey(Object key)</code>: 检查HashMap中是否包含指定的键。</li>
-<li><code>containsValue(Object value)</code>: 检查HashMap中是否包含指定的值。</li>
-<li><code>remove(Object key)</code>: 从HashMap中删除指定键对应的键值对。</li>
-<li><code>size()</code>: 返回HashMap中键值对的数量。</li>
-<li><code>isEmpty()</code>: 检查HashMap是否为空。</li>
-<li><code>clear()</code>: 清空HashMap，删除所有的键值对。</li>
-<li><code>keySet()</code>: 返回HashMap中所有键构成的Set集合。</li>
-<li><code>values()</code>: 返回HashMap中所有值构成的Collection集合。</li>
-<li><code>entrySet()</code>: 返回HashMap中所有键值对构成的Set集合。</li>
-<li><code>putAll(Map&lt;? extends K, ? extends V&gt; m)</code>: 将另一个Map中的所有键值对添加到HashMap中。</li>
-<li><code>replaceAll(BiFunction&lt;? super K, ? super V, ? extends V&gt; function)</code>: 使用指定的函数对HashMap中的每个键值对进行替换操作。</li>
-<li><code>computeIfAbsent(K key, Function&lt;? super K, ? extends V&gt; mappingFunction)</code>: 如果指定的键尚未与值关联，则使用给定函数计算一个值，并将其存储到HashMap中。</li>
-<li><code>computeIfPresent(K key, BiFunction&lt;? super K, ? super V, ? extends V&gt; remappingFunction)</code>: 如果指定的键存在且与非空值关联，则使用给定函数重新计算该值，</li>
-</ul>
-<p><strong>在map中使用的作为key的对象也需要自己重新正确的编写equals()方法</strong></p>
-<p>通过<code>key</code>计算索引的方式就是调用<code>key</code>对象的<code>hashCode()</code>方法，它返回一个<code>int</code>整数。<code>HashMap</code>正是通过这个方法直接定位<code>key</code>对应的<code>value</code>的索引，继而直接返回<code>value</code>。</p>
-<p>因此，正确使用<code>Map</code>必须保证：</p>
-<ol>
-<li>作为<code>key</code>的对象必须正确覆写<code>equals()</code>方法，相等的两个<code>key</code>实例调用<code>equals()</code>必须返回<code>true</code>；</li>
-<li>作为<code>key</code>的对象还必须正确覆写<code>hashCode()</code>方法，且<code>hashCode()</code>方法要严格遵循以下规范：</li>
-</ol>
-<ul>
-<li>如果两个对象相等，则两个对象的<code>hashCode()</code>必须相等；</li>
-<li>如果两个对象不相等，则两个对象的<code>hashCode()</code>尽量不要相等。</li>
-</ul>
-<p><strong>如何编写正确的equals()？</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    String firstName;</span><br><span class="line">    String lastName;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>把需要比较的字段找出来：</p>
-<ul>
-<li>firstName</li>
-<li>lastName</li>
-<li>age</li>
-</ul>
-<p>然后，引用类型使用<code>Objects.equals()</code>比较，基本类型使用<code>==</code>比较。</p>
-<p>在正确实现<code>equals()</code>的基础上，我们还需要正确实现<code>hashCode()</code>，即上述3个字段分别相同的实例，<code>hashCode()</code>返回的<code>int</code>必须相同：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    String firstName;</span><br><span class="line">    String lastName;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        h = <span class="number">31</span> * h + firstName.hashCode();</span><br><span class="line">        h = <span class="number">31</span> * h + lastName.hashCode();</span><br><span class="line">        h = <span class="number">31</span> * h + age;</span><br><span class="line">        <span class="keyword">return</span> h;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意到<code>String</code>类已经正确实现了<code>hashCode()</code>方法，我们在计算<code>Person</code>的<code>hashCode()</code>时，反复使用<code>31*h</code>，这样做的目的是为了尽量把不同的<code>Person</code>实例的<code>hashCode()</code>均匀分布到整个<code>int</code>范围。</p>
-<p>和实现<code>equals()</code>方法遇到的问题类似，如果<code>firstName</code>或<code>lastName</code>为<code>null</code>，上述代码工作起来就会抛<code>NullPointerException</code>。为了解决这个问题，我们在计算<code>hashCode()</code>的时候，经常借助<code>Objects.hash()</code>来计算：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Objects.hash(firstName, lastName, age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>所以，编写<code>equals()</code>和<code>hashCode()</code>遵循的原则是：</p>
-<p><strong><code>equals()</code>用到的用于比较的每一个字段，都必须在<code>hashCode()</code>中用于计算；<code>equals()</code>中没有使用到的字段，绝不可放在<code>hashCode()</code>中计算。</strong></p>
-<p><strong>Extension</strong></p>
-<ol>
-<li>hashCode()返回的<code>int</code>范围高达±21亿，先不考虑负数，<code>HashMap</code>内部使用的数组得有多大？</li>
-</ol>
-<p>既然<code>HashMap</code>内部使用了数组，通过计算<code>key</code>的<code>hashCode()</code>直接定位<code>value</code>所在的索引，那么第一个问题来了：hashCode()返回的<code>int</code>范围高达±21亿，先不考虑负数，<code>HashMap</code>内部使用的数组得有多大？</p>
-<p>实际上<code>HashMap</code>初始化时默认的数组大小只有16，任何<code>key</code>，无论它的<code>hashCode()</code>有多大，都可以简单地通过</p>
-<p>把索引确定在0～15，即永远不会超出数组范围，上述算法只是一种最简单的实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> key.hashCode() &amp; <span class="number">0xf</span>; <span class="comment">// 0xf = 15</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>如果添加超过16个<code>key-value</code>到<code>HashMap</code>，数组不够用了怎么办？</li>
-</ol>
-<p>添加超过一定数量的<code>key-value</code>时，<code>HashMap</code>会在内部自动扩容，每次扩容一倍，即长度为16的数组扩展为长度32，相应地，需要重新确定<code>hashCode()</code>计算的索引位置。例如，对长度为32的数组计算<code>hashCode()</code>对应的索引，计算方式要改为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> key.hashCode() &amp; <span class="number">0x1f</span>; <span class="comment">// 0x1f = 31</span></span><br></pre></td></tr></table></figure>
-
-<p>由于扩容会导致重新分布已有的<code>key-value</code>，所以，频繁扩容对<code>HashMap</code>的性能影响很大。如果我们确定要使用一个容量为<code>10000</code>个<code>key-value</code>的<code>HashMap</code>，更好的方式是创建<code>HashMap</code>时就指定容量：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(<span class="number">10000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>虽然指定容量是<code>10000</code>，但<code>HashMap</code>内部的数组长度总是2n，因此，实际数组长度被初始化为比<code>10000</code>大的<code>16384</code> which is 2^14.</p>
-<ol start="3">
-<li>如果不同的两个<code>key</code>，例如<code>&quot;a&quot;</code>和<code>&quot;b&quot;</code>，它们的<code>hashCode()</code>恰好是相同的（这种情况是完全可能的，因为不相等的两个实例，只要求<code>hashCode()</code>尽量不相等），那么，当我们放入：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">map.put(<span class="string">&quot;a&quot;</span>, <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Xiao Ming&quot;</span>));</span><br><span class="line">map.put(<span class="string">&quot;b&quot;</span>, <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Xiao Hong&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>时，由于计算出的数组索引相同，后面放入的<code>&quot;Xiao Hong&quot;</code>会不会把<code>&quot;Xiao Ming&quot;</code>覆盖了？</p>
-<p>当然不会！使用<code>Map</code>的时候，只要<code>key</code>不相同，它们映射的<code>value</code>就互不干扰。但是，在<code>HashMap</code>内部，确实可能存在不同的<code>key</code>，映射到相同的<code>hashCode()</code>，即相同的数组索引上，肿么办？</p>
-<p>我们就假设<code>&quot;a&quot;</code>和<code>&quot;b&quot;</code>这两个<code>key</code>最终计算出的索引都是5，那么，在<code>HashMap</code>的数组中，实际存储的不是一个<code>Person</code>实例，而是一个<code>List</code>，它包含两个<code>Entry</code>，一个是<code>&quot;a&quot;</code>的映射，一个是<code>&quot;b&quot;</code>的映射：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  ┌───┐</span><br><span class="line">0 │   │</span><br><span class="line">  ├───┤</span><br><span class="line">1 │   │</span><br><span class="line">  ├───┤</span><br><span class="line">2 │   │</span><br><span class="line">  ├───┤</span><br><span class="line">3 │   │</span><br><span class="line">  ├───┤</span><br><span class="line">4 │   │</span><br><span class="line">  ├───┤</span><br><span class="line">5 │ ●─┼───&gt; List&lt;Entry&lt;String, Person&gt;&gt;</span><br><span class="line">  ├───┤</span><br><span class="line">6 │   │</span><br><span class="line">  ├───┤</span><br><span class="line">7 │   │</span><br><span class="line">  └───┘</span><br></pre></td></tr></table></figure>
-
-<p>在查找的时候，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person p = map.get(&quot;a&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>HashMap内部通过<code>&quot;a&quot;</code>找到的实际上是<code>List&lt;Entry&lt;String, Person&gt;&gt;</code>，它还需要遍历这个<code>List</code>，并找到一个<code>Entry</code>，它的<code>key</code>字段是<code>&quot;a&quot;</code>，才能返回对应的<code>Person</code>实例。</p>
-<p>我们把不同的<code>key</code>具有相同的<code>hashCode()</code>的情况称之为哈希冲突。在冲突的时候，一种最简单的解决办法是用<code>List</code>存储<code>hashCode()</code>相同的<code>key-value</code>。显然，如果冲突的概率越大，这个<code>List</code>就越长，<code>Map</code>的<code>get()</code>方法效率就越低，这就是为什么要尽量满足条件二：</p>
-<p> 如果两个对象不相等，则两个对象的hashCode()尽量不要相等。</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>要正确使用<code>HashMap</code>，作为<code>key</code>的类必须正确覆写<code>equals()</code>和<code>hashCode()</code>方法；</p>
-<p>一个类如果覆写了<code>equals()</code>，就必须覆写<code>hashCode()</code>，并且覆写规则是：</p>
-<ul>
-<li>如果<code>equals()</code>返回<code>true</code>，则<code>hashCode()</code>返回值必须相等；</li>
-<li>如果<code>equals()</code>返回<code>false</code>，则<code>hashCode()</code>返回值尽量不要相等。</li>
-</ul>
-<p>实现<code>hashCode()</code>方法可以通过<code>Objects.hashCode()</code>辅助方法实现。</p>
-<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p>还有一种<code>Map</code>，它在内部会对Key进行排序，这种<code>Map</code>就是<code>SortedMap</code>。注意到<code>SortedMap</code>是接口，它的实现类是<code>TreeMap</code>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">       ┌───┐</span><br><span class="line">       │Map│</span><br><span class="line">       └───┘</span><br><span class="line">         ▲</span><br><span class="line">    ┌────┴─────┐</span><br><span class="line">    │          │</span><br><span class="line">┌───────┐ ┌─────────┐</span><br><span class="line">│HashMap│ │SortedMap│</span><br><span class="line">└───────┘ └─────────┘</span><br><span class="line">               ▲</span><br><span class="line">               │</span><br><span class="line">          ┌─────────┐</span><br><span class="line">          │ TreeMap │</span><br><span class="line">          └─────────┘</span><br></pre></td></tr></table></figure>
-
-<p><code>SortedMap</code>保证遍历时以Key的顺序来进行排序。例如，放入的Key是<code>&quot;apple&quot;</code>、<code>&quot;pear&quot;</code>、<code>&quot;orange&quot;</code>，遍历的顺序一定是<code>&quot;apple&quot;</code>、<code>&quot;orange&quot;</code>、<code>&quot;pear&quot;</code>，因为<code>String</code>默认按字母排序：</p>
-<p>使用<code>TreeMap</code>时，放入的Key必须实现<code>Comparable</code>接口。<code>String</code>、<code>Integer</code>这些类已经实现了<code>Comparable</code>接口，因此可以直接作为Key使用。作为Value的对象则没有任何要求。</p>
-<p>如果作为Key的class没有实现<code>Comparable</code>接口，那么，必须在创建<code>TreeMap</code>时同时指定一个自定义排序算法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Map&lt;Person, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Person&gt;() &#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Person p1, Person p2)</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> p1.name.compareTo(p2.name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        map.put(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Tom&quot;</span>), <span class="number">1</span>);</span><br><span class="line">        map.put(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Bob&quot;</span>), <span class="number">2</span>);</span><br><span class="line">        map.put(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Lily&quot;</span>), <span class="number">3</span>);</span><br><span class="line">        <span class="keyword">for</span> (Person key : map.keySet()) &#123;</span><br><span class="line">            System.out.println(key);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// &#123;Person: Bob&#125;, &#123;Person: Lily&#125;, &#123;Person: Tom&#125;</span></span><br><span class="line">        System.out.println(map.get(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Bob&quot;</span>))); <span class="comment">// 2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    Person(String name) &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&#123;Person: &quot;</span> + name + <span class="string">&quot;&#125;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>注意到<code>Comparator</code>接口要求实现一个比较方法，它负责比较传入的两个元素<code>a</code>和<code>b</code>，如果<code>a&lt;b</code>，则返回负数，通常是<code>-1</code>，如果<code>a==b</code>，则返回<code>0</code>，如果<code>a&gt;b</code>，则返回正数，通常是<code>1</code>。<code>TreeMap</code>内部根据比较结果对Key进行排序。</p>
-<p>从上述代码执行结果可知，打印的Key确实是按照<code>Comparator</code>定义的顺序排序的。如果要根据Key查找Value，我们可以传入一个<code>new Person(&quot;Bob&quot;)</code>作为Key，它会返回对应的<code>Integer</code>值<code>2</code>。</p>
-<p>另外，注意到<code>Person</code>类并未覆写<code>equals()</code>和<code>hashCode()</code>，因为<code>TreeMap</code>不使用<code>equals()</code>和<code>hashCode()</code>。</p>
-<p>我们来看一个稍微复杂的例子：这次我们定义了<code>Student</code>类，并用分数<code>score</code>进行排序，高分在前：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Map&lt;Student, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Student&gt;() &#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Student p1, Student p2)</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> p1.score &gt; p2.score ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        map.put(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;Tom&quot;</span>, <span class="number">77</span>), <span class="number">1</span>);</span><br><span class="line">        map.put(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;Bob&quot;</span>, <span class="number">66</span>), <span class="number">2</span>);</span><br><span class="line">        map.put(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;Lily&quot;</span>, <span class="number">99</span>), <span class="number">3</span>);</span><br><span class="line">        <span class="keyword">for</span> (Student key : map.keySet()) &#123;</span><br><span class="line">            System.out.println(key);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(map.get(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;Bob&quot;</span>, <span class="number">66</span>))); <span class="comment">// null?</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> score;</span><br><span class="line">    Student(String name, <span class="type">int</span> score) &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.score = score;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> String.format(<span class="string">&quot;&#123;%s: score=%d&#125;&quot;</span>, name, score);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h3><p>因为配置文件非常常用，所以Java集合库提供了一个<code>Properties</code>来表示一组“配置”。由于历史遗留原因。</p>
-<p><code>Properties</code>内部本质上是一个<code>Hashtable</code>，但我们只需要用到<code>Properties</code>自身关于读写配置的接口。</p>
-<p>可以从文件系统读取这个<code>.properties</code>文件：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">f</span> <span class="operator">=</span> <span class="string">&quot;setting.properties&quot;</span>;</span><br><span class="line"><span class="type">Properties</span> <span class="variable">props</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">props.load(<span class="keyword">new</span> <span class="title class_">java</span>.io.FileInputStream(f));</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">filepath</span> <span class="operator">=</span> props.getProperty(<span class="string">&quot;last_open_file&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">interval</span> <span class="operator">=</span> props.getProperty(<span class="string">&quot;auto_save_interval&quot;</span>, <span class="string">&quot;120&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<p>可见，用<code>Properties</code>读取配置文件，一共有三步：</p>
-<ol>
-<li>创建<code>Properties</code>实例；</li>
-<li>调用<code>load()</code>读取文件；</li>
-<li>调用<code>getProperty()</code>获取配置。</li>
-</ol>
-<p>调用<code>getProperty()</code>获取配置时，如果key不存在，将返回<code>null</code>。我们还可以提供一个默认值，这样，当key不存在的时候，就返回默认值。</p>
-<p>也可以从classpath读取<code>.properties</code>文件，因为<code>load(InputStream)</code>方法接收一个<code>InputStream</code>实例，表示一个字节流，它不一定是文件流，也可以是从jar包中读取的资源流：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Properties</span> <span class="variable">props</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">props.load(getClass().getResourceAsStream(<span class="string">&quot;/common/setting.properties&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-
-
-<p>试试从内存读取一个字节流：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">settings</span> <span class="operator">=</span> <span class="string">&quot;# test&quot;</span> + <span class="string">&quot;\n&quot;</span> + <span class="string">&quot;course=Java&quot;</span> + <span class="string">&quot;\n&quot;</span> + <span class="string">&quot;last_open_date=2019-08-07T12:35:01&quot;</span>;</span><br><span class="line">        <span class="type">ByteArrayInputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(settings.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">        <span class="type">Properties</span> <span class="variable">props</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">        props.load(input);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;course: &quot;</span> + props.getProperty(<span class="string">&quot;course&quot;</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;last_open_date: &quot;</span> + props.getProperty(<span class="string">&quot;last_open_date&quot;</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;last_open_file: &quot;</span> + props.getProperty(<span class="string">&quot;last_open_file&quot;</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;auto_save: &quot;</span> + props.getProperty(<span class="string">&quot;auto_save&quot;</span>, <span class="string">&quot;60&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>如果我们只需要存储不重复的key，并不需要存储映射的value，那么就可以使用<code>Set</code>。</p>
-<p><code>Set</code>用于存储不重复的元素集合，它主要提供以下几个方法：</p>
-<ul>
-<li>将元素添加进<code>Set&lt;E&gt;</code>：<code>boolean add(E e)</code></li>
-<li>将元素从<code>Set&lt;E&gt;</code>删除：<code>boolean remove(Object e)</code></li>
-<li>判断是否包含元素：<code>boolean contains(Object e)</code></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Set&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        System.out.println(set.add(<span class="string">&quot;abc&quot;</span>)); <span class="comment">// true</span></span><br><span class="line">        System.out.println(set.add(<span class="string">&quot;xyz&quot;</span>)); <span class="comment">// true</span></span><br><span class="line">        System.out.println(set.add(<span class="string">&quot;xyz&quot;</span>)); <span class="comment">// false，添加失败，因为元素已存在</span></span><br><span class="line">        System.out.println(set.contains(<span class="string">&quot;xyz&quot;</span>)); <span class="comment">// true，元素存在</span></span><br><span class="line">        System.out.println(set.contains(<span class="string">&quot;XYZ&quot;</span>)); <span class="comment">// false，元素不存在</span></span><br><span class="line">        System.out.println(set.remove(<span class="string">&quot;hello&quot;</span>)); <span class="comment">// false，删除失败，因为元素不存在</span></span><br><span class="line">        System.out.println(set.size()); <span class="comment">// 2，一共两个元素</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>放入<code>Set</code>的元素和<code>Map</code>的key类似，都要正确实现<code>equals()</code>和<code>hashCode()</code>方法，否则该元素无法正确地放入<code>Set</code>。</strong></p>
-<p><strong>最常用的<code>Set</code>实现类是<code>HashSet</code>，实际上，<code>HashSet</code>仅仅是对<code>HashMap</code>的一个简单封装，它的核心代码如下：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HashSet</span>&lt;E&gt; <span class="keyword">implements</span> <span class="title class_">Set</span>&lt;E&gt; &#123;</span><br><span class="line">    <span class="comment">// 持有一个HashMap:</span></span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;E, Object&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 放入HashMap的value:</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Object</span> <span class="variable">PRESENT</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">add</span><span class="params">(E e)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> map.put(e, PRESENT) == <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">contains</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> map.containsKey(o);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">remove</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> map.remove(o) == PRESENT;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><code>Set</code>接口并不保证有序，而<code>SortedSet</code>接口则保证元素是有序的：</p>
-<ul>
-<li><code>HashSet</code>是无序的，因为它实现了<code>Set</code>接口，并没有实现<code>SortedSet</code>接口；</li>
-<li><code>TreeSet</code>是有序的，因为它实现了<code>SortedSet</code>接口。</li>
-</ul>
-<p>用一张图表示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">       ┌───┐</span><br><span class="line">       │Set│</span><br><span class="line">       └───┘</span><br><span class="line">         ▲</span><br><span class="line">    ┌────┴─────┐</span><br><span class="line">    │          │</span><br><span class="line">┌───────┐ ┌─────────┐</span><br><span class="line">│HashSet│ │SortedSet│</span><br><span class="line">└───────┘ └─────────┘</span><br><span class="line">               ▲</span><br><span class="line">               │</span><br><span class="line">          ┌─────────┐</span><br><span class="line">          │ TreeSet │</span><br><span class="line">          └─────────┘</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Set&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        set.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;pear&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;orange&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (String s : set) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这里打印出来的并不是按照既不是添加的顺序，也不是<code>String</code>排序的顺序，在不同版本的JDK中，这个顺序也可能是不同的。</p>
-<p>但是如果用treeset的话，输出出来的就会是有序的了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Set&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;();</span><br><span class="line">        set.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;pear&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;orange&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (String s : set) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>TreeSet</code>和使用<code>TreeMap</code>的要求一样，添加的元素必须正确实现<code>Comparable</code>接口，如果没有实现<code>Comparable</code>接口，那么创建<code>TreeSet</code>时必须传入一个<code>Comparator</code>对象。</p>
-<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p>在Java的标准库中，队列接口<code>Queue</code>定义了以下几个方法：</p>
-<ul>
-<li><code>int size()</code>：获取队列长度；</li>
-<li><code>boolean add(E)</code>&#x2F;<code>boolean offer(E)</code>：添加元素到队尾；</li>
-<li><code>E remove()</code>&#x2F;<code>E poll()</code>：获取队首元素并从队列中删除；</li>
-<li><code>E element()</code>&#x2F;<code>E peek()</code>：获取队首元素但并不从队列中删除。</li>
-</ul>
-<p>对于具体的实现类，有的Queue有最大队列长度限制，有的Queue没有。注意到添加、删除和获取队列元素总是有两个方法，这是因为在添加或获取元素失败时，这两个方法的行为是不同的。如下表所示（举个例子，add方法有可能会抛出一场而offer方法并不会）</p>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="left">throw Exception</th>
-<th>返回false或null</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">添加元素到队尾</td>
-<td align="left">add(E e)</td>
-<td>boolean offer(E e)</td>
-</tr>
-<tr>
-<td align="left">取队首元素并删除</td>
-<td align="left">E remove()</td>
-<td>E poll()</td>
-</tr>
-<tr>
-<td align="left">取队首元素但不删除</td>
-<td align="left">E element()</td>
-<td>E peek()</td>
-</tr>
-</tbody></table>
-<p>注意：不要把<code>null</code>添加到队列中，否则<code>poll()</code>方法返回<code>null</code>时，很难确定是取到了<code>null</code>元素还是队列为空。</p>
-<h3 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue."></a>PriorityQueue.</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.PriorityQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Queue&lt;String&gt; q = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 添加3个元素到队列:</span></span><br><span class="line">        q.offer(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">        q.offer(<span class="string">&quot;pear&quot;</span>);</span><br><span class="line">        q.offer(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">        System.out.println(q.poll()); <span class="comment">// apple</span></span><br><span class="line">        System.out.println(q.poll()); <span class="comment">// banana</span></span><br><span class="line">        System.out.println(q.poll()); <span class="comment">// pear</span></span><br><span class="line">        System.out.println(q.poll()); <span class="comment">// null,因为队列为空</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>放入的顺序是apple、pear、banana但是出来的顺序是apple、banana、pear。这就是因为我们使用了 PriorityQueue&lt;&gt;，优先队列能够将队列中的元素按照顺序取出。所以，存入优先队列里面的元素也必须需要实现Comparable接口。如果没有实现Comparable接口的话，我们需要提供一个Comparator对象来判断两个元素的顺序。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.PriorityQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Queue&lt;User&gt; q = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">UserComparator</span>());</span><br><span class="line">        <span class="comment">// 添加3个元素到队列:</span></span><br><span class="line">        q.offer(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;Bob&quot;</span>, <span class="string">&quot;A1&quot;</span>));</span><br><span class="line">        q.offer(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;Alice&quot;</span>, <span class="string">&quot;A2&quot;</span>));</span><br><span class="line">        q.offer(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;Boss&quot;</span>, <span class="string">&quot;V1&quot;</span>));</span><br><span class="line">        System.out.println(q.poll()); <span class="comment">// Boss/V1</span></span><br><span class="line">        System.out.println(q.poll()); <span class="comment">// Bob/A1</span></span><br><span class="line">        System.out.println(q.poll()); <span class="comment">// Alice/A2</span></span><br><span class="line">        System.out.println(q.poll()); <span class="comment">// null,因为队列为空</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserComparator</span> <span class="keyword">implements</span> <span class="title class_">Comparator</span>&lt;User&gt; &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(User u1, User u2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (u1.number.charAt(<span class="number">0</span>) == u2.number.charAt(<span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="comment">// 如果两人的号都是A开头或者都是V开头,比较号的大小:</span></span><br><span class="line">            <span class="keyword">return</span> u1.number.compareTo(u2.number);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (u1.number.charAt(<span class="number">0</span>) == <span class="string">&#x27;V&#x27;</span>) &#123;</span><br><span class="line">            <span class="comment">// u1的号码是V开头,优先级高:</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> String number;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">User</span><span class="params">(String name, String number)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.number = number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name + <span class="string">&quot;/&quot;</span> + number;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的<code>UserComparator</code>的比较逻辑其实还是有问题的，它会把<code>A10</code>排在<code>A2</code>的前面</p>
-<h3 id="Deque-Double-Ended-Queue"><a href="#Deque-Double-Ended-Queue" class="headerlink" title="Deque (Double Ended Queue)"></a>Deque (Double Ended Queue)</h3><p>Java集合提供了接口<code>Deque</code>来实现一个双端队列，它的功能是：</p>
-<ul>
-<li>既可以添加到队尾，也可以添加到队首；</li>
-<li>既可以从队首获取，又可以从队尾获取。</li>
-</ul>
-<p>我们来比较一下<code>Queue</code>和<code>Deque</code>出队和入队的方法：</p>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="left">Queue</th>
-<th align="left">Deque</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">添加元素到队尾</td>
-<td align="left">add(E e) &#x2F; offer(E e)</td>
-<td align="left">addLast(E e) &#x2F; offerLast(E e)</td>
-</tr>
-<tr>
-<td align="left">取队首元素并删除</td>
-<td align="left">E remove() &#x2F; E poll()</td>
-<td align="left">E removeFirst() &#x2F; E pollFirst()</td>
-</tr>
-<tr>
-<td align="left">取队首元素但不删除</td>
-<td align="left">E element() &#x2F; E peek()</td>
-<td align="left">E getFirst() &#x2F; E peekFirst()</td>
-</tr>
-<tr>
-<td align="left">添加元素到队首</td>
-<td align="left">无</td>
-<td align="left">addFirst(E e) &#x2F; offerFirst(E e)</td>
-</tr>
-<tr>
-<td align="left">取队尾元素并删除</td>
-<td align="left">无</td>
-<td align="left">E removeLast() &#x2F; E pollLast()</td>
-</tr>
-<tr>
-<td align="left">取队尾元素但不删除</td>
-<td align="left">无</td>
-<td align="left">E getLast() &#x2F; E peekLast()</td>
-</tr>
-</tbody></table>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不推荐的写法:</span></span><br><span class="line">LinkedList&lt;String&gt; d1 = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">d1.offerLast(<span class="string">&quot;z&quot;</span>);</span><br><span class="line"><span class="comment">// 推荐的写法：</span></span><br><span class="line">Deque&lt;String&gt; d2 = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">d2.offerLast(<span class="string">&quot;z&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>可见面向抽象编程的一个原则就是：尽量持有接口，而不是具体的实现类。</p>
-<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p><code>Deque</code>实现了一个双端队列（Double Ended Queue），它可以：</p>
-<ul>
-<li>将元素添加到队尾或队首：<code>addLast()</code>&#x2F;<code>offerLast()</code>&#x2F;<code>addFirst()</code>&#x2F;<code>offerFirst()</code>；</li>
-<li>从队首／队尾获取元素并删除：<code>removeFirst()</code>&#x2F;<code>pollFirst()</code>&#x2F;<code>removeLast()</code>&#x2F;<code>pollLast()</code>；</li>
-<li>从队首／队尾获取元素但不删除：<code>getFirst()</code>&#x2F;<code>peekFirst()</code>&#x2F;<code>getLast()</code>&#x2F;<code>peekLast()</code>；</li>
-<li>总是调用<code>xxxFirst()</code>&#x2F;<code>xxxLast()</code>以便与<code>Queue</code>的方法区分开；</li>
-<li>避免把<code>null</code>添加到队列。</li>
-</ul>
-<h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><p>在Java中，我们用<code>Deque</code>可以实现<code>Stack</code>的功能：</p>
-<ul>
-<li>把元素压栈：<code>push(E)</code>&#x2F;<code>addFirst(E)</code>；</li>
-<li>把栈顶的元素“弹出”：<code>pop()</code>&#x2F;<code>removeFirst()</code>；</li>
-<li>取栈顶元素但不弹出：<code>peek()</code>&#x2F;<code>peekFirst()</code></li>
-</ul>
-<p>为什么Java的集合类没有单独的<code>Stack</code>接口呢？因为有个遗留类名字就叫<code>Stack</code>，出于兼容性考虑，所以没办法创建<code>Stack</code>接口，只能用<code>Deque</code>接口来“模拟”一个<code>Stack</code>了。</p>
-<p>当我们把<code>Deque</code>作为<code>Stack</code>使用时，注意只调用<code>push()</code>&#x2F;<code>pop()</code>&#x2F;<code>peek()</code>方法，不要调用<code>addFirst()</code>&#x2F;<code>removeFirst()</code>&#x2F;<code>peekFirst()</code>方法，这样代码更加清晰。</p>
-<h3 id="Stack的作用"><a href="#Stack的作用" class="headerlink" title="Stack的作用"></a>Stack的作用</h3><p>Stack在计算机中使用非常广泛，JVM在处理Java方法调用的时候就会通过栈这种数据结构维护方法调用的层次，例如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    foo(<span class="number">123</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> String <span class="title function_">foo</span><span class="params">(x)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;F-&quot;</span> + bar(x + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="type">int</span> <span class="title function_">bar</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x &lt;&lt; <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>JVM会创建方法调用栈，每调用一个方法时，先将参数压栈，然后执行对应的方法；当方法返回时，返回值压栈，调用方法通过出栈操作获得方法返回值。</p>
-<p>因为方法调用栈有容量限制，嵌套调用过多会造成栈溢出，即引发<code>StackOverflowError</code>：</p>
-<p>使用栈的思想来实现将10进制转化为16进制的功能</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DecimalToHexadecimal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">decimalToHex</span><span class="params">(<span class="type">int</span> decimal)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (decimal == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;0&quot;</span>; <span class="comment">// 十进制数为0时，直接返回&quot;0&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (decimal &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">remainder</span> <span class="operator">=</span> decimal % <span class="number">16</span>;</span><br><span class="line">            <span class="type">char</span> <span class="variable">hexDigit</span> <span class="operator">=</span> getHexDigit(remainder);</span><br><span class="line">            stack.push(hexDigit);</span><br><span class="line">            decimal /= <span class="number">16</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">hexBuilder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">            hexBuilder.append(stack.pop());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> hexBuilder.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">char</span> <span class="title function_">getHexDigit</span><span class="params">(<span class="type">int</span> digit)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (digit &gt;= <span class="number">0</span> &amp;&amp; digit &lt;= <span class="number">9</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="type">char</span>) (digit + <span class="string">&#x27;0&#x27;</span>); <span class="comment">// 将数字转换为字符</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="type">char</span>) (digit - <span class="number">10</span> + <span class="string">&#x27;A&#x27;</span>); <span class="comment">// 将数字转换为A~F之间的字符</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">decimalNumber</span> <span class="operator">=</span> <span class="number">255</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">hexadecimalNumber</span> <span class="operator">=</span> decimalToHex(decimalNumber);</span><br><span class="line">        System.out.println(<span class="string">&quot;十进制数 &quot;</span> + decimalNumber + <span class="string">&quot; 转换为十六进制数为 &quot;</span> + hexadecimalNumber);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h3><p>java的集合类都可以使用for each循环，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = List.of(<span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Pear&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>实际上，Java编译器并不知道如何遍历<code>List</code>。上述代码能够编译通过，只是因为编译器把<code>for each</code>循环通过<code>Iterator</code>改写为了普通的<code>for</code>循环：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Iterator&lt;String&gt; it = list.iterator(); it.hasNext(); ) &#123;</span><br><span class="line">     <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> it.next();</span><br><span class="line">     System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用迭代器的好处在于，调用方总是以统一的方式遍历各种集合类型，而不必关心它们内部的存储结构。</p>
-<p>例如，我们虽然知道<code>ArrayList</code>在内部是以数组形式存储元素，并且，它还提供了<code>get(int)</code>方法。虽然我们可以用<code>for</code>循环遍历：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (int i=0; i&lt;list.size(); i++) &#123;</span><br><span class="line">    Object value = list.get(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是这样一来，调用方就必须知道集合的内部存储结构。并且，如果把<code>ArrayList</code>换成<code>LinkedList</code>，<code>get(int)</code>方法耗时会随着index的增加而增加。如果把<code>ArrayList</code>换成<code>Set</code>，上述代码就无法编译，因为<code>Set</code>内部没有索引。</p>
-<p>用<code>Iterator</code>遍历就没有上述问题，因为<code>Iterator</code>对象是集合对象自己在内部创建的，它自己知道如何高效遍历内部的数据集合，调用方则获得了统一的代码，编译器才能把标准的<code>for each</code>循环自动转换为<code>Iterator</code>遍历。</p>
-<p>如果我们自己编写了一个集合类，想要使用<code>for each</code>循环，只需满足以下条件：</p>
-<ul>
-<li><strong>集合类实现<code>Iterable</code>接</strong>口，该接口要求返回一个<code>Iterator</code>对象；</li>
-<li><strong>用<code>Iterator</code>对象迭代集合内部数据</strong>。</li>
-</ul>
-<p>这里的关键在于，集合类通过调用<code>iterator()</code>方法，返回一个<code>Iterator</code>对象，这个对象必须自己知道如何遍历该集合。</p>
-<p>一个简单的<code>Iterator</code>示例如下，它总是以倒序遍历集合：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        ReverseList&lt;String&gt; rlist = <span class="keyword">new</span> <span class="title class_">ReverseList</span>&lt;&gt;();</span><br><span class="line">        rlist.add(<span class="string">&quot;Apple&quot;</span>);</span><br><span class="line">        rlist.add(<span class="string">&quot;Orange&quot;</span>);</span><br><span class="line">        rlist.add(<span class="string">&quot;Pear&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (String s : rlist) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ReverseList</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">Iterable</span>&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;T&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(T t)</span> &#123;</span><br><span class="line">        list.add(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Iterator&lt;T&gt; <span class="title function_">iterator</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ReverseIterator</span>(list.size());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">ReverseIterator</span> <span class="keyword">implements</span> <span class="title class_">Iterator</span>&lt;T&gt; &#123;</span><br><span class="line">        <span class="type">int</span> index;</span><br><span class="line"></span><br><span class="line">        ReverseIterator(<span class="type">int</span> index) &#123;</span><br><span class="line">            <span class="built_in">this</span>.index = index;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> index &gt; <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> T <span class="title function_">next</span><span class="params">()</span> &#123;</span><br><span class="line">            index--;</span><br><span class="line">            <span class="keyword">return</span> ReverseList.<span class="built_in">this</span>.list.get(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="Collections类"><a href="#Collections类" class="headerlink" title="Collections类"></a>Collections类</h3><p>位于java.util包中</p>
-<p>它为集合类提供了很多静态的方法，方便我们操作各种集合</p>
-<p><strong>1.创建空集合:</strong></p>
-<ul>
-<li>创建空List：<code>List&lt;T&gt; emptyList()</code></li>
-<li>创建空Map：<code>Map&lt;K, V&gt; emptyMap()</code></li>
-<li>创建空Set：<code>Set&lt;T&gt; emptySet()</code></li>
-</ul>
-<p><strong>要注意到返回的空集合是不可变集合，无法向其中添加或删除元素。</strong></p>
-<p>此外，也可以用各个集合接口提供的<code>of(T...)</code>方法创建空集合。例如，以下创建空<code>List</code>的两个方法是等价的：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list1 = List.of();</span><br><span class="line">List&lt;String&gt; list2 = Collections.emptyList();</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>2.创建单元素集合:</strong></p>
-<p><code>Collections</code>提供了一系列方法来创建一个单元素集合：</p>
-<ul>
-<li>创建一个元素的List：<code>List&lt;T&gt; singletonList(T o)</code></li>
-<li>创建一个元素的Map：<code>Map&lt;K, V&gt; singletonMap(K key, V value)</code></li>
-<li>创建一个元素的Set：<code>Set&lt;T&gt; singleton(T o)</code></li>
-</ul>
-<p>要注意到返回的单元素集合也是不可变集合，无法向其中添加或删除元素。</p>
-<p>此外，也可以用各个集合接口提供的<code>of(T...)</code>方法创建单元素集合。例如，以下创建单元素<code>List</code>的两个方法是等价的：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list1 = List.of(&quot;apple&quot;);</span><br><span class="line">List&lt;String&gt; list2 = Collections.singletonList(&quot;apple&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>实际上，使用<code>List.of(T...)</code>更方便，因为它既可以创建空集合，也可以创建单元素集合，还可以创建任意个元素的集合：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list1 = List.of(); // empty list</span><br><span class="line">List&lt;String&gt; list2 = List.of(&quot;apple&quot;); // 1 element</span><br><span class="line">List&lt;String&gt; list3 = List.of(&quot;apple&quot;, &quot;pear&quot;); // 2 elements</span><br><span class="line">List&lt;String&gt; list4 = List.of(&quot;apple&quot;, &quot;pear&quot;, &quot;orange&quot;); // 3 elements</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>3.排序:</strong></p>
-<p><code>Collections</code>可以对<code>List</code>进行排序。因为排序会直接修改<code>List</code>元素的位置，因此必须传入可变<code>List</code>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;pear&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;orange&quot;</span>);</span><br><span class="line">        <span class="comment">// 排序前:</span></span><br><span class="line">        System.out.println(list);</span><br><span class="line">        Collections.sort(list);</span><br><span class="line">        <span class="comment">// 排序后:</span></span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>4.shuffle:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 洗牌前:</span></span><br><span class="line">        System.out.println(list);</span><br><span class="line">        Collections.shuffle(list);</span><br><span class="line">        <span class="comment">// 洗牌后:</span></span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>5.不可变集合</strong></p>
-<p><code>Collections</code>还提供了一组方法把可变集合封装成不可变集合：</p>
-<ul>
-<li>封装成不可变List：<code>List&lt;T&gt; unmodifiableList(List&lt;? extends T&gt; list)</code></li>
-<li>封装成不可变Set：<code>Set&lt;T&gt; unmodifiableSet(Set&lt;? extends T&gt; set)</code></li>
-<li>封装成不可变Map：<code>Map&lt;K, V&gt; unmodifiableMap(Map&lt;? extends K, ? extends V&gt; m)</code></li>
-</ul>
-<p>这种封装实际上是通过创建一个代理对象，拦截掉所有修改方法实现的。我们来看看效果：</p>
-<p><strong>6.线程安全集合</strong></p>
-<p><code>Collections</code>还提供了一组方法，可以把线程不安全的集合变为线程安全的集合：</p>
-<ul>
-<li>变为线程安全的List：<code>List&lt;T&gt; synchronizedList(List&lt;T&gt; list)</code></li>
-<li>变为线程安全的Set：<code>Set&lt;T&gt; synchronizedSet(Set&lt;T&gt; s)</code></li>
-<li>变为线程安全的Map：<code>Map&lt;K,V&gt; synchronizedMap(Map&lt;K,V&gt; m)</code></li>
-</ul>
-<p>多线程的概念我们会在后面讲。因为从Java 5开始，引入了更高效的并发集合类，所以上述这几个同步方法已经没有什么用了。</p>
-<h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="File-object"><a href="#File-object" class="headerlink" title="File object"></a>File object</h3><p>import <strong>Java.io.</strong>*;</p>
-<p>File f &#x3D; new File(Absolute path&#x2F;Relative Path);</p>
-<p>注意Windows平台使用<code>\</code>作为路径分隔符，在Java字符串中需要用<code>\\</code>表示一个<code>\</code>。Linux平台使用<code>/</code>作为路径分隔符：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">f</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;/usr/bin/javac&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>传入相对路径时，相对路径前面加上当前目录就是绝对路径：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 假设当前目录是C:\Docs</span><br><span class="line">File f1 = new File(&quot;sub\\javac&quot;); // 绝对路径是C:\Docs\sub\javac</span><br><span class="line">File f3 = new File(&quot;.\\sub\\javac&quot;); // 绝对路径是C:\Docs\sub\javac</span><br><span class="line">File f3 = new File(&quot;..\\sub\\javac&quot;); // 绝对路径是C:\sub\javac</span><br></pre></td></tr></table></figure>
-
-<p>This is can help to find the separator of the currect system.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File.separator</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h3><p><code>InputStream</code>就是Java标准库提供的最基本的输入流。它位于<code>java.io</code>这个包里。<code>java.io</code>包提供了所有同步IO的功能。</p>
-<p>要特别注意的一点是，<code>InputStream</code>并不是一个接口，而是一个抽象类，它是所有输入流的超类。这个抽象类定义的一个最重要的方法就是<code>int read()</code>，签名如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public abstract int read() throws IOException;</span><br></pre></td></tr></table></figure>
-
-<p>这个方法会读取输入流的下一个字节，并返回字节表示的<code>int</code>值（0~255）。如果已读到末尾，返回<code>-1</code>表示不能继续读取了</p>
-<p><code>FileInputStream</code>是<code>InputStream</code>的一个子类。顾名思义，<code>FileInputStream</code>就是从文件流中读取数据。下面的代码演示了如何完整地读取一个<code>FileInputStream</code>的所有字节：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">// 创建一个FileInputStream对象:</span></span><br><span class="line">    <span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;src/readme.txt&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> input.read(); <span class="comment">// 反复调用read()方法，直到返回-1</span></span><br><span class="line">        <span class="keyword">if</span> (n == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(n); <span class="comment">// 打印byte的值</span></span><br><span class="line">    &#125;</span><br><span class="line">    input.close(); <span class="comment">// 关闭流</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>InputStream</code>和<code>OutputStream</code>都是通过<code>close()</code>方法来关闭流。关闭流就会释放对应的底层资源。</p>
-<p>我们还要注意到在读取或写入IO流的过程中，可能会发生错误，例如，文件不存在导致无法读取，没有写权限导致写入失败，等等，这些底层错误由Java虚拟机自动封装成<code>IOException</code>异常并抛出。因此，所有与IO操作相关的代码都必须正确处理<code>IOException</code>。</p>
-<p>仔细观察上面的代码，会发现一个潜在的问题：如果读取过程中发生了IO错误，<code>InputStream</code>就没法正确地关闭，资源也就没法及时释放。</p>
-<p>因此，我们需要用<code>try ... finally</code>来保证<code>InputStream</code>在无论是否发生IO错误的时候都能够正确地关闭：</p>
-<p>只需要编写<code>try</code>语句，让编译器自动为我们关闭资源，Java7引入的新特性。推荐的写法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="keyword">try</span> (<span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;src/readme.txt&quot;</span>)) &#123;</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        <span class="keyword">while</span> ((n = input.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">            System.out.println(n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="comment">// 编译器在此自动为我们写入finally并调用close()</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>实际上，编译器并不会特别地为<code>InputStream</code>加上自动关闭。编译器只看<code>try(resource = ...)</code>中的对象是否实现了<code>java.lang.AutoCloseable</code>接口，如果实现了，就自动加上<code>finally</code>语句并调用<code>close()</code>方法。<code>InputStream</code>和<code>OutputStream</code>都实现了这个接口，因此，都可以用在<code>try(resource)</code>中。</p>
-<p>上段代码与以下代码等价:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        input = <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;src/readme.txt&quot;</span>);</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        <span class="keyword">while</span> ((n = input.read()) != -<span class="number">1</span>) &#123; <span class="comment">// 利用while同时读取并判断</span></span><br><span class="line">            System.out.println(n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (input != <span class="literal">null</span>) &#123; input.close(); &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="缓冲"><a href="#缓冲" class="headerlink" title="缓冲"></a>缓冲</h4><p>在InputStream中提供了两个重载的方法来支持读取多个字节。</p>
-<ul>
-<li><code>int read(byte[] b)</code>：读取若干字节并填充到<code>byte[]</code>数组，返回读取的字节数</li>
-<li><code>int read(byte[] b, int off, int len)</code>：指定<code>byte[]</code>数组的偏移量和最大填充数</li>
-</ul>
-<p>利用上述方法一次读取多个字节时，需要先定义一个<code>byte[]</code>数组作为缓冲区，<code>read()</code>方法会尽可能多地读取字节到缓冲区， 但不会超过缓冲区的大小。<code>read()</code>方法的返回值不再是字节的<code>int</code>值，而是返回实际读取了多少个字节。如果返回<code>-1</code>，表示没有更多的数据了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="keyword">try</span> (<span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;src/readme.txt&quot;</span>)) &#123;</span><br><span class="line">        <span class="comment">// 定义1000个字节大小的缓冲区:</span></span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1000</span>];</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        <span class="keyword">while</span> ((n = input.read(buffer)) != -<span class="number">1</span>) &#123; <span class="comment">// 读取到缓冲区</span></span><br><span class="line">            System.out.println(<span class="string">&quot;read &quot;</span> + n + <span class="string">&quot; bytes.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h4><p>在调用<code>InputStream</code>的<code>read()</code>方法读取数据时，我们说<code>read()</code>方法是阻塞（Blocking）的。它的意思是，对于下面的代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int n;</span><br><span class="line">n = input.read(); // 必须等待read()方法返回才能执行下一行代码</span><br><span class="line">int m = n;</span><br></pre></td></tr></table></figure>
-
-<p>执行到第二行代码时，必须等<code>read()</code>方法返回后才能继续。因为读取IO流相比执行普通代码，速度会慢很多，因此，无法确定<code>read()</code>方法调用到底要花费多长时间。</p>
-<h4 id="InputStream实现类"><a href="#InputStream实现类" class="headerlink" title="InputStream实现类"></a>InputStream实现类</h4><p>用<code>FileInputStream</code>可以从文件获取输入流，这是<code>InputStream</code>常用的一个实现类。此外，<code>ByteArrayInputStream</code>可以在内存中模拟一个<code>InputStream</code>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">byte</span>[] data = &#123; <span class="number">72</span>, <span class="number">101</span>, <span class="number">108</span>, <span class="number">108</span>, <span class="number">111</span>, <span class="number">33</span> &#125;;</span><br><span class="line">        <span class="keyword">try</span> (<span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(data)) &#123;</span><br><span class="line">            <span class="type">int</span> n;</span><br><span class="line">            <span class="keyword">while</span> ((n = input.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                System.out.println((<span class="type">char</span>)n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>ByteArrayInputStream</code>实际上是把一个<code>byte[]</code>数组在内存中变成一个<code>InputStream</code>，虽然实际应用不多，但测试的时候，可以用它来构造一个<code>InputStream</code>。</p>
-<p>举个栗子：我们想从文件中读取所有字节，并转换成<code>char</code>然后拼成一个字符串，可以这么写：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        String s;</span><br><span class="line">        <span class="keyword">try</span> (<span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;C:\\test\\README.txt&quot;</span>)) &#123;</span><br><span class="line">            <span class="type">int</span> n;</span><br><span class="line">            <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">            <span class="keyword">while</span> ((n = input.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                sb.append((<span class="type">char</span>) n);</span><br><span class="line">            &#125;</span><br><span class="line">            s = sb.toString();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="OutputStream"><a href="#OutputStream" class="headerlink" title="OutputStream:"></a>OutputStream:</h3><p>和<code>InputStream</code>类似，<code>OutputStream</code>也是抽象类，它是所有输出流的超类。这个抽象类定义的一个最重要的方法就是<code>void write(int b)</code>，签名如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">write</span><span class="params">(<span class="type">int</span> b)</span> <span class="keyword">throws</span> IOException;</span><br></pre></td></tr></table></figure>
-
-<p>这个方法会写入一个字节到输出流。要注意的是，虽然传入的是<code>int</code>参数，但只会写入一个字节，即只写入<code>int</code>最低8位表示字节的部分（相当于<code>b &amp; 0xff</code>）。</p>
-<p>和<code>InputStream</code>类似，<code>OutputStream</code>也提供了<code>close()</code>方法关闭输出流，以便释放系统资源。要特别注意：<code>OutputStream</code>还提供了一个<code>flush()</code>方法，它的目的是将缓冲区的内容真正输出到目的地。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">OutputStream</span> <span class="variable">output</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;out/readme.txt&quot;</span>);</span><br><span class="line">    output.write(<span class="number">72</span>); <span class="comment">// H</span></span><br><span class="line">    output.write(<span class="number">101</span>); <span class="comment">// e</span></span><br><span class="line">    output.write(<span class="number">108</span>); <span class="comment">// l</span></span><br><span class="line">    output.write(<span class="number">108</span>); <span class="comment">// l</span></span><br><span class="line">    output.write(<span class="number">111</span>); <span class="comment">// o</span></span><br><span class="line">    output.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>每次写入一个字节非常麻烦，更常见的方法是一次性写入若干字节。这时，可以用<code>OutputStream</code>提供的重载方法<code>void write(byte[])</code>来实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">OutputStream</span> <span class="variable">output</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;out/readme.txt&quot;</span>);</span><br><span class="line">    output.write(<span class="string">&quot;Hello&quot;</span>.getBytes(<span class="string">&quot;UTF-8&quot;</span>)); <span class="comment">// Hello</span></span><br><span class="line">    output.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>和<code>InputStream</code>一样，上述代码没有考虑到在发生异常的情况下如何正确地关闭资源。写入过程也会经常发生IO错误，例如，磁盘已满，无权限写入等等。我们需要用<code>try(resource)</code>来保证<code>OutputStream</code>在无论是否发生IO错误的时候都能够正确地关闭：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="keyword">try</span> (<span class="type">OutputStream</span> <span class="variable">output</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;out/readme.txt&quot;</span>)) &#123;</span><br><span class="line">        output.write(<span class="string">&quot;Hello&quot;</span>.getBytes(<span class="string">&quot;UTF-8&quot;</span>)); <span class="comment">// Hello</span></span><br><span class="line">    &#125; <span class="comment">// 编译器在此自动为我们写入finally并调用close()</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="阻塞-1"><a href="#阻塞-1" class="headerlink" title="阻塞"></a>阻塞</h4><p>和<code>InputStream</code>一样，<code>OutputStream</code>的<code>write()</code>方法也是阻塞的。</p>
-<h3 id="OutputStream实现类"><a href="#OutputStream实现类" class="headerlink" title="OutputStream实现类"></a>OutputStream实现类</h3><p>用<code>FileOutputStream</code>可以从文件获取输出流，这是<code>OutputStream</code>常用的一个实现类。此外，<code>ByteArrayOutputStream</code>可以在内存中模拟一个<code>OutputStream</code>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">byte</span>[] data;</span><br><span class="line">        <span class="keyword">try</span> (<span class="type">ByteArrayOutputStream</span> <span class="variable">output</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>()) &#123;</span><br><span class="line">            output.write(<span class="string">&quot;Hello &quot;</span>.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">            output.write(<span class="string">&quot;world!&quot;</span>.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">            data = output.toByteArray();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> <span class="title class_">String</span>(data, <span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Filter模式"><a href="#Filter模式" class="headerlink" title="Filter模式"></a>Filter模式</h3> 
       <!-- reward -->
       
     </div>
