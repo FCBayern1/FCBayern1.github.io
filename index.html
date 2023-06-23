@@ -168,6 +168,102 @@
     
     
     <article
+  id="post-project-notes"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/06/19/project-notes/"
+    >project_notes</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/06/19/project-notes/" class="article-date">
+  <time datetime="2023-06-19T08:35:01.000Z" itemprop="datePublished">2023-06-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Courses/">Courses</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Parallel-and-Distributed-Systems"><a href="#Parallel-and-Distributed-Systems" class="headerlink" title="Parallel and Distributed Systems"></a>Parallel and Distributed Systems</h1><h2 id="Week1"><a href="#Week1" class="headerlink" title="Week1"></a>Week1</h2><h3 id="Microservice-Docker-Explanation"><a href="#Microservice-Docker-Explanation" class="headerlink" title="Microservice, Docker Explanation:"></a>Microservice, Docker Explanation:</h3><p><strong>Service Grid</strong> and <strong>Microservice Communication</strong>: The Service Grid is an infrastructure layer that handles service-to-service communication. As the number of microservices increases, so does the complexity of communication between services. Service Grids such as Istio and Linkerd help solve this problem, but there is still much room for research and exploration, including communication efficiency, security, observability, and control.</p>
+<p><strong>Container orchestration</strong> and <strong>scheduling</strong>: With the growing popularity of containerized applications, how to effectively manage and schedule these containers has become an important issue. Although Kubernetes has become the de facto standard, further research is needed on how to optimize scheduling strategies, how to save resources while ensuring performance, and how to perform container scheduling in multi-cloud environments.</p>
+<p><strong>Performance</strong> and <strong>Scalability of Microservices</strong>: With the widespread adoption of microservice architectures, how to improve the performance and scalability of microservices is an important research issue. This includes how to design an efficient microservice architecture, how to optimize the performance of microservices, and how to effectively scale up and down microservices.</p>
+<p><strong>Security of containers</strong> and <strong>microservices</strong>: Due to the dynamic and decentralized nature of containers and microservices, their security becomes an important research issue. This includes how to ensure the isolation of containers, how to protect the communication between microservices, and how to prevent malicious code from running in container and microservice environments, etc.</p>
+<p><strong>Testing</strong> and <strong>verification of microservices</strong>: The independence and dynamic nature of microservices brings new challenges for testing and verification. How to conduct effective microservice testing, how to verify the correctness of microservices, and how to perform continuous integration and continuous deployment of microservices are all issues that need to be studied.</p>
+<p><strong>Fault detection</strong> and <strong>recovery</strong>: In a distributed environment, fault detection and recovery is a very important issue. This includes how to quickly detect faults, how to accurately locate the cause of faults, and how to automatically restore services.</p>
+<h3 id="How-and-why-decoupling"><a href="#How-and-why-decoupling" class="headerlink" title="How and why decoupling?"></a>How and why decoupling?</h3><p>Decoupling and transforming a project into a microservice architecture while containerizing it using Docker can improve system scalability, maintainability, and disaster recovery. The following are some basic steps:</p>
+<ol>
+<li><p>Determine microservice boundaries: The first step is to determine which microservices to decompose the large monolithic application into. This process requires understanding the business logic and identifying modules that can run independently and scale independently. A good microservice should be business-driven and can perform a specific business function independently.</p>
+</li>
+<li><p>Create inter-service communication mechanisms: In a microservice architecture, services need to communicate with each other over the network. You can choose to use REST, gRPC, or message queues for communication.</p>
+</li>
+<li><p>Designing data persistence: Each microservice should have its own independent database to reduce the coupling between services. But this also needs to address the issue of data consistency.</p>
+</li>
+<li><p>Build microservices: For each microservice, you can choose the programming language and framework that best suits the business logic of that service for development.</p>
+</li>
+<li><p>Create Docker containers: Pack each microservice into a Docker container. Each container contains all the dependencies and environments needed to run a microservice, which ensures that the microservice will run stably in any environment.</p>
+</li>
+<li><p>Orchestrate with Docker Compose or Kubernetes: These tools can help manage and deploy your Docker containers, as well as handle service discovery, load balancing, fault recovery, networking, and security.</p>
+</li>
+<li><p>Implement Continuous Integration and Continuous Deployment (CI&#x2F;CD): Automating builds, tests, and deployments can greatly improve development speed and software quality.</p>
+</li>
+</ol>
+<p>The main benefits of doing so are as follows:</p>
+<ol>
+<li><p>Scalability: When the system load increases, services with higher demand can be scaled individually without the need to scale as a whole.</p>
+</li>
+<li><p>Maintainability: Each service runs independently, with a small code base that is easier to understand and modify.</p>
+</li>
+<li><p>Fault isolation: If something goes wrong with one service, it will not affect other services, reducing the risk of system failure.</p>
+</li>
+<li><p>Fast iteration: Each microservice can be deployed independently, making it faster to develop and bring new features online.</p>
+</li>
+<li><p>Technology diversity: Each microservice can choose the technology stack that best suits its business needs.</p>
+</li>
+</ol>
+<p>Benefits from containerization: Using Docker containers simplifies the deployment process, ensures software consistency across environments, and provides better.</p>
+<h3 id="Fog-computing"><a href="#Fog-computing" class="headerlink" title="Fog computing:"></a>Fog computing:</h3><p>Fog computing is a computing architecture in which a series of nodes receives data from IoT devices in real time. These nodes perform real-time processing of the data that they receive, with millisecond response time. The nodes periodically send analytical summary information to the cloud</p>
+<h3 id="Projects-ideas"><a href="#Projects-ideas" class="headerlink" title="Projects ideas:"></a>Projects ideas:</h3><p><strong>Docker and distributed architecture application in cloud computing platform.</strong></p>
+<p><strong>Decouple a project into microservices architecture (Monometer -&gt; microservice, use brownfield projects).</strong></p>
+<p>Make sure every service we have is <strong>high cohesion, and low coupling</strong>.</p>
+<p><strong>Avoid underserving</strong>. The system says no more than four calls. This ensures a moderate level of service. In addition, it is important to think about the team in terms of making the team light enough to decouple microservices from each other. From the above aspects, to avoid the problem of microservices too small.</p>
+<p>Some open source manometer projects: <a target="_blank" rel="noopener" href="https://github.com/BroadleafCommerce/BroadleafCommerce">BroadleafCommerce</a>, <a target="_blank" rel="noopener" href="https://github.com/jhipster/generator-jhipster">https://github.com/jhipster/generator-jhipster</a></p>
+<p>Decompose by business capability model&#x2F;Decompose by subdomain pattern (DDD).</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Courses/" rel="tag">Courses</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-docker"
   class="article article-type-post"
   itemscope
@@ -199,8 +295,8 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="docker容器使用"><a href="#docker容器使用" class="headerlink" title="docker容器使用"></a>docker容器使用</h2><h3 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a><strong>获取镜像</strong></h3><p><code>docker pull</code> 可以来载入镜像</p>
-<h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a><strong>启动容器</strong></h3><p><code>docker run -it ubuntu /bin/bash</code></p>
+  <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="docker容器使用"><a href="#docker容器使用" class="headerlink" title="docker容器使用"></a>docker容器使用</h2><h3 id="Pull-images"><a href="#Pull-images" class="headerlink" title="Pull images"></a><strong>Pull images</strong></h3><p><code>docker pull</code> 可以来载入镜像</p>
+<h3 id="Run-containers"><a href="#Run-containers" class="headerlink" title="Run containers"></a><strong>Run containers</strong></h3><p><code>docker run -it ubuntu /bin/bash</code></p>
 <p>参数说明：</p>
 <ul>
 <li><strong>-i</strong>: 交互式操作。</li>
@@ -208,7 +304,7 @@
 <li><strong>ubuntu</strong>: ubuntu 镜像。</li>
 <li><strong>&#x2F;bin&#x2F;bash</strong>：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 &#x2F;bin&#x2F;bash。</li>
 </ul>
-<h3 id="退出终端"><a href="#退出终端" class="headerlink" title="退出终端"></a><strong>退出终端</strong></h3><p><code>exit</code></p>
+<h3 id="Exit-terminal"><a href="#Exit-terminal" class="headerlink" title="Exit terminal"></a><strong>E</strong>xit terminal</h3><p><code>exit</code></p>
 <h3 id="查看所有的容器命令如下："><a href="#查看所有的容器命令如下：" class="headerlink" title="查看所有的容器命令如下："></a><strong>查看所有的容器命令如下：</strong></h3><p><code>docker ps -a</code></p>
 <p>然后可以用</p>
 <p><code>docker start</code>来启动已经关闭的容器</p>
@@ -460,6 +556,236 @@
 <p><strong>手动指定容器的配置</strong></p>
 <p>如果只想在指定的容器设置 DNS，则可以使用以下命令：	</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --<span class="built_in">rm</span> -h host_ubuntu  --dns=114.114.114.114 --dns-search=test.com ubuntu</span><br></pre></td></tr></table></figure>
+
+<p>这里的参数说明一下:</p>
+<p><strong>–rm</strong>：容器退出时自动清理容器内部的文件系统。</p>
+<p><strong>-h HOSTNAME 或者 –hostname&#x3D;HOSTNAME</strong>： 设定容器的主机名，它会被写到容器内的 &#x2F;etc&#x2F;hostname 和 &#x2F;etc&#x2F;hosts。</p>
+<p><strong>–dns&#x3D;IP_ADDRESS</strong>： 添加 DNS 服务器到容器的 &#x2F;etc&#x2F;resolv.conf 中，让容器用这个服务器来解析所有不在 &#x2F;etc&#x2F;hosts 中的主机名。</p>
+<p><strong>–dns-search&#x3D;DOMAIN</strong>： 设定容器的搜索域，当设定搜索域为 .example.com 时，在搜索一个名为 host 的主机时，DNS 不仅搜索 host，还会搜索 host.example.com。</p>
+<p>如果在容器启动时没有指定 <strong>–dns</strong> 和 <strong>–dns-search</strong>，Docker 会默认用宿主主机上的 &#x2F;etc&#x2F;resolv.conf 来配置容器的 DNS。</p>
+<h2 id="Docker-Repository仓库管理"><a href="#Docker-Repository仓库管理" class="headerlink" title="Docker Repository仓库管理"></a>Docker Repository仓库管理</h2><p>Repo contains images.</p>
+<p>Docker Hub is a offical repo which is managed by docker.</p>
+<p><strong>拉取镜像</strong></p>
+<p>你可以通过 docker search 命令来查找官方仓库中的镜像，并利用 docker pull 命令来将它下载到本地。</p>
+<p>比如你要搜索ubuntu, 你就可以使用以下的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker search ubuntu</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/20230618135435373.png" alt="image-20230618135435373"></p>
+<p>然后你就可以使用<code>docker pull ubuntu</code>命令</p>
+<p><strong>推送镜像</strong></p>
+<p>在用户登陆docker hub之后，你也可以推送自己的镜像到docker hub，使用<code>docker push</code>命令</p>
+<p>以下命令中的 username 请替换为你的 Docker 账号用户名。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker tag ubuntu:18.04 username/ubuntu:18.04</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker image <span class="built_in">ls</span></span></span><br><span class="line"></span><br><span class="line">REPOSITORY      TAG        IMAGE ID            CREATED           ...  </span><br><span class="line">ubuntu          18.04      275d79972a86        6 days ago        ...  </span><br><span class="line">username/ubuntu 18.04      275d79972a86        6 days ago        ...  </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker push username/ubuntu:18.04</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker search username/ubuntu</span></span><br><span class="line"></span><br><span class="line">NAME             DESCRIPTION       STARS         OFFICIAL    AUTOMATED</span><br><span class="line">username/ubuntu</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Docker-Dockerfile"><a href="#Docker-Dockerfile" class="headerlink" title="Docker Dockerfile"></a>Docker Dockerfile</h2><p>A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Essentially, Dockerfiles are sets of instructions that Docker uses to build a Docker image automatically.</p>
+<h3 id="使用dockerfile来定制镜像"><a href="#使用dockerfile来定制镜像" class="headerlink" title="使用dockerfile来定制镜像"></a>使用dockerfile来定制镜像</h3><p>以定制一个nginx镜像为例子，<strong>构建好的镜像内会有一个 &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html&#x2F;index.html 文件</strong></p>
+<p><strong>1.在一个空目录下，新建一个名为 Dockerfile 文件，并在文件内添加以下内容：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FROM nginx</span><br><span class="line">RUN echo &#x27;这是一个本地构建的nginx镜像&#x27; &gt; /usr/share/nginx/html/index.html</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2.From和Run指令的作用</strong></p>
+<p>FROM：定制的镜像都是基于 FROM 的镜像，这里的 nginx 就是定制需要的基础镜像。后续的操作都是基于 nginx。</p>
+<p>RUN：用于执行后面跟着的命令行命令。有以下俩种格式：</p>
+<p>shell格式:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RUN &lt;命令行命令&gt;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&lt;命令行命令&gt; 等同于，在终端操作的 shell 命令。</span></span><br></pre></td></tr></table></figure>
+
+<p>exec 格式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RUN [&quot;可执行文件&quot;, &quot;参数1&quot;, &quot;参数2&quot;]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如：</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">RUN [<span class="string">&quot;./test.php&quot;</span>, <span class="string">&quot;dev&quot;</span>, <span class="string">&quot;offline&quot;</span>] 等价于 RUN ./test.php dev offline</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：Dockerfile 的指令每执行一次都会在 docker 上新建一层。所以过多无意义的层，会造成镜像膨胀过大。例如：</p>
+<p>FROM centos<br>RUN <strong>yum</strong> -y <strong>install</strong> <strong>wget</strong><br>RUN <strong>wget</strong> -O redis.tar.gz “<a target="_blank" rel="noopener" href="http://download.redis.io/releases/redis-5.0.3.tar.gz&quot;">http://download.redis.io/releases/redis-5.0.3.tar.gz&quot;</a><br>RUN <strong>tar</strong> -xvf redis.tar.gz</p>
+<p>以上执行会创建 3 层镜像。可简化为以下格式：</p>
+<p>FROM centos<br>RUN <strong>yum</strong> -y <strong>install</strong> <strong>wget</strong> <br>  <strong>&amp;&amp;</strong> <strong>wget</strong> -O redis.tar.gz “<a target="_blank" rel="noopener" href="http://download.redis.io/releases/redis-5.0.3.tar.gz&quot;">http://download.redis.io/releases/redis-5.0.3.tar.gz&quot;</a> <br>  <strong>&amp;&amp;</strong> <strong>tar</strong> -xvf redis.tar.gz</p>
+<p>如上，以 <strong>&amp;&amp;</strong> 符号连接命令，这样执行后，只会创建 1 层镜像。</p>
+<h3 id="开始构建镜像"><a href="#开始构建镜像" class="headerlink" title="开始构建镜像"></a><strong>开始构建镜像</strong></h3><p>在 Dockerfile 文件的存放目录下，执行构建动作</p>
+<p>示例，通过目录下的 Dockerfile 构建一个 nginx:v3 (镜像名称:镜像标签)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t nginx:v3 .</span><br></pre></td></tr></table></figure>
+
+<p>The <code>.</code> specifies the build context or the path to the directory containing the Dockerfile.</p>
+<p><img src="/../images/dockerfile2.png" alt="dockerfile2"></p>
+<p>以上显示，说明已经构建成功。</p>
+<h3 id="上下文路径"><a href="#上下文路径" class="headerlink" title="上下文路径"></a>上下文路径</h3><p> <code>.</code> 是上下文路径，那么什么是上下文路径呢？</p>
+<p>上下文路径，是指 docker 在构建镜像，有时候想要使用到本机的文件（比如复制），docker build 命令得知这个路径后，会将路径下的所有内容打包。</p>
+<p><strong>解析</strong>：由于 docker 的运行模式是 C&#x2F;S。我们本机是 C，docker 引擎是 S。实际的构建过程是在 docker 引擎下完成的，所以这个时候无法用到我们本机的文件。这就需要把我们本机的指定目录下的文件一起打包提供给 docker 引擎使用。</p>
+<p>如果未说明最后一个参数，那么默认上下文路径就是 Dockerfile 所在的位置。</p>
+<p><strong>注意</strong>：上下文路径下不要放无用的文件，因为会一起打包发送给 docker 引擎，如果文件过多会造成过程缓慢。</p>
+<h3 id="dockerfile的指令详解"><a href="#dockerfile的指令详解" class="headerlink" title="dockerfile的指令详解"></a>dockerfile的指令详解</h3><p><strong>简洁版</strong></p>
+<ul>
+<li>FROM</li>
+</ul>
+<p>构建镜像基于哪个镜像</p>
+<ul>
+<li>MAINTAINER</li>
+</ul>
+<p>镜像维护者姓名或邮箱地址</p>
+<ul>
+<li>RUN</li>
+</ul>
+<p>构建镜像时运行的指令</p>
+<ul>
+<li>CMD</li>
+</ul>
+<p>运行容器时执行的shell环境</p>
+<ul>
+<li>VOLUME</li>
+</ul>
+<p>指定容器挂载点到宿主机自动生成的目录或其他容器</p>
+<ul>
+<li>USER</li>
+</ul>
+<p>为RUN、CMD、和 ENTRYPOINT 执行命令指定运行用户</p>
+<ul>
+<li>WORKDIR</li>
+</ul>
+<p>为 RUN、CMD、ENTRYPOINT、COPY 和 ADD 设置工作目录，就是切换目录</p>
+<ul>
+<li>HEALTHCHECH</li>
+</ul>
+<p>健康检查</p>
+<ul>
+<li>ARG</li>
+</ul>
+<p>构建时指定的一些参数</p>
+<ul>
+<li>EXPOSE</li>
+</ul>
+<p>声明容器的服务端口（仅仅是声明）</p>
+<ul>
+<li>ENV</li>
+</ul>
+<p>设置容器环境变量</p>
+<ul>
+<li>ADD</li>
+</ul>
+<p>拷贝文件或目录到容器中，如果是URL或压缩包便会自动下载或自动解压</p>
+<ul>
+<li>COPY</li>
+</ul>
+<p>拷贝文件或目录到容器中，跟ADD类似，但不具备自动下载或解压的功能</p>
+<ul>
+<li>ENTRYPOINT</li>
+</ul>
+<p>运行容器时执行的shell命令</p>
+<hr>
+<p><strong>详细版</strong></p>
+<h4 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h4><p>复制指令，从上下文目录中复制文件或者目录到容器里指定路径。</p>
+<p>格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">COPY [--<span class="built_in">chown</span>=&lt;user&gt;:&lt;group&gt;] &lt;源路径1&gt;...  &lt;目标路径&gt;</span><br><span class="line">COPY [--<span class="built_in">chown</span>=&lt;user&gt;:&lt;group&gt;] [<span class="string">&quot;&lt;源路径1&gt;&quot;</span>,...  <span class="string">&quot;&lt;目标路径&gt;&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>**[–chown&#x3D;<user>:<group>]**：可选参数，用户改变复制到容器内文件的拥有者和属组。</group></user></p>
+<p>**&lt;源路径&gt;**：源文件或者源目录，这里可以是通配符表达式，其通配符规则要满足 Go 的 filepath.Match 规则。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">COPY hom* /mydir/</span><br><span class="line">COPY hom?.txt /mydir/</span><br></pre></td></tr></table></figure>
+
+<p>**&lt;目标路径&gt;**：容器内的指定路径，该路径不用事先建好，路径不存在的话，会自动创建。</p>
+<h4 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h4><p>ADD 指令和 COPY 的使用格类似（同样需求下，官方推荐使用 COPY）。功能也类似，不同之处如下：</p>
+<ul>
+<li>ADD 的优点：在执行 &lt;源文件&gt; 为 tar 压缩文件的话，压缩格式为 gzip, bzip2 以及 xz 的情况下，会自动复制并解压到 &lt;目标路径&gt;。</li>
+<li>ADD 的缺点：在不解压的前提下，无法复制 tar 压缩文件。会令镜像构建缓存失效，从而可能会令镜像构建变得比较缓慢。具体是否使用，可以根据是否需要自动解压来决定。</li>
+</ul>
+<h4 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h4><p>类似于 RUN 指令，用于运行程序，但二者运行的时间点不同:</p>
+<ul>
+<li>CMD 在docker run 时运行。</li>
+<li>RUN 是在 docker build。</li>
+</ul>
+<p><strong>作用</strong>：为启动的容器指定默认要运行的程序，程序运行结束，容器也就结束。CMD 指令指定的程序可被 docker run 命令行参数中指定要运行的程序所覆盖。</p>
+<p><strong>注意</strong>：如果 Dockerfile 中如果存在多个 CMD 指令，仅最后一个生效。</p>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CMD &lt;shell 命令&gt; </span><br><span class="line">CMD [&quot;&lt;可执行文件或命令&gt;&quot;,&quot;&lt;param1&gt;&quot;,&quot;&lt;param2&gt;&quot;,...] </span><br><span class="line">CMD [&quot;&lt;param1&gt;&quot;,&quot;&lt;param2&gt;&quot;,...]  # 该写法是为 ENTRYPOINT 指令指定的程序提供默认参数</span><br></pre></td></tr></table></figure>
+
+<p>推荐使用第二种格式，执行过程比较明确。第一种格式实际上在运行的过程中也会自动转换成第二种格式运行，并且默认可执行文件是 sh。</p>
+<h4 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h4><p>类似于 CMD 指令，但其不会被 docker run 的命令行参数指定的指令所覆盖，而且这些命令行参数会被当作参数送给 ENTRYPOINT 指令指定的程序。</p>
+<p>但是, 如果运行 docker run 时使用了 –entrypoint 选项，将覆盖 ENTRYPOINT 指令指定的程序。</p>
+<p><strong>优点</strong>：在执行 docker run 的时候可以指定 ENTRYPOINT 运行所需的参数。</p>
+<p><strong>注意</strong>：如果 Dockerfile 中如果存在多个 ENTRYPOINT 指令，仅最后一个生效。</p>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ENTRYPOINT [&quot;&lt;executeable&gt;&quot;,&quot;&lt;param1&gt;&quot;,&quot;&lt;param2&gt;&quot;,...]</span><br></pre></td></tr></table></figure>
+
+<p>可以搭配 CMD 命令使用：一般是变参才会使用 CMD ，这里的 CMD 等于是在给 ENTRYPOINT 传参，以下示例会提到。</p>
+<p>示例：</p>
+<p>假设已通过 Dockerfile 构建了 nginx:test 镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM nginx</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;nginx&quot;, &quot;-c&quot;] # 定参</span><br><span class="line">CMD [&quot;/etc/nginx/nginx.conf&quot;] # 变参 </span><br></pre></td></tr></table></figure>
+
+<p>1、不传参运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run  nginx:test</span><br></pre></td></tr></table></figure>
+
+<p>容器内会默认运行以下命令，启动主进程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -c /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>2、传参运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run  nginx:test -c /etc/nginx/new.conf</span><br></pre></td></tr></table></figure>
+
+<p>容器内会默认运行以下命令，启动主进程(&#x2F;etc&#x2F;nginx&#x2F;new.conf:假设容器内已有此文件)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -c /etc/nginx/new.conf</span><br></pre></td></tr></table></figure>
+
+<h4 id="ENV"><a href="#ENV" class="headerlink" title="ENV"></a>ENV</h4><p>设置环境变量，定义了环境变量，那么在后续的指令中，就可以使用这个环境变量。</p>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ENV &lt;key&gt; &lt;value&gt;</span><br><span class="line">ENV &lt;key1&gt;=&lt;value1&gt; &lt;key2&gt;=&lt;value2&gt;...</span><br></pre></td></tr></table></figure>
+
+<p>以下示例设置 NODE_VERSION &#x3D; 7.2.0 ， 在后续的指令中可以通过 $NODE_VERSION 引用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ENV NODE_VERSION 7.2.0</span><br><span class="line"></span><br><span class="line">RUN curl -SLO &quot;https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz&quot; \</span><br><span class="line">  &amp;&amp; curl -SLO &quot;https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ARG"><a href="#ARG" class="headerlink" title="ARG"></a>ARG</h4><p>构建参数，与 ENV 作用一致。不过作用域不一样。ARG 设置的环境变量仅对 Dockerfile 内有效，也就是说只有 docker build 的过程中有效，构建好的镜像内不存在此环境变量。</p>
+<p>构建命令 docker build 中可以用 –build-arg &lt;参数名&gt;&#x3D;&lt;值&gt; 来覆盖。</p>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ARG &lt;参数名&gt;[=&lt;默认值&gt;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="VOLUME"><a href="#VOLUME" class="headerlink" title="VOLUME"></a>VOLUME</h4><p>定义匿名数据卷。在启动容器时忘记挂载数据卷，会自动挂载到匿名卷。</p>
+<p>作用：</p>
+<ul>
+<li>避免重要的数据，因容器重启而丢失，这是非常致命的。</li>
+<li>避免容器不断变大。</li>
+</ul>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VOLUME [&quot;&lt;路径1&gt;&quot;, &quot;&lt;路径2&gt;&quot;...]</span><br><span class="line">VOLUME &lt;路径&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在启动容器 docker run 的时候，我们可以通过 -v 参数修改挂载点。</p>
+<h4 id="EXPOSE"><a href="#EXPOSE" class="headerlink" title="EXPOSE"></a>EXPOSE</h4><p>仅仅只是声明端口。</p>
+<p>作用：</p>
+<ul>
+<li>帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射。</li>
+<li>在运行时使用随机端口映射时，也就是 docker run -P 时，会自动随机映射 EXPOSE 的端口。</li>
+</ul>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPOSE &lt;端口1&gt; [&lt;端口2&gt;...]</span><br></pre></td></tr></table></figure>
+
+<h4 id="WORKDIR"><a href="#WORKDIR" class="headerlink" title="WORKDIR"></a>WORKDIR</h4><p>指定工作目录。用 WORKDIR 指定的工作目录，会在构建镜像的每一层中都存在。以后各层的当前目录就被改为指定的目录，如该目录不存在，WORKDIR 会帮你建立目录。</p>
+<p>docker build 构建镜像过程中的，每一个 RUN 命令都是新建的一层。只有通过 WORKDIR 创建的目录才会一直存在。</p>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WORKDIR &lt;工作目录路径&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="USER"><a href="#USER" class="headerlink" title="USER"></a>USER</h4><p>用于指定执行后续命令的用户和用户组，这边只是切换后续命令执行的用户（用户和用户组必须提前已经存在）。</p>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USER &lt;用户名&gt;[:&lt;用户组&gt;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="HEALTHCHECK"><a href="#HEALTHCHECK" class="headerlink" title="HEALTHCHECK"></a>HEALTHCHECK</h4><p>用于指定某个程序或者指令来监控 docker 容器服务的运行状态。</p>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HEALTHCHECK [选项] CMD &lt;命令&gt;：设置检查容器健康状况的命令</span><br><span class="line">HEALTHCHECK NONE：如果基础镜像有健康检查指令，使用这行可以屏蔽掉其健康检查指令</span><br><span class="line"></span><br><span class="line">HEALTHCHECK [选项] CMD &lt;命令&gt; : 这边 CMD 后面跟随的命令使用，可以参考 CMD 的用法。</span><br></pre></td></tr></table></figure>
+
+<h4 id="ONBUILD"><a href="#ONBUILD" class="headerlink" title="ONBUILD"></a>ONBUILD</h4><p>用于延迟构建命令的执行。简单的说，就是 Dockerfile 里用 ONBUILD 指定的命令，在本次构建镜像的过程中不会执行（假设镜像为 test-build）。当有新的 Dockerfile 使用了之前构建的镜像 FROM test-build ，这时执行新镜像的 Dockerfile 构建时候，会执行 test-build 的 Dockerfile 里的 ONBUILD 指定的命令。</p>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ONBUILD &lt;其它指令&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="LABEL"><a href="#LABEL" class="headerlink" title="LABEL"></a>LABEL</h4><p>LABEL 指令用来给镜像添加一些元数据（metadata），以键值对的形式，语法格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LABEL &lt;key&gt;=&lt;value&gt; &lt;key&gt;=&lt;value&gt; &lt;key&gt;=&lt;value&gt; ...</span><br></pre></td></tr></table></figure>
+
+<p>比如我们可以添加镜像的作者：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LABEL org.opencontainers.image.authors=&quot;runoob&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h2><p><strong>what is compose?</strong></p>
+<p>Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。然后，使用一个命令，就可以从 YML 文件配置中创建并启动所有服务。Compose 使用的三个步骤：</p>
+<ul>
+<li>使用 Dockerfile 定义应用程序的环境。</li>
+<li>使用 docker-compose.yml 定义构成应用程序的服务，这样它们可以在隔离环境中一起运行。</li>
+<li>最后，执行 docker-compose up 命令来启动并运行整个应用程序。</li>
+</ul>
+<p>docker-compose.yml 的配置案例如下（配置参数参考下文）：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yaml 配置实例</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"> <span class="attr">web:</span></span><br><span class="line">  <span class="attr">build:</span> <span class="string">.</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">&quot;5000:5000&quot;</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">.:code</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">logvolume01:/var/log</span></span><br><span class="line">  <span class="attr">links:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">redis</span></span><br><span class="line"> <span class="attr">redis:</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line"> <span class="attr">logvolume01:</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
  
       <!-- reward -->
       
@@ -2537,8 +2863,6 @@
 <p>先计算最多能组成的不重叠区间个数，然后用区间总个数减去不重叠区间的个数。</p>
 <p>在每次选择中，区间的结尾最为重要，选择的区间结尾越小，留给后面的区间的空间越大，那么后面能够选择的区间个数也就越大。</p>
 <p>按区间的结尾进行排序，每次选择结尾最小，并且和前一个区间不重叠的区间。结束时间越早越好</p>
-<iframe src="//player.bilibili.com/player.html?aid=304892488&bvid=BV1yP411F7EX&cid=884932350&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" autoplay="false"> </iframe>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">eraseOverlapIntervals</span><span class="params">(<span class="type">int</span>[][] intervals)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (intervals.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Arrays.sort(intervals, Comparator.comparingInt(o -&gt; o[<span class="number">1</span>]));</span><br><span class="line">    <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> intervals[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; intervals.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals[i][<span class="number">0</span>] &lt; end) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        end = intervals[i][<span class="number">1</span>];</span><br><span class="line">        cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> intervals.length - cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(intervals, <span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;<span class="type">int</span>[]&gt;() &#123;</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(<span class="type">int</span>[] o1, <span class="type">int</span>[] o2)</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> (o1[<span class="number">1</span>] &lt; o2[<span class="number">1</span>]) ? -<span class="number">1</span> : ((o1[<span class="number">1</span>] == o2[<span class="number">1</span>]) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//这里是让数组中，各个区间的末尾按照正序也就是升序来排序，所以是用o1[1]&lt;o2[1],也可以用return o1[1]-o2[1],但可能会溢出</span></span><br></pre></td></tr></table></figure>
@@ -2670,18 +2994,10 @@
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//相向双指针法</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(right &gt;= <span class="number">0</span> &amp;&amp; nums[right] == val) right--; <span class="comment">//将right移到从右数第一个值不为val的位置</span></span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left] == val) &#123; <span class="comment">//left位置的元素需要移除</span></span><br><span class="line">                <span class="comment">//将right位置的元素移到left（覆盖），right位置移除</span></span><br><span class="line">                nums[left] = nums[right];</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            <span class="keyword">while</span>(right &gt;= <span class="number">0</span> &amp;&amp; nums[right] == val) right--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<iframe src="//player.bilibili.com/player.html?aid=896973525&bvid=BV12A4y1Z7LP&cid=731188361&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" autoplay="false"> </iframe>
-
-
-
 <h4 id="Leetcode-977"><a href="#Leetcode-977" class="headerlink" title="Leetcode 977"></a>Leetcode 977</h4><p>给你一个按 <strong>非递减顺序</strong> 排序的整数数组 <code>nums</code>，返回 <strong>每个数字的平方</strong> 组成的新数组，要求也按 <strong>非递减顺序</strong> 排序。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [-4,-1,0,3,10]</span><br><span class="line">输出：[0,1,9,16,100]</span><br><span class="line">解释：平方后，数组变为 [16,1,0,9,100]</span><br><span class="line">排序后，数组变为 [0,1,9,16,100]</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="comment">//construct a new array to store otherwise it will cause o(n^2) in time complexity</span></span><br><span class="line"><span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];</span><br><span class="line"><span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> result.length - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line"><span class="keyword">if</span>(nums[left]*nums[left]&gt;nums[right]*nums[right])&#123;</span><br><span class="line">    result[index]=nums[left]*nums[left];</span><br><span class="line">    index--;</span><br><span class="line">    left++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    result[index]=nums[right]*nums[right];</span><br><span class="line">    index--;</span><br><span class="line">    right--;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<iframe src="//player.bilibili.com/player.html?aid=597240875&bvid=BV1QB4y1D7ep&cid=737799572&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" autoplay="false"> </iframe>
-
-
 
 <h4 id="Leetcode-209"><a href="#Leetcode-209" class="headerlink" title="Leetcode 209"></a>Leetcode 209</h4><p>给定一个含有 n 个正整数的数组和一个正整数 target 。</p>
 <p>找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [nums_l, nums_l+1, …, nums_r-1, nums_r] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。</p>
@@ -2867,6 +3183,45 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">removeDuplicates</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">char</span>[] ss = s.toCharArray();</span><br><span class="line">        Deque&lt;Character&gt; dq = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">char</span> c:ss)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!dq.isEmpty()&amp;&amp;dq.peek()==c)&#123;</span><br><span class="line">                dq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                dq.push(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">while</span>(!dq.isEmpty())&#123;</span><br><span class="line">            sb.append(dq.pollLast());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+
+<h4 id="Leetcode150-逆波兰式表达式求值"><a href="#Leetcode150-逆波兰式表达式求值" class="headerlink" title="Leetcode150 逆波兰式表达式求值"></a>Leetcode150 逆波兰式表达式求值</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">evalRPN</span><span class="params">(String[] tokens)</span> &#123;</span><br><span class="line">       Deque&lt;String&gt; dq = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">       <span class="keyword">for</span>(String s:tokens)&#123;</span><br><span class="line">           <span class="keyword">if</span>(s.equals(<span class="string">&quot;+&quot;</span>))&#123;</span><br><span class="line">               <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> Integer.parseInt(dq.pop());</span><br><span class="line">               <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> Integer.parseInt(dq.pop());</span><br><span class="line">               dq.push(Integer.toString(a+b));</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span> <span class="keyword">if</span>(s.equals(<span class="string">&quot;*&quot;</span>))&#123;</span><br><span class="line">               <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> Integer.parseInt(dq.pop());</span><br><span class="line">               <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> Integer.parseInt(dq.pop());</span><br><span class="line">               dq.push(Integer.toString(a*b));</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span> <span class="keyword">if</span>(s.equals(<span class="string">&quot;-&quot;</span>))&#123;</span><br><span class="line">               <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> Integer.parseInt(dq.pop());</span><br><span class="line">               <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> Integer.parseInt(dq.pop());</span><br><span class="line">               dq.push(Integer.toString(b-a));</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span> <span class="keyword">if</span>(s.equals(<span class="string">&quot;/&quot;</span>))&#123;</span><br><span class="line">               <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> Integer.parseInt(dq.pop());</span><br><span class="line">               <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> Integer.parseInt(dq.pop());</span><br><span class="line">               dq.push(Integer.toString(b/a));</span><br><span class="line">           &#125;</span><br><span class="line">       <span class="keyword">else</span>&#123;</span><br><span class="line">           dq.push(s);</span><br><span class="line">       &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> Integer.parseInt(dq.pop());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Leetcode239-滑动窗口的最大值"><a href="#Leetcode239-滑动窗口的最大值" class="headerlink" title="Leetcode239 滑动窗口的最大值"></a>Leetcode239 滑动窗口的最大值</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyQueue</span> &#123;</span><br><span class="line">    Deque&lt;Integer&gt; deque = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">//弹出元素时，比较当前要弹出的数值是否等于队列出口的数值，如果相等则弹出</span></span><br><span class="line">    <span class="comment">//同时判断队列当前是否为空</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">poll</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!deque.isEmpty() &amp;&amp; val == deque.peek()) &#123;</span><br><span class="line">            deque.poll();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//添加元素时，如果要添加的元素大于入口处的元素，就将入口元素弹出</span></span><br><span class="line">    <span class="comment">//保证队列元素单调递减</span></span><br><span class="line">    <span class="comment">//比如此时队列元素3,1，2将要入队，比1大，所以1弹出，此时队列：3,2</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (!deque.isEmpty() &amp;&amp; val &gt; deque.getLast()) &#123;</span><br><span class="line">            deque.removeLast();</span><br><span class="line">        &#125;</span><br><span class="line">        deque.add(val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//队列队顶元素始终为最大值</span></span><br><span class="line">    <span class="type">int</span> <span class="title function_">peek</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> deque.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] maxSlidingWindow(<span class="type">int</span>[] nums, <span class="type">int</span> k) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> nums;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nums.length - k + <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//存放结果元素的数组</span></span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//自定义队列</span></span><br><span class="line">        <span class="type">MyQueue</span> <span class="variable">myQueue</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyQueue</span>();</span><br><span class="line">        <span class="comment">//先将前k的元素放入队列</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">            myQueue.add(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        res[num++] = myQueue.peek();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> k; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="comment">//滑动窗口移除最前面的元素，移除是判断该元素是否放入队列</span></span><br><span class="line">            myQueue.poll(nums[i - k]);</span><br><span class="line">            <span class="comment">//滑动窗口加入最后面的元素</span></span><br><span class="line">            myQueue.add(nums[i]);</span><br><span class="line">            <span class="comment">//记录对应的最大值</span></span><br><span class="line">            res[num++] = myQueue.peek();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="树-x2F-Tree"><a href="#树-x2F-Tree" class="headerlink" title="树&#x2F;Tree"></a>树&#x2F;Tree</h3><h4 id="树的种类"><a href="#树的种类" class="headerlink" title="树的种类"></a>树的种类</h4><p><strong>满二叉树</strong>：如果一棵二叉树只有度为0的结点和度为2的结点，并且度为0的结点在同一层上，则这棵二叉树为满二叉树。</p>
+<p><strong>完全二叉树</strong>：在完全二叉树中，除了最底层节点可能没填满外，其余每层节点数都达到最大值，并且最下面一层的节点都集中在该层最左边的若干位置。若最底层为第 h 层（h从1开始），则该层包含 1~ 2^(h-1) 个节点。</p>
+<p><strong>二叉搜索树</strong> (有序树):</p>
+<ul>
+<li>若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值；</li>
+<li>若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值；</li>
+<li>它的左、右子树也分别为二叉排序树</li>
+</ul>
+<p>**平衡二叉树AVL(Adelson-Velsky and Landis): **它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。</p>
+<h4 id="树的实现"><a href="#树的实现" class="headerlink" title="树的实现"></a>树的实现</h4><p>链式存储（使用指针），顺序存储（使用数组）</p>
+<h4 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h4><p><strong>1.DFS:</strong> </p>
+<p>先往深走，遇到叶子节点再往回走</p>
+<ul>
+<li>前序遍历（递归法，迭代法）</li>
+<li>中序遍历（递归法，迭代法）</li>
+<li>后序遍历（递归法，迭代法）</li>
+</ul>
+<p><strong>2.BFS:</strong></p>
+<p>一层一层的去遍历。</p>
+<ul>
+<li>层次遍历（迭代法）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line"></span><br><span class="line">    TreeNode() &#123;&#125;</span><br><span class="line">    TreeNode(<span class="type">int</span> val) &#123; <span class="built_in">this</span>.val = val; &#125;</span><br><span class="line">    TreeNode(<span class="type">int</span> val, TreeNode left, TreeNode right) &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">        <span class="built_in">this</span>.left = left;</span><br><span class="line">        <span class="built_in">this</span>.right = right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="二叉树递归遍历"><a href="#二叉树递归遍历" class="headerlink" title="二叉树递归遍历"></a>二叉树递归遍历</h4><p>前序遍历:</p>
+<p>中序遍历:</p>
+<p>后序遍历:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前序遍历·递归·LC144_二叉树的前序遍历</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">preorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Integer&gt;();</span><br><span class="line">        preorder(root, result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">preorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; result)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        result.add(root.val);</span><br><span class="line">        preorder(root.left, result);</span><br><span class="line">        preorder(root.right, result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 中序遍历·递归·LC94_二叉树的中序遍历</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">inorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; list)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        inorder(root.left, list);</span><br><span class="line">        list.add(root.val);             <span class="comment">// 注意这一句</span></span><br><span class="line">        inorder(root.right, list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 后序遍历·递归·LC145_二叉树的后序遍历</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">postorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        postorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">postorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; list)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        postorder(root.left, list);</span><br><span class="line">        postorder(root.right, list);</span><br><span class="line">        list.add(root.val);             <span class="comment">// 注意这一句</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="随想练习"><a href="#随想练习" class="headerlink" title="随想练习"></a>随想练习</h3><h4 id="Leetcode-852山峰数组"><a href="#Leetcode-852山峰数组" class="headerlink" title="Leetcode 852山峰数组"></a>Leetcode 852山峰数组</h4><p><strong>线性查找, O(n)</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">peakIndexInMountainArray</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> arr.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>,j=len-<span class="number">1</span>;i&lt;len;i++,j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i]&gt;arr[i+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(arr[j-<span class="number">1</span>]&lt;arr[j])&#123;</span><br><span class="line">                <span class="keyword">return</span> j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -4474,365 +4829,6 @@
 <li>Be within commuting distance to Croydon</li>
 </ul>
  
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-Csharp"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/04/15/Csharp/"
-    >Csharp</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/04/15/Csharp/" class="article-date">
-  <time datetime="2023-04-15T14:22:46.000Z" itemprop="datePublished">2023-04-15</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C#</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="C-Get-started"><a href="#C-Get-started" class="headerlink" title="C# Get started"></a>C# Get started</h1><p>hello guys, follow me and let’s studying the C#.</p>
-<ul>
-<li>Commercial experience of software development in C#</li>
-<li>Experience with source code version control such as Git</li>
-<li>Experience with software development tools such as Visual Studio, JIRA, MSBuild, Jenkins</li>
-<li>Experience with unit test frameworks such as NUnit or MSTest</li>
-<li>Experience designing user interfaces. (Exposure to DevExpress an advantage).</li>
-<li>Exposure to Iterative or Agile development methodologies (Scrum &#x2F; Kanban)</li>
-<li>Understanding of OOP</li>
-<li>Understanding of SOLID</li>
-</ul>
-<h2 id="Chapter1-Basic"><a href="#Chapter1-Basic" class="headerlink" title="Chapter1: Basic"></a>Chapter1: Basic</h2><ul>
-<li><strong>using</strong>: The keyword is used to include the <strong>System</strong> namespace in the program. A program usually has multiple using <strong>statements</strong>.</li>
-<li><strong>namespace</strong>: which contains different classes.</li>
-<li><strong>class</strong>: declariation of the class.</li>
-<li><strong>Main</strong>: Is the entry point for all C# programs. What does the class do when executed</li>
-<li><strong>Formatted</strong> <strong>output aka interpolation</strong>：Console.WriteLine(<strong>$</strong>“Hello World! The counter is <strong>{counter}</strong>“); By using $ dollar symbol.</li>
-</ul>
-<hr>
-<p><strong>Here are a few things to note:</strong></p>
-<ul>
-<li>C# is case sensitive.</li>
-<li>All statements and expressions must start with a semicolon (;). The end.</li>
-<li>Execution of the program starts with the Main method.</li>
-<li>Unlike Java, the file name can be different from the name of the class.</li>
-</ul>
-<p><strong>Numbers and Math in C#: Int,float,double,decimal,string..</strong></p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> minVal = <span class="built_in">int</span>.MinValue; <span class="comment">// -2147483648</span></span><br><span class="line"><span class="built_in">int</span> maxVal = <span class="built_in">int</span>.MaxValue; <span class="comment">// 2147483647</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">double</span> min = <span class="built_in">double</span>.MinValue <span class="comment">// -1.79769313486232E+308</span></span><br><span class="line"><span class="built_in">double</span> max = <span class="built_in">double</span>.MaxValue <span class="comment">// 1.79769313486232E+308</span></span><br><span class="line">  </span><br><span class="line"><span class="built_in">decimal</span> min = <span class="built_in">decimal</span>.MinValue; <span class="comment">//-79228162514264337593543950335</span></span><br><span class="line"><span class="built_in">decimal</span> max = <span class="built_in">decimal</span>.MaxValue; <span class="comment">// 79228162514264337593543950335</span></span><br></pre></td></tr></table></figure>
-
-<p>The <code>decimal</code> type has a smaller range but greater precision than <code>double</code>. </p>
-<p>The <code>M</code> suffix on the numbers is how you indicate that a constant should use the <code>decimal</code> type. For example:</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">decimal</span> c = <span class="number">1.0</span>M;</span><br><span class="line"><span class="built_in">decimal</span> d = <span class="number">3.0</span>M;</span><br><span class="line">Console.WriteLine(c / d);</span><br></pre></td></tr></table></figure>
-
-<p><strong>Arrays</strong>:</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个整型数组，长度为3</span></span><br><span class="line"><span class="built_in">int</span>[] nums = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个字符串数组，长度为4，初始化数组元素</span></span><br><span class="line"><span class="built_in">string</span>[] names = <span class="keyword">new</span> <span class="built_in">string</span>[] &#123; <span class="string">&quot;Tom&quot;</span>, <span class="string">&quot;Jerry&quot;</span>, <span class="string">&quot;Alice&quot;</span>, <span class="string">&quot;Bob&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 var 关键字定义数组</span></span><br><span class="line"><span class="keyword">var</span> scores = <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">90</span>, <span class="number">80</span>, <span class="number">95</span>, <span class="number">85</span>, <span class="number">70</span> &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>以上示例中，第一个定义创建了一个长度为 3 的整型数组，数组中的元素初始值为 0；第二个定义创建了一个长度为 4 的字符串数组，并初始化了每个元素的值；第三个定义使用 var 关键字根据初始化值推断出数组的类型，并创建了一个长度为 5 的整型数组</p>
-<p>　<strong>Common Math function</strong></p>
-<ul>
-<li>Math.Abs: Returns the absolute value of a number.</li>
-<li>Math.Ceiling: Rounds up a number and returns the smallest integer greater than or equal to that number.</li>
-<li>Math.Floor: Rounds down a number and returns the largest integer less than or equal to the number.</li>
-<li>Math.Max: Returns the maximum of two numbers.</li>
-<li>Math.Min: Returns the minimum of two numbers.</li>
-<li>Math.Pow: Returns the specified power of a number.</li>
-<li>Math.Round: Round to the nearest whole number or number of specified decimal places.</li>
-<li>Math.Sqrt: Returns the square root of a number.</li>
-<li>Math.Log: Returns the natural log base e of a number.</li>
-<li>Math.Exp: Returns e to the specified power.</li>
-<li>Math.Truncate: Truncates a number into its integer part.</li>
-</ul>
-<h2 id="Chapter2-if-x2F-else-x2F-loop"><a href="#Chapter2-if-x2F-else-x2F-loop" class="headerlink" title="Chapter2. if&#x2F;else&#x2F;loop"></a>Chapter2. if&#x2F;else&#x2F;loop</h2><h3 id="1-if-statement"><a href="#1-if-statement" class="headerlink" title="1. if statement"></a>1. if statement</h3><p><strong>bool</strong> carries true and false. which is different from java</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(condition)&#123;</span><br><span class="line">execution <span class="keyword">when</span> condition <span class="keyword">is</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">execution <span class="keyword">when</span> condition <span class="keyword">is</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Logical AND Operator:<strong>&amp;&amp;</strong> </p>
-<p>Logical OR Operator:<strong>||</strong> </p>
-<p>Logical NOT Operator: <strong>!</strong></p>
-<p>Equality Operator: <strong>&#x3D;&#x3D;</strong></p>
-<h3 id="2-loop"><a href="#2-loop" class="headerlink" title="2. loop"></a>2. loop</h3><ol>
-<li><p><strong>while loop</strong></p>
-<p>same with java</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (counter &lt; <span class="number">10</span>)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;Hello World! The counter is <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">  counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p><strong>do while</strong></p>
-<p>same with java</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;Hello World! The counter is <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">  counter++;</span><br><span class="line">&#125; <span class="keyword">while</span> (counter &lt; <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p><strong>for loop</strong></p>
-</li>
-</ol>
-<p>​	Same with java</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> counter = <span class="number">0</span>; counter &lt; <span class="number">10</span>; counter++)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;Hello World! The counter is <span class="subst">&#123;counter&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>(for initializer;for condition;for iterator)</strong> same with java</p>
-<p><strong>Nested for loop</strong> which can be used to create matrix, e.g:</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> row = <span class="number">1</span>; row &lt; <span class="number">11</span>; row++)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">char</span> column = <span class="string">&#x27;a&#x27;</span>; column &lt; <span class="string">&#x27;k&#x27;</span>; column++)</span><br><span class="line">  &#123;</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;The cell is (<span class="subst">&#123;row&#125;</span>, <span class="subst">&#123;column&#125;</span>)&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Chapter3-Lists-collection"><a href="#Chapter3-Lists-collection" class="headerlink" title="Chapter3. Lists collection"></a>Chapter3. Lists collection</h2><p>Example:</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> names = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt; &#123; <span class="string">&quot;Joshua&quot;</span>, <span class="string">&quot;Ana&quot;</span>, <span class="string">&quot;Felipe&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> name <span class="keyword">in</span> names)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;Hello <span class="subst">&#123;name.ToUpper()&#125;</span>!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>You specify the type of the elements between the angle brackets, &lt;&gt;.</li>
-<li>One important aspect of this <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a> type is that it can grow or shrink, enabling you to add or remove elements.</li>
-</ul>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> names = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt; &#123; <span class="string">&quot;Joshua&quot;</span>, <span class="string">&quot;Ana&quot;</span>, <span class="string">&quot;Felipe&quot;</span> &#125;;</span><br><span class="line">Console.WriteLine();</span><br><span class="line">names.Add(<span class="string">&quot;Joshua&quot;</span>);</span><br><span class="line">names.Add(<span class="string">&quot;Bill&quot;</span>);</span><br><span class="line">names.RemoveAll(name=&gt;name==<span class="string">&quot;Joshua&quot;</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> name <span class="keyword">in</span> names)</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;Hello <span class="subst">&#123;name.ToUpper()&#125;</span>!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>RemoveAll method is different from that in Java. It is provided by list<T></T></p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">RemoveAll</span>(<span class="params">Predicate&lt;T&gt; match</span>)</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>list<T> allows you reference the individual items by <strong>index</strong> directly which is different from java&#x3D;&gt;”list.get()”.</T></p>
-</li>
-<li><p>list<T> also provides <strong>Count</strong> method which allows you to count the numbers of elements in the list. <strong>xxx.Count</strong></T></p>
-</li>
-<li><p>list<T> provides you a IndexOf method which allows you to find the index of the specific element.</T></p>
-</li>
-<li><p>The items in your list can be sorted as well. The <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort">Sort</a> method sorts all the items in the list in their normal order (alphabetically for strings). Add this code and run again: Quite similar with the Collection.sort();</p>
-</li>
-</ul>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//print fibonacci numbers</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fibonacciNumbers = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt; &#123;<span class="number">1</span>, <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (fibonacciNumbers.Count &lt; <span class="number">20</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> previous = fibonacciNumbers[fibonacciNumbers.Count - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">var</span> previous2 = fibonacciNumbers[fibonacciNumbers.Count - <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    fibonacciNumbers.Add(previous + previous2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> item <span class="keyword">in</span> fibonacciNumbers)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Fundamentals"><a href="#Fundamentals" class="headerlink" title="Fundamentals."></a>Fundamentals.</h2><h3 id="1-Program-Structure"><a href="#1-Program-Structure" class="headerlink" title="1. Program Structure."></a>1. Program Structure.</h3><h4 id="1-Overview"><a href="#1-Overview" class="headerlink" title="1. Overview"></a>1. Overview</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A skeleton of a C# program</span></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Your program starts here:</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">YourNamespace</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">YourClass</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">struct</span> YourStruct</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">interface</span> <span class="title">IYourInterface</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">delegate</span> <span class="built_in">int</span> <span class="title">YourDelegate</span>()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">enum</span> YourEnum</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">YourNestedNamespace</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">struct</span> YourStruct</span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The preceding example uses <em>top-level statements</em> for the program’s entry point. This feature was added in C# 9. Prior to C# 9, the entry point was a static method named <code>Main</code>, as shown in the following example:</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// A skeleton of a C# program</span></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">YourNamespace</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">YourClass</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">struct</span> YourStruct</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">interface</span> <span class="title">IYourInterface</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">delegate</span> <span class="built_in">int</span> <span class="title">YourDelegate</span>()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">enum</span> YourEnum</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">YourNestedNamespace</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">struct</span> YourStruct</span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//Your program starts here...</span></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Prefix of the c# file is .cs.</strong></p>
-<h4 id="2-Main-method"><a href="#2-Main-method" class="headerlink" title="2. Main method"></a>2. Main method</h4><p>The <code>Main</code> method is the entry point of a C# application. (Libraries and services do not require a <code>Main</code> method as an entry point.) When the application is started, the <code>Main</code> method is the first method that is invoked.</p>
-<p>There can only be one entry point in a C# program. If you have more than one class that has a <code>Main</code> method, you must compile your program with the <strong>StartupObject</strong> compiler option to specify which <code>Main</code> method to use as the entry point. For more information, see <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/advanced#mainentrypoint-or-startupobject"><strong>StartupObject</strong> (C# Compiler Options)</a>.</p>
-<p>Starting in C# 9, you can omit the <code>Main</code> method, and write C# statements as if they were in the <code>Main</code> method (<strong>this is similar with Python</strong>), as in the following example:</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line">StringBuilder builder = <span class="keyword">new</span>();</span><br><span class="line">builder.AppendLine(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">builder.AppendLine(<span class="string">&quot;World!&quot;</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(builder.ToString());</span><br></pre></td></tr></table></figure>
-
-<p>For information about how to write application code with an implicit entry point method, see <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/program-structure/top-level-statements">Top-level statements</a>.</p>
-<ul>
-<li>The <code>Main</code> method is the entry point of an executable program; it is where the program control starts and ends.</li>
-<li><code>Main</code> is declared inside a class or struct. <code>Main</code> must be <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/static"><code>static</code></a> and it need not be <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/public"><code>public</code></a>. (In the earlier example, it receives the default access of <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/private"><code>private</code></a>.) The enclosing class or struct is not required to be static.</li>
-<li><code>Main</code> can either have a <code>void</code>, <code>int</code>, <code>Task</code>, or <code>Task&lt;int&gt;</code> return type.</li>
-<li>If and only if <code>Main</code> returns a <code>Task</code> or <code>Task&lt;int&gt;</code>, the declaration of <code>Main</code> may include the <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/async"><code>async</code></a> modifier. This specifically excludes an <code>async void Main</code> method.</li>
-<li>The <code>Main</code> method can be declared with or without a <code>string[]</code> parameter that contains command-line arguments. When using Visual Studio to create Windows applications, you can add the parameter manually or else use the <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.environment.getcommandlineargs#system-environment-getcommandlineargs">GetCommandLineArgs()</a> method to obtain the command-line arguments. Parameters are read as zero-indexed command-line arguments. Unlike C and C++, the name of the program is not treated as the first command-line argument in the <code>args</code> array, but it is the first element of the <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.environment.getcommandlineargs#system-environment-getcommandlineargs">GetCommandLineArgs()</a> method.</li>
-</ul>
-<p><strong>Valid main declariation:</strong></p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span> &#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> <span class="title">Main</span>()</span> &#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> &#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> &#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">async</span> Task <span class="title">Main</span>()</span> &#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">async</span> Task&lt;<span class="built_in">int</span>&gt; <span class="title">Main</span>()</span> &#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">async</span> Task <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> &#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">async</span> Task&lt;<span class="built_in">int</span>&gt; <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> &#123; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>The preceding examples all use the <code>public</code> accessor modifier. That’s typical, but not required. (which means they can be <strong>private</strong>).</p>
-<p>The addition of <code>async</code> and <code>Task</code>, <code>Task&lt;int&gt;</code> return types simplifies program code when console applications need to start and <code>await</code> asynchronous operations in <code>Main</code></p>
-<p><strong>Main() return values:</strong></p>
-<p>You can return an <code>int</code> from the <code>Main</code> method by defining the method in one of the following ways:</p>
-<table>
-<thead>
-<tr>
-<th align="left"><code>Main</code> method code</th>
-<th align="left"><code>Main</code> signature</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">No use of <code>args</code> or <code>await</code></td>
-<td align="left"><code>static int Main()</code></td>
-</tr>
-<tr>
-<td align="left">Uses <code>args</code>, no use of <code>await</code></td>
-<td align="left"><code>static int Main(string[] args)</code></td>
-</tr>
-<tr>
-<td align="left">No use of <code>args</code>, uses <code>await</code></td>
-<td align="left"><code>static async Task&lt;int&gt; Main()</code></td>
-</tr>
-<tr>
-<td align="left">Uses <code>args</code> and <code>await</code></td>
-<td align="left"><code>static async Task&lt;int&gt; Main(string[] args)</code></td>
-</tr>
-</tbody></table>
-<p>If the return value from <code>Main</code> is not used, returning <code>void</code> or <code>Task</code> allows for slightly simpler code.</p>
-<table>
-<thead>
-<tr>
-<th align="left"><code>Main</code> method code</th>
-<th align="left"><code>Main</code> signature</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">No use of <code>args</code> or <code>await</code></td>
-<td align="left"><code>static void Main()</code></td>
-</tr>
-<tr>
-<td align="left">Uses <code>args</code>, no use of <code>await</code></td>
-<td align="left"><code>static void Main(string[] args)</code></td>
-</tr>
-<tr>
-<td align="left">No use of <code>args</code>, uses <code>await</code></td>
-<td align="left"><code>static async Task Main()</code></td>
-</tr>
-<tr>
-<td align="left">Uses <code>args</code> and <code>await</code></td>
-<td align="left"><code>static async Task Main(string[] args)</code></td>
-</tr>
-</tbody></table>
-<p>However, returning <code>int</code> or <code>Task&lt;int&gt;</code> enables the program to communicate status information to other programs or scripts that invoke the executable file.</p>
-<p>The following example shows how the exit code for the process can be accessed.</p>
-<p>This example uses <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/core/introduction">.NET Core</a> command-line tools. If you are unfamiliar with .NET Core command-line tools, you can learn about them in this <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code">get-started article</a>.</p>
-<p>Create a new application by running <code>dotnet new console</code>. Modify the <code>Main</code> method in <em>Program.cs</em> as follows:</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Save this program as MainReturnValTest.cs.</span></span><br><span class="line"><span class="keyword">class</span> <span class="title">MainReturnValTest</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="built_in">int</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>When a program is executed in Windows OS, <strong>any value returned</strong> from the <code>Main</code> function is stored in an <strong>environment variable</strong>. This environment variable can be retrieved using <code>ERRORLEVEL</code> from a batch file, or <code>$LastExitCode</code> from PowerShell. </p>
-<p>You can build the application using the <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet">dotnet CLI</a> <code>dotnet build</code> command.</p>
-<p>Next, create a PowerShell script to run the application and display the result. Paste the following code into a text file and save it as <code>test.ps1</code> in the folder that contains the project. Run the PowerShell script by typing <code>test.ps1</code> at the PowerShell prompt.</p>
-<p>Because the code returns zero, the batch file will report success. However, if you change MainReturnValTest.cs to return a non-zero value and then recompile the program, subsequent execution of the PowerShell script will report failure.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dotnet run</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$LastExitCode</span> <span class="operator">-eq</span> <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">&quot;Execution succeeded&quot;</span></span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">&quot;Execution Failed&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Write-Host</span> <span class="string">&quot;Return value = &quot;</span> <span class="variable">$LastExitCode</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Execution succeeded</span><br><span class="line">Return value = 0</span><br></pre></td></tr></table></figure>
-
-<p><strong>Async Main return values</strong></p>
-<p>When you declare an <code>async</code> return value for <code>Main</code>, the compiler generates the boilerplate code for calling asynchronous methods in <code>Main</code>. If you don’t specify the <code>async</code> keyword, you need to write that code yourself, as shown in the following example. The code in the example ensures that your program runs until the asynchronous operation is completed:</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    AsyncConsoleWork().GetAwaiter().GetResult();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">async</span> Task&lt;<span class="built_in">int</span>&gt; <span class="title">AsyncConsoleWork</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Main body here</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>This boilerplate code can be replaced by:</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">async</span> Task&lt;<span class="built_in">int</span>&gt; <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> AsyncConsoleWork();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>An advantage of declaring <code>Main</code> as <code>async</code> is that the compiler always generates the correct code.	</p>
-<p>When the application entry point returns a <code>Task</code> or <code>Task&lt;int&gt;</code>, the compiler generates a new entry point that calls the entry point method declared in the application code. Assuming that this entry point is called <code>$GeneratedMain</code>, the compiler generates the following code for these entry points:</p>
-<ul>
-<li><code>static Task Main()</code> results in the compiler emitting the equivalent of <code>private static void $GeneratedMain() =&gt; Main().GetAwaiter().GetResult();</code></li>
-<li><code>static Task Main(string[])</code> results in the compiler emitting the equivalent of <code>private static void $GeneratedMain(string[] args) =&gt; Main(args).GetAwaiter().GetResult();</code></li>
-<li><code>static Task&lt;int&gt; Main()</code> results in the compiler emitting the equivalent of <code>private static int $GeneratedMain() =&gt; Main().GetAwaiter().GetResult();</code></li>
-<li><code>static Task&lt;int&gt; Main(string[])</code> results in the compiler emitting the equivalent of <code>private static int $GeneratedMain(string[] args) =&gt; Main(args).GetAwaiter().GetResult();</code></li>
-</ul>
-<p><strong>Noted: If the examples used <code>async</code> modifier on the <code>Main</code> method, the compiler would generate the same code.</strong></p>
-<p><strong>Command-Line Arguments</strong></p>
-<p>You can send arguments to the <code>Main</code> method by defining the method in one of the following ways:</p>
-<table>
-<thead>
-<tr>
-<th align="left"><code>Main</code> method code</th>
-<th align="left"><code>Main</code> signature</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">No return value, no use of <code>await</code></td>
-<td align="left"><code>static void Main(string[] args)</code></td>
-</tr>
-<tr>
-<td align="left">Return value, no use of <code>await</code></td>
-<td align="left"><code>static int Main(string[] args)</code></td>
-</tr>
-<tr>
-<td align="left">No return value, uses <code>await</code></td>
-<td align="left"><code>static async Task Main(string[] args)</code></td>
-</tr>
-<tr>
-<td align="left">Return value, uses <code>await</code></td>
-<td align="left"><code>static async Task&lt;int&gt; Main(string[] args)</code></td>
-</tr>
-</tbody></table>
-<p>If the arguments are not used, you can omit <code>args</code> from the method signature for slightly simpler code:</p>
-<table>
-<thead>
-<tr>
-<th align="left"><code>Main</code> method code</th>
-<th align="left"><code>Main</code> signature</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">No return value, no use of <code>await</code></td>
-<td align="left"><code>static void Main()</code></td>
-</tr>
-<tr>
-<td align="left">Return value, no use of <code>await</code></td>
-<td align="left"><code>static int Main()</code></td>
-</tr>
-<tr>
-<td align="left">No return value, uses <code>await</code></td>
-<td align="left"><code>static async Task Main()</code></td>
-</tr>
-<tr>
-<td align="left">Return value, uses <code>await</code></td>
-<td align="left"><code>static async Task&lt;int&gt; Main()</code></td>
-</tr>
-</tbody></table>
-<p> Note</p>
-<p>You can also use <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.environment.commandline">Environment.CommandLine</a> or <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.environment.getcommandlineargs">Environment.GetCommandLineArgs</a> to access the command-line arguments from any point in a console or Windows Forms application. To enable command-line arguments in the <code>Main</code> method signature in a Windows Forms application, you must manually modify the signature of <code>Main</code>. The code generated by the Windows Forms designer creates <code>Main</code> without an input parameter.</p>
-<p>The parameter of the <code>Main</code> method is a <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.string">String</a> array that represents the command-line arguments. Usually you determine whether arguments exist by testing the <code>Length</code> property, for example:</p>
-<p>C#Copy</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (args.Length == <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    System.Console.WriteLine(<span class="string">&quot;Please enter a numeric argument.&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> Tip</p>
-<p>The <code>args</code> array can’t be null. So, it’s safe to access the <code>Length</code> property without null checking.</p>
-<p>You can also convert the string arguments to numeric types by using the <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.convert">Convert</a> class or the <code>Parse</code> method. For example, the following statement converts the <code>string</code> to a <code>long</code> number by using the <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.int64.parse">Parse</a> method:</p>
-<p>C#Copy</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">long</span> num = Int64.Parse(args[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
-
-<p>It is also possible to use the C# type <code>long</code>, which aliases <code>Int64</code>:</p>
-<p>C#Copy</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">long</span> num = <span class="built_in">long</span>.Parse(args[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
-
-<p>You can also use the <code>Convert</code> class method <code>ToInt64</code> to do the same thing:</p>
-<p>C#Copy</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">long</span> num = Convert.ToInt64(s);</span><br></pre></td></tr></table></figure>
-
-<p>For more information, see <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.int64.parse">Parse</a> and <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.convert">Convert</a>.</p>
-<p>The following example shows how to use command-line arguments in a console application. The application takes one argument at run time, converts the argument to an integer, and calculates the factorial of the number. If no arguments are supplied, the application issues a message that explains the correct usage of the program.</p>
-<p>To compile and run the application from a command prompt, follow these steps:</p>
-<ol>
-<li><p>Paste the following code into any text editor, and then save the file as a text file with the name <em>Factorial.cs</em>.</p>
-<p>C#Copy</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Functions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">long</span> <span class="title">Factorial</span>(<span class="params"><span class="built_in">int</span> n</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Test for invalid input.</span></span><br><span class="line">        <span class="keyword">if</span> ((n &lt; <span class="number">0</span>) || (n &gt; <span class="number">20</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Calculate the factorial iteratively rather than recursively.</span></span><br><span class="line">        <span class="built_in">long</span> tempResult = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            tempResult *= i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tempResult;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">MainClass</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="built_in">int</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Test if input arguments were supplied.</span></span><br><span class="line">        <span class="keyword">if</span> (args.Length == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Please enter a numeric argument.&quot;</span>);</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Usage: Factorial &lt;num&gt;&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Try to convert the input arguments to numbers. This will throw</span></span><br><span class="line">        <span class="comment">// an exception if the argument is not a number.</span></span><br><span class="line">        <span class="comment">// num = int.Parse(args[0]);</span></span><br><span class="line">        <span class="built_in">int</span> num;</span><br><span class="line">        <span class="built_in">bool</span> test = <span class="built_in">int</span>.TryParse(args[<span class="number">0</span>], <span class="keyword">out</span> num);</span><br><span class="line">        <span class="keyword">if</span> (!test)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Please enter a numeric argument.&quot;</span>);</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Usage: Factorial &lt;num&gt;&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Calculate factorial.</span></span><br><span class="line">        <span class="built_in">long</span> result = Functions.Factorial(num);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Print result.</span></span><br><span class="line">        <span class="keyword">if</span> (result == <span class="number">-1</span>)</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Input must be &gt;= 0 and &lt;= 20.&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;The Factorial of <span class="subst">&#123;num&#125;</span> is <span class="subst">&#123;result&#125;</span>.&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// If 3 is entered on command line, the</span></span><br><span class="line"><span class="comment">// output reads: The factorial of 3 is 6.</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>From the <strong>Start</strong> screen or <strong>Start</strong> menu, open a Visual Studio <strong>Developer Command Prompt</strong> window, and then navigate to the folder that contains the file that you created.</p>
-</li>
-<li><p>Enter the following command to compile the application.</p>
-<p><code>dotnet build</code></p>
-<p>If your application has no compilation errors, an executable file that’s named <em>Factorial.exe</em> is created.</p>
-</li>
-<li><p>Enter the following command to calculate the factorial of 3:</p>
-<p><code>dotnet run -- 3</code></p>
-</li>
-<li><p>The command produces this output: <code>The factorial of 3 is 6.</code></p>
-</li>
-</ol>
-<p> Note</p>
-<p>When running an application in Visual Studio, you can specify command-line arguments in the <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/visualstudio/ide/reference/debug-page-project-designer">Debug Page, Project Designer</a>.</p>
-<h4 id="3-Top-level-statements"><a href="#3-Top-level-statements" class="headerlink" title="3. Top-level statements"></a>3. Top-level statements</h4> 
       <!-- reward -->
       
     </div>
