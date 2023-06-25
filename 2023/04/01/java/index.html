@@ -659,7 +659,14 @@
 
 
 
-<h3 id="Filter模式"><a href="#Filter模式" class="headerlink" title="Filter模式"></a>Filter模式</h3> 
+<h3 id="Filter模式"><a href="#Filter模式" class="headerlink" title="Filter模式"></a>Filter模式</h3><p>Java的IO标准库提供的<code>InputStream</code>根据来源可以包括：</p>
+<ul>
+<li><code>FileInputStream</code>：从文件读取数据，是最终数据源；</li>
+<li><code>ServletInputStream</code>：从HTTP请求读取数据，是最终数据源；</li>
+<li><code>Socket.getInputStream()</code>：从TCP连接读取数据，是最终数据源；</li>
+</ul>
+<p>如果我们要给<code>FileInputStream</code>添加缓冲功能，则可以从<code>FileInputStream</code>派生一个类：</p>
+ 
       <!-- reward -->
       
       <div id="reword-out">

@@ -62,86 +62,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>project_notes</title>
-    <url>/2023/06/19/project-notes/</url>
-    <content><![CDATA[<h1 id="Parallel-and-Distributed-Systems"><a href="#Parallel-and-Distributed-Systems" class="headerlink" title="Parallel and Distributed Systems"></a>Parallel and Distributed Systems</h1><h2 id="Week1"><a href="#Week1" class="headerlink" title="Week1"></a>Week1</h2><h3 id="Microservice-Docker-Explanation"><a href="#Microservice-Docker-Explanation" class="headerlink" title="Microservice, Docker Explanation:"></a>Microservice, Docker Explanation:</h3><p><strong>Service Grid</strong> and <strong>Microservice Communication</strong>: The Service Grid is an infrastructure layer that handles service-to-service communication. As the number of microservices increases, so does the complexity of communication between services. Service Grids such as Istio and Linkerd help solve this problem, but there is still much room for research and exploration, including communication efficiency, security, observability, and control.</p>
-<p><strong>Container orchestration</strong> and <strong>scheduling</strong>: With the growing popularity of containerized applications, how to effectively manage and schedule these containers has become an important issue. Although Kubernetes has become the de facto standard, further research is needed on how to optimize scheduling strategies, how to save resources while ensuring performance, and how to perform container scheduling in multi-cloud environments.</p>
-<p><strong>Performance</strong> and <strong>Scalability of Microservices</strong>: With the widespread adoption of microservice architectures, how to improve the performance and scalability of microservices is an important research issue. This includes how to design an efficient microservice architecture, how to optimize the performance of microservices, and how to effectively scale up and down microservices.</p>
-<p><strong>Security of containers</strong> and <strong>microservices</strong>: Due to the dynamic and decentralized nature of containers and microservices, their security becomes an important research issue. This includes how to ensure the isolation of containers, how to protect the communication between microservices, and how to prevent malicious code from running in container and microservice environments, etc.</p>
-<p><strong>Testing</strong> and <strong>verification of microservices</strong>: The independence and dynamic nature of microservices brings new challenges for testing and verification. How to conduct effective microservice testing, how to verify the correctness of microservices, and how to perform continuous integration and continuous deployment of microservices are all issues that need to be studied.</p>
-<p><strong>Fault detection</strong> and <strong>recovery</strong>: In a distributed environment, fault detection and recovery is a very important issue. This includes how to quickly detect faults, how to accurately locate the cause of faults, and how to automatically restore services.</p>
-<h3 id="How-and-why-decoupling"><a href="#How-and-why-decoupling" class="headerlink" title="How and why decoupling?"></a>How and why decoupling?</h3><p>Decoupling and transforming a project into a microservice architecture while containerizing it using Docker can improve system scalability, maintainability, and disaster recovery. The following are some basic steps:</p>
-<ol>
-<li><p>Determine microservice boundaries: The first step is to determine which microservices to decompose the large monolithic application into. This process requires understanding the business logic and identifying modules that can run independently and scale independently. A good microservice should be business-driven and can perform a specific business function independently.</p>
-</li>
-<li><p>Create inter-service communication mechanisms: In a microservice architecture, services need to communicate with each other over the network. You can choose to use REST, gRPC, or message queues for communication.</p>
-</li>
-<li><p>Designing data persistence: Each microservice should have its own independent database to reduce the coupling between services. But this also needs to address the issue of data consistency.</p>
-</li>
-<li><p>Build microservices: For each microservice, you can choose the programming language and framework that best suits the business logic of that service for development.</p>
-</li>
-<li><p>Create Docker containers: Pack each microservice into a Docker container. Each container contains all the dependencies and environments needed to run a microservice, which ensures that the microservice will run stably in any environment.</p>
-</li>
-<li><p>Orchestrate with Docker Compose or Kubernetes: These tools can help manage and deploy your Docker containers, as well as handle service discovery, load balancing, fault recovery, networking, and security.</p>
-</li>
-<li><p>Implement Continuous Integration and Continuous Deployment (CI&#x2F;CD): Automating builds, tests, and deployments can greatly improve development speed and software quality.</p>
-</li>
-</ol>
-<p>The main benefits of doing so are as follows:</p>
-<ol>
-<li><p>Scalability: When the system load increases, services with higher demand can be scaled individually without the need to scale as a whole.</p>
-</li>
-<li><p>Maintainability: Each service runs independently, with a small code base that is easier to understand and modify.</p>
-</li>
-<li><p>Fault isolation: If something goes wrong with one service, it will not affect other services, reducing the risk of system failure.</p>
-</li>
-<li><p>Fast iteration: Each microservice can be deployed independently, making it faster to develop and bring new features online.</p>
-</li>
-<li><p>Technology diversity: Each microservice can choose the technology stack that best suits its business needs.</p>
-</li>
-</ol>
-<p>Benefits from containerization: Using Docker containers simplifies the deployment process, ensures software consistency across environments, and provides better.</p>
-<h3 id="Fog-computing"><a href="#Fog-computing" class="headerlink" title="Fog computing:"></a>Fog computing:</h3><p>Fog computing is a computing architecture in which a series of nodes receives data from IoT devices in real time. These nodes perform real-time processing of the data that they receive, with millisecond response time. The nodes periodically send analytical summary information to the cloud</p>
-<h3 id="Projects-ideas"><a href="#Projects-ideas" class="headerlink" title="Projects ideas:"></a>Projects ideas:</h3><p><strong>Docker and distributed architecture application in cloud computing platform.</strong></p>
-<p><strong>Decouple a project into microservices architecture (Monometer -&gt; microservice, use brownfield projects).</strong></p>
-<p>Make sure every service we have is <strong>high cohesion, and low coupling</strong>.</p>
-<p><strong>Avoid underserving</strong>. The system says no more than four calls. This ensures a moderate level of service. In addition, it is important to think about the team in terms of making the team light enough to decouple microservices from each other. From the above aspects, to avoid the problem of microservices too small.</p>
-<p>Some open source manometer projects: <a href="https://github.com/BroadleafCommerce/BroadleafCommerce">BroadleafCommerce</a>, <a href="https://github.com/jhipster/generator-jhipster">https://github.com/jhipster/generator-jhipster</a></p>
-<p>Decompose by business capability model&#x2F;Decompose by subdomain pattern (DDD).</p>
-]]></content>
-      <categories>
-        <category>Courses</category>
-      </categories>
-      <tags>
-        <tag>Courses</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>travel</title>
-    <url>/2023/05/04/travel/</url>
-    <content><![CDATA[<p><strong>Glasgow</strong></p>
-<p><img src="/../images/webs/UoG_bkgrnd_2021.jpg" alt="391667424236_.pic"></p>
-<p><strong>Edinburgh</strong></p>
-<p><img src="/../images/391667424236_.pic.jpg" alt="IMG_6792"></p>
-<p><img src="/../images/IMG_6792.jpeg" alt="IMG_6792"></p>
-<p><strong>Munich</strong></p>
-<p><img src="/../images/webs/C4B30D74-1139-4945-B8F9-F6A74834CFCD_1_102_o.jpeg" alt="IMG_6792"></p>
-<p><img src="/../images/IMG_8419.jpeg" alt="IMG_8419"></p>
-<p><strong>Swiss</strong></p>
-<p><img src="/../images/IMG_7862.jpeg" alt="IMG_7867"></p>
-<p><img src="/../images/IMG_7867.jpeg" alt="IMG_7867"></p>
-<p><strong>Paris</strong></p>
-<p><img src="/../images/IMG_7410.jpeg" alt="IMG_7410"></p>
-<p><img src="/../images/IMG_7577.jpeg" alt="IMG_7577"></p>
-]]></content>
-      <categories>
-        <category>travel</category>
-      </categories>
-      <tags>
-        <tag>travel</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mall developing</title>
     <url>/2023/03/31/mall-developing/</url>
     <content><![CDATA[<h2 id="Bug-shooting"><a href="#Bug-shooting" class="headerlink" title="Bug shooting"></a>Bug shooting</h2><h3 id="Bug1"><a href="#Bug1" class="headerlink" title="Bug1."></a>Bug1.</h3><p><strong>captcha disappearance</strong></p>
@@ -228,6 +148,99 @@
       </categories>
       <tags>
         <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>project_notes</title>
+    <url>/2023/06/19/project-notes/</url>
+    <content><![CDATA[<h1 id="Parallel-and-Distributed-Systems"><a href="#Parallel-and-Distributed-Systems" class="headerlink" title="Parallel and Distributed Systems"></a>Parallel and Distributed Systems</h1><h2 id="Week1"><a href="#Week1" class="headerlink" title="Week1"></a>Week1</h2><h3 id="Microservice-Docker-Explanation"><a href="#Microservice-Docker-Explanation" class="headerlink" title="Microservice, Docker Explanation:"></a>Microservice, Docker Explanation:</h3><p><strong>Service Grid</strong> and <strong>Microservice Communication</strong>: The Service Grid is an infrastructure layer that handles service-to-service communication. As the number of microservices increases, so does the complexity of communication between services. Service Grids such as Istio and Linkerd help solve this problem, but there is still much room for research and exploration, including communication efficiency, security, observability, and control.</p>
+<p><strong>Container orchestration</strong> and <strong>scheduling</strong>: With the growing popularity of containerized applications, how to effectively manage and schedule these containers has become an important issue. Although Kubernetes has become the de facto standard, further research is needed on how to optimize scheduling strategies, how to save resources while ensuring performance, and how to perform container scheduling in multi-cloud environments.</p>
+<p><strong>Performance</strong> and <strong>Scalability of Microservices</strong>: With the widespread adoption of microservice architectures, how to improve the performance and scalability of microservices is an important research issue. This includes how to design an efficient microservice architecture, how to optimize the performance of microservices, and how to effectively scale up and down microservices.</p>
+<p><strong>Security of containers</strong> and <strong>microservices</strong>: Due to the dynamic and decentralized nature of containers and microservices, their security becomes an important research issue. This includes how to ensure the isolation of containers, how to protect the communication between microservices, and how to prevent malicious code from running in container and microservice environments, etc.</p>
+<p><strong>Testing</strong> and <strong>verification of microservices</strong>: The independence and dynamic nature of microservices brings new challenges for testing and verification. How to conduct effective microservice testing, how to verify the correctness of microservices, and how to perform continuous integration and continuous deployment of microservices are all issues that need to be studied.</p>
+<p><strong>Fault detection</strong> and <strong>recovery</strong>: In a distributed environment, fault detection and recovery is a very important issue. This includes how to quickly detect faults, how to accurately locate the cause of faults, and how to automatically restore services.</p>
+<h3 id="How-and-why-decoupling"><a href="#How-and-why-decoupling" class="headerlink" title="How and why decoupling?"></a>How and why decoupling?</h3><p>Decoupling and transforming a project into a microservice architecture while containerizing it using Docker can improve system scalability, maintainability, and disaster recovery. The following are some basic steps:</p>
+<ol>
+<li><p>Determine microservice boundaries: The first step is to determine which microservices to decompose the large monolithic application into. This process requires understanding the business logic and identifying modules that can run independently and scale independently. A good microservice should be business-driven and can perform a specific business function independently.</p>
+</li>
+<li><p>Create inter-service communication mechanisms: In a microservice architecture, services need to communicate with each other over the network. You can choose to use REST, gRPC, or message queues for communication.</p>
+</li>
+<li><p>Designing data persistence: Each microservice should have its own independent database to reduce the coupling between services. But this also needs to address the issue of data consistency.</p>
+</li>
+<li><p>Build microservices: For each microservice, you can choose the programming language and framework that best suits the business logic of that service for development.</p>
+</li>
+<li><p>Create Docker containers: Pack each microservice into a Docker container. Each container contains all the dependencies and environments needed to run a microservice, which ensures that the microservice will run stably in any environment.</p>
+</li>
+<li><p>Orchestrate with Docker Compose or Kubernetes: These tools can help manage and deploy your Docker containers, as well as handle service discovery, load balancing, fault recovery, networking, and security.</p>
+</li>
+<li><p>Implement Continuous Integration and Continuous Deployment (CI&#x2F;CD): Automating builds, tests, and deployments can greatly improve development speed and software quality.</p>
+</li>
+</ol>
+<p>The main benefits of doing so are as follows:</p>
+<ol>
+<li><p>Scalability: When the system load increases, services with higher demand can be scaled individually without the need to scale as a whole.</p>
+</li>
+<li><p>Maintainability: Each service runs independently, with a small code base that is easier to understand and modify.</p>
+</li>
+<li><p>Fault isolation: If something goes wrong with one service, it will not affect other services, reducing the risk of system failure.</p>
+</li>
+<li><p>Fast iteration: Each microservice can be deployed independently, making it faster to develop and bring new features online.</p>
+</li>
+<li><p>Technology diversity: Each microservice can choose the technology stack that best suits its business needs.</p>
+</li>
+</ol>
+<p>Benefits from containerization: Using Docker containers simplifies the deployment process, ensures software consistency across environments, and provides better.</p>
+<h3 id="Fog-computing"><a href="#Fog-computing" class="headerlink" title="Fog computing:"></a>Fog computing:</h3><p>Fog computing is a computing architecture in which a series of nodes receives data from IoT devices in real time. These nodes perform real-time processing of the data that they receive, with millisecond response time. The nodes periodically send analytical summary information to the cloud</p>
+<h3 id="Projects-ideas"><a href="#Projects-ideas" class="headerlink" title="Projects ideas:"></a>Projects ideas:</h3><p><strong>Docker and distributed architecture application in cloud computing platform.</strong></p>
+<p><strong>Decouple a project into microservices architecture (Monometer -&gt; microservice, use brownfield projects).</strong></p>
+<p>Make sure every service we have is <strong>high cohesion, and low coupling</strong>.</p>
+<p><strong>Avoid underserving</strong>. The system says no more than four calls. This ensures a moderate level of service. In addition, it is important to think about the team in terms of making the team light enough to decouple microservices from each other. From the above aspects, to avoid the problem of microservices too small.</p>
+<p>Some open source manometer projects: <a href="https://github.com/BroadleafCommerce/BroadleafCommerce">BroadleafCommerce</a>, <a href="https://github.com/jhipster/generator-jhipster">https://github.com/jhipster/generator-jhipster</a></p>
+<p>Decompose by business capability model&#x2F;Decompose by subdomain pattern (DDD).</p>
+<h2 id="Week2"><a href="#Week2" class="headerlink" title="Week2"></a>Week2</h2><h3 id="Paper-Review"><a href="#Paper-Review" class="headerlink" title="Paper Review"></a>Paper Review</h3><h4 id="Will-edge-autoscaling"><a href="#Will-edge-autoscaling" class="headerlink" title="Will_edge_autoscaling:"></a>Will_edge_autoscaling:</h4><p><strong>latency optimised hybrid autoscaler:</strong> Dynamically scale computing resources based on the system’s workload and latency requirements.</p>
+<p><strong>Round Trip Time (RTT):</strong> If we only scales resources after changes occur , the RTT will increase. That is why we need proactive autoscaling techniques.</p>
+<p>**Proactive autoscaling techniques (LOTUS): **They aim to predict the workload before it is generated, so that the system can allocate sufficient resources for the predicted workload.</p>
+<p>It uses DL for workload forecasting and resource allocation. It used a hybrid scaling approach that combines both horizontal and vertical scaling techniques.</p>
+<p><strong>MAPE-K (Mean Absolute Percentage Error - K):</strong> is a measure of forecasting accuracy that is commonly used to assess the performance of time series forecasting models. It is a measure of the relative error between the predicted value and the actual observed value.</p>
+<h4 id="PBScaler"><a href="#PBScaler" class="headerlink" title="PBScaler"></a>PBScaler</h4><p><strong>Peformance bottleneck analysis and location is critical in PBScaler.</strong></p>
+<p>It comprises the three components,</p>
+<p><em><strong>Metric collector:</strong></em></p>
+<p>Prometheus(是一个开源的系统监控和警报工具，最初由SoundCloud开发并于2012年发布。它旨在收集和存储应用程序和系统的时间序列数据，并提供丰富的查询语言和灵活的警报机制)</p>
+<p>It uses Prometheus and cube-state metrics to gather and categorize some metrics.</p>
+<p>Service Mesh. </p>
+<p><strong><em>Performance Bottleneck Analysis</em>:</strong></p>
+<p><strong><em>Scaling Decision</em>:</strong></p>
+]]></content>
+      <categories>
+        <category>Courses</category>
+      </categories>
+      <tags>
+        <tag>Courses</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>travel</title>
+    <url>/2023/05/04/travel/</url>
+    <content><![CDATA[<p><strong>Glasgow</strong></p>
+<p><img src="/../images/webs/UoG_bkgrnd_2021.jpg" alt="391667424236_.pic"></p>
+<p><strong>Edinburgh</strong></p>
+<p><img src="/../images/391667424236_.pic.jpg" alt="IMG_6792"></p>
+<p><img src="/../images/IMG_6792.jpeg" alt="IMG_6792"></p>
+<p><strong>Munich</strong></p>
+<p><img src="/../images/webs/C4B30D74-1139-4945-B8F9-F6A74834CFCD_1_102_o.jpeg" alt="IMG_6792"></p>
+<p><img src="/../images/IMG_8419.jpeg" alt="IMG_8419"></p>
+<p><strong>Swiss</strong></p>
+<p><img src="/../images/IMG_7862.jpeg" alt="IMG_7867"></p>
+<p><img src="/../images/IMG_7867.jpeg" alt="IMG_7867"></p>
+<p><strong>Paris</strong></p>
+<p><img src="/../images/IMG_7410.jpeg" alt="IMG_7410"></p>
+<p><img src="/../images/IMG_7577.jpeg" alt="IMG_7577"></p>
+]]></content>
+      <categories>
+        <category>travel</category>
+      </categories>
+      <tags>
+        <tag>travel</tag>
       </tags>
   </entry>
   <entry>
@@ -2530,7 +2543,14 @@
 
 
 
-<h3 id="Filter模式"><a href="#Filter模式" class="headerlink" title="Filter模式"></a>Filter模式</h3>]]></content>
+<h3 id="Filter模式"><a href="#Filter模式" class="headerlink" title="Filter模式"></a>Filter模式</h3><p>Java的IO标准库提供的<code>InputStream</code>根据来源可以包括：</p>
+<ul>
+<li><code>FileInputStream</code>：从文件读取数据，是最终数据源；</li>
+<li><code>ServletInputStream</code>：从HTTP请求读取数据，是最终数据源；</li>
+<li><code>Socket.getInputStream()</code>：从TCP连接读取数据，是最终数据源；</li>
+</ul>
+<p>如果我们要给<code>FileInputStream</code>添加缓冲功能，则可以从<code>FileInputStream</code>派生一个类：</p>
+]]></content>
       <categories>
         <category>java</category>
       </categories>
@@ -2991,10 +3011,25 @@
 
 
 
-<h4 id="二叉树递归遍历"><a href="#二叉树递归遍历" class="headerlink" title="二叉树递归遍历"></a>二叉树递归遍历</h4><p>前序遍历:</p>
+<h4 id="二叉树递归遍历"><a href="#二叉树递归遍历" class="headerlink" title="二叉树递归遍历"></a>二叉树递归遍历</h4><p>前序遍历: 中左右</p>
 <p>中序遍历:</p>
 <p>后序遍历:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 前序遍历·递归·LC144_二叉树的前序遍历</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">preorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Integer&gt;();</span><br><span class="line">        preorder(root, result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">preorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; result)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        result.add(root.val);</span><br><span class="line">        preorder(root.left, result);</span><br><span class="line">        preorder(root.right, result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 中序遍历·递归·LC94_二叉树的中序遍历</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">inorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; list)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        inorder(root.left, list);</span><br><span class="line">        list.add(root.val);             <span class="comment">// 注意这一句</span></span><br><span class="line">        inorder(root.right, list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 后序遍历·递归·LC145_二叉树的后序遍历</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">postorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        postorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">postorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; list)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        postorder(root.left, list);</span><br><span class="line">        postorder(root.right, list);</span><br><span class="line">        list.add(root.val);             <span class="comment">// 注意这一句</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="二叉树遍历，迭代法"><a href="#二叉树遍历，迭代法" class="headerlink" title="二叉树遍历，迭代法"></a>二叉树遍历，迭代法</h4><p>使用栈来进行迭代</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">preorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty())&#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">            result.add(node.val);</span><br><span class="line">            <span class="keyword">if</span> (node.right != <span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (node.left != <span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">inorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> root;</span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="literal">null</span> || !stack.isEmpty())&#123;</span><br><span class="line">           <span class="keyword">if</span> (cur != <span class="literal">null</span>)&#123;</span><br><span class="line">               stack.push(cur);</span><br><span class="line">               cur = cur.left;</span><br><span class="line">           &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">               cur = stack.pop();</span><br><span class="line">               result.add(cur.val);</span><br><span class="line">               cur = cur.right;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">postorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">    List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">    stack.push(root);</span><br><span class="line">    <span class="keyword">while</span> (!stack.isEmpty())&#123;</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">        result.add(node.val);</span><br><span class="line">        <span class="keyword">if</span> (node.left != <span class="literal">null</span>)&#123;</span><br><span class="line">            stack.push(node.left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (node.right != <span class="literal">null</span>)&#123;</span><br><span class="line">            stack.push(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Collections.reverse(result);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 <h3 id="随想练习"><a href="#随想练习" class="headerlink" title="随想练习"></a>随想练习</h3><h4 id="Leetcode-852山峰数组"><a href="#Leetcode-852山峰数组" class="headerlink" title="Leetcode 852山峰数组"></a>Leetcode 852山峰数组</h4><p><strong>线性查找, O(n)</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">peakIndexInMountainArray</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> arr.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>,j=len-<span class="number">1</span>;i&lt;len;i++,j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i]&gt;arr[i+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(arr[j-<span class="number">1</span>]&lt;arr[j])&#123;</span><br><span class="line">                <span class="keyword">return</span> j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
