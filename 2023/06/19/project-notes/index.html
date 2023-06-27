@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.1k</span>
+            <span class="post-count">925</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">6 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -111,63 +111,90 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="Parallel-and-Distributed-Systems"><a href="#Parallel-and-Distributed-Systems" class="headerlink" title="Parallel and Distributed Systems"></a>Parallel and Distributed Systems</h1><h2 id="Week1"><a href="#Week1" class="headerlink" title="Week1"></a>Week1</h2><h3 id="Microservice-Docker-Explanation"><a href="#Microservice-Docker-Explanation" class="headerlink" title="Microservice, Docker Explanation:"></a>Microservice, Docker Explanation:</h3><p><strong>Service Grid</strong> and <strong>Microservice Communication</strong>: The Service Grid is an infrastructure layer that handles service-to-service communication. As the number of microservices increases, so does the complexity of communication between services. Service Grids such as Istio and Linkerd help solve this problem, but there is still much room for research and exploration, including communication efficiency, security, observability, and control.</p>
+  <h1 id="Master-Dissertation"><a href="#Master-Dissertation" class="headerlink" title="Master Dissertation"></a>Master Dissertation</h1><h2 id="week1"><a href="#week1" class="headerlink" title="week1"></a>week1</h2><h3 id="Microservice-Docker-Explanation"><a href="#Microservice-Docker-Explanation" class="headerlink" title="Microservice, Docker Explanation:"></a><strong>Microservice, Docker Explanation:</strong></h3><p><strong>Service Grid</strong> and <strong>Microservice Communication</strong>: The Service Grid is an infrastructure layer that handles service-to-service communication. As the number of microservices increases, so does the complexity of communication between services. Service Grids such as Istio and Linkerd help solve this problem, but there is still much room for research and exploration, including communication efficiency, security, observability, and control.</p>
 <p><strong>Container orchestration</strong> and <strong>scheduling</strong>: With the growing popularity of containerized applications, how to effectively manage and schedule these containers has become an important issue. Although Kubernetes has become the de facto standard, further research is needed on how to optimize scheduling strategies, how to save resources while ensuring performance, and how to perform container scheduling in multi-cloud environments.</p>
 <p><strong>Performance</strong> and <strong>Scalability of Microservices</strong>: With the widespread adoption of microservice architectures, how to improve the performance and scalability of microservices is an important research issue. This includes how to design an efficient microservice architecture, how to optimize the performance of microservices, and how to effectively scale up and down microservices.</p>
 <p><strong>Security of containers</strong> and <strong>microservices</strong>: Due to the dynamic and decentralized nature of containers and microservices, their security becomes an important research issue. This includes how to ensure the isolation of containers, how to protect the communication between microservices, and how to prevent malicious code from running in container and microservice environments, etc.</p>
 <p><strong>Testing</strong> and <strong>verification of microservices</strong>: The independence and dynamic nature of microservices brings new challenges for testing and verification. How to conduct effective microservice testing, how to verify the correctness of microservices, and how to perform continuous integration and continuous deployment of microservices are all issues that need to be studied.</p>
 <p><strong>Fault detection</strong> and <strong>recovery</strong>: In a distributed environment, fault detection and recovery is a very important issue. This includes how to quickly detect faults, how to accurately locate the cause of faults, and how to automatically restore services.</p>
-<h3 id="How-and-why-decoupling"><a href="#How-and-why-decoupling" class="headerlink" title="How and why decoupling?"></a>How and why decoupling?</h3><p>Decoupling and transforming a project into a microservice architecture while containerizing it using Docker can improve system scalability, maintainability, and disaster recovery. The following are some basic steps:</p>
+<h3 id="How-and-why-decoupling"><a href="#How-and-why-decoupling" class="headerlink" title="How and why decoupling?"></a><strong>How and why decoupling?</strong></h3><p>Decoupling and transforming a project into a microservice architecture while containerizing it using Docker can improve system scalability, maintainability, and disaster recovery. The following are some basic steps:</p>
 <ol>
-<li><p>Determine microservice boundaries: The first step is to determine which microservices to decompose the large monolithic application into. This process requires understanding the business logic and identifying modules that can run independently and scale independently. A good microservice should be business-driven and can perform a specific business function independently.</p>
-</li>
-<li><p>Create inter-service communication mechanisms: In a microservice architecture, services need to communicate with each other over the network. You can choose to use REST, gRPC, or message queues for communication.</p>
-</li>
-<li><p>Designing data persistence: Each microservice should have its own independent database to reduce the coupling between services. But this also needs to address the issue of data consistency.</p>
-</li>
-<li><p>Build microservices: For each microservice, you can choose the programming language and framework that best suits the business logic of that service for development.</p>
-</li>
-<li><p>Create Docker containers: Pack each microservice into a Docker container. Each container contains all the dependencies and environments needed to run a microservice, which ensures that the microservice will run stably in any environment.</p>
-</li>
-<li><p>Orchestrate with Docker Compose or Kubernetes: These tools can help manage and deploy your Docker containers, as well as handle service discovery, load balancing, fault recovery, networking, and security.</p>
-</li>
-<li><p>Implement Continuous Integration and Continuous Deployment (CI&#x2F;CD): Automating builds, tests, and deployments can greatly improve development speed and software quality.</p>
-</li>
+<li>Determine microservice boundaries: The first step is to determine which microservices to decompose the large monolithic application into. This process requires understanding the business logic and identifying modules that can run independently and scale independently. A good microservice should be business-driven and can perform a specific business function independently.</li>
+</ol>
+<!---->
+
+<ol start="2">
+<li>Create inter-service communication mechanisms: In a microservice architecture, services need to communicate with each other over the network. You can choose to use REST, gRPC, or message queues for communication.</li>
+</ol>
+<!---->
+
+<ol start="3">
+<li>Designing data persistence: Each microservice should have its own independent database to reduce the coupling between services. But this also needs to address the issue of data consistency.</li>
+</ol>
+<!---->
+
+<ol start="4">
+<li>Build microservices: For each microservice, you can choose the programming language and framework that best suits the business logic of that service for development.</li>
+</ol>
+<!---->
+
+<ol start="5">
+<li>Create Docker containers: Pack each microservice into a Docker container. Each container contains all the dependencies and environments needed to run a microservice, which ensures that the microservice will run stably in any environment.</li>
+</ol>
+<!---->
+
+<ol start="6">
+<li>Orchestrate with Docker Compose or Kubernetes: These tools can help manage and deploy your Docker containers, as well as handle service discovery, load balancing, fault recovery, networking, and security.</li>
+</ol>
+<!---->
+
+<ol start="7">
+<li>Implement Continuous Integration and Continuous Deployment (CI&#x2F;CD): Automating builds, tests, and deployments can greatly improve development speed and software quality.</li>
 </ol>
 <p>The main benefits of doing so are as follows:</p>
 <ol>
-<li><p>Scalability: When the system load increases, services with higher demand can be scaled individually without the need to scale as a whole.</p>
-</li>
-<li><p>Maintainability: Each service runs independently, with a small code base that is easier to understand and modify.</p>
-</li>
-<li><p>Fault isolation: If something goes wrong with one service, it will not affect other services, reducing the risk of system failure.</p>
-</li>
-<li><p>Fast iteration: Each microservice can be deployed independently, making it faster to develop and bring new features online.</p>
-</li>
-<li><p>Technology diversity: Each microservice can choose the technology stack that best suits its business needs.</p>
-</li>
+<li>Scalability: When the system load increases, services with higher demand can be scaled individually without the need to scale as a whole.</li>
+</ol>
+<!---->
+
+<ol start="2">
+<li>Maintainability: Each service runs independently, with a small code base that is easier to understand and modify.</li>
+</ol>
+<!---->
+
+<ol start="3">
+<li>Fault isolation: If something goes wrong with one service, it will not affect other services, reducing the risk of system failure.</li>
+</ol>
+<!---->
+
+<ol start="4">
+<li>Fast iteration: Each microservice can be deployed independently, making it faster to develop and bring new features online.</li>
+</ol>
+<!---->
+
+<ol start="5">
+<li>Technology diversity: Each microservice can choose the technology stack that best suits its business needs.</li>
 </ol>
 <p>Benefits from containerization: Using Docker containers simplifies the deployment process, ensures software consistency across environments, and provides better.</p>
-<h3 id="Fog-computing"><a href="#Fog-computing" class="headerlink" title="Fog computing:"></a>Fog computing:</h3><p>Fog computing is a computing architecture in which a series of nodes receives data from IoT devices in real time. These nodes perform real-time processing of the data that they receive, with millisecond response time. The nodes periodically send analytical summary information to the cloud</p>
-<h3 id="Projects-ideas"><a href="#Projects-ideas" class="headerlink" title="Projects ideas:"></a>Projects ideas:</h3><p><strong>Docker and distributed architecture application in cloud computing platform.</strong></p>
+<h3 id="Fog-computing"><a href="#Fog-computing" class="headerlink" title="Fog computing:"></a><strong>Fog computing:</strong></h3><p>Fog computing is a computing architecture in which a series of nodes receives data from IoT devices in real time. These nodes perform real-time processing of the data that they receive, with millisecond response time. The nodes periodically send analytical summary information to the cloud</p>
+<h3 id="Projects-ideas"><a href="#Projects-ideas" class="headerlink" title="Projects ideas:"></a><strong>Projects ideas:</strong></h3><p><strong>Docker and distributed architecture application in cloud computing platform.</strong></p>
 <p><strong>Decouple a project into microservices architecture (Monometer -&gt; microservice, use brownfield projects).</strong></p>
 <p>Make sure every service we have is <strong>high cohesion, and low coupling</strong>.</p>
 <p><strong>Avoid underserving</strong>. The system says no more than four calls. This ensures a moderate level of service. In addition, it is important to think about the team in terms of making the team light enough to decouple microservices from each other. From the above aspects, to avoid the problem of microservices too small.</p>
-<p>Some open source manometer projects: <a target="_blank" rel="noopener" href="https://github.com/BroadleafCommerce/BroadleafCommerce">BroadleafCommerce</a>, <a target="_blank" rel="noopener" href="https://github.com/jhipster/generator-jhipster">https://github.com/jhipster/generator-jhipster</a></p>
+<p>Some open source manometer projects: <span style="color: rgb(65, 131, 196)"><a target="_blank" href="https://github.com/BroadleafCommerce/BroadleafCommerce" rel="noopener noreferrer nofollow noopener">BroadleafCommerce</a></span>, <span style="color: rgb(65, 131, 196)"><a target="_blank" href="https://github.com/jhipster/generator-jhipster" rel="noopener noreferrer nofollow noopener">https://github.com/jhipster/generator-jhipster</a></span></p>
 <p>Decompose by business capability model&#x2F;Decompose by subdomain pattern (DDD).</p>
-<h2 id="Week2"><a href="#Week2" class="headerlink" title="Week2"></a>Week2</h2><h3 id="Paper-Review"><a href="#Paper-Review" class="headerlink" title="Paper Review"></a>Paper Review</h3><h4 id="Will-edge-autoscaling"><a href="#Will-edge-autoscaling" class="headerlink" title="Will_edge_autoscaling:"></a>Will_edge_autoscaling:</h4><p><strong>latency optimised hybrid autoscaler:</strong> Dynamically scale computing resources based on the system’s workload and latency requirements.</p>
-<p><strong>Round Trip Time (RTT):</strong> If we only scales resources after changes occur , the RTT will increase. That is why we need proactive autoscaling techniques.</p>
-<p>**Proactive autoscaling techniques (LOTUS): **They aim to predict the workload before it is generated, so that the system can allocate sufficient resources for the predicted workload.</p>
-<p>It uses DL for workload forecasting and resource allocation. It used a hybrid scaling approach that combines both horizontal and vertical scaling techniques.</p>
-<p><strong>MAPE-K (Mean Absolute Percentage Error - K):</strong> is a measure of forecasting accuracy that is commonly used to assess the performance of time series forecasting models. It is a measure of the relative error between the predicted value and the actual observed value.</p>
-<h4 id="PBScaler"><a href="#PBScaler" class="headerlink" title="PBScaler"></a>PBScaler</h4><p><strong>Peformance bottleneck analysis and location is critical in PBScaler.</strong></p>
-<p>It comprises the three components,</p>
-<p><em><strong>Metric collector:</strong></em></p>
-<p>Prometheus(是一个开源的系统监控和警报工具，最初由SoundCloud开发并于2012年发布。它旨在收集和存储应用程序和系统的时间序列数据，并提供丰富的查询语言和灵活的警报机制)</p>
-<p>It uses Prometheus and cube-state metrics to gather and categorize some metrics.</p>
-<p>Service Mesh. </p>
-<p><strong><em>Performance Bottleneck Analysis</em>:</strong></p>
-<p><strong><em>Scaling Decision</em>:</strong></p>
+<h2 id="week2"><a href="#week2" class="headerlink" title="week2"></a>week2</h2><h3 id="Paper-review"><a href="#Paper-review" class="headerlink" title="Paper review"></a>Paper review</h3><p>Summary and baselines</p>
+<p><a href="zotero://note/u/F2ET4VTB/" rel="noopener noreferrer nofollow" zhref="zotero://note/u/F2ET4VTB/" ztype="znotelink" class="internal-link">Will_edge_autoscaling</a></p>
+<p><a href="zotero://note/u/LLKLWX39/" rel="noopener noreferrer nofollow" zhref="zotero://note/u/LLKLWX39/" ztype="znotelink" class="internal-link">ML-based scaling management for kube</a></p>
+<p><a href="zotero://note/u/ZRBM8KGM/" rel="noopener noreferrer nofollow" zhref="zotero://note/u/ZRBM8KGM/" ztype="znotelink" class="internal-link">PBScaler: A Bottleneck-aware Autoscaling Framework for Microservice-based Applications</a></p>
+<p><a href="zotero://note/u/ZJ4GRYZR/" rel="noopener noreferrer nofollow" zhref="zotero://note/u/ZJ4GRYZR/" ztype="znotelink" class="internal-link">Microscaler: Automatic Scaling for Microservices with an Online Learning Approach”</a></p>
+<p><a href="zotero://note/u/NL4AQ6DY/" rel="noopener noreferrer nofollow" zhref="zotero://note/u/NL4AQ6DY/" ztype="znotelink" class="internal-link">Autopilot: workload autoscaling at Google</a></p>
+<p><a href="zotero://note/u/YIAM47M4/" rel="noopener noreferrer nofollow" zhref="zotero://note/u/YIAM47M4/" ztype="znotelink" class="internal-link">Adaptive scaling of Kubernetes pods</a></p>
+<p><a href="zotero://note/u/E4TSY6WJ/" rel="noopener noreferrer nofollow" zhref="zotero://note/u/E4TSY6WJ/" ztype="znotelink" class="internal-link">Proactive Autoscaling for Edge Computing Systems with Kubernetes</a></p>
+<p><a href="zotero://note/u/QEET6TKX/" rel="noopener noreferrer nofollow" zhref="zotero://note/u/QEET6TKX/" ztype="znotelink" class="internal-link">SHOWAR: Right-Sizing And Efficient Scheduling of Microservices</a></p>
+<h3 id="Relative-project"><a href="#Relative-project" class="headerlink" title="Relative project"></a>Relative project</h3><p><a target="_blank" rel="noopener" href="https://github.com/jthomperoo/custom-pod-autoscaler">https://github.com/jthomperoo/custom-pod-autoscaler</a></p>
+<p><strong>Custom Pod Autoscaler</strong></p>
+<p>HPA cons: hard coded algorithm, CPA provides you flexibility in my scaling.</p>
  
       <!-- reward -->
       
@@ -250,6 +277,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2023/06/26/kubernetes/" class="article-nav-link">
+        <strong class="article-nav-caption">Previous Post</strong>
+        <div class="article-nav-title">
+          
+            kubernetes
+          
+        </div>
+      </a>
     
     
       <a href="/2023/06/17/docker/" class="article-nav-link">

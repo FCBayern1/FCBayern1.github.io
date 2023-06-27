@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-06-25T11:19:01.365Z</updated>
+  <updated>2023-06-26T10:04:24.555Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,18 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>kubernetes</title>
+    <link href="http://example.com/2023/06/26/kubernetes/"/>
+    <id>http://example.com/2023/06/26/kubernetes/</id>
+    <published>2023-06-26T10:03:56.000Z</published>
+    <updated>2023-06-26T10:04:24.555Z</updated>
+    
+    
+    
+    
+    <category term="java" scheme="http://example.com/categories/java/"/>
+    
+    
+    <category term="tech" scheme="http://example.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
     <title>project_notes</title>
     <link href="http://example.com/2023/06/19/project-notes/"/>
     <id>http://example.com/2023/06/19/project-notes/</id>
     <published>2023-06-19T08:35:01.000Z</published>
-    <updated>2023-06-25T11:19:01.365Z</updated>
+    <updated>2023-06-26T09:49:26.528Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Parallel-and-Distributed-Systems&quot;&gt;&lt;a href=&quot;#Parallel-and-Distributed-Systems&quot; class=&quot;headerlink&quot; title=&quot;Parallel and Distributed</summary>
+    <summary type="html">&lt;h1 id=&quot;Master-Dissertation&quot;&gt;&lt;a href=&quot;#Master-Dissertation&quot; class=&quot;headerlink&quot; title=&quot;Master Dissertation&quot;&gt;&lt;/a&gt;Master Dissertation&lt;/h1&gt;&lt;h2</summary>
         
       
     
@@ -158,7 +175,7 @@
     <link href="http://example.com/2023/04/25/DSA/"/>
     <id>http://example.com/2023/04/25/DSA/</id>
     <published>2023-04-25T22:11:13.000Z</published>
-    <updated>2023-06-23T15:57:48.744Z</updated>
+    <updated>2023-06-27T21:52:40.244Z</updated>
     
     
       
