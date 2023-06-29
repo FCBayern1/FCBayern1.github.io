@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">911</span>
         </span>
     </span>
 
@@ -96,20 +96,58 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">4 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Kubernetes is a portable, extensible, open source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.</p>
+<ul>
+<li>When you deploy Kubernetes, you get a cluster.</li>
+<li>A Kubernetes cluster consists of a set of worker machines, called <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/nodes/">nodes</a>, that run containerized applications.</li>
+<li>Every cluster has at least one worker node.</li>
+</ul>
+<h2 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h2><p>This document outlines the various components you need to have for a complete and working Kubernetes cluster.</p>
+<h3 id="Control-Plane-components"><a href="#Control-Plane-components" class="headerlink" title="Control Plane components"></a>Control Plane components</h3><h4 id="kube-apiserver"><a href="#kube-apiserver" class="headerlink" title="kube-apiserver"></a><strong>kube-apiserver</strong></h4><p>The API server is the front end for the Kubernetes control plane.</p>
+<p>The main implementation of a Kubernetes API server is <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/reference/generated/kube-apiserver/">kube-apiserver</a>. kube-apiserver is designed to scale horizontally—that is, it scales by deploying more instances. You can run several instances of kube-apiserver and balance traffic between those instances.</p>
+<p><strong>Horizontal scaling vs Vertical scaling:</strong></p>
+<p><strong>水平扩展</strong></p>
+<p>是通过增加或减少工作负载的实例数量来调整资源的过程。在 Kubernetes 中，这通常是通过增加或减少 Pod 的副本数量来实现的。例如，如果一个应用程序的负载增加，可以增加 Pod 的数量来分散负载。这通常是通过使用 Kubernetes 的 Horizontal Pod Autoscaler (HPA) 来自动完成的，HPA 根据 CPU 利用率或其他选择的度量标准来自动调整 Pod 的数量。<br>水平扩展通常适用于无状态应用程序，因为增加的实例可以独立处理请求，不需要访问共享资源。</p>
+<p><strong>垂直扩展</strong></p>
+<p>是通过增加或减少单个实例的资源（如 CPU 或内存）来调整资源的过程。在 Kubernetes 中，这通常是通过增加或减少 Pod 的资源限制和请求来实现的。</p>
+<p>例如，如果一个应用程序的性能受到 CPU 或内存的限制，可以增加 Pod 的 CPU 或内存资源来提高性能。</p>
+<p>垂直扩展通常适用于有状态应用程序，因为这些应用程序通常需要访问共享资源，而且可能不容易在多个实例之间分散负载。</p>
+<h4 id="etcd"><a href="#etcd" class="headerlink" title="etcd"></a><strong>etcd</strong></h4><p>Consistent and highly-available key value store used as Kubernetes’ backing store for all cluster data. If your Kubernetes cluster uses etcd as its backing store, make sure you have a back up plan for the data.</p>
+<h4 id="Kube-scheduler"><a href="#Kube-scheduler" class="headerlink" title="Kube-scheduler"></a><strong>Kube-scheduler</strong></h4><p>Control plane component that watches for newly created Pods with no assigned node, and selects a node for them to run on. Factors taken into account for scheduling decisions include: individual and collective resource requirements, hardware&#x2F;software&#x2F;policy constraints, affinity and anti-affinity specifications, data locality, inter-workload interference, and deadlines.</p>
+<h4 id="Kube-controller-manager"><a href="#Kube-controller-manager" class="headerlink" title="Kube-controller-manager"></a>Kube-controller-manager</h4><p>Control plane component that runs <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/controller/">controller</a> processes. Logically, each <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/controller/">controller</a> is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process. </p>
+<p>Some types of these controllers are:</p>
+<ul>
+<li>Node controller: Responsible for noticing and responding when nodes go down.</li>
+<li>Job controller: Watches for Job objects that represent one-off tasks, then creates Pods to run those tasks to completion.</li>
+<li>EndpointSlice controller: Populates EndpointSlice objects (to provide a link between Services and Pods).</li>
+<li>ServiceAccount controller: Create default ServiceAccounts for new namespaces.</li>
+</ul>
+<h4 id="Cloud-controller-manager"><a href="#Cloud-controller-manager" class="headerlink" title="Cloud-controller-manager"></a>Cloud-controller-manager</h4><p>A Kubernetes <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/reference/glossary/?all=true#term-control-plane">control plane</a> component that embeds cloud-specific control logic. The cloud controller manager lets you link your cluster into your cloud provider’s API, and separates out the components that interact with that cloud platform from components that only interact with your cluster.</p>
+<h3 id="Node-Components"><a href="#Node-Components" class="headerlink" title="Node Components"></a>Node Components</h3><h4 id="Kubelet"><a href="#Kubelet" class="headerlink" title="Kubelet"></a>Kubelet</h4><p>An agent that runs on each <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/nodes/">node</a> in the cluster. It makes sure that <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/containers/">containers</a> are running in a <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/workloads/pods/">Pod</a>.</p>
+<h4 id="Kube-proxy"><a href="#Kube-proxy" class="headerlink" title="Kube-proxy"></a>Kube-proxy</h4><p>kube-proxy is a network proxy that runs on each <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/architecture/nodes/">node</a> in your cluster, implementing part of the Kubernetes <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</a> concept.	</p>
+<h4 id="Container-runtime"><a href="#Container-runtime" class="headerlink" title="Container-runtime"></a>Container-runtime</h4><p>The container runtime is the software that is responsible for running containers.</p>
+<h3 id="Addons"><a href="#Addons" class="headerlink" title="Addons"></a>Addons</h3><p>Addons use Kubernetes resources (<a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset">DaemonSet</a>, <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployment</a>, etc) to implement cluster features. Because these are providing cluster-level features, namespaced resources for addons belong within the <code>kube-system</code> namespace.</p>
+<h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><p>While the other addons are not strictly required, all Kubernetes clusters should have <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/">cluster DNS</a>, as many examples rely on it.</p>
+<h4 id="Web-UI-Dashboard"><a href="#Web-UI-Dashboard" class="headerlink" title="Web-UI(Dashboard)"></a>Web-UI(Dashboard)</h4><p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/">Dashboard</a> is a general purpose, web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications running in the cluster, as well as the cluster itself.</p>
+<h4 id="Container-Resource-Monitoring"><a href="#Container-Resource-Monitoring" class="headerlink" title="Container Resource Monitoring"></a>Container Resource Monitoring</h4><p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-usage-monitoring/">Container Resource Monitoring</a> records generic time-series metrics about containers in a central database, and provides a UI for browsing that data.</p>
+<h4 id="Cluster-level-Logging"><a href="#Cluster-level-Logging" class="headerlink" title="Cluster-level Logging"></a>Cluster-level Logging</h4><p>A <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/cluster-administration/logging/">cluster-level logging</a> mechanism is responsible for saving container logs to a central log store with search&#x2F;browsing interface.</p>
+<h4 id="Network-Plugins"><a href="#Network-Plugins" class="headerlink" title="Network Plugins"></a>Network Plugins</h4><p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins">Network plugins</a> are software components that implement the container network interface (CNI) specification. They are responsible for allocating IP addresses to pods and enabling them to communicate with each other within the cluster.</p>
+<h1 id="Elementary"><a href="#Elementary" class="headerlink" title="Elementary"></a>Elementary</h1><h1 id="Intermediate"><a href="#Intermediate" class="headerlink" title="Intermediate"></a>Intermediate</h1><h1 id="Advanced"><a href="#Advanced" class="headerlink" title="Advanced"></a>Advanced</h1> 
       <!-- reward -->
       
       <div id="reword-out">
