@@ -35,6 +35,15 @@
       </tags>
   </entry>
   <entry>
+    <title>job seek</title>
+    <url>/2023/05/26/job-seek/</url>
+    <content><![CDATA[<ol>
+<li>intern</li>
+<li></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2022/09/22/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -50,15 +59,6 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>job seek</title>
-    <url>/2023/05/26/job-seek/</url>
-    <content><![CDATA[<ol>
-<li>intern</li>
-<li></li>
-</ol>
 ]]></content>
   </entry>
   <entry>
@@ -198,6 +198,31 @@
       </tags>
   </entry>
   <entry>
+    <title>travel</title>
+    <url>/2023/05/04/travel/</url>
+    <content><![CDATA[<p><strong>Glasgow</strong></p>
+<p><img src="/../images/webs/UoG_bkgrnd_2021.jpg" alt="391667424236_.pic"></p>
+<p><strong>Edinburgh</strong></p>
+<p><img src="/../images/391667424236_.pic.jpg" alt="IMG_6792"></p>
+<p><img src="/../images/IMG_6792.jpeg" alt="IMG_6792"></p>
+<p><strong>Munich</strong></p>
+<p><img src="/../images/webs/C4B30D74-1139-4945-B8F9-F6A74834CFCD_1_102_o.jpeg" alt="IMG_6792"></p>
+<p><img src="/../images/IMG_8419.jpeg" alt="IMG_8419"></p>
+<p><strong>Swiss</strong></p>
+<p><img src="/../images/IMG_7862.jpeg" alt="IMG_7867"></p>
+<p><img src="/../images/IMG_7867.jpeg" alt="IMG_7867"></p>
+<p><strong>Paris</strong></p>
+<p><img src="/../images/IMG_7410.jpeg" alt="IMG_7410"></p>
+<p><img src="/../images/IMG_7577.jpeg" alt="IMG_7577"></p>
+]]></content>
+      <categories>
+        <category>travel</category>
+      </categories>
+      <tags>
+        <tag>travel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>project_notes</title>
     <url>/2023/06/19/project-notes/</url>
     <content><![CDATA[<h1 id="Master-Dissertation"><a href="#Master-Dissertation" class="headerlink" title="Master Dissertation"></a>Master Dissertation</h1><h2 id="week1"><a href="#week1" class="headerlink" title="week1"></a>week1</h2><h3 id="Microservice-Docker-Explanation"><a href="#Microservice-Docker-Explanation" class="headerlink" title="Microservice, Docker Explanation:"></a><strong>Microservice, Docker Explanation:</strong></h3><p><strong>Service Grid</strong> and <strong>Microservice Communication</strong>: The Service Grid is an infrastructure layer that handles service-to-service communication. As the number of microservices increases, so does the complexity of communication between services. Service Grids such as Istio and Linkerd help solve this problem, but there is still much room for research and exploration, including communication efficiency, security, observability, and control.</p>
@@ -290,31 +315,6 @@
       </categories>
       <tags>
         <tag>Courses</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>travel</title>
-    <url>/2023/05/04/travel/</url>
-    <content><![CDATA[<p><strong>Glasgow</strong></p>
-<p><img src="/../images/webs/UoG_bkgrnd_2021.jpg" alt="391667424236_.pic"></p>
-<p><strong>Edinburgh</strong></p>
-<p><img src="/../images/391667424236_.pic.jpg" alt="IMG_6792"></p>
-<p><img src="/../images/IMG_6792.jpeg" alt="IMG_6792"></p>
-<p><strong>Munich</strong></p>
-<p><img src="/../images/webs/C4B30D74-1139-4945-B8F9-F6A74834CFCD_1_102_o.jpeg" alt="IMG_6792"></p>
-<p><img src="/../images/IMG_8419.jpeg" alt="IMG_8419"></p>
-<p><strong>Swiss</strong></p>
-<p><img src="/../images/IMG_7862.jpeg" alt="IMG_7867"></p>
-<p><img src="/../images/IMG_7867.jpeg" alt="IMG_7867"></p>
-<p><strong>Paris</strong></p>
-<p><img src="/../images/IMG_7410.jpeg" alt="IMG_7410"></p>
-<p><img src="/../images/IMG_7577.jpeg" alt="IMG_7577"></p>
-]]></content>
-      <categories>
-        <category>travel</category>
-      </categories>
-      <tags>
-        <tag>travel</tag>
       </tags>
   </entry>
   <entry>
@@ -2623,7 +2623,261 @@
 <li><code>ServletInputStream</code>：从HTTP请求读取数据，是最终数据源；</li>
 <li><code>Socket.getInputStream()</code>：从TCP连接读取数据，是最终数据源；</li>
 </ul>
-<p>如果我们要给<code>FileInputStream</code>添加缓冲功能，则可以从<code>FileInputStream</code>派生一个类：</p>
+<p>如果我们要给<code>FileInputStream</code>添加缓冲功能，则可以从<code>FileInputStream</code>派生一个又一个的类：</p>
+<p>比如BufferedFileInputStream，DigestFileInputStream和CipherFileInputStream类，但是这样做的话很可能会遇到子类爆炸的情况。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">                          ┌─────────────────┐</span><br><span class="line">                          │ FileInputStream │</span><br><span class="line">                          └─────────────────┘</span><br><span class="line">                                   ▲</span><br><span class="line">             ┌───────────┬─────────┼─────────┬───────────┐</span><br><span class="line">             │           │         │         │           │</span><br><span class="line">┌───────────────────────┐│┌─────────────────┐│┌─────────────────────┐</span><br><span class="line">│BufferedFileInputStream│││DigestInputStream│││CipherFileInputStream│</span><br><span class="line">└───────────────────────┘│└─────────────────┘│└─────────────────────┘</span><br><span class="line">                         │                   │</span><br><span class="line">    ┌─────────────────────────────┐ ┌─────────────────────────────┐</span><br><span class="line">    │BufferedDigestFileInputStream│ │BufferedCipherFileInputStream│</span><br><span class="line">    └─────────────────────────────┘ └─────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p>为了解决这个问题，JDK首先将<code>InputStream</code>分为两大类：</p>
+<p>一类是直接提供数据的基础<code>InputStream</code>，例如：</p>
+<ul>
+<li>FileInputStream</li>
+<li>ByteArrayInputStream</li>
+<li>ServletInputStream</li>
+<li>…</li>
+</ul>
+<p>一类是提供额外附加功能的<code>InputStream</code>，例如：</p>
+<ul>
+<li>BufferedInputStream</li>
+<li>DigestInputStream</li>
+<li>CipherInputStream</li>
+<li>…</li>
+</ul>
+<p>当我们需要给一个“基础”<code>InputStream</code>附加各种功能时，我们先确定这个能提供数据源的<code>InputStream</code>，因为我们需要的数据总得来自某个地方，例如，<code>FileInputStream</code>，数据来源自文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">InputStream file = new FileInputStream(&quot;test.gz&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>紧接着，我们希望<code>FileInputStream</code>能提供缓冲的功能来提高读取的效率，因此我们用<code>BufferedInputStream</code>包装这个<code>InputStream</code>，得到的包装类型是<code>BufferedInputStream</code>，但它仍然被视为一个<code>InputStream</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">InputStream buffered = new BufferedInputStream(file);</span><br></pre></td></tr></table></figure>
+
+<p>最后，假设该文件已经用gzip压缩了，我们希望直接读取解压缩的内容，就可以再包装一个<code>GZIPInputStream</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">InputStream gzip = new GZIPInputStream(buffered);</span><br></pre></td></tr></table></figure>
+
+<p>无论我们包装多少次，得到的对象始终是<code>InputStream</code>，我们直接用<code>InputStream</code>来引用它，就可以正常读取：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────────┐</span><br><span class="line">│GZIPInputStream          │</span><br><span class="line">│┌───────────────────────┐│</span><br><span class="line">││BufferedFileInputStream││</span><br><span class="line">││┌─────────────────────┐││</span><br><span class="line">│││   FileInputStream   │││</span><br><span class="line">││└─────────────────────┘││</span><br><span class="line">│└───────────────────────┘│</span><br><span class="line">└─────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p>上述这种通过一个“基础”组件再叠加各种“附加”功能组件的模式，称之为Filter模式（或者装饰器模式：Decorator）。它可以让我们通过少量的类来实现各种功能的组合：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">                 ┌─────────────┐</span><br><span class="line">                 │ InputStream │</span><br><span class="line">                 └─────────────┘</span><br><span class="line">                       ▲ ▲</span><br><span class="line">┌────────────────────┐ │ │ ┌─────────────────┐</span><br><span class="line">│  FileInputStream   │─┤ └─│FilterInputStream│</span><br><span class="line">└────────────────────┘ │   └─────────────────┘</span><br><span class="line">┌────────────────────┐ │     ▲ ┌───────────────────┐</span><br><span class="line">│ByteArrayInputStream│─┤     ├─│BufferedInputStream│</span><br><span class="line">└────────────────────┘ │     │ └───────────────────┘</span><br><span class="line">┌────────────────────┐ │     │ ┌───────────────────┐</span><br><span class="line">│ ServletInputStream │─┘     ├─│  DataInputStream  │</span><br><span class="line">└────────────────────┘       │ └───────────────────┘</span><br><span class="line">                             │ ┌───────────────────┐</span><br><span class="line">                             └─│CheckedInputStream │</span><br><span class="line">                               └───────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p>类似的，<code>OutputStream</code>也是以这种模式来提供各种功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">                  ┌─────────────┐</span><br><span class="line">                  │OutputStream │</span><br><span class="line">                  └─────────────┘</span><br><span class="line">                        ▲ ▲</span><br><span class="line">┌─────────────────────┐ │ │ ┌──────────────────┐</span><br><span class="line">│  FileOutputStream   │─┤ └─│FilterOutputStream│</span><br><span class="line">└─────────────────────┘ │   └──────────────────┘</span><br><span class="line">┌─────────────────────┐ │     ▲ ┌────────────────────┐</span><br><span class="line">│ByteArrayOutputStream│─┤     ├─│BufferedOutputStream│</span><br><span class="line">└─────────────────────┘ │     │ └────────────────────┘</span><br><span class="line">┌─────────────────────┐ │     │ ┌────────────────────┐</span><br><span class="line">│ ServletOutputStream │─┘     ├─│  DataOutputStream  │</span><br><span class="line">└─────────────────────┘       │ └────────────────────┘</span><br><span class="line">                              │ ┌────────────────────┐</span><br><span class="line">                              └─│CheckedOutputStream │</span><br><span class="line">                                └────────────────────┘</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="操作Zip"><a href="#操作Zip" class="headerlink" title="操作Zip"></a>操作Zip</h3><p><code>ZipInputStream</code>是一种<code>FilterInputStream</code>，它可以直接读取zip包的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌───────────────────┐</span><br><span class="line">│    InputStream    │</span><br><span class="line">└───────────────────┘</span><br><span class="line">          ▲</span><br><span class="line">          │</span><br><span class="line">┌───────────────────┐</span><br><span class="line">│ FilterInputStream │</span><br><span class="line">└───────────────────┘</span><br><span class="line">          ▲</span><br><span class="line">          │</span><br><span class="line">┌───────────────────┐</span><br><span class="line">│InflaterInputStream│</span><br><span class="line">└───────────────────┘</span><br><span class="line">          ▲</span><br><span class="line">          │</span><br><span class="line">┌───────────────────┐</span><br><span class="line">│  ZipInputStream   │</span><br><span class="line">└───────────────────┘</span><br><span class="line">          ▲</span><br><span class="line">          │</span><br><span class="line">┌───────────────────┐</span><br><span class="line">│  JarInputStream   │</span><br><span class="line">└───────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p>另一个<code>JarInputStream</code>是从<code>ZipInputStream</code>派生，它增加的主要功能是直接读取jar文件里面的<code>MANIFEST.MF</code>文件。因为本质上jar包就是zip包，只是额外附加了一些固定的描述文件。</p>
+<h4 id="读取zip包"><a href="#读取zip包" class="headerlink" title="读取zip包"></a>读取zip包</h4><p>我们要创建一个<code>ZipInputStream</code>，通常是传入一个<code>FileInputStream</code>作为数据源，然后，循环调用<code>getNextEntry()</code>，直到返回<code>null</code>，表示zip流结束。</p>
+<p>一个<code>ZipEntry</code>表示一个压缩文件或目录，如果是压缩文件，我们就用<code>read()</code>方法不断读取，直到返回<code>-1</code>：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (<span class="type">ZipInputStream</span> <span class="variable">zip</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ZipInputStream</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(...))) &#123;</span><br><span class="line">    <span class="type">ZipEntry</span> <span class="variable">entry</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">while</span> ((entry = zip.getNextEntry()) != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> entry.getName();</span><br><span class="line">        <span class="keyword">if</span> (!entry.isDirectory()) &#123; <span class="comment">//判断当前的entry不是目录而是zip文件就可以开始读了</span></span><br><span class="line">            <span class="type">int</span> n;</span><br><span class="line">            <span class="keyword">while</span> ((n = zip.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                ...</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="写入zip包"><a href="#写入zip包" class="headerlink" title="写入zip包"></a>写入zip包</h4><p>使用了<code>ZipOutputStream</code>，是一种<code>FilterOutputStream</code>，它可以直接写入内容到zip包。</p>
+<p>我们要先创建一个<code>ZipOutputStream</code>，通常是包装一个<code>FileOutputStream</code>，然后，每写入一个文件前，先调用<code>putNextEntry()</code>，然后用<code>write()</code>写入<code>byte[]</code>数据，写入完毕后调用<code>closeEntry()</code>结束这个文件的打包。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (<span class="type">ZipOutputStream</span> <span class="variable">zip</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ZipOutputStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(...))) &#123;</span><br><span class="line">    File[] files = ...</span><br><span class="line">    <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">        zip.putNextEntry(<span class="keyword">new</span> <span class="title class_">ZipEntry</span>(file.getName()));</span><br><span class="line">        zip.write(Files.readAllBytes(file.toPath()));</span><br><span class="line">        zip.closeEntry();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="读取classpath资源"><a href="#读取classpath资源" class="headerlink" title="读取classpath资源"></a>读取classpath资源</h3><p>我们知道，Java存放<code>.class</code>的目录或jar包也可以包含任意其他类型的文件，例如：</p>
+<ul>
+<li>配置文件，例如<code>.properties</code>；</li>
+<li>图片文件，例如<code>.jpg</code>；</li>
+<li>文本文件，例如<code>.txt</code>，<code>.csv</code>；</li>
+</ul>
+<p>从classpath读取文件就可以避免不同环境下文件路径不一致的问题：如果我们把<code>default.properties</code>文件放到classpath中，就不用关心它的实际存放路径。</p>
+<p><strong>在classpath中的资源文件，路径总是以<code>／</code>开头</strong>，我们先获取当前的<code>Class</code>对象，然后调用<code>getResourceAsStream()</code>就可以直接从classpath读取任意的资源文件：</p>
+<p>调用<code>getResourceAsStream()</code>需要特别注意的一点是，如果资源文件不存在，它将返回<code>null</code>。因此，我们需要检查返回的<code>InputStream</code>是否为<code>null</code>，如果为<code>null</code>，表示资源文件在classpath中没有找到：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (<span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> getClass().getResourceAsStream(<span class="string">&quot;/default.properties&quot;</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (input != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们把默认的配置放到jar包中，再从外部文件系统读取一个可选的配置文件，就可以做到既有默认的配置文件，又可以让用户自己修改配置：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Properties</span> <span class="variable">props</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">props.load(inputStreamFromClassPath(<span class="string">&quot;/default.properties&quot;</span>));</span><br><span class="line">props.load(inputStreamFromFile(<span class="string">&quot;./conf.properties&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p><strong>类路径（Classpath）</strong>是用于指定在 Java 应用程序中查找类和资源文件的路径。它是一组目录和 JAR 文件的集合，这些文件包含了编译后的 Java 类文件和其他资源文件。</p>
+<p><strong>Cautious</strong></p>
+<p>把资源存储在classpath中可以避免文件路径依赖；</p>
+<p><code>Class</code>对象的<code>getResourceAsStream()</code>可以从classpath中读取指定资源；</p>
+<p>根据classpath读取资源时，需要检查返回的<code>InputStream</code>是否为<code>null</code>。</p>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p><strong>序列化是指</strong>把一个java对变成二进制内容，本质上就是一个byte[]数组。</p>
+<p><strong>为什么</strong>要把Java对象序列化呢？因为序列化后可以把<code>byte[]</code>保存到文件中，或者把<code>byte[]</code>通过网络传输到远程，这样，就相当于把Java对象存储到文件或者通过网络传输出去了。</p>
+<p>一个Java对象要能序列化，必须实现一个特殊的<code>java.io.Serializable</code>接口，它的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Serializable</code>接口没有定义任何方法，它是一个空接口。我们把这样的空接口称为“标记接口”（Marker Interface），实现了标记接口的类仅仅是给自身贴了个“标记”，并没有增加任何方法。</p>
+<h4 id="序列化的例子"><a href="#序列化的例子" class="headerlink" title="序列化的例子"></a>序列化的例子</h4><p>在这里我们需要用到<code>ObjectOutputStream</code>，它负责将一个java对象写入一个字节流。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">ByteArrayOutputStream</span> <span class="variable">buffer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();</span><br><span class="line">        <span class="keyword">try</span> (<span class="type">ObjectOutputStream</span> <span class="variable">output</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(buffer)) &#123;</span><br><span class="line">            <span class="comment">// 写入int:</span></span><br><span class="line">            output.writeInt(<span class="number">12345</span>);</span><br><span class="line">            <span class="comment">// 写入String:</span></span><br><span class="line">            output.writeUTF(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">            <span class="comment">// 写入Object:</span></span><br><span class="line">            output.writeObject(Double.valueOf(<span class="number">123.456</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Arrays.toString(buffer.toByteArray()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>ObjectOutputStream</code>既可以写入基本类型，如<code>int</code>，<code>boolean</code>，也可以写入<code>String</code>（以UTF-8编码），还可以写入实现了<code>Serializable</code>接口的<code>Object</code>。</p>
+<p>因为写入<code>Object</code>时需要大量的类型信息，所以写入的内容很大。</p>
+<h4 id="反序列化例子"><a href="#反序列化例子" class="headerlink" title="反序列化例子"></a>反序列化例子</h4><p>和<code>ObjectOutputStream</code>相反，<code>ObjectInputStream</code>负责从一个字节流读取Java对象：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (<span class="type">ObjectInputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(...)) &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> input.readInt();</span><br><span class="line">    <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> input.readUTF();</span><br><span class="line">    <span class="type">Double</span> <span class="variable">d</span> <span class="operator">=</span> (Double) input.readObject();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除了能读取基本类型和<code>String</code>类型外，调用<code>readObject()</code>可以直接返回一个<code>Object</code>对象。要把它变成一个特定类型，必须强制转型。</p>
+<p><code>readObject()</code>可能抛出的异常有：</p>
+<ul>
+<li><code>ClassNotFoundException</code>：没有找到对应的Class；</li>
+<li><code>InvalidClassException</code>：Class不匹配。</li>
+</ul>
+<p>对于<code>ClassNotFoundException</code>，这种情况常见于一台电脑上的Java程序把一个Java对象，例如，<code>Person</code>对象序列化以后，通过网络传给另一台电脑上的另一个Java程序，但是这台电脑的Java程序并没有定义<code>Person</code>类，所以无法反序列化。</p>
+<p>对于<code>InvalidClassException</code>，这种情况常见于序列化的<code>Person</code>对象定义了一个<code>int</code>类型的<code>age</code>字段，但是反序列化时，<code>Person</code>类定义的<code>age</code>字段被改成了<code>long</code>类型，所以导致class不兼容。</p>
+<p><strong>为了解决这两个bug</strong></p>
+<p>Java的序列化允许class定义一个特殊的<code>serialVersionUID</code>静态变量，用于标识Java类的序列化“版本”，通常可以由IDE自动生成。如果增加或修改了字段，可以改变<code>serialVersionUID</code>的值，这样就能自动阻止不匹配的class版本：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">2709425275741743919L</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>反序列化时，由JVM直接构造出Java对象，不调用构造方法，构造方法内部的代码，在反序列化时根本不可能执行。</p>
+<h4 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h4><p>可序列化的Java对象必须实现<code>java.io.Serializable</code>接口，类似<code>Serializable</code>这样的空接口被称为“标记接口”（Marker Interface）；</p>
+<p>反序列化时不调用构造方法，可设置<code>serialVersionUID</code>作为版本号（非必需）；</p>
+<p>Java的序列化机制仅适用于Java，如果需要与其它语言交换数据，必须使用通用的序列化方法，例如JSON。</p>
+<h3 id="Reader-x2F-Writer"><a href="#Reader-x2F-Writer" class="headerlink" title="Reader&#x2F;Writer"></a>Reader&#x2F;Writer</h3><h4 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a>Reader</h4><p>这两个是java的IO库中提供的另外两个输入输出流接口，和InputStream的区别是，InputStream是一个字节流，以byte为单位读取，而Reader是一个字符流，即以char为单位读取。</p>
+<table>
+<thead>
+<tr>
+<th align="left">InputStream</th>
+<th align="left">Reader</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">字节流，以<code>byte</code>为单位</td>
+<td align="left">字符流，以<code>char</code>为单位</td>
+</tr>
+<tr>
+<td align="left">读取字节（-1，0~255）：<code>int read()</code></td>
+<td align="left">读取字符（-1，0~65535）：<code>int read()</code></td>
+</tr>
+<tr>
+<td align="left">读到字节数组：<code>int read(byte[] b)</code></td>
+<td align="left">读到字符数组：<code>int read(char[] c)</code></td>
+</tr>
+</tbody></table>
+<p><code>java.io.Reader</code>是所有字符输入流的超类，它最主要的方法是：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">// 创建一个FileReader对象:</span></span><br><span class="line">    <span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;src/readme.txt&quot;</span>); <span class="comment">// 字符编码是???</span></span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> reader.read(); <span class="comment">// 反复调用read()方法，直到返回-1</span></span><br><span class="line">        <span class="keyword">if</span> (n == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println((<span class="type">char</span>)n); <span class="comment">// 打印char</span></span><br><span class="line">    &#125;</span><br><span class="line">    reader.close(); <span class="comment">// 关闭流</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们读取一个纯ASCII编码的文本文件，上述代码工作是没有问题的。但如果文件中包含中文，就会出现乱码，因为<code>FileReader</code>默认的编码与系统相关，例如，Windows系统的默认编码可能是<code>GBK</code>，打开一个<code>UTF-8</code>编码的文本文件就会出现乱码。</p>
+<p>要避免乱码问题，我们需要在创建<code>FileReader</code>时指定编码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Reader reader = new FileReader(&quot;src/readme.txt&quot;, StandardCharsets.UTF_8);</span><br></pre></td></tr></table></figure>
+
+<p>和<code>InputStream</code>类似，<code>Reader</code>也是一种资源，需要保证出错的时候也能正确关闭，所以我们需要用<code>try (resource)</code>来保证<code>Reader</code>在无论有没有IO错误的时候都能够正确地关闭：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (<span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;src/readme.txt&quot;</span>, StandardCharsets.UTF_8) &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Reader</code>还提供了一次性读取若干字符并填充到<code>char[]</code>数组的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public int read(char[] c) throws IOException</span><br></pre></td></tr></table></figure>
+
+<p>它返回实际读入的字符个数，最大不超过<code>char[]</code>数组的长度。返回<code>-1</code>表示流结束。</p>
+<p>利用这个方法，我们可以先设置一个缓冲区，然后，每次尽可能地填充缓冲区：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public void readFile() throws IOException &#123;</span><br><span class="line">    try (Reader reader = new FileReader(&quot;src/readme.txt&quot;, StandardCharsets.UTF_8)) &#123;</span><br><span class="line">        char[] buffer = new char[1000];</span><br><span class="line">        int n;</span><br><span class="line">        while ((n = reader.read(buffer)) != -1) &#123;</span><br><span class="line">            System.out.println(&quot;read &quot; + n + &quot; chars.&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>CharArrayReader</strong></p>
+<p><code>CharArrayReader</code>可以在内存中模拟一个<code>Reader</code>，它的作用实际上是把一个<code>char[]</code>数组变成一个<code>Reader</code>，这和<code>ByteArrayInputStream</code>非常类似：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">try (Reader reader = new CharArrayReader(&quot;Hello&quot;.toCharArray())) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>StringReader</strong></p>
+<p><code>StringReader</code>可以直接把<code>String</code>作为数据源，它和<code>CharArrayReader</code>几乎一样：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">try (Reader reader = new StringReader(&quot;Hello&quot;)) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>InputStreamReader</strong></p>
+<p><code>Reader</code>和<code>InputStream</code>有什么关系？</p>
+<p>除了特殊的<code>CharArrayReader</code>和<code>StringReader</code>，普通的<code>Reader</code>实际上是基于<code>InputStream</code>构造的，因为<code>Reader</code>需要从<code>InputStream</code>中读入字节流（<code>byte</code>），然后，根据编码设置，再转换为<code>char</code>就可以实现字符流。如果我们查看<code>FileReader</code>的源码，它在内部实际上持有一个<code>FileInputStream</code>。</p>
+<p>既然<code>Reader</code>本质上是一个基于<code>InputStream</code>的<code>byte</code>到<code>char</code>的转换器，那么，如果我们已经有一个<code>InputStream</code>，想把它转换为<code>Reader</code>，是完全可行的。<code>InputStreamReader</code>就是这样一个转换器，它可以把任何<code>InputStream</code>转换为<code>Reader</code>。示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 持有InputStream:</span></span><br><span class="line"><span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;src/readme.txt&quot;</span>);</span><br><span class="line"><span class="comment">// 变换为Reader:</span></span><br><span class="line"><span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(input, <span class="string">&quot;UTF-8&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>构造<code>InputStreamReader</code>时，我们需要传入<code>InputStream</code>，还需要指定编码，就可以得到一个<code>Reader</code>对象。上述代码可以通过<code>try (resource)</code>更简洁地改写如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (<span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;src/readme.txt&quot;</span>), <span class="string">&quot;UTF-8&quot;</span>)) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码实际上就是<code>FileReader</code>的一种实现方式。</p>
+<p>使用<code>try (resource)</code>结构时，当我们关闭<code>Reader</code>时，它会在内部自动调用<code>InputStream</code>的<code>close()</code>方法，所以，只需要关闭最外层的<code>Reader</code>对象即可。</p>
+<p> 使用InputStreamReader，可以把一个InputStream转换成一个Reader。</p>
+<p><strong>小结</strong></p>
+<p><code>Reader</code>定义了所有字符输入流的超类：</p>
+<ul>
+<li><code>FileReader</code>实现了文件字符流输入，使用时需要指定编码；</li>
+<li><code>CharArrayReader</code>和<code>StringReader</code>可以在内存中模拟一个字符流输入。</li>
+</ul>
+<p><code>Reader</code>是基于<code>InputStream</code>构造的：可以通过<code>InputStreamReader</code>在指定编码的同时将任何<code>InputStream</code>转换为<code>Reader</code>。</p>
+<p>总是使用<code>try (resource)</code>保证<code>Reader</code>正确关闭。</p>
+<h4 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h4><table>
+<thead>
+<tr>
+<th align="left">OutputStream</th>
+<th align="left">Writer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">字节流，以<code>byte</code>为单位</td>
+<td align="left">字符流，以<code>char</code>为单位</td>
+</tr>
+<tr>
+<td align="left">写入字节（0~255）：<code>void write(int b)</code></td>
+<td align="left">写入字符（0~65535）：<code>void write(int c)</code></td>
+</tr>
+<tr>
+<td align="left">写入字节数组：<code>void write(byte[] b)</code></td>
+<td align="left">写入字符数组：<code>void write(char[] c)</code></td>
+</tr>
+<tr>
+<td align="left">无对应方法</td>
+<td align="left">写入String：<code>void write(String s)</code></td>
+</tr>
+</tbody></table>
+<p><code>Writer</code>是所有字符输出流的超类，它提供的方法主要有：</p>
+<ul>
+<li>写入一个字符（0~65535）：<code>void write(int c)</code>；</li>
+<li>写入字符数组的所有字符：<code>void write(char[] c)</code>；</li>
+<li>写入String表示的所有字符：<code>void write(String s)</code>。</li>
+</ul>
+<p><strong>FileWriter</strong></p>
+<p><code>FileWriter</code>就是向文件中写入字符流的<code>Writer</code>。它的使用方法和<code>FileReader</code>类似：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">try (Writer writer = new FileWriter(&quot;readme.txt&quot;, StandardCharsets.UTF_8)) &#123;</span><br><span class="line">    writer.write(&#x27;H&#x27;); // 写入单个字符</span><br><span class="line">    writer.write(&quot;Hello&quot;.toCharArray()); // 写入char[]</span><br><span class="line">    writer.write(&quot;Hello&quot;); // 写入String</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>CharArrayWriter</strong></p>
+<p><code>CharArrayWriter</code>可以在内存中创建一个<code>Writer</code>，它的作用实际上是构造一个缓冲区，可以写入<code>char</code>，最后得到写入的<code>char[]</code>数组，这和<code>ByteArrayOutputStream</code>非常类似：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">try (CharArrayWriter writer = new CharArrayWriter()) &#123;</span><br><span class="line">    writer.write(65);</span><br><span class="line">    writer.write(66);</span><br><span class="line">    writer.write(67);</span><br><span class="line">    char[] data = writer.toCharArray(); // &#123; &#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>StringWriter</strong></p>
+<p><code>StringWriter</code>也是一个基于内存的<code>Writer</code>，它和<code>CharArrayWriter</code>类似。实际上，<code>StringWriter</code>在内部维护了一个<code>StringBuffer</code>，并对外提供了<code>Writer</code>接口。</p>
+<p><strong>OutputStreamWriter</strong></p>
+<p>除了<code>CharArrayWriter</code>和<code>StringWriter</code>外，普通的Writer实际上是基于<code>OutputStream</code>构造的，它接收<code>char</code>，然后在内部自动转换成一个或多个<code>byte</code>，并写入<code>OutputStream</code>。因此，<code>OutputStreamWriter</code>就是一个将任意的<code>OutputStream</code>转换为<code>Writer</code>的转换器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">try (Writer writer = new OutputStreamWriter(new FileOutputStream(&quot;readme.txt&quot;), &quot;UTF-8&quot;)) &#123;</span><br><span class="line">    // TODO:</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码实际上就是<code>FileWriter</code>的一种实现方式。这和上一节的<code>InputStreamReader</code>是一样的。</p>
+<p><strong>小结</strong></p>
+<p><code>Writer</code>定义了所有字符输出流的超类：</p>
+<ul>
+<li><code>FileWriter</code>实现了文件字符流输出；</li>
+<li><code>CharArrayWriter</code>和<code>StringWriter</code>在内存中模拟一个字符流输出。</li>
+</ul>
+<p>使用<code>try (resource)</code>保证<code>Writer</code>正确关闭。</p>
+<p><code>Writer</code>是基于<code>OutputStream</code>构造的，可以通过<code>OutputStreamWriter</code>将<code>OutputStream</code>转换为<code>Writer</code>，转换时需要指定编码。</p>
+<h3 id="PrintStream-x2F-PrintWriter"><a href="#PrintStream-x2F-PrintWriter" class="headerlink" title="PrintStream&#x2F;PrintWriter"></a>PrintStream&#x2F;PrintWriter</h3><p><code>PrintStream</code>是一种<code>FilterOutputStream</code>，它在<code>OutputStream</code>的接口上，额外提供了一些写入各种数据类型的方法：</p>
+<ul>
+<li>写入<code>int</code>：<code>print(int)</code></li>
+<li>写入<code>boolean</code>：<code>print(boolean)</code></li>
+<li>写入<code>String</code>：<code>print(String)</code></li>
+<li>写入<code>Object</code>：<code>print(Object)</code>，实际上相当于<code>print(object.toString())</code></li>
+</ul>
+<p><strong>PrintWriter</strong></p>
+<p><code>PrintStream</code>最终输出的总是byte数据，而<code>PrintWriter</code>则是扩展了<code>Writer</code>接口，它的<code>print()</code>&#x2F;<code>println()</code>方法最终输出的是<code>char</code>数据。两者的使用方法几乎是一模一样的：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>     &#123;</span><br><span class="line">        <span class="type">StringWriter</span> <span class="variable">buffer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringWriter</span>();</span><br><span class="line">        <span class="keyword">try</span> (<span class="type">PrintWriter</span> <span class="variable">pw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintWriter</span>(buffer)) &#123;</span><br><span class="line">            pw.println(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">            pw.println(<span class="number">12345</span>);</span><br><span class="line">            pw.println(<span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(buffer.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>小结</strong></p>
+<p><code>PrintStream</code>是一种能接收各种数据类型的输出，打印数据时比较方便：</p>
+<ul>
+<li><code>System.out</code>是标准输出；</li>
+<li><code>System.err</code>是标准错误输出。</li>
+</ul>
+<p><code>PrintWriter</code>是基于<code>Writer</code>的输出。</p>
+<h3 id="Files"><a href="#Files" class="headerlink" title="Files"></a>Files</h3><p>从Java 7开始，提供了<code>Files</code>这个工具类，能极大地方便我们读写文件。</p>
+<p>虽然<code>Files</code>是<code>java.nio</code>包里面的类，但他俩封装了很多读写文件的简单方法，例如，我们要把一个文件的全部内容读取为一个<code>byte[]</code>，可以这么写：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">byte</span>[] data = Files.readAllBytes(Path.of(<span class="string">&quot;/path/to/file.txt&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>如果是文本文件，可以把一个文件的全部内容读取为<code>String</code>：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 默认使用UTF-8编码读取:</span></span><br><span class="line"><span class="type">String</span> <span class="variable">content1</span> <span class="operator">=</span> Files.readString(Path.of(<span class="string">&quot;/path/to/file.txt&quot;</span>));</span><br><span class="line"><span class="comment">// 可指定编码:</span></span><br><span class="line"><span class="type">String</span> <span class="variable">content2</span> <span class="operator">=</span> Files.readString(Path.of(<span class="string">&quot;/path&quot;</span>, <span class="string">&quot;to&quot;</span>, <span class="string">&quot;file.txt&quot;</span>), StandardCharsets.ISO_8859_1);</span><br><span class="line"><span class="comment">// 按行读取并返回每行内容:</span></span><br><span class="line">List&lt;String&gt; lines = Files.readAllLines(Path.of(<span class="string">&quot;/path/to/file.txt&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>写入文件也非常方便：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 写入二进制文件:</span></span><br><span class="line"><span class="type">byte</span>[] data = ...</span><br><span class="line">Files.write(Path.of(<span class="string">&quot;/path/to/file.txt&quot;</span>), data);</span><br><span class="line"><span class="comment">// 写入文本并指定编码:</span></span><br><span class="line">Files.writeString(Path.of(<span class="string">&quot;/path/to/file.txt&quot;</span>), <span class="string">&quot;文本内容...&quot;</span>, StandardCharsets.ISO_8859_1);</span><br><span class="line"><span class="comment">// 按行写入文本:</span></span><br><span class="line">List&lt;String&gt; lines = ...</span><br><span class="line">Files.write(Path.of(<span class="string">&quot;/path/to/file.txt&quot;</span>), lines);</span><br></pre></td></tr></table></figure>
+
+<p>此外，<code>Files</code>工具类还有<code>copy()</code>、<code>delete()</code>、<code>exists()</code>、<code>move()</code>等快捷方法操作文件和目录。</p>
+<p>最后需要特别注意的是，<code>Files</code>提供的读写方法，受内存限制，只能读写小文件，例如配置文件等，不可一次读入几个G的大文件。读写大型文件仍然要使用文件流，每次只读写一部分文件内容。</p>
 ]]></content>
       <categories>
         <category>java</category>
@@ -3163,6 +3417,10 @@
 
 
 
+<h4 id="Leetcoed-100-相同的二叉树"><a href="#Leetcoed-100-相同的二叉树" class="headerlink" title="Leetcoed 100 相同的二叉树"></a>Leetcoed 100 相同的二叉树</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(p==<span class="literal">null</span>&amp;&amp;q==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p==<span class="literal">null</span>||q==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p.val!=q.val)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> isSameTree(p.left,q.left)&amp;&amp;isSameTree(p.right,q.right);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h4 id="Leetcode-101-对称二叉树"><a href="#Leetcode-101-对称二叉树" class="headerlink" title="Leetcode 101 对称二叉树"></a>Leetcode 101 对称二叉树</h4><p>递归法</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSymmetric</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">       <span class="keyword">if</span>(root==<span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">       <span class="keyword">return</span> sym(root.left,root.right);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">sym</span><span class="params">(TreeNode t1, TreeNode t2)</span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(t1==<span class="literal">null</span>&amp;t2==<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(t1==<span class="literal">null</span>||t2==<span class="literal">null</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(t1.val!=t2.val)&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> sym(t1.left,t2.right)&amp;&amp;sym(t2.left,t1.right);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
@@ -3175,6 +3433,22 @@
 
 <h4 id="Leetcode-222"><a href="#Leetcode-222" class="headerlink" title="Leetcode 222"></a>Leetcode 222</h4><p>完全二叉树的个数</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countNodes</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> countNodes(root.left)+countNodes(root.right)+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Leetcode-110"><a href="#Leetcode-110" class="headerlink" title="Leetcode 110"></a>Leetcode 110</h4><p>平衡二叉树</p>
+<p>这道题和求最大深度不一样，子树中要是最大深度差大于一了也不是平衡二叉树。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isBalanced</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> getHeight(root) != -<span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getHeight</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="type">int</span> <span class="variable">leftHeight</span> <span class="operator">=</span> getHeight(root.left);</span><br><span class="line">       <span class="keyword">if</span> (leftHeight == -<span class="number">1</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="type">int</span> <span class="variable">rightHeight</span> <span class="operator">=</span> getHeight(root.right);</span><br><span class="line">       <span class="keyword">if</span> (rightHeight == -<span class="number">1</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 左右子树高度差大于1，return -1表示已经不是平衡树了</span></span><br><span class="line">       <span class="keyword">if</span> (Math.abs(leftHeight - rightHeight) &gt; <span class="number">1</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> Math.max(leftHeight, rightHeight) + <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Leetcode-257-二叉树的所有路径"><a href="#Leetcode-257-二叉树的所有路径" class="headerlink" title="Leetcode 257 二叉树的所有路径"></a>Leetcode 257 二叉树的所有路径</h4><p>前序遍历法,在遍历的过程中记得时刻记录每一条路径，</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;String&gt; <span class="title function_">binaryTreePaths</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">   List&lt;String&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"> <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">     <span class="keyword">return</span> res;</span><br><span class="line"> &#125;</span><br><span class="line"> Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line"> stack.push(root);</span><br><span class="line"></span><br><span class="line"> Stack&lt;StringBuilder&gt; paths = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line"> <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"> sb.append(Integer.toString(root.val));</span><br><span class="line"> paths.push(sb);</span><br><span class="line"></span><br><span class="line"> <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">     <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">     sb = paths.pop();</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span> (node.right != <span class="literal">null</span>) &#123;</span><br><span class="line">         stack.push(node.right);</span><br><span class="line">         <span class="type">StringBuilder</span> <span class="variable">newPath</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(sb);</span><br><span class="line">         newPath.append(<span class="string">&quot;-&gt;&quot;</span>);</span><br><span class="line">         newPath.append(Integer.toString(node.right.val));</span><br><span class="line">         paths.push(newPath);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">if</span> (node.left != <span class="literal">null</span>) &#123;</span><br><span class="line">         stack.push(node.left);</span><br><span class="line">         <span class="type">StringBuilder</span> <span class="variable">newPath</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(sb);</span><br><span class="line">         newPath.append(<span class="string">&quot;-&gt;&quot;</span>);</span><br><span class="line">         newPath.append(Integer.toString(node.left.val));</span><br><span class="line">         paths.push(newPath);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">if</span> (node.left == <span class="literal">null</span> &amp;&amp; node.right == <span class="literal">null</span>) &#123;</span><br><span class="line">         <span class="type">String</span> <span class="variable">route</span> <span class="operator">=</span> sb.toString();</span><br><span class="line">         res.add(route);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> res;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>迭代法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;String&gt; <span class="title function_">binaryTreePaths</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">       List&lt;String&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();<span class="comment">// 存最终的结果</span></span><br><span class="line">       <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> res;</span><br><span class="line">       &#125;</span><br><span class="line">       List&lt;Integer&gt; paths = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();<span class="comment">// 作为结果中的路径</span></span><br><span class="line">       traversal(root, paths, res);</span><br><span class="line">       <span class="keyword">return</span> res;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">traversal</span><span class="params">(TreeNode root, List&lt;Integer&gt; paths, List&lt;String&gt; res)</span> &#123;</span><br><span class="line">       paths.add(root.val);<span class="comment">// 前序遍历，中</span></span><br><span class="line">       <span class="comment">// 遇到叶子结点</span></span><br><span class="line">       <span class="keyword">if</span> (root.left == <span class="literal">null</span> &amp;&amp; root.right == <span class="literal">null</span>) &#123;</span><br><span class="line">           <span class="comment">// 输出</span></span><br><span class="line">           <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();<span class="comment">// StringBuilder用来拼接字符串，速度更快</span></span><br><span class="line">           <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; paths.size() - <span class="number">1</span>; i++) &#123;</span><br><span class="line">               sb.append(paths.get(i)).append(<span class="string">&quot;-&gt;&quot;</span>);</span><br><span class="line">           &#125;</span><br><span class="line">           sb.append(paths.get(paths.size() - <span class="number">1</span>));<span class="comment">// 记录最后一个节点</span></span><br><span class="line">           res.add(sb.toString());<span class="comment">// 收集一个路径</span></span><br><span class="line">           <span class="keyword">return</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 递归和回溯是同时进行，所以要放在同一个花括号里</span></span><br><span class="line">       <span class="keyword">if</span> (root.left != <span class="literal">null</span>) &#123; <span class="comment">// 左</span></span><br><span class="line">           traversal(root.left, paths, res);</span><br><span class="line">           paths.remove(paths.size() - <span class="number">1</span>);<span class="comment">// 回溯</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (root.right != <span class="literal">null</span>) &#123; <span class="comment">// 右</span></span><br><span class="line">           traversal(root.right, paths, res);</span><br><span class="line">           paths.remove(paths.size() - <span class="number">1</span>);<span class="comment">// 回溯</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 
 
