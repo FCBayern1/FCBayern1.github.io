@@ -341,9 +341,9 @@
 <p>总之，尽管前面提到的自动缩放技术有各自的优势，但它们很少关注性能瓶颈。为非瓶颈微服务消耗计算机资源将不可避免地增加扩展成本和延长决策时间。另一方面，我们的方法侧重于定位性能瓶颈。</p>
 <p><strong>3.System Design</strong></p>
 <p>我们提出了PBScaler，一个以PB为中心的自动缩放控制器，用于定位PBs并优化它们的副本。如图4所示，PBScaler包括三个组件:</p>
-<p>1)度量收集器:为了提供对应用程序状态的实时洞察，我们设计了一个度量收集器，它以固定的间隔从Prometheus4捕获并集成监视度量。</p>
-<p>2)性能瓶颈分析:在度量收集器的帮助下，该组件执行SLO违规检测和冗余检查，以识别异常行为的微服务。接下来，瓶颈定位过程将被触发以精确定位异常微服务中的PBs。</p>
-<p>3)缩放决策:该组件旨在使用进化算法确定PBs的最佳副本数量。最后，PBScaler生成具有优化策略的配置文件，并将其提交给kubernetes-client5, kubernetes-client5调节微服务的副本计数。</p>
+<p>1)度量收集器<strong>Metric Collector</strong>:为了提供对应用程序状态的实时洞察，我们设计了一个度量收集器，它以固定的间隔从Prometheus4捕获并集成监视度量。</p>
+<p>2)性能瓶颈分析<strong>Performance Bottleneck Analysis</strong>:在度量收集器的帮助下，该组件执行SLO违规检测和冗余检查，以识别异常行为的微服务。接下来，瓶颈定位过程将被触发以精确定位异常微服务中的PBs。</p>
+<p>3)缩放决策<strong>Scaling Decision</strong>:该组件旨在使用进化算法确定PBs的最佳副本数量。最后，PBScaler生成具有优化策略的配置文件，并将其提交给kubernetes-client5, kubernetes-client5调节微服务的副本计数。</p>
 <p><strong>3.1 Metric Collector</strong></p>
 <p>自动伸缩系统依赖于对指标的实时访问，例如内存使用数据、系统负载和尾部延迟，以确定是否应该执行弹性伸缩以及应该在微服务应用程序中分配多少资源。与需要深入了解程序和代码注入的基于跟踪的监视器不同[7]，Metric Collector根据服务网格报告指标，以最大限度地减少对业务流的中断。如表1所示，PBScaler使用Prometheus和kube-state-metrics来收集和分类这些指标，包括<strong>响应延迟</strong>、微服务之间的<strong>调用关系</strong>、<strong>资源消耗</strong>和微服务<strong>工作负载</strong>。</p>
 <p>![截屏2023-07-08 16.12.07](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:截屏2023-07-08 16.12.07.png)</p>

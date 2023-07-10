@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">911</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">4 min</span>
+            <span class="post-count">7 min</span>
         </span>
     </span>
 </div>
@@ -147,7 +147,30 @@
 <h4 id="Container-Resource-Monitoring"><a href="#Container-Resource-Monitoring" class="headerlink" title="Container Resource Monitoring"></a>Container Resource Monitoring</h4><p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-usage-monitoring/">Container Resource Monitoring</a> records generic time-series metrics about containers in a central database, and provides a UI for browsing that data.</p>
 <h4 id="Cluster-level-Logging"><a href="#Cluster-level-Logging" class="headerlink" title="Cluster-level Logging"></a>Cluster-level Logging</h4><p>A <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/cluster-administration/logging/">cluster-level logging</a> mechanism is responsible for saving container logs to a central log store with search&#x2F;browsing interface.</p>
 <h4 id="Network-Plugins"><a href="#Network-Plugins" class="headerlink" title="Network Plugins"></a>Network Plugins</h4><p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins">Network plugins</a> are software components that implement the container network interface (CNI) specification. They are responsible for allocating IP addresses to pods and enabling them to communicate with each other within the cluster.</p>
-<h1 id="Elementary"><a href="#Elementary" class="headerlink" title="Elementary"></a>Elementary</h1><h1 id="Intermediate"><a href="#Intermediate" class="headerlink" title="Intermediate"></a>Intermediate</h1><h1 id="Advanced"><a href="#Advanced" class="headerlink" title="Advanced"></a>Advanced</h1> 
+<h1 id="Elementary"><a href="#Elementary" class="headerlink" title="Elementary"></a>Elementary</h1><h2 id="0-基础"><a href="#0-基础" class="headerlink" title="0.基础"></a>0.基础</h2><p>A cluster is made by nodes(master node and worker nodes), Master is used to managed the cluster. <strong>Worker节点是虚拟机或物理计算机，充当k8s集群中的工作计算机。</strong> 每个Worker节点都有一个Kubelet，它管理该Worker节点并负责与Master节点通信。该Worker节点还应具有用于处理容器操作的工具，例如Docker。</p>
+<p>A node is made by pods</p>
+<p>Pod is created by deployment, you can specify how many replicas you want. You can use deployment to manage these pods replicas.</p>
+<p>A pod is made by containers.</p>
+<h2 id="1-部署一个应用程序"><a href="#1-部署一个应用程序" class="headerlink" title="1.部署一个应用程序"></a>1.部署一个应用程序</h2><p>首先得创建一个yaml文件，里面包含了</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span>	<span class="comment">#与k8s集群版本有关，使用 kubectl api-versions 即可查看当前集群支持的版本</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span>	<span class="comment">#该配置的类型，我们使用的是 Deployment</span></span><br><span class="line"><span class="attr">metadata:</span>	        <span class="comment">#译名为元数据，即 Deployment 的一些基本属性和信息</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-deployment</span>	<span class="comment">#Deployment 的名称</span></span><br><span class="line">  <span class="attr">labels:</span>	    <span class="comment">#标签，可以灵活定位一个或多个资源，其中key和value均可自定义，可以定义多组，目前不需要理解</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx</span>	<span class="comment">#为该Deployment设置key为app，value为nginx的标签</span></span><br><span class="line"><span class="attr">spec:</span>	        <span class="comment">#这是关于该Deployment的描述，可以理解为你期待该Deployment在k8s中如何使用</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span>	<span class="comment">#使用该Deployment创建一个应用程序实例</span></span><br><span class="line">  <span class="attr">selector:</span>	    <span class="comment">#标签选择器，与上面的标签共同作用，目前不需要理解</span></span><br><span class="line">    <span class="attr">matchLabels:</span> <span class="comment">#选择包含标签app:nginx的资源</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">template:</span>	    <span class="comment">#这是选择或创建的Pod的模板</span></span><br><span class="line">    <span class="attr">metadata:</span>	<span class="comment">#Pod的元数据</span></span><br><span class="line">      <span class="attr">labels:</span>	<span class="comment">#Pod的标签，上面的selector即选择包含标签app:nginx的Pod</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">spec:</span>	    <span class="comment">#期望Pod实现的功能（即在pod中部署）</span></span><br><span class="line">      <span class="attr">containers:</span>	<span class="comment">#生成container，与docker中的container是同一种</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span>	<span class="comment">#container的名称</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">nginx:1.7.9</span>	<span class="comment">#使用镜像nginx:1.7.9创建container，该container默认80端口可访问</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f nginx-deployment.yaml</span><br></pre></td></tr></table></figure>
+
+<p>这样应该就能够看见了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 Deployment</span></span><br><span class="line">kubectl get deployments</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Pod</span></span><br><span class="line">kubectl get pods</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-查看pods-x2F-nodes"><a href="#2-查看pods-x2F-nodes" class="headerlink" title="2.查看pods&#x2F;nodes"></a>2.查看pods&#x2F;nodes</h2><p>在部署完一个应用程序后，k8s创建了一个deployment，由它创建了一个pod来放置应用程序实例也就是container</p>
+<p>在一个pod中，里面的容器containers会共享</p>
+<ul>
+<li>共享存储，称为卷(Volumes)，即图上紫色圆柱</li>
+<li>网络，每个 Pod（容器组）在集群中有个唯一的 IP，pod（容器组）中的 container（容器）共享该IP地址</li>
+<li>container（容器）的基本信息，例如容器的镜像版本，对外暴露的端口等</li>
+</ul>
+<p>Pod（容器组）是 k8s 集群上的最基本的单元。当我们在 k8s 上创建 Deployment 时，会在集群上创建包含容器的 Pod (而不是直接创建容器)。每个Pod都与运行它的 worker 节点（Node）绑定，并保持在那里直到终止或被删除。如果节点（Node）发生故障，则会在群集中的其他可用节点（Node）上运行相同的 Pod（从同样的镜像创建 Container，使用同样的配置，IP 地址不同，Pod 名字不同）。</p>
+<h1 id="Intermediate"><a href="#Intermediate" class="headerlink" title="Intermediate"></a>Intermediate</h1><h1 id="Advanced"><a href="#Advanced" class="headerlink" title="Advanced"></a>Advanced</h1> 
       <!-- reward -->
       
       <div id="reword-out">
