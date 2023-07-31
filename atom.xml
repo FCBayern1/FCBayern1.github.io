@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-07-10T18:34:30.820Z</updated>
+  <updated>2023-07-15T23:12:48.150Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2023/06/26/kubernetes/"/>
     <id>http://example.com/2023/06/26/kubernetes/</id>
     <published>2023-06-26T10:03:56.000Z</published>
-    <updated>2023-07-10T18:34:30.820Z</updated>
+    <updated>2023-07-15T23:12:48.150Z</updated>
     
     
       
@@ -46,7 +46,7 @@
     <link href="http://example.com/2023/06/19/project-notes/"/>
     <id>http://example.com/2023/06/19/project-notes/</id>
     <published>2023-06-19T08:35:01.000Z</published>
-    <updated>2023-07-09T14:39:28.912Z</updated>
+    <updated>2023-07-31T09:22:34.115Z</updated>
     
     
       
@@ -183,7 +183,7 @@
     <link href="http://example.com/2023/04/25/DSA/"/>
     <id>http://example.com/2023/04/25/DSA/</id>
     <published>2023-04-25T22:11:13.000Z</published>
-    <updated>2023-06-30T13:37:31.854Z</updated>
+    <updated>2023-07-11T15:31:50.301Z</updated>
     
     
       
@@ -313,7 +313,7 @@
     <link href="http://example.com/2023/04/01/java/"/>
     <id>http://example.com/2023/04/01/java/</id>
     <published>2023-04-01T22:53:13.000Z</published>
-    <updated>2023-06-30T16:12:46.230Z</updated>
+    <updated>2023-07-18T18:29:11.607Z</updated>
     
     
       
