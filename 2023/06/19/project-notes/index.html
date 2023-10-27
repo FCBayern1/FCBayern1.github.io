@@ -247,6 +247,9 @@
 <p>算法1描述了评估器的工作原理。对于每个PPA，必须将一个关键指标设置为工作负载的估计器，注入的预测模型使用收集的指标来预测关键指标。为了从预测的关键指标中获得所需的副本数量，应该定义一个静态策略。在本工作中，使用第1节中描述的基于阈值的HPA算法作为默认的静态策略。但是，静态策略是可定制的，用户可以在PPA中注入自己的策略。</p>
 <p>![截屏2023-07-04 19.41.37](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:截屏2023-07-04 19.41.37.png)</p>
 <p><strong><code>model.isBayesian()</code> 是检查模型是否为贝叶斯模型的条件。贝叶斯模型是一种统计模型，它使用贝叶斯定理进行推断和预测。在这段代码中，如果模型是贝叶斯模型并且预测的置信度低于阈值，就会选择使用当前的关键度量指标而不是模型预测的结果。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Result: Number of replicas to be requested</span><br><span class="line"></span><br><span class="line">Get current_metrics, current_replicas;</span><br><span class="line"></span><br><span class="line">Set max_relicas of system;</span><br><span class="line"></span><br><span class="line">if bottleneck_check == False then</span><br><span class="line">	num_replicas = 1</span><br><span class="line">else if current_replicas &lt; max_relicas then</span><br><span class="line">	num_replicas = GA(Genetic_algorithm_init_parameters, current_metrics, current_replicas)</span><br><span class="line">else</span><br><span class="line">	num_replicas = max_relicas</span><br></pre></td></tr></table></figure>
+
+<p>​	</p>
 <p><strong>4.2.2 模型的协议</strong></p>
 <p>所有满足以下协议的时间序列模型都可以注入进行指标预测:</p>
 <p>(1)时间窗口大小:所有模型的时间窗口大小固定为1个单位，表明模型使用上一个回路的指标预测下一个控制回路的工作量。这是由新pod的初始化时间成本决定的，它通常需要不到一个时间间隔的控制循环。</p>
@@ -824,6 +827,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">CV</a>
     </li>
     
     <li class="nav-item">

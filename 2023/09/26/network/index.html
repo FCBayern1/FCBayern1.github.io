@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>data analyst |  Mingwei’s Blog</title>
+      <title>DSA |  Mingwei’s Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -56,7 +56,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-data-analyst"
+  id="post-network"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  data analyst
+  DSA
 </h1>
  
 
@@ -75,11 +75,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/04/18/data-analyst/" class="article-date">
-  <time datetime="2023-04-17T23:45:13.000Z" itemprop="datePublished">2023-04-18</time>
+      <a href="/2023/09/26/network/" class="article-date">
+  <time datetime="2023-09-26T10:45:14.000Z" itemprop="datePublished">2023-09-26</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Data-Engineering/">Data Engineering</a>
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
   </div>
   
 <div class="word_count">
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">68</span>
+            <span class="post-count">2.9k</span>
         </span>
     </span>
 
@@ -96,28 +96,162 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">10 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <ul>
-<li>Have completed an undergraduate degree to a (2.1 minimum) with a Mathematical or Scientific background</li>
-<li>Knowledge in SQL or Power BI</li>
-<li>Strong analytical and numerical skills</li>
-<li>Experience preparing, consolidating and normalising data :ETL processes</li>
-<li>Experience &#x2F; knowledge of data visualisation and dashboard tools e.g. Qlikview, Tableau or Power BI</li>
-<li>Strong communication skills to work comfortable with all levels of users</li>
-<li>Be within commuting distance to Croydon</li>
+  <h1 id="Network-review"><a href="#Network-review" class="headerlink" title="Network review"></a>Network review</h1><h2 id="Fundamental"><a href="#Fundamental" class="headerlink" title="Fundamental"></a>Fundamental</h2><h3 id="TCP-x2F-IP-Architecture"><a href="#TCP-x2F-IP-Architecture" class="headerlink" title="TCP&#x2F;IP Architecture"></a>TCP&#x2F;IP Architecture</h3><p>Application layer</p>
+<p>Transimission layer</p>
+<p>Network layer</p>
+<p>Network Interface layer</p>
+<p>![image-20230926204726040](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230926204726040.png)</p>
+<h2 id="What-happens-after-input-the-url-address"><a href="#What-happens-after-input-the-url-address" class="headerlink" title="What happens after input the url address?"></a>What happens after input the url address?</h2><p>![image-20230926220632759](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230926220632759.png)</p>
+<ol>
+<li><h3 id="The-browser-will-resolve-the-URL"><a href="#The-browser-will-resolve-the-URL" class="headerlink" title="The browser will resolve the URL"></a>The browser will resolve the URL</h3></li>
+</ol>
+<p>![image-20230926225140347](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230926225140347.png)</p>
+<p>当没有路径名时，就代表访问根目录下事先设置的<strong>默认文件</strong>，也就是 <code>/index.html</code> 或者 <code>/default.html</code> 这些文件，这样就不会发生混乱了。</p>
+<ol start="2">
+<li><h3 id="生成http请求消息"><a href="#生成http请求消息" class="headerlink" title="生成http请求消息"></a>生成http请求消息</h3></li>
+</ol>
+<p>对 <code>URL</code> 进行解析之后，浏览器确定了 Web 服务器和文件名，接下来就是根据这些信息来生成 HTTP 请求消息了。</p>
+<p>![image-20230926230201614](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230926230201614.png)</p>
+<ol start="3">
+<li><h3 id="DNS-查询"><a href="#DNS-查询" class="headerlink" title="DNS 查询"></a>DNS 查询</h3></li>
+</ol>
+<p>通过浏览器解析 URL 并生成 HTTP 消息后，需要委托操作系统将消息发送给 <code>Web</code> 服务器。</p>
+<p>但在发送之前，还有一项工作需要完成，那就是<strong>查询服务器域名对应的 IP 地址</strong>，因为委托操作系统发送消息时，必须提供通信对象的 IP 地址。</p>
+<blockquote>
+<p>域名的层级关系</p>
+</blockquote>
+<p>DNS 中的域名都是用<strong>句点</strong>来分隔的，比如 <code>www.server.com</code>，这里的句点代表了不同层次之间的<strong>界限</strong>。</p>
+<p>在域名中，<strong>越靠右</strong>的位置表示其层级<strong>越高</strong>。</p>
+<p>实际上域名最后还有一个点，比如 <code>www.server.com.</code>，这个最后的一个点代表根域名</p>
+<p>![image-20230926232406414](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230926232406414.png)</p>
+<p>根域的 DNS 服务器信息保存在互联网中所有的 DNS 服务器中。</p>
+<p>这样一来，任何 DNS 服务器就都可以找到并访问根域 DNS 服务器了。</p>
+<p>因此，客户端只要能够找到任意一台 DNS 服务器，就可以通过它找到根域 DNS 服务器，然后再一路顺藤摸瓜找到位于下层的某台目标 DNS 服务器。</p>
+<blockquote>
+<p>域名解析的工作流程</p>
+</blockquote>
+<ol>
+<li>客户端首先会发出一个 DNS 请求，问 <a target="_blank" rel="noopener" href="http://www.server.com/">www.server.com</a> 的 IP 是啥，并发给本地 DNS 服务器（也就是客户端的 TCP&#x2F;IP 设置中填写的 DNS 服务器地址）。</li>
+<li>本地域名服务器收到客户端的请求后，如果缓存里的表格能找到 <a target="_blank" rel="noopener" href="http://www.server.com,则它直接返回/">www.server.com，则它直接返回</a> IP 地址。如果没有，本地 DNS 会去问它的根域名服务器：“老大， 能告诉我 <a target="_blank" rel="noopener" href="http://www.server.com/">www.server.com</a> 的 IP 地址吗？” 根域名服务器是最高层次的，它不直接用于域名解析，但能指明一条道路。</li>
+<li>根 DNS 收到来自本地 DNS 的请求后，发现后置是 .com，说：“<a target="_blank" rel="noopener" href="http://www.server.com/">www.server.com</a> 这个域名归 .com 区域管理”，我给你 .com 顶级域名服务器地址给你，你去问问它吧。”</li>
+<li>本地 DNS 收到顶级域名服务器的地址后，发起请求问“老二， 你能告诉我 <a target="_blank" rel="noopener" href="http://www.server.com/">www.server.com</a> 的 IP 地址吗？”</li>
+<li>顶级域名服务器说：“我给你负责 <a target="_blank" rel="noopener" href="http://www.server.com/">www.server.com</a> 区域的权威 DNS 服务器的地址，你去问它应该能问到”。</li>
+<li>本地 DNS 于是转向问权威 DNS 服务器：“老三，<a href="http://www.server.com对应的IP是啥呀？”">www.server.com对应的IP是啥呀？”</a> server.com 的权威 DNS 服务器，它是域名解析结果的原出处。为啥叫权威呢？就是我的域名我做主。</li>
+<li>权威 DNS 服务器查询后将对应的 IP 地址 X.X.X.X 告诉本地 DNS。</li>
+<li>本地 DNS 再将 IP 地址返回客户端，客户端和目标建立连接。</li>
+</ol>
+<p>![image-20230926232617702](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230926232617702.png)</p>
+<p>当然有缓存的存在，</p>
+<p>浏览器会先看自身有没有对这个域名的缓存，如果有，就直接返回，如果没有，就去问操作系统，操作系统也会去看自己的缓存，如果有，就直接返回，如果没有，再去 hosts 文件看，也没有，才会去问「本地 DNS 服务器」。</p>
+<blockquote>
+<p>数据包表示：“DNS 老大哥厉害呀，找到了目的地了！我还是很迷茫呀，我要发出去，接下来我需要谁的帮助呢?”</p>
+</blockquote>
+<ol start="4">
+<li><h3 id="Stack-protocol"><a href="#Stack-protocol" class="headerlink" title="Stack protocol"></a>Stack protocol</h3></li>
+</ol>
+<p>浏览器会先看自身有没有对这个域名的缓存，如果有，就直接返回，如果没有，就去问操作系统，操作系统也会去看自己的缓存，如果有，就直接返回，如果没有，再去 hosts 文件看，也没有，才会去问「本地 DNS 服务器」。</p>
+<blockquote>
+<p>数据包表示：“DNS 老大哥厉害呀，找到了目的地了！我还是很迷茫呀，我要发出去，接下来我需要谁的帮助呢?”</p>
+</blockquote>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><p>![image-20230927095406195](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230927095406195.png)</p>
+<p>首先，<strong>源端口号</strong>和<strong>目标端口</strong>号是不可少的，如果没有这两个端口号，数据就不知道应该发给哪个应用。</p>
+<p>接下来有包的<strong>序</strong>号，这个是为了解决包乱序的问题。</p>
+<p>还有应该有的是<strong>确认号</strong>，目的是确认发出去对方是否有收到。如果没有收到就应该重新发送，直到送达，这个是为了解决丢包的问题。</p>
+<p>接下来还有一些<strong>状态位</strong>。例如 <code>SYN</code> 是发起一个连接，<code>ACK</code> 是回复，<code>RST</code> 是重新连接，<code>FIN</code> 是结束连接等。TCP 是面向连接的，因而双方要维护连接的状态，这些带状态位的包的发送，会引起双方的状态变更。</p>
+<p>还有一个重要的就是<strong>窗口大小</strong>。TCP 要做<strong>流量控制</strong>，通信双方各声明一个窗口（缓存大小），标识自己当前能够的处理能力，别发送的太快，撑死我，也别发的太慢，饿死我。</p>
+<p>除了做流量控制以外，TCP还会做<strong>拥塞控制</strong>，对于真正的通路堵车不堵车，它无能为力，唯一能做的就是控制自己，也即控制发送的速度。不能改变世界，就改变自己嘛。</p>
+<blockquote>
+<p>TCP 传输数据之前，要先三次握手建立连接</p>
+</blockquote>
+<p>在 HTTP 传输数据之前，首先需要 TCP 建立连接，TCP 连接的建立，通常称为<strong>三次握手</strong>。</p>
+<p>这个所谓的「连接」，只是双方计算机里维护一个状态机，在连接建立的过程中，双方的状态变化时序图就像这样。</p>
+<p>![image-20230927095600953](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20230927095600953.png)</p>
+<ul>
+<li>一开始，客户端和服务端都处于 <code>CLOSED</code> 状态。先是服务端主动监听某个端口，处于 <code>LISTEN</code> 状态。</li>
+<li>然后客户端主动发起连接 <code>SYN</code>，之后处于 <code>SYN-SENT</code> 状态。</li>
+<li>服务端收到发起的连接，返回 <code>SYN</code>，并且 <code>ACK</code> 客户端的 <code>SYN</code>，之后处于 <code>SYN-RCVD</code> 状态。</li>
+<li>客户端收到服务端发送的 <code>SYN</code> 和 <code>ACK</code> 之后，发送对 <code>SYN</code> 确认的 <code>ACK</code>，之后处于 <code>ESTABLISHED</code> 状态，因为它一发一收成功了。</li>
+<li>服务端收到 <code>ACK</code> 的 <code>ACK</code> 之后，处于 <code>ESTABLISHED</code> 状态，因为它也一发一收了。</li>
 </ul>
+<blockquote>
+<p>如何查看 TCP 的连接状态？</p>
+</blockquote>
+<p>TCP 的连接状态查看，在 Linux 可以通过 <code>netstat -napt</code> 命令查看。</p>
+<h4 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h4><p><img src="/../images/14.jpg" alt="IP 包头格式"></p>
+<p>在 IP 协议里面需要有<strong>源地址 IP</strong> 和 <strong>目标地址 IP</strong>：</p>
+<ul>
+<li>源地址IP，即是客户端输出的 IP 地址；</li>
+<li>目标地址，即通过 DNS 域名解析得到的 Web 服务器 IP。</li>
+</ul>
+<p>因为 HTTP 是经过 TCP 传输的，所以在 IP 包头的<strong>协议号</strong>，要填写为 <code>06</code>（十六进制），表示协议为 TCP。</p>
+<blockquote>
+<p>假设客户端有多个网卡，就会有多个 IP 地址，那 IP 头部的源地址应该选择哪个 IP 呢？</p>
+</blockquote>
+<p>当存在多个网卡时，在填写源地址 IP 时，就需要判断到底应该填写哪个地址。这个判断相当于在多块网卡中判断应该使用哪个一块网卡来发送包。</p>
+<p>这个时候就需要根据<strong>路由表</strong>规则，来判断哪一个网卡作为源地址 IP。</p>
+<p>在 Linux 操作系统，我们可以使用 <code>route -n</code> 命令查看当前系统的路由表。</p>
+<p>举个例子，根据上面的路由表，我们假设 Web 服务器的目标地址是 <code>192.168.10.200</code>。</p>
+<p><img src="/../images/16.jpg" alt="路由规则判断"></p>
+<ol>
+<li>首先先和第一条目的子网掩码（<code>Genmask</code>）进行 <strong>与运算</strong>，得到结果为 <code>192.168.10.0</code>，但是第一个条目的 <code>Destination</code> 是 <code>192.168.3.0</code>，两者不一致所以匹配失败。</li>
+<li>再与第二条目的子网掩码进行 <strong>与运算</strong>，得到的结果为 <code>192.168.10.0</code>，与第二条目的 <code>Destination 192.168.10.0</code> 匹配成功，所以将使用 <code>eth1</code> 网卡的 IP 地址作为 IP 包头的源地址。</li>
+</ol>
+<p>那么假设 Web 服务器的目标地址是 <code>10.100.20.100</code>，那么依然依照上面的路由表规则判断，判断后的结果是和第三条目匹配。</p>
+<p>第三条目比较特殊，它目标地址和子网掩码都是 <code>0.0.0.0</code>，这表示<strong>默认网关</strong>，如果其他所有条目都无法匹配，就会自动匹配这一行。并且后续就把包发给路由器，<code>Gateway</code> 即是路由器的 IP 地址。</p>
+<h4 id="MAC"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h4><p>MAC 头部是以太网使用的头部，它包含了接收方和发送方的 MAC 地址等信息。</p>
+<p>在 MAC 包头里需要<strong>发送方 MAC 地址</strong>和<strong>接收方目标 MAC 地址</strong>，用于<strong>两点之间的传输</strong>。</p>
+<p>一般在 TCP&#x2F;IP 通信里，MAC 包头的<strong>协议类型</strong>只使用：</p>
+<ul>
+<li><code>0800</code> ： IP 协议</li>
+<li><code>0806</code> ： ARP 协议</li>
+</ul>
+<blockquote>
+<p>MAC 发送方和接收方如何确认?</p>
+</blockquote>
+<p><strong>发送方</strong>的 MAC 地址获取就比较简单了，MAC 地址是在网卡生产时写入到 ROM 里的，只要将这个值读取出来写入到 MAC 头部就可以了。</p>
+<p><strong>接收方</strong>的 MAC 地址就有点复杂了，只要告诉以太网对方的 MAC 的地址，以太网就会帮我们把包发送过去，那么很显然这里应该填写对方的 MAC 地址。</p>
+<p>所以先得搞清楚应该把包发给谁，这个只要查一下<strong>路由表</strong>就知道了。在路由表中找到相匹配的条目，然后把包发给 <code>Gateway</code> 列中的 IP 地址就可以了。</p>
+<blockquote>
+<p>既然知道要发给谁，按如何获取对方的 MAC 地址呢？</p>
+</blockquote>
+<p>不知道对方 MAC 地址？不知道就喊呗。</p>
+<p>此时就需要 <code>ARP</code> 协议帮我们找到路由器的 MAC 地址。</p>
+<p>ARP 协议会在以太网中以<strong>广播</strong>的形式，对以太网所有的设备喊出：“这个 IP 地址是谁的？请把你的 MAC 地址告诉我”。</p>
+<p>然后就会有人回答：“这个 IP 地址是我的，我的 MAC 地址是 XXXX”。</p>
+<p>如果对方和自己处于同一个子网中，那么通过上面的操作就可以得到对方的 MAC 地址。然后，我们将这个 MAC 地址写入 MAC 头部，MAC 头部就完成了。</p>
+<blockquote>
+<p>好像每次都要广播获取，这不是很麻烦吗？</p>
+</blockquote>
+<p>放心，在后续操作系统会把本次查询结果放到一块叫做 <strong>ARP 缓存</strong>的内存空间留着以后用，不过缓存的时间就几分钟。</p>
+<p>也就是说，在发包时：</p>
+<ul>
+<li>先查询 ARP 缓存，如果其中已经保存了对方的 MAC 地址，就不需要发送 ARP 查询，直接使用 ARP 缓存中的地址。</li>
+<li>而当 ARP 缓存中不存在对方 MAC 地址时，则发送 ARP 广播查询。</li>
+</ul>
+<blockquote>
+<p>在 Linux 系统中，我们可以使用 <code>arp -a</code> 命令来查看 ARP 缓存的内容。</p>
+</blockquote>
+<p><img src="/../images/20.jpg" alt="ARP 缓存内容"></p>
+<blockquote>
+<p>MAC 报文生成</p>
+</blockquote>
+<p>至此，网络包的报文如下图。</p>
+<p><img src="/../images/21.jpg" alt="MAC 层报文"></p>
  
       <!-- reward -->
       
@@ -188,7 +322,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/04/18/data-analyst/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/09/26/network/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -201,19 +335,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/04/20/forensics/" class="article-nav-link">
-        <strong class="article-nav-caption">Previous Post</strong>
-        <div class="article-nav-title">
-          
-            forensics
-          
-        </div>
-      </a>
     
-    
-      <a href="/2023/04/15/Csharp/" class="article-nav-link">
+      <a href="/2023/06/26/kubernetes/" class="article-nav-link">
         <strong class="article-nav-caption">Next Post</strong>
-        <div class="article-nav-title">Csharp</div>
+        <div class="article-nav-title">kubernetes</div>
       </a>
     
   </nav>

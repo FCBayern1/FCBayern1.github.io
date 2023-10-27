@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">16.1k</span>
+            <span class="post-count">16.2k</span>
         </span>
     </span>
 
@@ -119,11 +119,11 @@
 <li>Simplification of complex expressions</li>
 <li>What is the base of log in -O (log n)?</li>
 </ul>
-<h3 id="究竟什么是时间复杂度"><a href="#究竟什么是时间复杂度" class="headerlink" title="究竟什么是时间复杂度"></a>究竟什么是时间复杂度</h3><p><strong>时间复杂度是一个函数，它定性描述该算法的运行时间</strong>。</p>
+<h4 id="究竟什么是时间复杂度"><a href="#究竟什么是时间复杂度" class="headerlink" title="究竟什么是时间复杂度"></a>究竟什么是时间复杂度</h4><p><strong>时间复杂度是一个函数，它定性描述该算法的运行时间</strong>。</p>
 <p>我们在软件开发中，时间复杂度就是用来方便开发者估算出程序运行的答题时间。</p>
 <p>那么该如何估计程序运行时间呢，通常会估算算法的操作单元数量来代表程序消耗的时间，这里默认CPU的每个单元运行消耗的时间都是相同的。</p>
 <p>假设算法的问题规模为n，那么操作单元数量便用函数f(n)来表示，随着数据规模n的增大，算法执行时间的增长率和f(n)的增长率相同，这称作为算法的渐近时间复杂度，简称时间复杂度，记为 O(f(n))。</p>
-<h3 id="什么是大O"><a href="#什么是大O" class="headerlink" title="什么是大O"></a>什么是大O</h3><p>这里的大O是指什么呢，说到时间复杂度，<strong>大家都知道O(n)，O(n^2)，却说不清什么是大O</strong>。</p>
+<h4 id="什么是大O"><a href="#什么是大O" class="headerlink" title="什么是大O"></a>什么是大O</h4><p>这里的大O是指什么呢，说到时间复杂度，<strong>大家都知道O(n)，O(n^2)，却说不清什么是大O</strong>。</p>
 <p>算法导论给出的解释：<strong>大O用来表示上界的</strong>，当用它作为算法的最坏情况运行时间的上界，就是对任意数据输入的运行时间的上界。</p>
 <p>同样算法导论给出了例子：拿插入排序来说，插入排序的时间复杂度我们都说是O(n^2) 。</p>
 <p>输入数据的形式对程序运算时间是有很大影响的，在数据本来有序的情况下时间复杂度是O(n)，但如果数据是逆序的话，插入排序的时间复杂度就是O(n^2)，也就对于所有输入情况来说，最坏是O(n^2) 的时间复杂度，所以称插入排序的时间复杂度为O(n^2)。</p>
@@ -131,7 +131,7 @@
 <p><strong>但是我们依然说快速排序是O(nlogn)的时间复杂度，这个就是业内的一个默认规定，这里说的O代表的就是一般情况，而不是严格的上界</strong>。如图所示： <img src="/../images/20200728185745611-20230310123844306.png" alt="时间复杂度4，一般情况下的时间复杂度"></p>
 <p>我们主要关心的还是一般情况下的数据形式。</p>
 <p><strong>面试中说道算法的时间复杂度是多少指的都是一般情况</strong>。但是如果面试官和我们深入探讨一个算法的实现以及性能的时候，就要时刻想着数据用例的不一样，时间复杂度也是不同的，这一点是一定要注意的。</p>
-<h3 id="不同数据规模的差异"><a href="#不同数据规模的差异" class="headerlink" title="#不同数据规模的差异"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%89%8D%E5%BA%8F/%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%81.html#%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E8%A7%84%E6%A8%A1%E7%9A%84%E5%B7%AE%E5%BC%82">#</a>不同数据规模的差异</h3><p>如下图中可以看出不同算法的时间复杂度在不同数据输入规模下的差异。</p>
+<h4 id="不同数据规模的差异"><a href="#不同数据规模的差异" class="headerlink" title="#不同数据规模的差异"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%89%8D%E5%BA%8F/%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%81.html#%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E8%A7%84%E6%A8%A1%E7%9A%84%E5%B7%AE%E5%BC%82">#</a>不同数据规模的差异</h4><p>如下图中可以看出不同算法的时间复杂度在不同数据输入规模下的差异。</p>
 <p><img src="/../images/20200728191447384-20230310124015324.png" alt="时间复杂度，不同数据规模的差异"></p>
 <p>在决定使用哪些算法的时候，不是时间复杂越低的越好（因为简化后的时间复杂度忽略了常数项等等），要考虑数据规模，如果数据规模很小甚至可以用O(n^2)的算法比O(n)的更合适（在有常数项的时候）。</p>
 <p>就像上图中 O(5n^2) 和 O(100n) 在n为20之前 很明显 O(5n^2)是更优的，所花费的时间也是最少的。</p>
@@ -141,7 +141,7 @@
 <p><strong>所以我们说的时间复杂度都是省略常数项系数的，是因为一般情况下都是默认数据规模足够的大，基于这样的事实，给出的算法时间复杂的的一个排行如下所示</strong>：</p>
 <p>O(1)常数阶 &lt; O(logn)对数阶 &lt; O(n)线性阶 &lt; O(nlogn)线性对数阶 &lt; O(n^2)平方阶 &lt; O(n^3)立方阶 &lt; O(2^n)指数阶</p>
 <p>但是也要注意大常数，如果这个常数非常大，例如10^7 ，10^9 ，那么常数就是不得不考虑的因素了。</p>
-<h3 id="复杂表达式的化简"><a href="#复杂表达式的化简" class="headerlink" title="#复杂表达式的化简"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%89%8D%E5%BA%8F/%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%81.html#%E5%A4%8D%E6%9D%82%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%8C%96%E7%AE%80">#</a>复杂表达式的化简</h3><p>有时候我们去计算时间复杂度的时候发现不是一个简单的O(n) 或者O(n^2)， 而是一个复杂的表达式，例如：</p>
+<h4 id="复杂表达式的化简"><a href="#复杂表达式的化简" class="headerlink" title="#复杂表达式的化简"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%89%8D%E5%BA%8F/%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%81.html#%E5%A4%8D%E6%9D%82%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%8C%96%E7%AE%80">#</a>复杂表达式的化简</h4><p>有时候我们去计算时间复杂度的时候发现不是一个简单的O(n) 或者O(n^2)， 而是一个复杂的表达式，例如：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O(2*n^2 + 10*n + 1000)</span><br></pre></td></tr></table></figure>
 
 <p>1</p>
@@ -164,7 +164,7 @@
 <p>1</p>
 <p>所以最后我们说：这个算法的算法时间复杂度是O(n^2) 。</p>
 <p>也可以用另一种简化的思路，其实当n大于40的时候， 这个复杂度会恒小于O(3 × n^2)， O(2 × n^2 + 10 × n + 1000) &lt; O(3 × n^2)，所以说最后省略掉常数项系数最终时间复杂度也是O(n^2)。</p>
-<h3 id="O-logn-中的log是以什么为底？"><a href="#O-logn-中的log是以什么为底？" class="headerlink" title="#O(logn)中的log是以什么为底？"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%89%8D%E5%BA%8F/%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%81.html#o-logn-%E4%B8%AD%E7%9A%84log%E6%98%AF%E4%BB%A5%E4%BB%80%E4%B9%88%E4%B8%BA%E5%BA%95">#</a>O(logn)中的log是以什么为底？</h3><p>平时说这个算法的时间复杂度是logn的，那么一定是log 以2为底n的对数么？</p>
+<h4 id="O-logn-中的log是以什么为底？"><a href="#O-logn-中的log是以什么为底？" class="headerlink" title="#O(logn)中的log是以什么为底？"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%89%8D%E5%BA%8F/%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%81.html#o-logn-%E4%B8%AD%E7%9A%84log%E6%98%AF%E4%BB%A5%E4%BB%80%E4%B9%88%E4%B8%BA%E5%BA%95">#</a>O(logn)中的log是以什么为底？</h4><p>平时说这个算法的时间复杂度是logn的，那么一定是log 以2为底n的对数么？</p>
 <p>其实不然，也可以是以10为底n的对数，也可以是以20为底n的对数，<strong>但我们统一说 logn，也就是忽略底数的描述</strong>。</p>
 <p>为什么可以这么做呢？如下图所示：</p>
 <p><img src="/../images/20200728191447349-20230310124032001.png" alt="时间复杂度1.png"></p>
@@ -172,7 +172,7 @@
 <p>而以2为底10的对数是一个常数，在上文已经讲述了我们计算时间复杂度是忽略常数项系数的。</p>
 <p>抽象一下就是在时间复杂度的计算过程中，log以i为底n的对数等于log 以j为底n的对数，所以忽略了i，直接说是logn。</p>
 <p>这样就应该不难理解为什么忽略底数了。</p>
-<h3 id="举一个例子"><a href="#举一个例子" class="headerlink" title="#举一个例子"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%89%8D%E5%BA%8F/%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%81.html#%E4%B8%BE%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90">#</a>举一个例子</h3><p>通过这道面试题目，来分析一下时间复杂度。题目描述：找出n个字符串中相同的两个字符串（假设这里只有两个相同的字符串）。</p>
+<h4 id="举一个例子"><a href="#举一个例子" class="headerlink" title="#举一个例子"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%89%8D%E5%BA%8F/%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%81.html#%E4%B8%BE%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90">#</a>举一个例子</h4><p>通过这道面试题目，来分析一下时间复杂度。题目描述：找出n个字符串中相同的两个字符串（假设这里只有两个相同的字符串）。</p>
 <p>如果是暴力枚举的话，时间复杂度是多少呢，是O(n^2)么？</p>
 <p>这里一些同学会忽略了字符串比较的时间消耗，这里并不像int 型数字做比较那么简单，除了n^2 次的遍历次数外，字符串比较依然要消耗m次操作（m也就是字母串的长度），所以时间复杂度是O(m × n × n)。</p>
 <p>接下来再想一下其他解题思路。</p>
@@ -184,10 +184,13 @@
 <p>所以先把字符串集合排序再遍历一遍找到两个相同字符串的方法要比直接暴力枚举的方式更快。</p>
 <p>这就是我们通过分析两种算法的时间复杂度得来的。</p>
 <p><strong>当然这不是这道题目的最优解，我仅仅是用这道题目来讲解一下时间复杂度</strong>。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="#总结"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%89%8D%E5%BA%8F/%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%81.html#%E6%80%BB%E7%BB%93">#</a>总结</h3><p>本篇讲解了什么是时间复杂度，复杂度是用来干什么，以及数据规模对时间复杂度的影响。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="#总结"></a><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%89%8D%E5%BA%8F/%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%81.html#%E6%80%BB%E7%BB%93">#</a>总结</h4><p>本篇讲解了什么是时间复杂度，复杂度是用来干什么，以及数据规模对时间复杂度的影响。</p>
 <p>还讲解了被大多数同学忽略的大O的定义以及log究竟是以谁为底的问题。</p>
 <p>再分析了如何简化复杂的时间复杂度，最后举一个具体的例子，把本篇的内容串起来。</p>
 <p>相信看完本篇，大家对时间复杂度的认识会深刻很多！</p>
+<h3 id="各类语言的性能比较，底层"><a href="#各类语言的性能比较，底层" class="headerlink" title="各类语言的性能比较，底层"></a>各类语言的性能比较，底层</h3><p>因为在简历上写了我熟悉C, Python, Java, 所以要了解一下这三种语言的底层实现，逻辑；要会比较三种语言的运行速度。</p>
+<p>首先我们从底层实现开始：</p>
+<h4 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h4><p><strong>JAVA</strong></p>
 <h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><h3 id="Greedy-algorithm"><a href="#Greedy-algorithm" class="headerlink" title="Greedy algorithm:"></a>Greedy algorithm:</h3><h4 id="1-455-Assign-Cookies-Easy"><a href="#1-455-Assign-Cookies-Easy" class="headerlink" title="1. 455. Assign Cookies (Easy)"></a>1. 455. Assign Cookies (Easy)</h4><p>题目描述：每个孩子都有一个满足度 grid，每个饼干都有一个大小 size，只有饼干的大小大于等于一个孩子的满足度，该孩子才会获得满足。求解最多可以获得满足的孩子数量。</p>
 <ol>
 <li>给一个孩子的饼干应当尽量小并且又能满足该孩子，这样大饼干才能拿来给满足度比较大的孩子。</li>
@@ -323,7 +326,8 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">  <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = nums.length-<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">  <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + ((right - left) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">if</span>(target&gt;nums[mid]) left = mid+<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;nums[mid]) right = mid-<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">return</span> mid;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="leetcode-27"><a href="#leetcode-27" class="headerlink" title="leetcode 27"></a>leetcode 27</h4><p><strong>Brute</strong></p>
+<h4 id="leetcode-27"><a href="#leetcode-27" class="headerlink" title="leetcode 27"></a>leetcode 27</h4><p>快慢指针</p>
+<p><strong>Brute</strong></p>
 <p>0,1,2,3,3,0,4,2</p>
 <p>0,1,3,3,0,4,2,[2]</p>
 <p>0,1,3,3,0,4,[2,2]</p>
@@ -885,6 +889,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">CV</a>
     </li>
     
     <li class="nav-item">
