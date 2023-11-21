@@ -168,6 +168,117 @@
     
     
     <article
+  id="post-SDN"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/11/19/SDN/"
+    >SDN</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/11/19/SDN/" class="article-date">
+  <time datetime="2023-11-19T13:19:09.000Z" itemprop="datePublished">2023-11-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="SDN-Learning"><a href="#SDN-Learning" class="headerlink" title="SDN Learning"></a>SDN Learning</h1><h2 id="SDN-x2F-VNF-Satellite-Experiment"><a href="#SDN-x2F-VNF-Satellite-Experiment" class="headerlink" title="SDN&#x2F;VNF Satellite Experiment"></a>SDN&#x2F;VNF Satellite Experiment</h2><h3 id="Environment-Set-Up"><a href="#Environment-Set-Up" class="headerlink" title="Environment Set Up"></a>Environment Set Up</h3><p>Ubuntu network bug</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip <span class="built_in">link</span> <span class="built_in">set</span> enp0s1 up</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo dhclient enp0s1</span><br><span class="line"></span><br><span class="line">sudo ip addr add [Your-IPv4-Address]/[Subnet-Mask] dev enp0s1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart NetworkManager</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sudo systemctl restart networking</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Controller-OpenDaylight"><a href="#Controller-OpenDaylight" class="headerlink" title="Controller (OpenDaylight)"></a>Controller (OpenDaylight)</h4><ol>
+<li>Prepare the operating system</li>
+<li>Install the Java JRE</li>
+<li>Set JAVA_HOME</li>
+<li>Download the OpenDaylight Zip</li>
+<li>Unzip OpenDaylight</li>
+<li>Start OpenDaylight</li>
+<li>Bonus: Where did DLUX go?</li>
+</ol>
+<h5 id="1-Prepare-Operating-System"><a href="#1-Prepare-Operating-System" class="headerlink" title="1. Prepare Operating System"></a>1. Prepare Operating System</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y update</span><br><span class="line">sudo apt-get -y install unzip</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-Install-the-Java-JRE"><a href="#2-Install-the-Java-JRE" class="headerlink" title="2. Install the Java JRE"></a>2. Install the Java JRE</h5><p>OpenDaylight runs on Java platform</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install openjdk-11-jre</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config java</span><br></pre></td></tr></table></figure>
+
+<p>Please select Java 11 as your default java environment</p>
+<h5 id="3-Set-JAVA-HOME"><a href="#3-Set-JAVA-HOME" class="headerlink" title="3. Set JAVA_HOME"></a>3. Set JAVA_HOME</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l /etc/alternatives/java</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64&#x27;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="4-Download-the-OpenDaylight-Zip-Archive"><a href="#4-Download-the-OpenDaylight-Zip-Archive" class="headerlink" title="4. Download the OpenDaylight Zip Archive"></a>4. Download the OpenDaylight Zip Archive</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET -O https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/karaf/0.16.1/karaf-0.16.1.zip</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="5-Install-OpenDaylight"><a href="#5-Install-OpenDaylight" class="headerlink" title="5. Install OpenDaylight"></a>5. Install OpenDaylight</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ unzip karaf-0.16.1.zip </span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="6-Start-OpenDaylight"><a href="#6-Start-OpenDaylight" class="headerlink" title="6. Start OpenDaylight"></a>6. Start OpenDaylight</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/karaf </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opendaylight-user<span class="keyword">@root</span>&gt;<span class="attribute">feature</span>:list</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="7-Bonus-What-happened-to-DLUX"><a href="#7-Bonus-What-happened-to-DLUX" class="headerlink" title="7. Bonus: What happened to DLUX?"></a>7. Bonus: What happened to DLUX?</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="operator">-</span>O https:<span class="operator">/</span><span class="operator">/</span>nexus.opendaylight.org<span class="operator">/</span>content<span class="operator">/</span>repositories<span class="operator">/</span>opendaylight.release<span class="operator">/</span>org<span class="operator">/</span>opendaylight<span class="operator">/</span>integration<span class="operator">/</span>karaf<span class="operator">/</span><span class="number">0.8</span><span class="number">.4</span><span class="operator">/</span>karaf<span class="number">-0.8</span><span class="number">.4</span>.zip</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip karaf-<span class="number">0.8</span><span class="number">.4</span>.<span class="built_in">zip</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/karaf </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install openjdk<span class="number">-8</span>-jre</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config java</span><br></pre></td></tr></table></figure>
+
+<p>select Java 8</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-network"
   class="article article-type-post"
   itemscope
@@ -4270,979 +4381,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-Secured-Software-Engineering"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/04/21/Secured-Software-Engineering/"
-    >Secured Software Engineering</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/04/21/Secured-Software-Engineering/" class="article-date">
-  <time datetime="2023-04-21T14:04:06.000Z" itemprop="datePublished">2023-04-21</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Courses/">Courses</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>The below case studies are given here in advance, they will be part of the final exam. </p>
-<p><strong>Case Study 1:</strong> You are part of a team that has been tasked with developing a web-based application for a healthcare organisation. The application will allow doctors to view patient information, including medical history, test results and treatment plans. Patients will also be able to access the application to view their own medical information and communicate with their doctors. The application will be used by a large number of healthcare providers and patients, and therefore security is a top priority. (Provided ahead of the exam) </p>
-<p><strong>Case Study 2:</strong> ABC airlines operates a large number of flights globally. In 2021, the airline suffered a significant data breach that affected the personal information of thousands of customers. In response to this breach, ABC airlines invested in a new approach to secure software engineering, including implementing secure coding practices, testing and validating software, and conducting regular security audits. The company has a complex network infrastructure that includes several web servers, database servers, and application servers. (Provided ahead of the exam)</p>
-<p><strong>案例研究1</strong>： 你是一个团队的成员，他们的任务是为一个医疗机构开发一个基于网络的应用程序。该应用程序将允许医生查看病人信息，包括病史、测试结果和治疗计划。病人也可以访问该应用程序，查看他们自己的医疗信息，并与他们的医生沟通。该应用程序将被大量的医疗服务提供者和病人使用，因此安全性是重中之重。(该案例研究是期末考试的一部分，在考试前提供给大家)</p>
-<p><strong>案例研究2：</strong>ABC航空公司在全球范围内运营着大量的航班。2021年，该航空公司遭受了一次重大的数据泄露事件，影响了成千上万的客户的个人信息。为了应对这一漏洞，ABC航空公司投资了一种新的安全软件工程方法，包括实施安全编码实践，测试和验证软件，并定期进行安全审计。该公司有一个复杂的网络基础设施，包括几个网络服务器、数据库服务器和应用服务器。(在考试前提供)</p>
-<p><strong>1.</strong> <strong>Case Study:</strong> You are part of a team that has been tasked with developing a web-based application for a healthcare organization. The application will allow doctors to view patient information, including medical history, test results and treatment plans. Patients will also be able to access the application to view their own medical information and communicate with their doctors. The application will be used by a large number of healthcare providers and patients, so security is a top priority. (This case study is part of the final exam, provided ahead of the exam here)</p>
-<p><strong>(a)</strong> Identify and list down five use cases and five misuse cases of the system. [5]</p>
-<p>Use Cases:</p>
-<ol>
-<li>Registration: A new patient can securely register on the platform, providing their personal and contact information, and setting up a strong, unique password.</li>
-<li>Medical Record Access: A doctor can access a patient’s medical history, including previous diagnoses, treatment plans, medications, and test results, to make informed decisions regarding the patient’s care.</li>
-<li>Appointment Scheduling: Patients can use the application to schedule appointments with their healthcare providers, selecting available dates and times and receiving confirmation notifications.</li>
-<li>Secure Messaging: Doctors and patients can communicate via a secure messaging platform within the application, discussing treatment plans, symptoms, and other healthcare-related topics.</li>
-<li>Prescription Management: Healthcare providers can securely prescribe medications through the application, enabling patients to access their prescriptions and facilitating communication with pharmacies.</li>
-</ol>
-<p>Misuse Cases:</p>
-<ol>
-<li>Unauthorized Access: An attacker gains unauthorized access to a patient’s account, potentially viewing, altering, or deleting sensitive medical information, or even impersonating the patient.</li>
-<li>Man-in-the-Middle Attack: An attacker intercepts the communication between the patient and the healthcare provider, potentially modifying the messages sent or received or eavesdropping on sensitive information.</li>
-<li>Phishing Attacks: An attacker sends phishing emails or messages to patients, posing as a healthcare provider or the application itself, in an attempt to steal login credentials or other sensitive information.</li>
-<li>Distributed Denial-of-Service (DDoS) Attack: An attacker overwhelms the application with a large volume of traffic, causing it to become unresponsive or slow, preventing healthcare providers and patients from accessing necessary information and services.</li>
-<li>Security Misconfiguration: The application’s security settings are not properly configured, leaving it vulnerable to attacks and exposing sensitive patient data.</li>
-</ol>
-<p><strong>(b)</strong> List down five actors and five attackers of the system. [5]</p>
-<p><strong>Actors:</strong></p>
-<p>Patients, Doctors, Admin, Nurses, Patient Family.</p>
-<p><strong>Attackers:</strong> </p>
-<p>General attackers, Payment gateway attackers, Nurses, Doctors, Patient Family.</p>
-<p><strong>(c)</strong> List down five high-level threats to the system. [5]</p>
-<ol>
-<li>Insecure authentication</li>
-<li>DDoS Attacks</li>
-<li>Leakage of patients medical information. Implement a chain of custody to monitor on this system.</li>
-<li>Attacker modify the information of patients and drug perscription for patients.</li>
-<li>Large size file uploads&#x2F;buffer overflow:</li>
-</ol>
-<p><strong>(d)</strong> Against each threat what would be your countermeasure? [5]</p>
-<ol>
-<li><p>Introduce multi-factor authentication.</p>
-</li>
-<li><p>Add defence against DoS&#x2F;DDoS attacks.</p>
-</li>
-<li><p>Implement a chain of custody to monitor on this system.</p>
-</li>
-<li><p>implement logging on website against all actions and audit to be performed by doctors.</p>
-</li>
-<li><p>implement max size limit for file submission and implement defence against buffer overflow.</p>
-</li>
-</ol>
-<p><strong>2.</strong> <strong>(a)</strong> If requirements are introduced at a later stage in the project, what would be its impact on security?</p>
-<p>Support your answer with an example. [3]</p>
-<p>it often leads to incomplete or insufficient security measures, making the system vulnerable to threats and attacks. </p>
-<ol>
-<li>Increased complexity: Adding new requirements can make the system more complex, which in turn makes it harder to analyze and secure. Complex systems are more prone to vulnerabilities, as they have more potential points of failure and attack.</li>
-</ol>
-<p>Example: Imagine a web application that initially only required user authentication via username and password. If the project scope is changed to include multi-factor authentication, this introduces additional components such as SMS or email verification. The complexity of the system increases, making it more difficult to ensure that all security aspects are correctly implemented and that no vulnerabilities are introduced.</p>
-<ol start="2">
-<li>Insufficient time for security analysis and testing: Introducing new requirements late in the project often means that there is less time available for security analysis and testing, increasing the likelihood of vulnerabilities remaining undetected.</li>
-</ol>
-<p>Example: If a new payment feature is added to an e-commerce website just before the project’s deadline, there may not be enough time to perform a thorough security analysis and test all potential attack vectors, such as SQL injection or cross-site scripting vulnerabilities.</p>
-<ol start="3">
-<li>Cost and resource constraints: Late requirement changes can lead to increased costs and put additional strain on resources. This can result in cutting corners on security measures or failing to allocate enough time for thorough security testing.</li>
-</ol>
-<p>Example: If a new payment feature is added to an e-commerce website just before the project’s deadline, there may not be enough time to perform a thorough security analysis and test all potential attack vectors, such as SQL injection or cross-site scripting vulnerabilities.</p>
-<ol start="4">
-<li>Incomplete integration of security measures: New requirements might not be fully compatible with existing security measures, requiring rework or additional implementation to ensure that the overall security posture remains strong.</li>
-</ol>
-<p>Example: An organization decides to migrate its on-premises infrastructure to the cloud during the project’s later stages. This change requires a reassessment of the security measures in place, as cloud environments have different security considerations compared to on-premises infrastructure. If not addressed properly, this can lead to vulnerabilities in the cloud environment.</p>
-<p><strong>(b)</strong> An organisation is performing risk analysis during the development stage for their asset having an </p>
-<p>estimated value of £100,000. The exposure factor of the asset is estimated to be 0.25 and annual </p>
-<p>rate of occurrence is expected to be 0.5. Mitigating the risk will cost the organization £5,000, is it </p>
-<p>feasible to fix the vulnerability in the code or not? [5]</p>
-<p>If do not fix the vulnerablity, the annual lost will be £12500</p>
-<p>So, it is very worthy to spend £5000 to fix this vulnerability.</p>
-<p><strong>(c)</strong> A company wants to do the audit of their software for GDPR compliance. Which three <em>Secure</em> </p>
-<p><em>Software Engineering</em> methods you would recommend for this purpose? Give a brief explanation </p>
-<p>for each method. [6]</p>
-<p><strong>Biometric Recognition Multi-factor Authentication</strong></p>
-<p><strong>(d)</strong> In the code given on the next page, identify which variables are considered tainted and identify </p>
-<p>any two potential security vulnerabilities in the code and suggest how to fix them (write in your </p>
-<p>own words, no coding is required). [6]</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">authenticateUser</span>(<span class="params">username, password</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> userCredentials = &#123;</span><br><span class="line"></span><br><span class="line"> <span class="attr">username</span>: username, </span><br><span class="line"></span><br><span class="line"> <span class="attr">password</span>: password </span><br><span class="line"></span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> input = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;input&quot;</span>).<span class="property">value</span>; </span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (<span class="title function_">isValidEmail</span>(input)) &#123;</span><br><span class="line"></span><br><span class="line"> userCredentials.<span class="property">email</span> = input; </span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> $.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>, userCredentials, <span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (response.<span class="property">success</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="title function_">alert</span>(<span class="string">&quot;You are logged in!&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(<span class="string">&quot;Authentication failed.&quot;</span>);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isValidEmail</span>(<span class="params">email</span>) &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> emailRegex = <span class="regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> emailRegex.<span class="title function_">test</span>(email); </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ol>
-<li>tainted varaibles:</li>
-</ol>
-<p>userCredentials中的username和userpassword可能受污染，因为他是直接从传入的参数中获得的，</p>
-<p>input变量同样是直接从页面中获取的，可能收到污染</p>
-<ol start="2">
-<li>solution</li>
-</ol>
-<p>对于用户名和密码，进行表单提交，并且进行表单认证，并且对于用户名和密码进行安全编码，同时对用户的输入进行输入检查，如dompurify的库可以帮助做到这一点</p>
-<p>对于发送的 POST 请求，应该使用 HTTPS 协议进行通信，并对用户输入的敏感信息进行加密或者哈希处理，避免被劫持或者窃取。可以使用加密算法、哈希算法或者 SSL&#x2F;TLS 协议来保证通信安全。</p>
-<p>代码中有两个潜在的安全漏洞:</p>
-<p>跨站脚本漏洞:</p>
-<p>代码接受用户输入(用户名和密码)，并直接将其发送到服务器，而没有进行适当的验证或处理。如果攻击者将恶意脚本注入到输入字段中，服务器可能会执行这些脚本，从而可能危及应用程序。</p>
-<p>要修复此漏洞，您应该在将用户输入发送到服务器之前对其进行清理和验证。您可以使用像DOMPurify这样的库来净化输入，并创建一个验证函数来检查输入字段中的任何无效字符。</p>
-<p>敏感数据的不安全传输:</p>
-<p>该代码将用户的凭据(用户名和密码)以明文形式发送到服务器，而不进行任何加密。这可能会将敏感信息暴露给潜在的窃听者或攻击者，特别是在连接没有使用HTTPS保护的情况下。</p>
-<p>为了解决这个问题，你应该确保你的网站使用HTTPS，它加密客户端和服务器之间传输的数据。此外，考虑实现更安全的身份验证机制(如OAuth2)或使用密码散列技术(如bcrypt)来安全地存储和传输密码。</p>
-<p>(e).</p>
-<p>(a). You are being asked to consult with a start-up who are looking to put together a security policy for integrity. You are told that there are three security levels for the objects: o1 &lt; o2 &lt;o3 where o3 is the highest and o1 is the lowest security level. The following table present the associated security levels and categories for the objects (o). The subjects S1 lies on Level 1, S2 lies on Level 2 and S3 lies on Level 3. Fill out the following table to indicate all applicable permissions when the Simple Security Property is applied. Write -p’ for read and ‘-w’ for write and ‘-rw’ for both read and write operations. If a Subject is not authorized to perform any action, leave the cell blank. [8] </p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>O1</th>
-<th>O2</th>
-<th>O3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>S1</td>
-<td>-r</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>S2</td>
-<td>-r</td>
-<td>-r</td>
-<td></td>
-</tr>
-<tr>
-<td>S3</td>
-<td>-r</td>
-<td>-r</td>
-<td>-r</td>
-</tr>
-</tbody></table>
-<p>Table 1: A security model indicating subject and object integrity levels</p>
-<p>(b). How an organization can effectively apply confidentiality and integrity in their software products?</p>
-<p>Provide a brief explanation of the consequences.</p>
-<p>(c). ABC airlines operates a large number of flights globally. In 2021, the airline suffered a significant data breach that affected the personal information of thousands of customers. In response to this breach, ABC airlines invested in a new approach to secure software engineering, including implementing secure coding practices, testing and validating software, and conducting regular security audits. The company has a complex network infrastructure that includes several web servers, database servers, and application servers. Now, the airline company wants to implement confidentiality and integrity in their system, how it will be done? List any three suggestions.</p>
-<p>(d). Why it is important to rank stakeholders in the system? Provide an example scenario and rank 3 different stakeholders in it.</p>
-<p>Reason: </p>
-<p>The ranking is important to satisfy the competing needs,Contradiction of needs e.g., privacy in one case can conflict with requirement to send name and email in other case.</p>
-<p>Candidate stakeholders are: end users, project manager, CEO, CIO, team lead, network admin, db manager, marketing department, legal department and sales team.</p>
-<p>Number of external stakeholders is limited</p>
-<h1 id="revision"><a href="#revision" class="headerlink" title="revision"></a>revision</h1><h2 id="Risk"><a href="#Risk" class="headerlink" title="Risk"></a>Risk</h2><p><strong>Risk and Risk management</strong></p>
-<ul>
-<li>﻿﻿Risk is the potential that a given threat will exploit vulnerabilities of an asset or group of assets and thereby cause harm to the organization</li>
-<li>﻿﻿Risk management— “Process of identifying, controlling and minimizing or eliminating security risks that may affect information systems, for an acceptable cost.”</li>
-<li>﻿﻿Risk assessment—“assessment of threats to, impact on and vulnerabilities of information and information processing facilities and the likelihood of their occurrence.”</li>
-</ul>
-<p><strong>Who is the enemy? Why do they do it?</strong><br>• Offenders</p>
-<ul>
-<li>Crackers—mostly teenagers doing as intellectual challenge</li>
-<li>Information system’s criminals—Espionage and&#x2F;or<br>Fraud&#x2F;abuse—for a nation&#x2F;company to gain a competitive advantage over its rivals</li>
-<li>Vandals—authorized users and strangers (cracker or a criminal)—motivated by anger directed at an individual&#x2F;organization&#x2F;life in general</li>
-</ul>
-<p><strong>Risk &#x3D; Threats × Vulnerabilities</strong></p>
-<table>
-<thead>
-<tr>
-<th>Risk</th>
-<th>Threats</th>
-<th>Vulnerabilities</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>business disruption</td>
-<td>angry employees</td>
-<td>software bugs</td>
-</tr>
-<tr>
-<td>financial losses</td>
-<td>dishonest employees</td>
-<td>broken processes</td>
-</tr>
-<tr>
-<td>loss of privacy</td>
-<td>criminals</td>
-<td>ineffective controls</td>
-</tr>
-<tr>
-<td>damage to reputation</td>
-<td>governments</td>
-<td>hardware flaws</td>
-</tr>
-<tr>
-<td>loss of confidence</td>
-<td>terrorists</td>
-<td>business change</td>
-</tr>
-<tr>
-<td>legal penalties</td>
-<td>the press</td>
-<td>legacy systems</td>
-</tr>
-<tr>
-<td>impaired growth</td>
-<td>competitors</td>
-<td>Inadequate BCP</td>
-</tr>
-<tr>
-<td>loss of life</td>
-<td>hackers</td>
-<td>human error</td>
-</tr>
-<tr>
-<td></td>
-<td>nature</td>
-<td></td>
-</tr>
-</tbody></table>
-<p><strong>Types of Damage</strong></p>
-<ul>
-<li>﻿﻿Interruption—destroyed&#x2F;unavailable services&#x2F;resources</li>
-<li>﻿﻿Interception—unauthorized party snooping or getting access to a resource</li>
-<li>﻿﻿Modification— unauthorized party modifying<br> a resource</li>
-<li>﻿﻿Fabrication—unauthorized party inserts a fake asset&#x2F;resource</li>
-</ul>
-<p><strong>The purpose of risk management</strong></p>
-<ul>
-<li>﻿﻿Ensure overall business and business assets are safe</li>
-<li>﻿Protect against competitive disadvantage</li>
-<li>﻿Compliance with laws and best business practices</li>
-<li>﻿Maintain a good public reputation</li>
-</ul>
-<p><strong>Accountability for Risk Management</strong></p>
-<ul>
-<li><p>﻿﻿It is the responsibility of each community of interest to manage risks; each community has a role to play:</p>
-</li>
-<li><p>﻿﻿Information Security - best understands the threats and attacks that introduce risk into the organization</p>
-</li>
-<li><p>﻿﻿Management and Users - play a part in the early detection and response process - they also insure sufficient resources are allocated</p>
-</li>
-<li><p>﻿﻿Information Technology - must assist in building secure systems and operating them safely</p>
-</li>
-</ul>
-<p><img src="/../images/image-20230426143138064.png" alt="image-20230426143138064"></p>
-<p><strong>Steps of a risk management plan</strong></p>
-<ul>
-<li>﻿﻿Step 1: Identify Risk</li>
-<li>﻿﻿Step 2: Assess Risk</li>
-<li>﻿﻿Step 3: Control Risk</li>
-<li>﻿﻿Steps are similar regardless of context (InfoSec, Physical Security, Financial, etc.)</li>
-<li>﻿﻿This presentation will focus on controlling risk within an InfoSec context</li>
-</ul>
-<p><strong>Risk Identification</strong></p>
-<ul>
-<li><p>﻿﻿The steps to risk identification are:</p>
-</li>
-<li><p>﻿﻿Identify your organization’s information assets</p>
-</li>
-<li><p>﻿﻿Classify and categorize said assets into useful groups</p>
-</li>
-<li><p>﻿﻿Rank assets necessity to the organization</p>
-</li>
-</ul>
-<p>To the right is a simplified example of how a company may identify risks</p>
-<p><strong>Risk Assessment</strong></p>
-<ul>
-<li><p>﻿﻿The steps to risk assessment are:</p>
-</li>
-<li><p>﻿﻿Identify threats and threat agents</p>
-</li>
-<li><p>﻿﻿Prioritize threats and threat agents</p>
-</li>
-<li><p>﻿﻿Assess vulnerabilities in current InfoSec plan</p>
-</li>
-<li><p>﻿﻿Determine risk of each threat</p>
-</li>
-</ul>
-<p>R&#x3D;P*V-M+ U</p>
-<p>​	R&#x3D; Risk</p>
-<p>​	P&#x3D; Probability of threat attack</p>
-<p>​	V &#x3D; Value of Information Asset</p>
-<p>​	M &#x3D; Mitigation by current controls</p>
-<p>​	U &#x3D; Uncertainty of vulnerability</p>
-<p><strong>Risk control</strong></p>
-<ul>
-<li>﻿﻿The steps to risk control are:</li>
-<li>﻿﻿Cost-Benefit Analysis (CBA)<ul>
-<li>﻿﻿Single Loss Expectancy (SLE)</li>
-<li>﻿﻿Annualized Rate of Occurrence (ARO)</li>
-<li>﻿﻿Annual Loss Expectancy (ALE)</li>
-<li>﻿﻿Annual Cost of the Safeguard (ASG)</li>
-</ul>
-</li>
-<li>﻿Feasibility Analysis<ul>
-<li>﻿﻿Organizational Feasibility</li>
-<li>﻿﻿Operational Feasibility</li>
-<li>﻿﻿Technical Feasibility</li>
-<li>﻿﻿Political Feasibility</li>
-</ul>
-</li>
-<li>﻿Risk Control Strategy Implementation</li>
-</ul>
-<p><strong>Cost-Benefit analysis</strong></p>
-<ul>
-<li><p>﻿Determine what risk control strategies are cost effective</p>
-</li>
-<li><p>﻿﻿Below are some common formulas used to calculate cost-benefit analysis</p>
-</li>
-<li><p>﻿﻿SLE &#x3D; AV * EF</p>
-<ul>
-<li>﻿﻿AV &#x3D; Asset Value, EF &#x3D;<br> Exposure factor (% of asset affected)</li>
-</ul>
-</li>
-<li><p>﻿﻿ALE &#x3D; SLE * ARO</p>
-</li>
-<li><p>﻿﻿CBA &#x3D; ALE (pre-control) -</p>
-<p>ALE (post-control) - ACE(Annually Countermeasure Expectancy)</p>
-</li>
-</ul>
-<p>SLE - single loss expectancy, ALE - Annual loss expectancy, CBA – Cost benefit analysis</p>
-<p><strong>Feasibility analysis</strong></p>
-<p>Organizational: Does the plan correspond to the organization’s objectives? What is in it for the organization? Does it limit the organization’s capabilities in any way?</p>
-<p>Operational: Will shareholders (users, managers, etc.) be able&#x2F;willing to accept the plan? Is the system compatible with the new changes? Have the possible changes been communicated to the employees?</p>
-<p>Technical: Is the necessary technology owned or obtainable? Are our employees trained and if not can we afford to train them? Should we hire new employees?</p>
-<p>Political: Can InfoSec acquire the necessary budget and approval to implement the plan? Is the budget required justifiable? Does InfoSec have to compete with other departments to acquire the desired budget?</p>
-<p><strong>Risk control Strategies</strong></p>
-<ul>
-<li>﻿﻿Defense</li>
-<li>﻿﻿Transferal</li>
-<li>﻿﻿Mitigation</li>
-<li>﻿﻿Acceptance (Abandonment)</li>
-<li>﻿﻿Termination</li>
-</ul>
-<p><strong>Risk control Strategy: defense</strong></p>
-<p>• Defense: Prevent the exploitation of the system via application of policy, training&#x2F;education, and technology. Preferably layered security (defense in depth)</p>
-<p>% Counter threats</p>
-<p>% Remove vulnerabilities from assess</p>
-<p>% Limit access to assets</p>
-<p>§ Add protective safeguards</p>
-<p>Figure 1-Application Security Layered Approach</p>
-<p><img src="/../images/20230426144850808.png" alt="image-20230426144850808"></p>
-<p><strong>Risk control Strategy: transferal</strong></p>
-<ul>
-<li>﻿﻿Transferal: Shift risks to other areas or outside entities to handle</li>
-<li>﻿﻿Can include:</li>
-</ul>
-<p>% Purchasing insurance</p>
-<p>• Outsourcing to other organizations</p>
-<p>* Implementing service contracts with providers<br> § Revising deployment models</p>
-<p><img src="/../images/20230426145019527.png" alt="image-20230426145019527"></p>
-<p><strong>Risk control Strategy: Mitigation</strong></p>
-<p><img src="/../images/20230426145147173.png" alt="image-20230426145147173"></p>
-<p><strong>Risk control Strategy: Acceptance</strong></p>
-<p>Appropriate when:</p>
-<p>% The cost to protect an asset or assets exceeds the cost to replace it&#x2F;them</p>
-<ul>
-<li>﻿When the probability of risk is very low and the asset is of low priority</li>
-<li>﻿﻿Otherwise acceptance &#x3D; negligence</li>
-</ul>
-<p><strong>Risk control Strategy: Termination</strong></p>
-<ul>
-<li>﻿﻿Termination: Removing or discontinuing the information asset from the organization</li>
-<li>﻿﻿Examples include:</li>
-</ul>
-<p>Equipment disposal</p>
-<p>Discontinuing a provided service</p>
-<p>Firing an employee</p>
-<p><strong>Pros and cons of each strategy</strong></p>
-<p><img src="/../images/20230426145601149.png" alt="image-20230426145601149"></p>
-<p><strong>Standard approaches to risk management</strong></p>
-<ul>
-<li>﻿﻿U.S CERT’s Operationally Critical Threat Assessment<br> Vulnerability Evaluation (OCTAVE) Methods (Original, OCTAVE-S, OCTAVE-Allegro)</li>
-<li>﻿﻿ISO 27005 Standard for InfoSec Risk Management</li>
-<li>﻿﻿NIST Risk Management Model</li>
-<li>﻿﻿Microsoft Risk Management Approach</li>
-<li>﻿﻿Jack A. Jones’ Factor Analysis of Information Risk<br> (FAIR)</li>
-<li>﻿﻿Delphi Technique</li>
-</ul>
-<p><strong>Risk Determination</strong></p>
-<p>For the purpose of relative risk assessment:</p>
-<p>RISK &#x3D;</p>
-<p>​	likelihood of vulnerability occurrence times value (or impact)</p>
-<p>MINUS</p>
-<p>​	percentage risk already controlled	</p>
-<p>PLUS</p>
-<p>​	an element of uncertainty</p>
-<p><strong>Access Controls</strong></p>
-<ul>
-<li><p>﻿﻿One particular application of controls is in the area of access controls</p>
-</li>
-<li><p>﻿﻿Access controls are those controls that specifically address admission of a user into a trusted area of the organization</p>
-</li>
-<li><p>﻿﻿There are a number of approaches to controlling access</p>
-</li>
-<li><p>﻿﻿Access controls can be</p>
-</li>
-<li><p>﻿﻿discretionary</p>
-</li>
-<li><p>﻿﻿mandatory</p>
-</li>
-<li><p>﻿﻿nondiscretionary</p>
-</li>
-</ul>
-<p><strong>Types of Access Controls</strong></p>
-<ul>
-<li>﻿﻿Discretionary Access Controls (DAC) are implemented at the discretion or option of the data user</li>
-<li>﻿﻿Mandatory Access Controls (MACs) are structured and coordinated with a data classification scheme, and are required</li>
-<li>﻿﻿Nondiscretionary Controls are those determined by a central authority in the organization and can be based on that individual’s role</li>
-</ul>
-<p><strong>Lattice-based Control</strong></p>
-<ul>
-<li>﻿﻿Another type of nondiscretionary access is lattice-based control, where a lattice structure (or matrix) is created containing subjects and objects, and the boundaries associated with each pair is contained</li>
-<li>﻿﻿This specifies the level of access each subiect has to each object</li>
-<li>﻿﻿In a lattice-based control the column of attributes associated with a particular object are referred to as an access control list or ACL</li>
-<li>﻿﻿The row of attributes associated with a particular subiect (such as a user) is referred to as a capabilities table</li>
-<li>This is part of Principles of Information SecurityPrinciples of Information Security</li>
-</ul>
-<p><strong>Documenting Results of Risk Assessment</strong></p>
-<ul>
-<li>﻿﻿The goal of this process has been to identify the information assets of the organization that have specific vulnerabilities and create a list of them, ranked for focus on those most needing protection first</li>
-<li>﻿﻿In preparing this list we have collected and preserved factual information about the assets, the threats they fac and the vulnerabilities they experience</li>
-<li>﻿﻿We should also have collected some information about the controls that are already in place</li>
-</ul>
-<p><strong>Asset Identification and Valuation</strong></p>
-<ul>
-<li>﻿﻿This iterative process begins with the identification of assets, including all of the elements of an organization’s system</li>
-<li>﻿﻿Then, we classify and categorize the assets adding details as we dig deeper into the analysis</li>
-</ul>
-<p><strong>Components of an Information System</strong></p>
-<p><img src="/../images/20230426150102652.png" alt="image-20230426150102652"></p>
-<p><strong>Hardware, Software, and Network Asset Identification</strong></p>
-<p>• Automated tools can sometimes uncover the system elements that make up the hardware, software, and network components</p>
-<p>Once created, the inventory listing must be kept current, often through a tool that periodically refreshes the data</p>
-<ul>
-<li>﻿﻿What attributes of each of these information assets should be tracked?</li>
-<li>﻿﻿When deciding which information assets to track, consider including these asset attributes:</li>
-</ul>
-<p>​		Name</p>
-<p>​		﻿﻿IP address</p>
-<p>​		MAC address</p>
-<p>​		Element type</p>
-<p>​		﻿﻿Serial number</p>
-<p>​	﻿﻿	Manufacturer name</p>
-<p><strong>People, Procedures, and Data Asset Identification</strong></p>
-<ul>
-<li>﻿﻿Unlike the tangible hardware and software elements already described, the human resources, documentation, and data information assets are not as readily discovered and documented</li>
-<li>﻿﻿These assets should be identified, described, and evaluated by people using knowledge, experience, and judgment</li>
-<li>﻿﻿As these elements are identified, they should also be recorded into some reliable data handling process</li>
-</ul>
-<p><strong>Asset Information for People</strong></p>
-<ul>
-<li><p>﻿﻿For People:</p>
-<ul>
-<li><p>﻿﻿Position name&#x2F;number&#x2F;ID - try to avoid names and stick to identifying positions, roles, or functions</p>
-</li>
-<li><p>﻿﻿Supervisor</p>
-</li>
-<li><p>﻿﻿Security clearance level</p>
-</li>
-<li><p>﻿﻿Special skills</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>Asset Information for Procedures</strong></p>
-<ul>
-<li><p>﻿﻿For Procedures:</p>
-<ul>
-<li><p>﻿﻿Description</p>
-</li>
-<li><p>﻿﻿Intended purpose</p>
-</li>
-<li><p>﻿﻿What elements is it tied to</p>
-</li>
-<li><p>﻿﻿Where is it stored for reference</p>
-</li>
-<li><p>﻿﻿Where is it stored for update purposes</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>Asset Information for Data</strong></p>
-<ul>
-<li><p>﻿﻿For Data:</p>
-<ul>
-<li><p>﻿﻿Classification</p>
-</li>
-<li><p>﻿﻿Owner&#x2F;creator&#x2F;manager</p>
-</li>
-<li><p>﻿﻿Size of data structure</p>
-</li>
-<li><p>﻿﻿Data structure used - sequential, relational</p>
-</li>
-<li><p>﻿﻿Online or offline</p>
-</li>
-<li><p>﻿﻿Where located</p>
-</li>
-<li><p>﻿﻿Backup procedures employed</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>Information Asset Classification</strong></p>
-<ul>
-<li><p>﻿﻿Many organizations already have a classification scheme</p>
-</li>
-<li><p>﻿﻿Examples of these kinds of classifications are:</p>
-<ul>
-<li><p>﻿﻿confidential data</p>
-</li>
-<li><p>﻿﻿internal data</p>
-</li>
-<li><p>﻿﻿public data</p>
-</li>
-</ul>
-</li>
-<li><p>﻿﻿Informal organizations may have to organize themselves to create a useable data classification model</p>
-</li>
-<li><p>﻿﻿The other side of the data classification scheme is the personnel security clearance structure</p>
-</li>
-</ul>
-<p><strong>Information Asset Valuation</strong></p>
-<ul>
-<li><p>﻿﻿Each asset is categorized</p>
-</li>
-<li><p>﻿﻿Questions to assist in developing the criteria to be used for asset valuation:</p>
-<ul>
-<li><p>﻿﻿Which information asset is the most critical to the success of the organization?</p>
-</li>
-<li><p>﻿﻿Which information asset generates the most revenue?</p>
-</li>
-<li><p>﻿﻿Which information asset generates the most profitability?</p>
-</li>
-<li><p>﻿﻿Which information asset would be the most expensive to replace?</p>
-</li>
-<li><p>﻿﻿Which information asset would be the most expensive to protect?</p>
-</li>
-<li><p>﻿﻿Which information asset would be the most embarrassing or cause the greatest liability if revealed?</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>Examples of Information Security Vulnerabilities</strong></p>
-<ul>
-<li>﻿﻿Information security vulnerabilities are weaknesses that expose an organization to risk.</li>
-<li>﻿﻿Through employees: Social interaction, Customer interaction,<br> Discussing work in public locations,</li>
-<li>﻿﻿Through former employees—Former employees working for competitors, Former employees retaining company data,<br> Former employees discussing company matters</li>
-<li>﻿﻿Though Technology—Social networking, File sharing, Rapid technological changes, Legacy systems, Storing data on mobile devices such as mobile phones, Internet browsers</li>
-<li>﻿﻿Through hardware—. Susceptibility to dust, heat and humidity,<br> Hardware design flaws, Out of date hardware,</li>
-<li>Misconfiguration of hardware</li>
-</ul>
-<p><strong>Examples of Information Security Vulnerabilities (Cont.)</strong></p>
-<ul>
-<li>﻿﻿Through software—Insufficient testing, Lack of audit trail, Software bugs and design faults, Unchecked user input, Software that fails to consider human factors, Software complexity (bloatware), Software as a service (relinquishing control of data), Software vendors that go out of business or change ownership</li>
-<li>﻿Through Network—Unprotected network communications, Open physical connections, IPs and ports, Insecure network architecture, Unused user ids, Excessive privileges, Unnecessary jobs and scripts executing, Wifi networks</li>
-<li>﻿﻿Through IT Management—Insufficient IT capacity, Missed security patches, Insufficient incident and problem management, Configuration errors and missed security notices, System operation errors</li>
-<li>﻿Partners and suppliers—Disruption of telecom services, Disruption of utility services such as electric, gas, water, Hardware failure, Software failure, Lost mail and courier packages, Supply disruptions, Sharing confidential data with partners and suppliers</li>
-</ul>
-<p><img src="/../images/20230426150722235.png" alt="image-20230426150722235"></p>
-<p><strong>Programme Criticality</strong></p>
-<ul>
-<li><p>﻿﻿The programme criticality framework is a common<br> United Nations system framework for decision-making that puts in place a systematic structured approach that uses programme criticality as a way to ensure that programme activities can be balanced against security risks.</p>
-</li>
-<li><p>﻿﻿The concept of criticality means the critical impact of an activity on the population, not necessarily on the organisation.</p>
-</li>
-<li><p>﻿﻿Programme criticality assessment is mandatory in areas with residual risk levels of ‘high’ and very high,’ as determined in the Security Risk Assessments (SRAs).</p>
-</li>
-<li><p>﻿﻿Primary accountability for programme criticality is with United Nations senior management at the country level.</p>
-</li>
-</ul>
-<p>A programme criticality assessment has steps as follows:</p>
-<ul>
-<li><p>﻿﻿1. Establish geographical scope and timeframe</p>
-</li>
-<li><p>﻿﻿2. List strategic results (SRs)</p>
-</li>
-<li><p>﻿﻿3. List UN activities&#x2F;outputs (involving UN personnel)</p>
-</li>
-<li><p>﻿﻿4. Assess contribution to strategic results</p>
-</li>
-<li><p>﻿﻿5. Assess likelihood of implementation</p>
-</li>
-<li><p>﻿﻿6. Evaluate activities&#x2F;outputs with PCI criteria</p>
-</li>
-<li><p>﻿﻿7. View PC level results, form consensus within the UN system and approve final results</p>
-</li>
-<li><p>﻿﻿8. Agree on a process to address and manage the results of the PC<br> assessment</p>
-</li>
-<li><p>﻿﻿9. Follow-up and review.</p>
-</li>
-<li><p>﻿﻿There are two possible criteria for an activity to be considered a PCI activity:</p>
-<ul>
-<li><p>﻿﻿Either the activity is assessed as lifesaving (humanitarian or non-humanitarian) at scale (defined as any activity to support processes or services, including needs assessments), that would have an immediate and significant impact on mortality; or</p>
-</li>
-<li><p>﻿﻿The activity is a directed activity that receives the endorsement of the Office of the Secretary-General for this particular situation.</p>
-</li>
-</ul>
-</li>
-<li><p>﻿﻿Risk level has no impact on programme criticality.<br> There must be no consideration of risk level when determining PC.</p>
-</li>
-<li><p>﻿﻿Programme criticality has no impact on risk level.<br> There must be no consideration of PC when determining risk level.</p>
-</li>
-</ul>
-<p><img src="/../images/20230426152530740.png" alt="image-20230426152530740"></p>
-<p><strong>Other Processes with Security Implications</strong></p>
-<ul>
-<li>﻿﻿Intelligence and Information Cycle.</li>
-<li>﻿﻿Strategic-level Integrated Mission Planning Process.</li>
-<li>﻿﻿Mission-level Integrated Planning, Coordination and implementation.</li>
-<li>﻿﻿Mission Component Planning and Implementation<br> Processes.</li>
-<li>﻿﻿UN Budget Processes.</li>
-<li>﻿﻿Staff Selection and Managed Mobility System.</li>
-<li>﻿﻿Any other process that impacts the substance of UN security.</li>
-</ul>
-<h2 id="Security-Patterns"><a href="#Security-Patterns" class="headerlink" title="Security Patterns"></a><strong>Security Patterns</strong></h2><p><strong>Values of security pattern:</strong></p>
-<p>Security patterns can apply <strong>security principles</strong>, <strong>guide the design and implementation</strong>, <strong>guide the use of security mechanisms</strong>,<strong>help understanding and use of complex</strong> **standards (**XACML, WiMax) and <strong>Convenient for teaching</strong> security principles and mechanisms.</p>
-<p><strong>An Abstract Security Pattern (ASP)</strong>, describes a conceptual security mechanism that realizes one or more security policies able to control (stop or mitigate) a threat or comply with a security-related regulation or institutional policy (no implementation aspects).</p>
-<p><strong>Conceptual security</strong></p>
-<ul>
-<li>﻿﻿Security is a <strong>quality</strong> aspect that constrains the semantic behavior of applications (by imposing access restrictions), so the requirements stage is the right development stage to start addressing security</li>
-<li>﻿﻿However, we only want to indicate at this stage which specific security controls are needed, not their convenient or optimal implementation.</li>
-<li>﻿﻿For example, in bank applications we only want to specify the semantic aspects of accounts, customers, and transactions with their corresponding restrictions.</li>
-</ul>
-<p><strong>An ASP example: Authenticator:</strong></p>
-<ul>
-<li>﻿﻿This is the Intent section of an Authenticator pattern: “When a user or system (subject) identifies itself to the system, how do we verify that the subject intending to access the system is who it says it is? Present some information that is recognized by the system as identifying this subject.<br> After being recognized, the requestor is given some proof that it has been authenticated.”</li>
-<li>﻿﻿Authentication restricts access to a system to only registered users; it handles the threat where an intruder enters a system and may try to perform unauthorized access to information</li>
-<li>﻿﻿It is clear that there are many ways to perform this authentication, that go from manual ways, as done in voting places, to purely automatic ways, as when accessing a web site, but all of them must include the requirements of the abstract Authenticator</li>
-</ul>
-<p><strong>Authentication</strong> as an <strong>abstract</strong> function requires a basic sequence of activities.  Concrete realizations of this sequence implement these steps in different ways but all must perform these two steps: • The subject requests to enter a system indicating its identity and presenting some proof of identity. • If the system recognizes the subject using its identity information, it grants her entrance to the system and provides her with a proof of authentication for further use.  If not, the request is denied. • We can define a hierarchy of authentication patterns starting from the abstract Authenticator</p>
-<p><strong>Force os abstract authenticator</strong></p>
-<ul>
-<li><p><strong>Closed system</strong>. If the authentication information presented by the user is not recognized, there is no access. In an open system all subjects would have access except some who are blacklisted for some reason.</p>
-</li>
-<li><p><strong>Registration</strong>. Users must register their identity information so that the system can recognize them later.</p>
-</li>
-<li><p><strong>Flexibility</strong>. There may be a variety of individuals (users) who require access to the system and a variety of system units with different access restrictions. We need to be able to handle all this variety appropriately or we risk security exposures.</p>
-</li>
-<li><p><strong>Dependability</strong>. We need to authenticate users in a reliable and secure way.</p>
-<p>This means a robust protocol and a high degree of availability. Otherwise, users may fool the authentication process or enter when the system authentication is down.</p>
-</li>
-<li><p><strong>Protection of authentication information</strong>. Users should not be able to read or modify the authentication information. Otherwise, they can give themselves access to the system.</p>
-</li>
-<li><p>﻿﻿<strong>Simplicity</strong>. The authentication process must be relatively simple or the users or administrators may be confused. User errors are annoying to them but administrator errors may lead to security exposures.</p>
-</li>
-<li><p>﻿﻿<strong>Reach</strong>. Successful authentication only gives access to the system, not to any specific resource in the system. Access to these resources must be controlled using other mechanisms, typically authorization.</p>
-</li>
-<li><p><strong>Tamper freedom</strong>. It should be very difficult to falsify the proof of identity presented by the user.</p>
-</li>
-<li><p>﻿﻿<strong>Cost</strong>. There should be tradeoffs between security and cost, more security can be obtained at a higher cost.</p>
-</li>
-<li><p>﻿﻿<strong>Performance</strong>. Authentication should not take a long time or users will be annoyed.</p>
-</li>
-<li><p>﻿﻿<strong>Frequency</strong>. We should not make users authenticate frequently. Frequent authentications waste time and annoy the users.<br> All these properties must be present in the lower-level ways of performing authentication, e.g. in a Password Authenticator (see next slide). A Password Authenticator needs tomake concrete its Authentication Information (list of passwords) and its proof of authentication (a session)</p>
-</li>
-</ul>
-<p><strong>Reference Monitor</strong></p>
-<ul>
-<li>Authorization rules define who has access to what and how. They must be enforced when a process request a resource</li>
-<li>Each request for resources must be intercepted and evaluated for authorized access; this is the concept of Reference Monitor</li>
-<li>An abstract concept, implemented as memory access manager, file permission checks, CORBA adapters, etc.</li>
-</ul>
-<p><strong>Role-Based Access Control</strong></p>
-<ul>
-<li>﻿﻿Users are assigned roles according to their functions and given the needed rights (access types for specific objects)</li>
-<li>﻿﻿When users are assigned by administrators, this is a mandatory model</li>
-<li>﻿﻿Can implement least privilege and separation of duty policies</li>
-</ul>
-<p><strong>XML firewall</strong></p>
-<p>• <strong>Controls input&#x2F;output of XML applications</strong></p>
-<p>• <strong>Well-formed documents (schema as</strong> <strong>reference)</strong></p>
-<p>• <strong>Harmful data (wrong type or length)</strong></p>
-<p>• <strong>Encryption&#x2F;decryption</strong></p>
-<p>• <strong>Sign and verify signatures in documents</strong></p>
-<hr>
-<p><strong>Building secure systems</strong></p>
-<ul>
-<li>﻿﻿Secure systems need to be built in a systematic way where security is an integral part of the lifecycle, and the same applies to safety.</li>
-<li>﻿﻿The platform should match the type of application, and all compliance, safety and security constraints should be defined at the application level, where their semantics are understood and propagated to the lower levels.</li>
-<li>﻿﻿The lower levels must provide the assurance that the constraints are being followed, i.e., they implement these constraints and enforce that there are no ways to bypass them.</li>
-<li>﻿﻿Following these ideas, the Authors of the book in reference developed a secure systems development methodology, which considers all lifecycle stages and all architectural levels. It is expanded with architectural aspects, and recently with process aspects.</li>
-</ul>
-<p><strong><em>Security methodology</em>:</strong></p>
-<p><strong>systematic way of introducing security into a software system</strong> <strong>during the development life-cycle</strong></p>
-<p>Consists of two aspects&#x2F;facets:<strong>security process</strong>(SP) and <strong>conceptualsecurity framework</strong> (CF)</p>
-<p><strong>ASE:</strong> <strong>a comprehensive security methodology for distributed systems</strong></p>
-<ul>
-<li>Many methodologies exist with different paradigms</li>
-<li>Very important class is methodologies that use security patterns</li>
-<li>ASE: a security methodology using patterns and related constructs designed specifically for general distributed systems</li>
-</ul>
-<p><strong>Basic security principles for system design</strong></p>
-<ul>
-<li>﻿﻿Security constraints must be defined at the highest layer, where their semantics are clear, and propagated to the lower levels, which enforce them.</li>
-<li>﻿﻿All the layers of the architecture must be secure.</li>
-<li>﻿﻿We can define patterns at all levels. This allows a designer to make sure that all levels are secured, and also makes easier propagating down the high-level constraints.</li>
-<li>﻿﻿We must apply security in all development stages</li>
-<li>﻿﻿A two-dimensional approach: time and space</li>
-</ul>
-<p><strong>Reference Architecture (RA)</strong></p>
-<p>• A Reference Architecture (RA) is a generic software architecture, based on one or more domains, with no implementation aspects<br>• An RA is reusable, extendable, and configurable.<br>• It specifies the components of the system, their individual functionalities and their mutual interaction.<br>• An RA can be considered as a compound pattern and its components described as patterns.<br>• In addition to domain models, an RA may include a set of use cases (UC), and a set of Roles (R) corresponding to its stakeholders actors).</p>
-<p>We can measure security by <strong>counting the threats that have been</strong> <strong>neutralized by using patterns</strong></p>
-<p><strong>Incident Response Plan</strong></p>
-<p>• Before system is released, an incident response plan should be created (compromise or failure)</p>
-<p>• Contact personnel, availability and procedures for multiple levels of failure</p>
-<p>• A minor glitch does not require CEO to be informed but should be documented</p>
-<p>• Network admin or security admin to determine an appropriate response when incident occurs</p>
-<p><strong>Key elements</strong> of incident response plan:</p>
-<ul>
-<li><p>﻿﻿Monitoring duties for the software in live operation</p>
-</li>
-<li><p>﻿﻿A definition for incidents</p>
-</li>
-<li><p>﻿﻿A contact for incidents</p>
-</li>
-<li><p>﻿﻿An emergency contact for priority incidents</p>
-</li>
-<li><p>﻿﻿A clear chain of escalation</p>
-</li>
-<li><p>﻿﻿Procedures for shutting down the software or components of the software</p>
-</li>
-<li><p>﻿﻿Procedures for specified exploits or attacks</p>
-</li>
-<li><p>﻿﻿Security documentation or the references for external ode or hardware used</p>
-</li>
-</ul>
-<p>*It depends on the organization that the person responsible is from development team or outside</p>
-<p><strong>evolving attacks &#x2F; periodic review and archiving</strong></p>
-<h2 id="Web-Application-Threats"><a href="#Web-Application-Threats" class="headerlink" title="Web Application Threats"></a>Web Application Threats</h2><ul>
-<li>﻿﻿Never trust the client at the server side</li>
-<li>﻿﻿Never trust the browser on the client side</li>
-<li>﻿﻿Never execute client input as code</li>
-<li>﻿﻿Never allow client input to pass into the system without validation internally</li>
-<li>﻿﻿Scrub client for any known exploits and suspect characters</li>
-</ul>
-<p><strong>XSS</strong></p>
-<p><strong>CSRF</strong></p>
-<p><strong>File Upload</strong></p>
-<p><strong>Buffer Overflow</strong></p>
-<p><strong>SQL Injection</strong></p>
-<h2 id="Threat-Modelling"><a href="#Threat-Modelling" class="headerlink" title="Threat Modelling"></a>Threat Modelling</h2><p>• In a nutshell, threat modelling is the use of abstractions to help you consider risks.<br>• Involves developing a shared understanding of a product or service architecture and the problems that could happen.<br>•When you model threats, you typically use one of two types of model.</p>
-<ol>
-<li>The model for what you are building.</li>
-<li>The model for the threats of what you are building.</li>
-</ol>
-<p>The Four-Step Framework</p>
-<ol>
-<li><strong>Model System</strong>, Model the system you’re building, deploying or changing.</li>
-<li><strong>Find Threats</strong>, Find threats using the model.</li>
-<li><strong>Addrasc Inrears</strong>,  Address the threats.</li>
-<li><strong>Validate,Validate</strong>, the result for completeness and effectiveness</li>
-</ol>
-<p>(1) What are you Building?</p>
-<ul>
-<li>﻿﻿Diagrams are a good way to communicate what you are building.</li>
-<li>﻿﻿There are lots of ways to diagram software and you can start with a whiteboard diagram of how data flows through the system.</li>
-</ul>
-<p>(2) What can go wrong?</p>
-<ul>
-<li><p>﻿﻿Given a simple diagram, we can start thinking about what can go wrong. Example:</p>
-</li>
-<li><p>﻿﻿How do you know that the web browser is being used by the person you expect?</p>
-</li>
-<li><p>﻿﻿What happens if someone modifies data in the database?</p>
-</li>
-<li><p>﻿﻿Is it okay for information to move from one box to the next without encryption?</p>
-</li>
-<li><p>﻿﻿You can identify threats like these using the STRIDE approach.</p>
-</li>
-<li><p>﻿﻿Use STRIDE to walk through each part of the diagram:</p>
-</li>
-<li><p>﻿﻿Spoofing.</p>
-</li>
-<li><p>﻿﻿Tampering.</p>
-</li>
-<li><p>﻿﻿Repudiation.</p>
-</li>
-<li><p>﻿﻿Information Disclosure.</p>
-</li>
-<li><p>﻿﻿Denial of Service.</p>
-</li>
-<li><p>﻿﻿Elevation of Privilege.</p>
-</li>
-</ul>
-<p><strong>(3) What Are We Going To Do</strong> <strong>About It</strong></p>
-<p>• There are four types of action you can take against a threat:</p>
-<ol>
-<li>Mitigate it.</li>
-</ol>
-<p><img src="/../images/20230427001002917.png" alt="image-20230427001002917"></p>
-<p><img src="/../images/20230427001035008.png" alt="image-20230427001035008"></p>
-<p><img src="/../images/20230427001116901.png" alt="image-20230427001116901"></p>
-<p><img src="/../images/20230427001224625.png" alt="image-20230427001224625"></p>
-<p><img src="/../images/20230427001300080.png" alt="image-20230427001300080"></p>
-<p><img src="/../images/20230427001333023.png" alt="image-20230427001333023"></p>
-<ol start="2">
-<li><p>Eliminate it. Vpn（Geo-restrictions: A VPN can be used to bypass geo-restrictions and access content that may be blocked in certain regions, reducing the risk of inadvertently visiting malicious websites or downloading malicious content.）</p>
-</li>
-<li><p>Transfer it.</p>
-</li>
-<li><p>Accept it</p>
-</li>
-</ol>
-<p><strong>(4) Did We Do A Good Job</strong></p>
-<ol>
-<li>﻿﻿﻿Look at the diagram, does it represent the system well?</li>
-<li>﻿﻿﻿Look at the list of threats, did you find at least 5 threats per node in the diagram?</li>
-<li>﻿﻿﻿Did you file a bug per threat?</li>
-</ol>
-<ul>
-<li>﻿﻿When you find threats that violate your requirements and cannot be mitigated, it generally makes sense to adjust your requirements.<br> Sometimes it’s possible to either mitigate the threat operationally, or defer a decision to the person using the system.</li>
-<li>﻿﻿There are many other threat modelling techniques, we have only touched most popular approaches.</li>
-<li>﻿﻿Some other threat modelling approaches include:</li>
-<li>﻿﻿PASTA (Process for Attack Simulation and Threat Analysis)</li>
-<li>﻿﻿CSVSS Common Vulnerability Scoring System)</li>
-<li>﻿﻿HMM (Hybrid Threat Modelling Method)</li>
-</ul>
-<h2 id="Attack-Trees"><a href="#Attack-Trees" class="headerlink" title="Attack Trees"></a><strong>Attack Trees</strong></h2><p><img src="/../images/20230427001820867.png" alt="image-20230427001820867"></p>
-<ul>
-<li>﻿﻿Top level node (or root) represents the ultimate goal of an attacker.</li>
-<li>﻿﻿The nodes (or leaves) represent sub goals that need to be achieved (together or independently) to arrive at the top level goal.</li>
-</ul>
-<p>• An alternative to STRIDE(Spoofing, tampering, repudiation, Information disclosure,Denial of service,Denial of service).</p>
-<p>• You can use attack trees as a way to find threats, or as a way to organize threats.</p>
-<p>​	• Attack trees work well as a building block for threat enumeration in the fourstep framework.</p>
-<p><strong>We can use attack trees to find the threats</strong></p>
-<p><strong>Attack-Defence Scenarios</strong></p>
-<p>• Attack trees are used to model attack-defence scenarios.</p>
-<p>• The attack-defence scenario is a game between two players:</p>
-<p>• The proponent (denoted as p)</p>
-<p>• The opponent (denoted as o)</p>
-<ul>
-<li><p>The root of an attack tree represents the main goal of the proponent. </p>
-<ul>
-<li>When the root is an attack node, the proponent is an attacker and the opponent is a defender.</li>
-<li>﻿﻿Conversely, when the root is a defence node, the proponent is a defender and the opponent is an attacker.</li>
-</ul>
-</li>
-<li><p>Notations:</p>
-</li>
-<li><p>﻿﻿Attack nodes are represented with circles.</p>
-</li>
-<li><p>﻿﻿Defence nodes are represented with rectangles.</p>
-</li>
-<li><p>﻿﻿Refinements:</p>
-<ul>
-<li>﻿﻿Refinements can be conjunctive (AND aggregation) or disjunctive (OR choice)</li>
-<li>﻿﻿Refinement relations are indicated by solid edges between nodes.</li>
-<li>﻿﻿Countermeasures are indicated by dotted edges.</li>
-<li>﻿﻿A conjunctive refinement of a node is represented by an arc over all edges connecting the node and its children of equal type.</li>
-</ul>
-</li>
-</ul>
-<p><strong>The basic steps to create an attack tree are as follows</strong>:</p>
-<p>\1. Decide on a representation.</p>
-<p>Two types of trees:</p>
-<p><strong>AND trees</strong> (aggregation): The state of a node depends on all of the nodes below it being true. 有夹脚</p>
-<p><strong>Or trees</strong> (choice): A node is true if any of its subnodes are true. 没夹脚</p>
-<p>\2. Create a root node.</p>
-<p><strong>If the root node is a countermeasure mitigation action…</strong></p>
-<p><strong>Then the subnodes are used to identify what can go wrong.</strong></p>
-<p><strong>Decompose the mitigation action and identify how the results can be threatened.</strong></p>
-<p><strong>If the root node is a goal of the attacker</strong>:</p>
-<p><strong>Then we consider ways to achieve that goal.</strong></p>
-<p><strong>Each alternative way to achieve the goal should be drawn as a subnode.</strong></p>
-<p>\3. Create subnodes.</p>
-<p>• You typically create subnodes by brainstorming in some structured manner.</p>
-<p>• The relation between subnodes and parent node can be AND or OR.</p>
-<p>• Some possible structures for first-level subnodes include:</p>
-<p>Attacking a system:</p>
-<ul>
-<li>﻿﻿Physical access.</li>
-<li>﻿﻿Subvert software.</li>
-<li>﻿﻿Subvert a person.</li>
-</ul>
-<p>Attacking a system via:</p>
-<ul>
-<li>﻿﻿People.<br> Process.</li>
-<li>﻿﻿Technology.</li>
-</ul>
-<p>Attacking a product during:</p>
-<ul>
-<li>Design.</li>
-<li>Production.</li>
-<li>Distribution.</li>
-<li>Usage.</li>
-</ul>
-<p>\4. Consider completeness.</p>
-<p><strong>• An attack tree can be checked for quality by iterating over the node, looking for additional ways to reach the goal. It may be helpful to use STRIDE or attack libraries.</strong></p>
-<p>\5. Prune the tree.</p>
-<p><strong>• In this step, go through each node in the tree and consider whether the action in each subnode is prevented or duplicative.</strong></p>
-<p>\6. Check the presentation.</p>
-<p><strong>• Trees can be represented in two ways:</strong></p>
-<p><strong>• As a free form (human viewable) model without any technical structure.</strong></p>
-<p><strong>• As a structured representation with variable types and&#x2F;or metadata to facilitate programmatic analysis.</strong></p>
-<p><strong>Human Viewable Representations</strong></p>
-<p>• Attack trees can be drawn graphically or shown in outline form.</p>
-<p>• Care should be taken to ensure that the graphics are actually information rich and useful.</p>
-<p>• Outline representations are easier to create than graphical representations, but they tend to be less attention-grabbing.</p>
-<p>• <strong>If you are using someone else’s tree, be sure to understand their intent. If you are creating once, be sure you are clear on your intent and communicate your intent clearly.</strong></p>
-<p><strong>Risk Analysis</strong></p>
-<p>• <strong>Risk</strong> &#x3D; (<strong>Probability</strong> of <strong>Incident</strong>) x (Incident Impact)</p>
-<p>• When dealing with hostile risk, consider the following:</p>
-<p>​	• Vulnerabilities in systems are NOT constants.</p>
-<p>​	• Capabilities of the adversary are NOT constant.</p>
-<p>​	• Motivators for adversary changes instantaneously.</p>
-<p>​	• Adversaries can attack your system anytime.</p>
-<p><strong>Probability of Incident</strong> &#x3D; Vulnerability x Threat x Motivation</p>
-<p><strong>Security Functional Requirements</strong></p>
-<ul>
-<li>﻿﻿FAU: Security auditing.</li>
-<li>﻿﻿FCP: Communications.</li>
-<li>﻿﻿FCS: Cryptographic support.</li>
-<li>﻿﻿FDP: User data protection.</li>
-<li>﻿﻿FIA: Identification and authentication.</li>
-<li>﻿﻿FMT: Security management.</li>
-<li>﻿﻿FPR: Privacy.</li>
-<li>﻿﻿FPT: Protection of security function.</li>
-<li>﻿﻿FRU: Resource utilization.</li>
-<li>﻿﻿FTA: Access.</li>
-<li>﻿﻿FTP: Trusted path.</li>
-</ul>
-<p><strong>Security Mechanisms</strong>s</p>
-<ul>
-<li>There are several ways in which the security policy can be enforced.</li>
-<li>Assurance requirements detail the ways in which security is demonstrated.</li>
-<li>There are also different ways of evaluating these requirements.</li>
-<li>Here are the FIPS standards.</li>
-</ul>
-<p><img src="/../images/20230427124928638.png" alt="image-20230427124928638"></p>
-<p><img src="/../images/20230427125103365.png" alt="image-20230427125103365"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Courses/" rel="tag">Courses</a></li></ul>
 
     </footer>
   </div>
