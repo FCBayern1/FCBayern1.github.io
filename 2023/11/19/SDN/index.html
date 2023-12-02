@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">230</span>
+            <span class="post-count">251</span>
         </span>
     </span>
 
@@ -170,6 +170,10 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config java</span><br></pre></td></tr></table></figure>
 
 <p>select Java 8</p>
+<h3 id="RYU-controller"><a href="#RYU-controller" class="headerlink" title="RYU controller"></a>RYU controller</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ryu-manager simple_switch_13.py</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mn --custom topology.py --topo mytopo --controller=remote,ip=127.0.0.1,port=6653</span><br></pre></td></tr></table></figure>
+
  
       <!-- reward -->
       
