@@ -227,12 +227,11 @@
 <p>Please select Java 11 as your default java environment</p>
 <h5 id="3-Set-JAVA-HOME"><a href="#3-Set-JAVA-HOME" class="headerlink" title="3. Set JAVA_HOME"></a>3. Set JAVA_HOME</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l /etc/alternatives/java</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64&#x27;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-arm64&#x27;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
 
-
-
+<p>echo ‘export JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;java-11-openjdk-arm64’ &gt;&gt; ~&#x2F;.bashrc</p>
 <h5 id="4-Download-the-OpenDaylight-Zip-Archive"><a href="#4-Download-the-OpenDaylight-Zip-Archive" class="headerlink" title="4. Download the OpenDaylight Zip Archive"></a>4. Download the OpenDaylight Zip Archive</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET -O https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/karaf/0.16.1/karaf-0.16.1.zip</span><br></pre></td></tr></table></figure>
 
 
@@ -262,6 +261,16 @@
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mn --custom topology.py --topo mytopo --controller=remote,ip=127.0.0.1,port=6653</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mn --topo=single,3 --mac --controller=remote,ip=127.0.0.1,port=6653 --switch ovsk,protocols=OpenFlow13</span><br></pre></td></tr></table></figure>
+
+
+
+<p>s1 &#x3D; net.addSwitch(‘s1’, cls &#x3D; OVSKernelSwitch, dpid&#x3D; ‘0000000000000001’)</p>
+<p>sh ovs-vsctl show</p>
+<p>dpctl dump-flows</p>
+<p>dpctl del-flows</p>
+<p>dpctl add-flow in_port&#x3D;1,actions&#x3D;output:2</p>
+<p>dpctl add-flow in_port&#x3D;2,actions&#x3D;output:1</p>
  
       <!-- reward -->
       
