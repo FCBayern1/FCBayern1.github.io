@@ -42,7 +42,7 @@
     <link href="http://example.com/2023/11/19/SDN/"/>
     <id>http://example.com/2023/11/19/SDN/</id>
     <published>2023-11-19T13:19:09.000Z</published>
-    <updated>2024-02-21T17:28:39.456Z</updated>
+    <updated>2024-03-07T15:08:10.100Z</updated>
     
     
       
@@ -92,7 +92,7 @@
     <link href="http://example.com/2023/06/26/kubernetes/"/>
     <id>http://example.com/2023/06/26/kubernetes/</id>
     <published>2023-06-26T10:03:56.000Z</published>
-    <updated>2023-11-04T20:59:38.821Z</updated>
+    <updated>2024-02-27T01:22:40.987Z</updated>
     
     
       
@@ -156,31 +156,6 @@
     
     
     <category term="java" scheme="http://example.com/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>job seek</title>
-    <link href="http://example.com/2023/05/26/job-seek/"/>
-    <id>http://example.com/2023/05/26/job-seek/</id>
-    <published>2023-05-26T18:58:33.000Z</published>
-    <updated>2023-11-04T20:59:38.819Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;intern&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</summary>
-        
-      
-    
-    
     
     
   </entry>

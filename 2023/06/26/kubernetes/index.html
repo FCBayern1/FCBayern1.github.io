@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">3.9k</span>
+            <span class="post-count">3.8k</span>
         </span>
     </span>
 
@@ -118,7 +118,7 @@
 <li>Every cluster has at least one worker node.</li>
 </ul>
 <h2 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h2><p>This document outlines the various components you need to have for a complete and working Kubernetes cluster.</p>
-<h3 id="Control-Plane-components"><a href="#Control-Plane-components" class="headerlink" title="Control Plane components"></a>Control Plane components</h3><h4 id="kube-apiserver"><a href="#kube-apiserver" class="headerlink" title="kube-apiserver"></a><strong>kube-apiserver</strong></h4><p>The API server is the front end for the Kubernetes control plane.</p>
+<h3 id="Control-Plane-components"><a href="#Control-Plane-components" class="headerlink" title="Control Plane components"></a>Control Plane components</h3><h4 id="kube-api-server"><a href="#kube-api-server" class="headerlink" title="kube-api server"></a><strong>kube-api server</strong></h4><p>The API server is the front end for the Kubernetes control plane.</p>
 <p>The main implementation of a Kubernetes API server is <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/reference/generated/kube-apiserver/">kube-apiserver</a>. kube-apiserver is designed to scale horizontally—that is, it scales by deploying more instances. You can run several instances of kube-apiserver and balance traffic between those instances.</p>
 <p><strong>Horizontal scaling vs Vertical scaling:</strong></p>
 <p><strong>水平扩展</strong></p>
@@ -171,7 +171,7 @@
 </ul>
 <p>Pod（容器组）是 k8s 集群上的最基本的单元。当我们在 k8s 上创建 Deployment 时，会在集群上创建包含容器的 Pod (而不是直接创建容器)。每个Pod都与运行它的 worker 节点（Node）绑定，并保持在那里直到终止或被删除。如果节点（Node）发生故障，则会在群集中的其他可用节点（Node）上运行相同的 Pod(从同样的镜像创建 Container，使用同样的配置，IP 地址不同，Pod 名字不同)。</p>
 <p>Node </p>
-<p>![截屏2023-07-15 14.42.27](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:截屏2023-07-15 14.42.27.png)</p>
+<p>![截屏2023-07-15 14.42.27](..&#x2F;images&#x2F;截屏2023-07-15 14.42.27.png)</p>
 <p>Pod总是在 <strong>Node</strong> 上运行。Node是 kubernetes 集群中的计算机，可以是虚拟机或物理机。每个 Node都由 master 管理。一个 Node可以有多个Pod，kubernetes master 会根据每个 Node上可用资源的情况，自动调度 Pod到最佳的 Node上。</p>
 <p>每个 Kubernetes Node至少运行：</p>
 <ul>
@@ -179,8 +179,8 @@
 <li>容器运行环境（如Docker）负责下载镜像、创建和运行容器等.</li>
 </ul>
 <p><strong>kubectl 还有如下四个常用命令，在我们排查问题时可以提供帮助：</strong></p>
-<p><strong>kubectl get</strong> - 资源类型,</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#获取类型为Deployment的资源列表</span></span><br><span class="line">kubectl get deployments</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取类型为Pod的资源列表</span></span><br><span class="line">kubectl get pods</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取类型为Node的资源列表</span></span><br><span class="line">kubectl get nodes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>kubectl get – 资源类型,</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取类型为Deployment的资源列表</span></span><br><span class="line">kubectl get deployments</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取类型为Pod的资源列表</span></span><br><span class="line">kubectl get pods</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取类型为Node的资源列表</span></span><br><span class="line">kubectl get nodes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>名称空间</p>
 <p>在命令后增加 <code>-A</code> 或 <code>--all-namespaces</code> 可查看所有 <a target="_blank" rel="noopener" href="https://kuboard.cn/learning/k8s-intermediate/obj/namespaces.html">名称空间中</a> 的对象，使用参数 <code>-n</code> 可查看指定名称空间的对象，例如</p>
@@ -221,7 +221,7 @@
 <li>使用 Label 和 LabelSelector</li>
 </ul>
 <p>下图中有两个服务<strong>Service A(黄色虚线)<strong>和</strong>Service B(蓝色虚线)</strong> Service A 将请求转发到 IP 为 10.10.10.1 的Pod上， Service B 将请求转发到 IP 为 10.10.10.2、10.10.10.3、10.10.10.4 的Pod上。</p>
-<p>![截屏2023-07-15 16.17.04](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:截屏2023-07-15 16.17.04.png)</p>
+<p>![截屏2023-07-15 16.17.04](..&#x2F;images&#x2F;截屏2023-07-15 16.17.04.png)</p>
 <p>Service 将外部请求路由到一组 Pod 中，它提供了一个抽象层，使得 Kubernetes 可以在不影响服务调用者的情况下，动态地调度pods(在容器组失效后重新创建容器组，增加或者减少同一个 Deployment 对应容器组的数量等).</p>
 <p>Service使用 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels">Labels、LabelSelector(标签和选择器) (opens new window)</a>匹配一组 Pod。Labels（标签）是附加到 Kubernetes 对象的键值对，其用途有多种：</p>
 <ul>
@@ -236,7 +236,7 @@
 <li><p>通过 Deployment B 创建的 Pod 包含标签为 app&#x3D;B</p>
 </li>
 <li><p>Service B 通过标签选择器 app&#x3D;B 选择可以路由的 Pod</p>
-<p>![截屏2023-07-15 16.24.25](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:截屏2023-07-15 16.24.25.png)</p>
+<p>![截屏2023-07-15 16.24.25](..&#x2F;images&#x2F;截屏2023-07-15 16.24.25.png)</p>
 </li>
 </ul>
 <p>Labels可以在创建 Kubernetes 对象时附加上去，也可以在创建之后再附加上去。任何时候都可以修改一个 Kubernetes 对象的 Labels.</p>
@@ -260,9 +260,9 @@
 <p><strong>Scaling</strong> 的实现可以通过更改 nginx-deployment.yaml 文件中部署的 replicas（副本数）来完成</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spec:</span><br><span class="line">  replicas: 2    <span class="comment">#使用该Deployment创建两个应用程序实例</span></span><br></pre></td></tr></table></figure>
 
-<p>![截屏2023-07-16 00.01.42](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:截屏2023-07-16 00.01.42.png)</p>
+<p>![截屏2023-07-16 00.01.42](..&#x2F;images&#x2F;截屏2023-07-16 00.01.42.png)</p>
 <p>修改了 Deployment 的 replicas 为 4 后，Kubernetes 又为该 Deployment 创建了 3 新的 Pod，这 4 个 Pod 有相同的标签。因此Service A通过标签选择器与新的 Pod建立了对应关系，将访问流量通过负载均衡在 4 个 Pod 之间进行转发。</p>
-<p>![截屏2023-07-16 00.02.26](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:截屏2023-07-16 00.02.26.png)</p>
+<p>![截屏2023-07-16 00.02.26](..&#x2F;images&#x2F;截屏2023-07-16 00.02.26.png)</p>
 <h2 id="5-Rolling-update"><a href="#5-Rolling-update" class="headerlink" title="5.Rolling update"></a>5.Rolling update</h2><p>用户期望应用程序始终可用，为此开发者&#x2F;运维者在更新应用程序时要分多次完成。在 Kubernetes 中，这是通过 Rolling Update 滚动更新完成的。<strong>Rolling Update滚动更新</strong> 通过使用新版本的 Pod 逐步替代旧版本的 Pod 来实现 Deployment 的更新，从而实现零停机。新的 Pod 将在具有可用资源的 Node（节点）上进行调度。</p>
 <p>Kubernetes 更新多副本的 Deployment 的版本时，会逐步的创建新版本的 Pod，逐步的停止旧版本的 Pod，以便使应用一直处于可用状态。这个过程中，Service 能够监视 Pod 的状态，将流量始终转发到可用的 Pod 上。</p>
 <h1 id="Intermediate"><a href="#Intermediate" class="headerlink" title="Intermediate"></a>Intermediate</h1><h1 id="Advanced"><a href="#Advanced" class="headerlink" title="Advanced"></a>Advanced</h1> 
