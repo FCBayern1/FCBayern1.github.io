@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="joshua" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>pandapower |  Mingwei’s Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/UoG.svg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Mingwei’s Blog" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-pandapower"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  pandapower
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/07/31/pandapower/" class="article-date">
+  <time datetime="2024-07-31T15:30:49.000Z" itemprop="datePublished">2024-07-31</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">16 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Pandapower"><a href="#Pandapower" class="headerlink" title="Pandapower"></a>Pandapower</h1><p>For powerflow system simulation!</p>
+<h2 id="Create-an-Empty-Network"><a href="#Create-an-Empty-Network" class="headerlink" title="Create an Empty Network"></a>Create an Empty Network</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandapower.create.create_empty_network(name=<span class="string">&#x27;&#x27;</span>, f_hz=<span class="number">50.0</span>, sn_mva=<span class="number">1</span>, add_stdtypes=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>This function initializes the pandapower datastructure.</p>
+<p><strong>OPTIONAL:</strong><br><strong>f_hz (float, 50. Default 50hz)</strong> - power system frequency in hertz</p>
+<p><strong>name (string, None)</strong> - name for the network</p>
+<p><strong>sn_mva (float, 1e3)</strong> - reference apparent power for per unit system</p>
+<p>add_stdtypes (boolean, True) - Includes standard types to net</p>
+<p><strong>OUTPUT:</strong><br><strong>net (attrdict)</strong> - PANDAPOWER attrdict with empty tables:</p>
+<p><em><strong>EXAMPLE:</strong></em><br>net &#x3D; create_empty_network()</p>
+<h2 id="Bus"><a href="#Bus" class="headerlink" title="Bus"></a>Bus</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandapower.create_bus(net, vn_kv, name=<span class="literal">None</span>, index=<span class="literal">None</span>, geodata=<span class="literal">None</span>, <span class="built_in">type</span>=<span class="string">&#x27;b&#x27;</span>, zone=<span class="literal">None</span>, in_service=<span class="literal">True</span>, max_vm_pu=nan, min_vm_pu=nan, coords=<span class="literal">None</span>, **kwargs)</span><br></pre></td></tr></table></figure>
+
+<p>Adds one bus in table net[“bus”].</p>
+<p>Busses are the nodes of the network that all other elements connect to.</p>
+<p><strong>INPUT:</strong></p>
+<ul>
+<li><strong>net (pandapowerNet)</strong> - The pandapower network in which the element is created</li>
+<li><strong>vn_kv</strong> <strong>(float)</strong> - The grid voltage level.</li>
+</ul>
+<p><strong>OPTIONAL:</strong></p>
+<ul>
+<li><strong>name</strong> (string, default None) - the name for this bus</li>
+<li><strong>index</strong> (int, default None) - Force a specified ID if it is available. If None, the index one higher than the highest already existing index is selected.</li>
+<li><strong>geodata</strong> ((x,y)-tuple, default None) - coordinates used for plotting</li>
+<li><strong>type</strong> (string, default “b”) - Type of the bus. “n” - node, “b” - busbar, “m” - muff</li>
+<li><strong>zone</strong> (string, None) - grid region</li>
+<li><strong>in_service</strong> (boolean) - True for in_service or False for out of service</li>
+<li><strong>max_vm_pu</strong> (float, NAN) - Maximum bus voltage in p.u. - necessary for OPF</li>
+<li><strong>min_vm_pu</strong> (float, NAN) - Minimum bus voltage in p.u. - necessary for OPF</li>
+<li><strong>coords</strong> (list (len&#x3D;2) of tuples (len&#x3D;2), default None) - busbar coordinates to plot the bus with multiple points. coords is typically a list of tuples (start and endpoint of the busbar) - Example: [(x1, y1), (x2, y2)]</li>
+</ul>
+<p><strong>Electric Model</strong></p>
+<p>Result Parameters</p>
+<p><em>net.res_bus</em></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Datatype</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vm_pu</td>
+<td>float</td>
+<td>voltage magnitude [p.u]</td>
+</tr>
+<tr>
+<td>va_degree</td>
+<td>float</td>
+<td>voltage angle [degree]</td>
+</tr>
+<tr>
+<td>p_mw</td>
+<td>float</td>
+<td>resulting active power demand [MW]</td>
+</tr>
+<tr>
+<td>q_mvar</td>
+<td>float</td>
+<td>resulting reactive power demand [Mvar]</td>
+</tr>
+</tbody></table>
+<p><em>net.res_bus_3ph</em></p>
+<p>这是一个dataframe，存储了电力网络中每个三相母线的结果数据。它包含了执行潮流分析（如负载流计算）后的结果，主要用于记录和查看每个目线在网络模拟结束后的电压，相位和其他可能的电气参数。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Datatype</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vm_a_pu</td>
+<td>float</td>
+<td>voltage magnitude:Phase A [p.u]</td>
+</tr>
+<tr>
+<td>va_a_degree</td>
+<td>float</td>
+<td>voltage angle:Phase A [degree]</td>
+</tr>
+<tr>
+<td>vm_b_pu</td>
+<td>float</td>
+<td>voltage magnitude:Phase B [p.u]</td>
+</tr>
+<tr>
+<td>va_b_degree</td>
+<td>float</td>
+<td>voltage angle:Phase B [degree]</td>
+</tr>
+<tr>
+<td>vm_c_pu</td>
+<td>float</td>
+<td>voltage magnitude:Phase C [p.u]</td>
+</tr>
+<tr>
+<td>va_c_degree</td>
+<td>float</td>
+<td>voltage angle:Phase C [degree]</td>
+</tr>
+<tr>
+<td>p_a_mw</td>
+<td>float</td>
+<td>resulting active power demand:Phase A [MW]</td>
+</tr>
+<tr>
+<td>q_a_mvar</td>
+<td>float</td>
+<td>resulting reactive power demand:Phase A [Mvar]</td>
+</tr>
+<tr>
+<td>p_b_mw</td>
+<td>float</td>
+<td>resulting active power demand:Phase B [MW]</td>
+</tr>
+<tr>
+<td>q_b_mvar</td>
+<td>float</td>
+<td>resulting reactive power demand:Phase B [Mvar]</td>
+</tr>
+<tr>
+<td>p_c_mw</td>
+<td>float</td>
+<td>resulting active power demand:Phase C [MW]</td>
+</tr>
+<tr>
+<td>q_c_mvar</td>
+<td>float</td>
+<td>resulting reactive power demand:Phase C [Mvar]</td>
+</tr>
+<tr>
+<td>unbalance_percent</td>
+<td>float</td>
+<td>unbalance in percent defined as the ratio of V0 and V1 according to IEC 6</td>
+</tr>
+</tbody></table>
+<p><em>net.res_bus_est</em></p>
+<p>存储电力网络中母线的状态估计结果。状态估计是电力系统监控和运营中的一种关键技术</p>
+<p>The state estimation results are put into <em>net.res_bus_est</em> with the same definition as in <em>net.res_bus</em>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Datatype</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vm_pu</td>
+<td>float</td>
+<td>voltage magnitude [p.u]</td>
+</tr>
+<tr>
+<td>va_degree</td>
+<td>float</td>
+<td>voltage angle [degree]</td>
+</tr>
+<tr>
+<td>p_mw</td>
+<td>float</td>
+<td>resulting active power demand [MW]</td>
+</tr>
+<tr>
+<td>q_mvar</td>
+<td>float</td>
+<td>resulting reactive power demand [Mvar]</td>
+</tr>
+</tbody></table>
+<p><em>net.res_bus_sc</em></p>
+<p>它存储了电力网络中每个母线的短路分析结果</p>
+<p>The short-circuit (SC) results are put into <em>net.res_bus_sc</em> with following definitions:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Datatype</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ikss_ka</td>
+<td>float</td>
+<td>initial short-circuit current value [kA]</td>
+</tr>
+<tr>
+<td>skss_mw</td>
+<td>float</td>
+<td>initial short-circuit power [MW]</td>
+</tr>
+<tr>
+<td>ip_ka</td>
+<td>float</td>
+<td>peak value of the short-circuit current [kA]</td>
+</tr>
+<tr>
+<td>ith_ka</td>
+<td>float</td>
+<td>equivalent thermal short-circuit current [kA]</td>
+</tr>
+<tr>
+<td>rk_ohm</td>
+<td>float</td>
+<td>resistive part of equiv. (positive&#x2F;negative sequence) SC impedance [Ohm]</td>
+</tr>
+<tr>
+<td>xk_ohm</td>
+<td>float</td>
+<td>reactive part of equiv. (positive&#x2F;negative sequence) SC impedance [Ohm]</td>
+</tr>
+<tr>
+<td>rk0_ohm</td>
+<td>float</td>
+<td>resistive part of equiv. (zero sequence) SC impedance [Ohm]</td>
+</tr>
+<tr>
+<td>xk0_ohm</td>
+<td>float</td>
+<td>reactive part of equiv. (zero sequence) SC impedance [Ohm]</td>
+</tr>
+</tbody></table>
+<h2 id="Line-Creation"><a href="#Line-Creation" class="headerlink" title="Line Creation"></a>Line Creation</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandapower.create_line(net, from_bus, to_bus, length_km, std_type, name=<span class="literal">None</span>, index=<span class="literal">None</span>, geodata=<span class="literal">None</span>, df=<span class="number">1.0</span>, parallel=<span class="number">1</span>, in_service=<span class="literal">True</span>, max_loading_percent=nan, alpha=nan, temperature_degree_celsius=nan, **kwargs)</span><br></pre></td></tr></table></figure>
+
+<p>Creates a line element in net[“line”] The line parameters are defined through the standard type library.</p>
+<p><strong>INPUT:</strong></p>
+<ul>
+<li><strong>net</strong> - The net within this line should be created</li>
+<li><strong>from_bus</strong> (int) - ID of the bus on one side which the line will be connected with</li>
+<li><strong>to_bus</strong> (int) - ID of the bus on the other side which the line will be connected with</li>
+<li><strong>length_km</strong> (float) - The line length in km</li>
+<li><strong>std_type</strong> (string) - Name of a standard linetype :Pre-defined in standard_linetypes<strong>or</strong>Customized std_type made using </li>
+<li><strong>create_std_type()</strong></li>
+</ul>
+<p><strong>OPTIONAL:</strong></p>
+<ul>
+<li><strong>name</strong> (string, None) - A custom name for this line</li>
+<li><strong>index</strong> (int, None) - Force a specified ID if it is available. If None, the index one higher than the highest already existing index is selected.</li>
+<li><strong>geodata</strong> (Iterable[Tuple[int, int]|Tuple[float, float]], default None) - The geodata of the line. The first element should be the coordinates of from_bus and the last should be the coordinates of to_bus. The points in the middle represent the bending points of the line</li>
+<li><strong>in_service</strong> (boolean, True) - True for in_service or False for out of service</li>
+<li><strong>df</strong> (float, 1) - derating factor: maximal current of line in relation to nominal current of line (from 0 to 1)</li>
+<li><strong>parallel</strong> (integer, 1) - number of parallel line systems</li>
+<li><strong>max_loading_percent (float)</strong> - maximum current loading (only needed for OPF)</li>
+<li><strong>alpha (float)</strong> - temperature coefficient of resistance: R(T) &#x3D; R(T_0) * (1 + alpha * (T - T_0)))</li>
+<li><strong>temperature_degree_celsius (float)</strong> - line temperature for which line resistance is adjusted</li>
+<li><strong>tdpf (bool)</strong> - whether the line is considered in the TDPF calculation</li>
+<li><strong>wind_speed_m_per_s (float)</strong> - wind speed at the line in m&#x2F;s (TDPF)</li>
+<li><strong>wind_angle_degree (float)</strong> - angle of attack between the wind direction and the line (TDPF)</li>
+<li><strong>conductor_outer_diameter_m (float)</strong> - outer diameter of the line conductor in m (TDPF)</li>
+<li><strong>air_temperature_degree_celsius (float)</strong> - ambient temperature in °C (TDPF)</li>
+<li><strong>reference_temperature_degree_celsius (float)</strong> - reference temperature in °C for which r_ohm_per_km for the line is specified (TDPF)</li>
+<li><strong>solar_radiation_w_per_sq_m (float)</strong> - solar radiation on horizontal plane in W&#x2F;m² (TDPF)</li>
+<li><strong>solar_absorptivity (float)</strong> - Albedo factor for absorptivity of the lines (TDPF)</li>
+<li><strong>emissivity (float)</strong> - Albedo factor for emissivity of the lines (TDPF)</li>
+<li><strong>r_theta_kelvin_per_mw (float)</strong> - thermal resistance of the line (TDPF, only for simplified method)</li>
+<li><strong>mc_joule_per_m_k (float)</strong> - specific mass of the conductor multiplied by the specific thermal capacity of the material (TDPF, only for thermal inertia consideration with tdpf_delay_s parameter)</li>
+</ul>
+<p><strong>OUTPUT:</strong></p>
+<ul>
+<li><strong>index</strong> (int) - The unique ID of the created line</li>
+</ul>
+<p><strong>EXAMPLE:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_line(net, “line1”, from_bus = <span class="number">0</span>, to_bus = <span class="number">1</span>, length_km=<span class="number">0.1</span>, std_type=”NAYY 4x50 SE”)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandapower.create_line_from_parameters(net, from_bus, to_bus, length_km, r_ohm_per_km, x_ohm_per_km, c_nf_per_km, max_i_ka, name=<span class="literal">None</span>, index=<span class="literal">None</span>, <span class="built_in">type</span>=<span class="literal">None</span>, geodata=<span class="literal">None</span>, in_service=<span class="literal">True</span>, df=<span class="number">1.0</span>, parallel=<span class="number">1</span>, g_us_per_km=<span class="number">0.0</span>, max_loading_percent=nan, alpha=nan, temperature_degree_celsius=nan, r0_ohm_per_km=nan, x0_ohm_per_km=nan, c0_nf_per_km=nan, g0_us_per_km=<span class="number">0</span>, endtemp_degree=nan, **kwargs)</span><br></pre></td></tr></table></figure>
+
+<p>Creates a line element in net[“line”] from line parameters.</p>
+<p><strong>INPUT:</strong></p>
+<ul>
+<li><strong>net</strong> - The net within this line should be created</li>
+<li><strong>from_bus</strong> (int) - ID of the bus on one side which the line will be connected with</li>
+<li><strong>to_bus</strong> (int) - ID of the bus on the other side which the line will be connected with</li>
+<li><strong>length_km</strong> (float) - The line length in km</li>
+<li><strong>r_ohm_per_km</strong> (float) - line resistance in ohm per km</li>
+<li><strong>x_ohm_per_km</strong> (float) - line reactance in ohm per km</li>
+<li><strong>c_nf_per_km</strong> (float) - line capacitance (line-to-earth) in nano Farad per km</li>
+<li><strong>r0_ohm_per_km</strong> (float) - zero sequence line resistance in ohm per km</li>
+<li><strong>x0_ohm_per_km</strong> (float) - zero sequence line reactance in ohm per km</li>
+<li><strong>c0_nf_per_km</strong> (float) - zero sequence line capacitance in nano Farad per km</li>
+<li><strong>max_i_ka</strong> (float) - maximum thermal current in kilo Ampere</li>
+</ul>
+<p><strong>OPTIONAL:</strong></p>
+<ul>
+<li><strong>name</strong> (string, None) - A custom name for this line</li>
+<li><strong>index</strong> (int, None) - Force a specified ID if it is available. If None, the index one higher than the highest already existing index is selected.</li>
+<li><strong>in_service</strong> (boolean, True) - True for in_service or False for out of service</li>
+<li><strong>type</strong> (str, None) - type of line (“ol” for overhead line or “cs” for cable system)</li>
+<li><strong>df</strong> (float, 1) - derating factor: maximal current of line in relation to nominal current of line (from 0 to 1)</li>
+<li><strong>g_us_per_km</strong> (float, 0) - dielectric conductance in micro Siemens per km</li>
+<li><strong>g0_us_per_km</strong> (float, 0) - zero sequence dielectric conductance in micro Siemens per km</li>
+<li><strong>parallel</strong> (integer, 1) - number of parallel line systems</li>
+<li><strong>geodata</strong> (array, default None, shape&#x3D; (,2)) - The geodata of the line. The first row should be the coordinates of bus a and the last should be the coordinates of bus b. The points in the middle represent the bending points of the line</li>
+<li><strong>max_loading_percent (float)</strong> - maximum current loading (only needed for OPF)</li>
+<li><strong>alpha (float)</strong> - temperature coefficient of resistance: R(T) &#x3D; R(T_0) * (1 + alpha * (T - T_0)))</li>
+<li><strong>temperature_degree_celsius (float)</strong> - line temperature for which line resistance is adjusted</li>
+<li><strong>tdpf (bool)</strong> - whether the line is considered in the TDPF calculation</li>
+<li><strong>wind_speed_m_per_s (float)</strong> - wind speed at the line in m&#x2F;s (TDPF)</li>
+<li><strong>wind_angle_degree (float)</strong> - angle of attack between the wind direction and the line (TDPF)</li>
+<li><strong>conductor_outer_diameter_m (float)</strong> - outer diameter of the line conductor in m (TDPF)</li>
+<li><strong>air_temperature_degree_celsius (float)</strong> - ambient temperature in °C (TDPF)</li>
+<li><strong>reference_temperature_degree_celsius (float)</strong> - reference temperature in °C for which r_ohm_per_km for the line is specified (TDPF)</li>
+<li><strong>solar_radiation_w_per_sq_m (float)</strong> - solar radiation on horizontal plane in W&#x2F;m² (TDPF)</li>
+<li><strong>solar_absorptivity (float)</strong> - Albedo factor for absorptivity of the lines (TDPF)</li>
+<li><strong>emissivity (float)</strong> - Albedo factor for emissivity of the lines (TDPF)</li>
+<li><strong>r_theta_kelvin_per_mw (float)</strong> - thermal resistance of the line (TDPF, only for simplified method)</li>
+<li><strong>mc_joule_per_m_k (float)</strong> - specific mass of the conductor multiplied by the specific thermal capacity of the material (TDPF, only for thermal inertia consideration with tdpf_delay_s parameter)</li>
+</ul>
+<p><strong>OUTPUT:</strong></p>
+<ul>
+<li><strong>index</strong> (int) - The unique ID of the created line</li>
+</ul>
+<p><strong>EXAMPLE:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_line_from_parameters(net, “line1”, from_bus = <span class="number">0</span>, to_bus = <span class="number">1</span>, lenght_km=<span class="number">0.1</span>, r_ohm_per_km = <span class="number">.01</span>, x_ohm_per_km = <span class="number">0.05</span>, c_nf_per_km = <span class="number">10</span>, max_i_ka = <span class="number">0.4</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><em>net.line</em></p>
+<p>This is for defining a line with length zero leads to a division by zero in the power flow and is therefore for the same reason. </p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Datatype</strong></th>
+<th><strong>Value Range</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>string</td>
+<td></td>
+<td>name of the line</td>
+</tr>
+<tr>
+<td>std_type</td>
+<td>string</td>
+<td></td>
+<td>standard type which can be used to easily define line parameters with the pandapower standard type library</td>
+</tr>
+<tr>
+<td>from_bus*</td>
+<td>integer</td>
+<td></td>
+<td>Index of bus where the line starts</td>
+</tr>
+<tr>
+<td>to_bus*</td>
+<td>integer</td>
+<td></td>
+<td>Index of bus where the line ends</td>
+</tr>
+<tr>
+<td>length_km*</td>
+<td>float</td>
+<td>&gt; 0</td>
+<td>length of the line [km]</td>
+</tr>
+<tr>
+<td>r_ohm_per_km*</td>
+<td>float</td>
+<td>≥ 0</td>
+<td>resistance of the line [Ohm per km]</td>
+</tr>
+<tr>
+<td>x_ohm_per_km*</td>
+<td>float</td>
+<td>≥ 0</td>
+<td>inductance of the line [Ohm per km]</td>
+</tr>
+<tr>
+<td>c_nf_per_km*</td>
+<td>float</td>
+<td>≥ 0</td>
+<td>capacitance of the line (line-to-earth) [nano Farad per km]</td>
+</tr>
+<tr>
+<td>r0_ohm_per_km****</td>
+<td>float</td>
+<td>≥ 0</td>
+<td>zero sequence resistance of the line [Ohm per km]</td>
+</tr>
+<tr>
+<td>x0_ohm_per_km****</td>
+<td>float</td>
+<td>≥ 0</td>
+<td>zero sequence inductance of the line [Ohm per km]</td>
+</tr>
+<tr>
+<td>c0_nf_per_km****</td>
+<td>float</td>
+<td>≥ 0</td>
+<td>zero sequence capacitance of the line [nano Farad per km]</td>
+</tr>
+<tr>
+<td>g_us_per_km*</td>
+<td>float</td>
+<td>≥ 0</td>
+<td>dielectric conductance of the line [micro Siemens per km]</td>
+</tr>
+<tr>
+<td>max_i_ka*</td>
+<td>float</td>
+<td>&gt; 0</td>
+<td>maximal thermal current [kilo Ampere]</td>
+</tr>
+<tr>
+<td>parallel*</td>
+<td>integer</td>
+<td>≥ 1</td>
+<td>number of parallel line systems</td>
+</tr>
+<tr>
+<td>df*</td>
+<td>float</td>
+<td>0…1</td>
+<td>derating factor (scaling) for max_i_ka</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Naming conventions:<em>“ol”</em> - overhead line<em>“cs”</em> - underground cable system</td>
+<td>type of line</td>
+</tr>
+<tr>
+<td>max_loading_percent**</td>
+<td>float</td>
+<td>&gt; 0</td>
+<td>Maximum loading of the line</td>
+</tr>
+<tr>
+<td>endtemp_degree***</td>
+<td>float</td>
+<td>&gt; 0</td>
+<td>Short-Circuit end temperature of the line</td>
+</tr>
+<tr>
+<td>in_service*</td>
+<td>boolean</td>
+<td>True &#x2F; False</td>
+<td>specifies if the line is in service.</td>
+</tr>
+</tbody></table>
+<p>*necessary for executing a balanced power flow calculation<br>** optimal power flow parameter<br>***short-circuit calculation parameter<br>**** necessary for executing a three phase power flow &#x2F; single phase short circuit .. note:</p>
+<p><em>net.line_geodata</em></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Datatype</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>coords</td>
+<td>list</td>
+<td>List of (x,y) tuples that mark the inflexion points of the line</td>
+</tr>
+</tbody></table>
+<h2 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandapower.create.create_switch(net, bus, element, et, closed=<span class="literal">True</span>, <span class="built_in">type</span>=<span class="literal">None</span>, name=<span class="literal">None</span>, index=<span class="literal">None</span>, z_ohm=<span class="number">0</span>, in_ka=nan, **kwargs)</span><br></pre></td></tr></table></figure>
+
+<p>Adds a switch in the net[“switch”] table.</p>
+<p>Switches can be either between two buses (bus-bus switch) or at the end of a line or transformer element (bus-element switch).</p>
+<p>Two buses that are connected through a closed bus-bus switches are fused in the power flow if the switch is closed or separated if the switch is open.</p>
+<p>An element that is connected to a bus through a bus-element switch is connected to the bus if the switch is closed or disconnected if the switch is open.</p>
+<p><strong>INPUT:</strong></p>
+<ul>
+<li><p><strong>net</strong> (pandapowerNet) - The net within which this switch should be created</p>
+</li>
+<li><p><strong>bus</strong> - The bus that the switch is connected to</p>
+</li>
+<li><p><strong>element</strong> - index of the element: bus id if et &#x3D;&#x3D; “b”, line id if et &#x3D;&#x3D; “l”, trafo id if et &#x3D;&#x3D; “t”</p>
+<ul>
+<li><p><strong>et</strong> - (string) element type: “l” &#x3D; switch between bus and line, “t” &#x3D; switch between</p>
+<p>bus and transformer, “t3” &#x3D; switch between bus and transformer3w, “b” &#x3D; switch between two buses</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>OPTIONAL:</strong></p>
+<ul>
+<li><strong>closed</strong> (boolean, True) - switch position: False &#x3D; open, True &#x3D; closed</li>
+<li><strong>type</strong> (int, None) - indicates the type of switch: “LS” &#x3D; Load Switch, “CB” &#x3D; Circuit Breaker, “LBS” &#x3D; Load Break Switch or “DS” &#x3D; Disconnecting Switch<ul>
+<li><strong>z_ohm</strong> (float, 0) - indicates the resistance of the switch, which has effect only on bus-bus switches, if sets to 0, the buses will be fused like before, if larger than 0 a branch will be created for the switch which has also effects on the bus mapping</li>
+</ul>
+</li>
+<li><strong>name</strong> (string, default None) - The name for this switch</li>
+<li><strong>in_ka</strong> (float, default None) - maximum current that the switch can carry<ul>
+<li>normal operating conditions without tripping</li>
+</ul>
+</li>
+</ul>
+<p><strong>OUTPUT:</strong></p>
+<p>sid - The unique switch_id of the created switch</p>
+<p><strong>EXAMPLE:</strong></p>
+<p>create_switch(net, bus &#x3D; 0. element &#x3D; 1, et &#x3D; ‘b’, type &#x3D; ‘LS’, z_ohm &#x3D; 0.1)</p>
+<p>create_switch(net, bus &#x3D; 0. element &#x3D; 1, et &#x3D; ‘I’)</p>
+<p><strong>Input Parameters</strong> of <em><strong>net.switch</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Datatype</strong></th>
+<th><strong>Value Range</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bus*</td>
+<td>integer</td>
+<td></td>
+<td>index of connected bus</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td></td>
+<td>name of the switch</td>
+</tr>
+<tr>
+<td>element*</td>
+<td>integer</td>
+<td></td>
+<td>index of the element the switch is connected to:- bus index if et &#x3D; <em>“b”</em>- line index if et &#x3D; <em>“l”</em>- trafo index if et &#x3D; <em>“t”</em></td>
+</tr>
+<tr>
+<td>et*</td>
+<td>string</td>
+<td><em>“b”</em> - bus-bus switch<em>“l”</em> - bus-line switch<em>“t”</em> - bus-trafo<em>“t3”</em> - bus-trafo3w switch</td>
+<td>element type the switch connects to</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>naming conventions:<em>“CB”</em> - circuit breaker<em>“LS”</em> - load switch<em>“LBS”</em> - load break switch<em>“DS”</em> - disconnecting switch</td>
+<td>type of switch</td>
+</tr>
+<tr>
+<td>closed*</td>
+<td>boolean</td>
+<td>True &#x2F; False</td>
+<td>signals the switching state of the switch</td>
+</tr>
+<tr>
+<td>in_ka*</td>
+<td>float</td>
+<td>&gt;0</td>
+<td>maximum current that the switch can carry under normal operating conditions without tripping</td>
+</tr>
+</tbody></table>
+<h2 id="Load"><a href="#Load" class="headerlink" title="Load"></a>Load</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandapower.create_load(net, bus, p_mw, q_mvar=<span class="number">0</span>, const_z_percent=<span class="number">0</span>, const_i_percent=<span class="number">0</span>, sn_mva=nan, name=<span class="literal">None</span>, scaling=<span class="number">1.0</span>, index=<span class="literal">None</span>, in_service=<span class="literal">True</span>, <span class="built_in">type</span>=<span class="string">&#x27;wye&#x27;</span>, max_p_mw=nan, min_p_mw=nan, max_q_mvar=nan, min_q_mvar=nan, controllable=nan, **kwargs)</span><br></pre></td></tr></table></figure>
+
+<p>Adds one load in table net[“load”].</p>
+<p>All loads are modelled in the consumer system, meaning load is positive and generation is negative active power. Please pay attention to the correct signing of the reactive power as well.</p>
+<p><strong>INPUT:</strong></p>
+<ul>
+<li><strong>net</strong> - The net within this load should be created</li>
+<li><strong>bus</strong> (int) - The bus id to which the load is connected</li>
+</ul>
+<p><strong>OPTIONAL:</strong></p>
+<ul>
+<li><strong>p_mw</strong> (float, default 0) - The active power of the load<ul>
+<li>positive value -&gt; load</li>
+<li>negative value -&gt; generation</li>
+</ul>
+</li>
+<li><strong>q_mvar</strong> (float, default 0) - The reactive power of the load</li>
+<li><strong>const_z_percent</strong> (float, default 0) - percentage of p_mw and q_mvar that will be associated to constant impedance load at rated voltage</li>
+<li><strong>const_i_percent</strong> (float, default 0) - percentage of p_mw and q_mvar that will be associated to constant current load at rated voltage</li>
+<li><strong>sn_mva</strong> (float, default None) - Nominal power of the load</li>
+<li><strong>name</strong> (string, default None) - The name for this load</li>
+<li><strong>scaling</strong> (float, default 1.) - An OPTIONAL scaling factor. Multiplies with p_mw and q_mvar.</li>
+<li><strong>type</strong> (string, ‘wye’) - type variable to classify the load: wye&#x2F;delta</li>
+<li><strong>index</strong> (int, None) - Force a specified ID if it is available. If None, the index one higher than the highest already existing index is selected.</li>
+<li><strong>in_service</strong> (boolean) - True for in_service or False for out of service</li>
+<li><strong>max_p_mw</strong> (float, default NaN) - Maximum active power load - necessary for controllable loads in for OPF</li>
+<li><strong>min_p_mw</strong> (float, default NaN) - Minimum active power load - necessary for controllable loads in for OPF</li>
+<li><strong>max_q_mvar</strong> (float, default NaN) - Maximum reactive power load - necessary for controllable loads in for OPF</li>
+<li><strong>min_q_mvar</strong> (float, default NaN) - Minimum reactive power load - necessary for controllable loads in OPF</li>
+<li><strong>controllable</strong> (boolean, default NaN) - States, whether a load is controllable or not. Only respected for OPF; defaults to False if “controllable” column exists in DataFrame</li>
+</ul>
+<p><strong>OUTPUT:</strong></p>
+<ul>
+<li><strong>index</strong> (int) - The unique ID of the created element</li>
+</ul>
+<p><strong>EXAMPLE:</strong></p>
+<ul>
+<li>create_load(net, bus&#x3D;0, p_mw&#x3D;10., q_mvar&#x3D;2.)</li>
+</ul>
+<p>state:</p>
+<p>Action:</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/31/pandapower/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2024/02/22/Satellite/" class="article-nav-link">
+        <strong class="article-nav-caption">Next Post</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021-2024
+        <i class="ri-heart-fill heart_icon"></i> Mingwei Li
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/UofG.png" alt="Mingwei’s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/CV">Personal</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Categories</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/travel">Travel</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>Buy me a bottle of beer please~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
