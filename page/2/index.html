@@ -189,7 +189,7 @@
      
     <div class="article-meta">
       <a href="/2023/04/25/DSA/" class="article-date">
-  <time datetime="2023-04-25T22:11:13.000Z" itemprop="datePublished">2023-04-25</time>
+  <time datetime="2023-04-25T21:11:13.000Z" itemprop="datePublished">2023-04-25</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/java/">java</a>
@@ -840,7 +840,7 @@
      
     <div class="article-meta">
       <a href="/2023/04/21/Secured-Software-Engineering/" class="article-date">
-  <time datetime="2023-04-21T14:04:06.000Z" itemprop="datePublished">2023-04-21</time>
+  <time datetime="2023-04-21T13:04:06.000Z" itemprop="datePublished">2023-04-21</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/Courses/">Courses</a>
@@ -1813,7 +1813,7 @@
      
     <div class="article-meta">
       <a href="/2023/04/20/forensics/" class="article-date">
-  <time datetime="2023-04-20T13:49:35.000Z" itemprop="datePublished">2023-04-20</time>
+  <time datetime="2023-04-20T12:49:35.000Z" itemprop="datePublished">2023-04-20</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/Courses/">Courses</a>
@@ -2373,7 +2373,7 @@
      
     <div class="article-meta">
       <a href="/2023/04/18/data-analyst/" class="article-date">
-  <time datetime="2023-04-17T23:45:13.000Z" itemprop="datePublished">2023-04-18</time>
+  <time datetime="2023-04-17T22:45:13.000Z" itemprop="datePublished">2023-04-18</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/Data-Engineering/">Data Engineering</a>
@@ -2434,7 +2434,7 @@
      
     <div class="article-meta">
       <a href="/2023/04/15/Csharp/" class="article-date">
-  <time datetime="2023-04-15T14:22:46.000Z" itemprop="datePublished">2023-04-15</time>
+  <time datetime="2023-04-15T13:22:46.000Z" itemprop="datePublished">2023-04-15</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/C/">C#</a>
@@ -2793,7 +2793,7 @@
      
     <div class="article-meta">
       <a href="/2023/04/01/java/" class="article-date">
-  <time datetime="2023-04-01T22:53:13.000Z" itemprop="datePublished">2023-04-01</time>
+  <time datetime="2023-04-01T21:53:13.000Z" itemprop="datePublished">2023-04-01</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/java/">java</a>
@@ -3910,7 +3910,7 @@
      
     <div class="article-meta">
       <a href="/2023/03/31/mall-developing/" class="article-date">
-  <time datetime="2023-03-31T22:53:13.000Z" itemprop="datePublished">2023-03-31</time>
+  <time datetime="2023-03-31T21:53:13.000Z" itemprop="datePublished">2023-03-31</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/java/">java</a>
@@ -4040,7 +4040,7 @@
      
     <div class="article-meta">
       <a href="/2023/02/12/First-blog/" class="article-date">
-  <time datetime="2023-02-12T21:43:14.000Z" itemprop="datePublished">2023-02-12</time>
+  <time datetime="2023-02-12T19:43:14.000Z" itemprop="datePublished">2023-02-12</time>
 </a>    
     </div>
       
@@ -4073,6 +4073,299 @@
 </tr>
 </tbody></table>
 <p>目标是选择物品装入背包，使得总价值最大，同时不超过背包容量。</p>
+<p>动态规划：</p>
+<p>步骤:</p>
+<ol>
+<li><strong>定义状态</strong></li>
+</ol>
+<p>用 dp[i][w]表示在前 i 个物品中，容量不超过 w 时的最大价值。</p>
+<ol start="2">
+<li><strong>状态转移方程</strong></li>
+</ol>
+<p>如果不选择第i个物品: dp[i][w] &#x3D; dp[i-1][w]</p>
+<p>如果选择第i个物品: dp[i][w] &#x3D; dp[i-1][w-weight[i]]+value[i]</p>
+<ol start="3">
+<li><strong>初始化</strong></li>
+</ol>
+<p>当i &#x3D; 0 或 w &#x3D; 0, 即没有物品或背包容量为 0 时: dp[i][w]&#x3D;0</p>
+<ol start="4">
+<li><strong>最终结果</strong></li>
+</ol>
+<p>dp[n][W] 表示在前 n 个物品中，容量不超过 W 时的最大价值。</p>
+<p>![image-20241202125650466](..&#x2F;images&#x2F;:Users:joshua:Library:Application Support:typora-user-images:image-20241202125650466.png)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">knapsack</span>(<span class="params">weights, values, W</span>):</span><br><span class="line">    n = <span class="built_in">len</span>(weights)</span><br><span class="line">    dp = [[<span class="number">0</span>] * (W + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> <span class="built_in">range</span>(W + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> weights[i-<span class="number">1</span>] &lt;= w:</span><br><span class="line">                dp[i][w] = <span class="built_in">max</span>(dp[i-<span class="number">1</span>][w], dp[i-<span class="number">1</span>][w-weights[i-<span class="number">1</span>]] + values[i-<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dp[i][w] = dp[i-<span class="number">1</span>][w]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[n][W]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例数据</span></span><br><span class="line">weights = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">values = [<span class="number">6</span>, <span class="number">10</span>, <span class="number">12</span>]</span><br><span class="line">W = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;最大价值为:&quot;</span>, knapsack(weights, values, W))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果背包问题变成连续空间呢？</p>
+<h2 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h2><p>Yet Another Resource Negotiator</p>
+<h3 id="YARN-的核心组件"><a href="#YARN-的核心组件" class="headerlink" title="YARN 的核心组件"></a>YARN 的核心组件</h3><ol>
+<li><strong>ResourceManager (RM)</strong><ul>
+<li>集群范围的资源管理器，负责协调整个集群的资源分配。</li>
+<li>包含两个主要模块：<ul>
+<li><strong>Scheduler</strong>：根据调度策略为应用程序分配资源。</li>
+<li><strong>ApplicationsManager</strong>：负责应用程序的生命周期管理，比如启动 ApplicationMaster。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>NodeManager (NM)</strong><ul>
+<li>每个节点上的代理，负责单节点资源的管理和任务的执行。</li>
+<li>监控容器（Container）的资源使用（CPU、内存等）并报告给 ResourceManager。</li>
+</ul>
+</li>
+<li><strong>ApplicationMaster (AM)</strong><ul>
+<li>每个应用程序的具体作业管理器，负责作业的调度和任务执行的管理。</li>
+<li>通过与 ResourceManager 和 NodeManager 通信来请求资源和启动任务。</li>
+</ul>
+</li>
+<li><strong>Container</strong><ul>
+<li>YARN 中的最小资源分配单元，包含一定数量的 CPU 核心和内存。</li>
+<li>每个任务运行在一个或多个 Container 中。</li>
+</ul>
+</li>
+</ol>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p><strong>应用提交</strong></p>
+<ul>
+<li>客户端向 ResourceManager 提交一个应用请求。</li>
+<li>ResourceManager 启动 ApplicationMaster 来管理该应用。</li>
+</ul>
+<p><strong>资源分配</strong></p>
+<ul>
+<li>ApplicationMaster 与 ResourceManager 协商资源需求。</li>
+<li>ResourceManager 根据当前的资源调度策略分配容器。</li>
+</ul>
+<p><strong>任务执行</strong></p>
+<ul>
+<li>ApplicationMaster 请求 NodeManager 启动 Container 并运行任务。</li>
+<li>NodeManager 在分配的容器中执行任务，并将状态返回给 ApplicationMaster。</li>
+</ul>
+<p><strong>任务完成</strong></p>
+<ul>
+<li>ApplicationMaster 汇总任务执行结果并向 ResourceManager 汇报应用完成状态。</li>
+</ul>
+<p>1a</p>
+<pre><code>import pandas as pd
+
+# Task 1a: Data Loading and Preprocessing
+
+# 1. Load the Data: Load the CSV file into a Pandas DataFrame
+file_path = &quot;data.csv&quot;  # Replace with your file path
+df = pd.read_csv(file_path)
+print(&quot;Data loaded successfully.&quot;)
+
+# 2. Data Cleaning: Check for missing values and fill them appropriately
+if df.isnull().sum().sum() &gt; 0:
+    print(&quot;Missing values found. Filling with appropriate values...&quot;)
+    # Assuming numeric columns are filled with 0 and categorical with &#39;Unknown&#39;
+    for column in df.columns:
+        if df[column].dtype == &#39;object&#39;:
+            df[column].fillna(&#39;Unknown&#39;, inplace=True)
+        else:
+            df[column].fillna(0, inplace=True)
+else:
+    print(&quot;No missing values found.&quot;)
+
+# 3. Convert the Date column to a datetime object
+if &#39;Date&#39; in df.columns:
+    df[&#39;Date&#39;] = pd.to_datetime(df[&#39;Date&#39;], errors=&#39;coerce&#39;)
+    if df[&#39;Date&#39;].isnull().sum() &gt; 0:
+        print(&quot;Some dates were invalid. Converting invalid dates to a default value (e.g., today&#39;s date).&quot;)
+        df[&#39;Date&#39;].fillna(pd.Timestamp.today(), inplace=True)
+    print(&quot;Date column converted to datetime successfully.&quot;)
+
+# 4. Ensure the Total column correctly represents the product of Quantity and Price
+if &#39;Total&#39; in df.columns and &#39;Quantity&#39; in df.columns and &#39;Price&#39; in df.columns:
+    df[&#39;Calculated_Total&#39;] = df[&#39;Quantity&#39;] * df[&#39;Price&#39;]
+    discrepancy = df[df[&#39;Total&#39;] != df[&#39;Calculated_Total&#39;]]
+    if not discrepancy.empty:
+        print(&quot;Discrepancies found in the Total column. Correcting them...&quot;)
+        df[&#39;Total&#39;] = df[&#39;Calculated_Total&#39;]
+    print(&quot;Total column verified and corrected if necessary.&quot;)
+else:
+    print(&quot;Required columns (Total, Quantity, or Price) not found.&quot;)
+
+# Display the cleaned DataFrame (Optional)
+print(&quot;Cleaned DataFrame:&quot;)
+print(df.head())
+
+# Save the cleaned data (Optional)
+df.to_csv(&quot;cleaned_data.csv&quot;, index=False)
+print(&quot;Cleaned data saved to &#39;cleaned_data.csv&#39;.&quot;)
+</code></pre>
+<p>1b</p>
+<pre><code>import pandas as pd
+import matplotlib.pyplot as plt
+</code></pre>
+<p>​<br>    data &#x3D; {<br>        ‘Product’: [‘A’, ‘B’, ‘A’, ‘C’, ‘B’, ‘A’, ‘C’, ‘B’, ‘A’, ‘C’],<br>        ‘Quantity’: [10, 15, 12, 20, 25, 10, 30, 15, 10, 5],<br>        ‘Date’: [<br>            ‘2023-01-15’, ‘2023-01-20’, ‘2023-02-10’, ‘2023-02-18’,<br>            ‘2023-03-05’, ‘2023-03-12’, ‘2023-04-07’, ‘2023-04-15’,<br>            ‘2023-05-01’, ‘2023-05-10’<br>        ]<br>    }</p>
+<pre><code>df = pd.DataFrame(data)
+
+# Ensure &#39;Date&#39; is a datetime type
+df[&#39;Date&#39;] = pd.to_datetime(df[&#39;Date&#39;])
+
+# 1. Product Sales Distribution (Bar Chart)
+product_sales = df.groupby(&#39;Product&#39;)[&#39;Quantity&#39;].sum()
+
+plt.figure(figsize=(10, 6))
+product_sales.plot(kind=&#39;bar&#39;)
+plt.title(&#39;Total Quantity Sold for Each Product&#39;)
+plt.xlabel(&#39;Product&#39;)
+plt.ylabel(&#39;Total Quantity Sold&#39;)
+plt.xticks(rotation=0)
+plt.grid(axis=&#39;y&#39;, linestyle=&#39;--&#39;, alpha=0.7)
+plt.show()
+
+# 2. Sales Over Time (Line Plot)
+df[&#39;Month&#39;] = df[&#39;Date&#39;].dt.to_period(&#39;M&#39;)  # Extract month and year
+monthly_sales = df.groupby(&#39;Month&#39;)[&#39;Quantity&#39;].sum()
+
+plt.figure(figsize=(10, 6))
+monthly_sales.plot(kind=&#39;line&#39;, marker=&#39;o&#39;)
+plt.title(&#39;Total Sales Over the Months of 2023&#39;)
+plt.xlabel(&#39;Month&#39;)
+plt.ylabel(&#39;Total Sales&#39;)
+plt.grid(axis=&#39;both&#39;, linestyle=&#39;--&#39;, alpha=0.7)
+plt.show()
+</code></pre>
+<p>2a</p>
+<pre><code># 2a: Database Creation, Table Creation, and Data Insertion
+
+import sqlite3
+
+# Connect to (or create) the SQLite database named SalesDB
+conn = sqlite3.connect(&#39;SalesDB.db&#39;)
+cursor = conn.cursor()
+
+# Create the Sales table with appropriate columns
+# Ensuring no duplicate entries can be done by setting a UNIQUE constraint on (Date, Product)
+cursor.execute(&#39;&#39;&#39;
+CREATE TABLE IF NOT EXISTS Sales (
+    Date TEXT,
+    Product TEXT,
+    Quantity INTEGER,
+    Price REAL,
+    Total REAL,
+    UNIQUE(Date, Product)
+)
+&#39;&#39;&#39;)
+
+# Insert cleaned and processed data from Part 1
+# Assuming we have a list of tuples as our cleaned data, for example:
+# cleaned_data = [
+#     (&quot;2023-01-01&quot;, &quot;Widget A&quot;, 10, 9.99, 99.90),
+#     (&quot;2023-01-01&quot;, &quot;Widget B&quot;, 5, 19.99, 99.95),
+#     (&quot;2023-01-02&quot;, &quot;Widget A&quot;, 8, 9.99, 79.92),
+#     ...
+# ]
+# Replace the above with your actual cleaned data list
+
+cleaned_data = [
+    (&quot;2023-01-01&quot;, &quot;Widget A&quot;, 10, 9.99, 99.90),
+    (&quot;2023-01-01&quot;, &quot;Widget B&quot;, 5, 19.99, 99.95),
+    (&quot;2023-02-10&quot;, &quot;Widget A&quot;, 20, 9.99, 199.80),
+    (&quot;2023-03-15&quot;, &quot;Widget C&quot;, 3, 29.99, 89.97),
+    (&quot;2023-03-15&quot;, &quot;Widget B&quot;, 2, 19.99, 39.98),
+]
+
+# Insert data using &quot;INSERT OR IGNORE&quot; to avoid duplicates
+for record in cleaned_data:
+    cursor.execute(&#39;&#39;&#39;
+    INSERT OR IGNORE INTO Sales (Date, Product, Quantity, Price, Total)
+    VALUES (?, ?, ?, ?, ?)
+    &#39;&#39;&#39;, record)
+
+conn.commit()
+conn.close()
+</code></pre>
+<p>2b</p>
+<pre><code># 2b: Querying the Database
+
+import sqlite3
+
+conn = sqlite3.connect(&#39;SalesDB.db&#39;)
+cursor = conn.cursor()
+
+# Query 1: Total Sales for the year 2023
+cursor.execute(&#39;&#39;&#39;
+SELECT SUM(Total) AS total_sales_2023
+FROM Sales
+WHERE Date LIKE &#39;2023-%&#39;;
+&#39;&#39;&#39;)
+total_sales_2023 = cursor.fetchone()[0]
+print(&quot;Total Sales in 2023:&quot;, total_sales_2023)
+
+# Query 2: Product Sales Summary for 2023 (total quantity sold per product, descending order)
+cursor.execute(&#39;&#39;&#39;
+SELECT Product, SUM(Quantity) as total_quantity
+FROM Sales
+WHERE Date LIKE &#39;2023-%&#39;
+GROUP BY Product
+ORDER BY total_quantity DESC;
+&#39;&#39;&#39;)
+product_sales_summary = cursor.fetchall()
+print(&quot;Product Sales Summary for 2023:&quot;)
+for row in product_sales_summary:
+    print(row)  # (Product, total_quantity)
+
+conn.close()
+</code></pre>
+<p>3a:</p>
+<pre><code>import torch
+import torch.nn as nn
+import torch.optim as optim
+import matplotlib.pyplot as plt
+
+# Task 3a: Model Initialization
+class SimpleNN(nn.Module):
+    def __init__(self, input_size):
+        super(SimpleNN, self).__init__()
+        self.linear = nn.Linear(input_size, 1)
+
+    def forward(self, x):
+        return self.linear(x)
+
+# Instantiate the m
+input_size = 10
+model = SimpleNN(input_size)
+
+# Define loss function and optimizer
+loss_function = nn.MSELoss()
+optimizer = optim.SGD(model.parameters(), lr=0.01)
+</code></pre>
+<p>3b</p>
+<pre><code># Generate synthetic data
+num_samples = 100
+num_features = 10
+
+data = torch.randn(num_samples, num_features)
+target = torch.randn(num_samples, 1)  # 100 target values reshaped for MSE
+</code></pre>
+<p>3c</p>
+<pre><code>num_epochs = 20
+losses = []
+
+for epoch in range(num_epochs):
+    # Forward pass
+    predictions = model(data)
+    loss = loss_function(predictions, target)
+
+    # Backward pass and optimization
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    # Record loss
+    losses.append(loss.item())
+    print(f&quot;Epoch &#123;epoch + 1&#125;/&#123;num_epochs&#125;, Loss: &#123;loss.item():.4f&#125;&quot;)
+</code></pre>
+<p>3d</p>
+<pre><code>plt.plot(range(1, num_epochs + 1), losses, marker=&#39;o&#39;)
+plt.xlabel(&#39;Epoch&#39;)
+plt.ylabel(&#39;Training Loss&#39;)
+plt.title(&#39;Training Loss Over Epochs&#39;)
+plt.grid(True)
+plt.show()
+</code></pre>
  
       <!-- reward -->
       
